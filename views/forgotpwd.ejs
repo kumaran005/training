@@ -1,0 +1,81 @@
+<title>One Mind Consulting</title>
+<link rel="icon" type="image/png" href="/assets/img/book.png">
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<link rel="stylesheet" href="/assets/css/login.css">
+
+<script>
+
+    function empty() {
+        var x;
+        x = document.getElementById("roll-input").value;
+        if (x == "") {
+            //alert("Please insert empty value");
+            return false;
+        };
+    }
+    // Change the type of input to password or text 
+    function Toggle() {
+        var temp = document.getElementById("typepass");
+        if (temp.type === "password") {
+            temp.type = "text";
+        }
+        else {
+            temp.type = "password";
+        }
+    }
+
+    // Change the type of input to password or text 
+    function Toggle() {
+        var temp = document.getElementById("typepass");
+        if (temp.type === "password") {
+            temp.type = "text";
+        }
+        else {
+            temp.type = "password";
+        }
+    }
+
+</script>
+<header>
+    <%- include('../views/header'); -%>
+</header>
+<!------ Include the above in your HEAD tag ---------->
+<div class="wrapper fadeInDown">
+
+    <div id="formContent">
+        <!-- Tabs Titles -->
+
+        <!-- Icon -->
+        <div class="formFooter">
+            <br />
+            <h4 class="underlineHover">Forgot Password?</h4>
+        </div>
+        <hr /><% if (message.length > 0) { %>
+        <div class="alert alert-info col-sm-12"><%= message %></div>
+        <% } %>
+        <!-- Login Form -->
+        <form id="loginform" class="form-horizontal" role="form" method="post" action="/pwdrecovery">
+            <input type="text" id="password" class="fadeIn third"  name="user_name"   placeholder="User name*" required/>
+            <input type="email" id="password" class="fadeIn third"  name="emailid" 
+            pattern="[a-z0-9._%+-]{1,40}[@]{1}[a-z]{1,10}[.]{1}[a-z]{3}"
+            placeholder="Email Id*" required/>
+          <br/>
+          <button id="btn-login" type="submit" class="btn">Recover </button>
+        </form>
+
+        <!-- Remind Passowrd -->
+        <div id="formFooter">
+          
+            <a class="underlineHover pull-right" href="/">Back to Sign In</a>
+            <br/>
+
+        </div>
+
+    </div>
+
+</div>
+<footer>
+    <%- include('../views/footer'); -%>
+</footer>

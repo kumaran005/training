@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Ponmari_Sample</title>
+  <!-- Tell the browser to be responsive to screen width -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="/assets/dashboard/plugins/fontawesome-free/css/all.min.css">
+  <!-- Ionicons -->
+  <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+  <!-- bootsrtap -->
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <!-- Theme style -->
+  <link rel="stylesheet" href="/assets/dashboard/dist/css/alter.css">
+  <link rel="stylesheet" href="/assets/dashboard/dist/css/mbbs.css">
+  <!-- Google Font Source Sans Pro -->
+  <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro300,400,400i,700" rel="stylesheet">
+  
+</head>
+<body class="hold-transition sidebar-mini">
+    <div class="toolbar no-print">
+      <button class="btn btn-info" onclick="window.print()">
+        Print Certificate
+      </button>
+    </div>
+   
+<section id="report"class="blue ">
+  <div class="container">
+         <div id="reportcard"class="">
+ 
+<div class="row justify-content-center">
+  <div class="col-md-12"><h4 class="other-font ">TIRUNELVELI MEDICAL COLLEGE, TIRUNELVELI-11. 
+</h4>
+     </div>
+         <h4><b> BONAFIDE REGISTER
+</b></h4><br>
+
+      
+</div>
+     
+<p class="text-center"><b >PERSONAL DETAILS</b></p>
+<br>
+<div class="row justify-content-center">
+  <div class="col-md-2">
+    <p><b><i>NAME:</i></b></p>
+        <p><b><i>YEAR OF ADMISSION:</i></b></p>
+ <p><b><i>DOB:</i></b></p>
+    <p><b><i>QUOTA:</i></b></p>
+    
+</div>
+  <div class="col-md-2">
+    <%
+if(userData.length!=0){
+var i=1;
+userData.forEach(function(classdata){
+%>
+        <p><b><i><%=classdata.name %></i></b></p>
+        <p><b><i><%=classdata.academic_year %></i></b></p>
+        <p><b><i><%=classdata.date_of_birth %></i></b></p>
+        <%  i++; }) %>
+        <% } else{ %>
+      
+        <% } %>
+        <%
+        if(userData1.length!=0){
+        var i=1;
+        userData1.forEach(function(classdata1){
+        %>
+        <p><b><i><%=classdata1.admission_quota %></i></b></p>
+       
+        <%  i++; }) %>
+        <% } else{ %>
+      
+        <% } %>
+</div>
+  <div class="col-md-2">
+   
+        <p><b><i>DOJ:
+</i></b></p>
+ <p><b><i>COMMUNITY:
+</i></b></p>
+    <p><b><i>MOBILE NO: </i></b></p>
+    <p><b><i>ADDRESS:</i></b></p>
+
+</div>
+   <div class="col-md-3">
+    <%
+    if(userData1.length!=0){
+    var i=1;
+    userData1.forEach(function(classdata1){
+    %>
+        <p><b><i><%=classdata1.date_of_admission %></i></b></p>
+        <%  i++; }) %>
+        <% } else{ %>
+      
+        <% } %>
+        <%
+        if(userData.length!=0){
+        var i=1;
+        userData.forEach(function(classdata){
+        %>
+        <p><b><i><%=classdata.community %></i></b></p>
+        <%  i++; }) %>
+        <% } else{ %>
+      
+        <% } %>
+        <%
+        if(userData8.length!=0){
+        var i=1;
+        userData8.forEach(function(classdata8){
+        %>
+        <p><b><i><%=classdata8.mobile_phone %></i></b></p>
+        <%  i++; }) %>
+        <% } else{ %>
+      
+        <% } %>
+        <%
+        if(userData2.length!=0){
+        var i=1;
+        userData2.forEach(function(classdata2){
+        %>
+        <p><b><i> <%=classdata2.ps_address %>
+          <%=classdata2.ps_pincode %>
+          <%=classdata2.ps_state %>
+          <%=classdata2.ps_district %></i></b></p>
+        <%  i++; }) %>
+        <% } else{ %>
+      
+        <% } %>
+</div>
+</div>
+<div class="table-responsive">
+    <table class="table table-bordered"id="tablereport">
+  <thead>
+    <tr>
+      <th scope="col">DATE</th>
+      <th scope="col">PURPOSE WITH REF.NO.
+</th>
+      <th scope="col">ASST.</th>
+      <th scope="col">O.S.</th>
+            <th scope="col">J.A.O. </th>
+      <th scope="col">V.P. </th>
+      <th scope="col">DEAN </th>
+      
+
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td >1</td>
+      <td>Aakash A M
+Mobile No: 9894435757
+E-Mail:
+aakashamparvathik@gmail.com</td>
+      <td>Murugan A
+Parvathi K
+38/B, 3rd Cross Street,
+Veeramanikapuram,
+Melapalayam
+Tirunelveli-627005
+</td>
+     
+<td>HSC,1811355045,SRV Boys
+HSS,Muthukalipatti,Namakkal</td>
+      <td>State Quota</td>
+      <td>B Positive</td>
+            <td><p style="border: 1px solid black;width: 100px;height: 100px">Photo</p></td>
+
+    </tr>
+  
+        <tr>
+      <td >1</td>
+      <td>Aakash A M
+Mobile No: 9894435757
+E-Mail:
+aakashamparvathik@gmail.com</td>
+      <td>Murugan A
+Parvathi K
+38/B, 3rd Cross Street,
+Veeramanikapuram,
+Melapalayam
+Tirunelveli-627005
+</td>
+      <td>16/11/2000</td>
+      <td>11/12/2020</td>
+            <td>Scheduled
+Castes-Hindu
+-Hindu -
+Pallan
+</td>
+<td>HSC,1811355045,SRV Boys
+HSS,Muthukalipatti,Namakkal</td>
+ 
+
+    </tr>
+  
+  </tbody>
+</table> 
+
+  </div>
+ 
+  </div>
+</div>
+</div>
+</section>
+
+   
+
+
+
+
+ 
+<!-- jQuery bootstrap -->
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+<script>
+UPLOADCARE_PUBLIC_KEY = 'demopublickey';
+</script>
+<script src="https://ucarecdn.com/libs/widget/3.x/uploadcare.full.min.js" charset="utf-8"></script>
+<!-- AdminLTE App -->
+<script src="js/adminlte.js"></script>
+<script src="js/mbbs.js"></script>
+
+<!-- AdminLTE for demo purposes -->
+<script src="js/demo.js"></script>
+<!-- page script -->
+
+
+</body>
+
+</html>

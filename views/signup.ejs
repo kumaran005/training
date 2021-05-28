@@ -1,0 +1,93 @@
+<title>Ponmari_Sample</title>
+<link rel="icon" href="/assets/img/logo.gif" type="image/x-icon">
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<link rel="stylesheet" href="/assets/css/login.css">
+
+<script>
+
+    function empty() {
+        var x;
+        x = document.getElementById("roll-input").value;
+        if (x == "") {
+            //alert("Please insert empty value");
+            return false;
+        };
+    }
+    // Change the type of input to password or text 
+    function Toggle() {
+        var temp = document.getElementById("typepass");
+        if (temp.type === "password") {
+            temp.type = "text";
+        }
+        else {
+            temp.type = "password";
+        }
+    }
+
+    // Change the type of input to password or text 
+    function Toggle() {
+        var temp = document.getElementById("typepass");
+        if (temp.type === "password") {
+            temp.type = "text";
+        }
+        else {
+            temp.type = "password";
+        }
+    }
+
+</script>
+<header>
+    <%- include('../views/header'); -%>
+</header>
+<!------ Include the above in your HEAD tag ---------->
+<div class="wrapper fadeInDown">
+
+    <div id="formContent">
+        <!-- Tabs Titles -->
+
+        <!-- Icon -->
+        <div class="formFooter">
+            <h3 class="underlineHover">Sign Up</h3>
+            <hr />
+        </div>
+          <!-- Static navbar -->
+    <div class="text-center mt-2">
+        <!-- <img src="/assets/img/logo.gif" class="img-fluid"id="logo" alt="logo"/> -->
+  
+      </div>
+        <% if (message.length > 0) { %>
+        <div class="alert alert-info col-sm-12"><%= message %></div>
+        <% } %>
+        <!-- Login Form -->
+        <form id="loginform" class="form-horizontal" role="form" method="post" action="/add_user">
+
+            <input type="text" id="login" class="fadeIn second" name="name" required placeholder="Name*">
+            <input type="email" id="login" class="fadeIn second" name="emailid" 
+                pattern="[a-z0-9._%+-]{1,40}[@]{1}[a-z]{1,10}[.]{1}[a-z]{3}"
+                placeholder="Email Id*" required/>
+           
+             <input type="password" id="typepass" class="fadeIn second" name="password" required
+                pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
+                title="Must contain: Minimum 8 Characters includes Number,Uppercase,Lowercase,Symbol."
+                placeholder="Password*">
+            <div class="col-md-6">
+                <p> <input type="checkbox" id="checkboxPrimary6" onclick="Toggle()">&nbsp;&nbsp;Show password</p>
+            </div>
+            <button id="btn-login" type="submit" class="btn">Sign Up </button>
+
+        </form>
+
+        <!-- Remind Passowrd -->
+        <div id="formFooter">
+           <span class="text-dark">Have an account ?</span> <a class="underlineHover" href="/"><span class="text-primary">Sign In</span></a>
+
+        </div>
+
+    </div>
+
+</div>
+<footer>
+    <%- include('../views/footer'); -%>
+</footer>

@@ -1,0 +1,3808 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Medical-Project</title>
+  <!-- Tell the browser to be responsive to screen width -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="/assets/dashboard/plugins/fontawesome-free/css/all.min.css">
+  <!-- Ionicons -->
+  <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+  <!-- bootsrtap -->
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <!-- Theme style -->
+  <link rel="stylesheet" href="/assets/dashboard/dist/css/alter.css">
+  <link rel="stylesheet" href="/assets/dashboard/dist/css/mbbs.css">
+  <!-- Google Font Source Sans Pro -->
+  <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro300,400,400i,700" rel="stylesheet">
+  <script>
+    function empty() {
+      var x;
+      x = document.getElementById("roll-input").value;
+      if (x == "") {
+        //alert("Please insert empty value");
+        return false;
+      };
+    }
+    function preview() {
+      frame.src = URL.createObjectURL(event.target.files[0]);
+    }
+    function preview1() {
+      frame1.src = URL.createObjectURL(event.target.files[0]);
+    }
+    function preview2() {
+      frame2.src = URL.createObjectURL(event.target.files[0]);
+    }
+    function preview3() {
+      frame3.src = URL.createObjectURL(event.target.files[0]);
+    }
+    function preview4() {
+      frame4.src = URL.createObjectURL(event.target.files[0]);
+    }
+  </script>
+</head>
+
+<body class="hold-transition sidebar-mini">
+  <div class="wrapper">
+    <!-- Navbar -->
+    <nav class="main-header navbar navbar-expand navbar-white navbar-light">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
+        </li>
+
+        <li class="nav-item d-none d-sm-inline-block">
+          <a href="#" class="nav-link"><img src='/assets/design/img/logo.gif' id="logomedical" /><label class='form-label'>MBBS-Dashboard</label></a>
+        </li>
+
+
+      </ul>
+
+
+      <ul class="navbar-nav ml-auto">
+        <!-- Messages Dropdown Menu -->
+     
+
+
+        <!-- Notifications Dropdown Menu -->
+        <li class="nav-item dropdown">
+          <a class="nav-link" data-toggle="dropdown" href="#">
+            <img src='/assets/img/account.png' width='35' height="35" title='Logout' alt='Logout'>
+            <span class="badge badge-secondary navbar-badge"></span>
+          </a>
+          <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
+
+            <div class="dropdown-divider"></div>
+            <a href="/icboard" class="dropdown-item">
+              <i class="fas fa-home mr-2"></i> Home
+
+            </a>
+            <div class="dropdown-divider"></div>
+            <a href="/logout" class="dropdown-item">
+              <i class="fas fa-users mr-2"></i> Logout
+
+            </a>
+            <div class="dropdown-divider"></div>
+
+
+          </div>
+        </li>
+
+      </ul>
+
+    </nav>
+    <!-- /.navbar -->
+
+    <!-- Main Sidebar Container -->
+    <aside class="main-sidebar elevation-4">
+      <!-- Brand Logo -->
+
+      <!-- Sidebar -->
+      <div class="sidebar">
+        <!-- Sidebar user (optional) -->
+        <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+          <div class="image">
+            <a href="dashboard.html">
+              <img src="/assets/design/img/logo.gif" class=" img-fluid img-circle elevation-2" alt="User Image"></a>
+          </div>
+
+          <div class="info">
+            <label class='form-label'>ASSISTANT</label>
+
+
+          </div>
+        </div>
+        <hr id="hr">
+        <!-- Sidebar Menu -->
+        <nav class="mt-2">
+          <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+            <!-- Add icons to the links using the .nav-icon class
+               with font-awesome or any other icon font library -->
+               <li class="nav-item has-treeview">
+                <a href="/icboard" class="nav-link ">
+                  <i class="fa fa-tachometer-alt fa-1x" aria-hidden="true"></i>
+                  <p>
+                    Dashboard
+                  </p>
+                </a>
+  
+              </li>
+  
+               <li class="nav-item has-treeview">
+              <a href="/mbbs_board" class="nav-link active">
+                <i class="fa fa-users fa-1x" aria-hidden="true"></i>
+                <p>
+                  MBBS-Student
+                </p>
+              </a>
+
+            </li>
+
+         
+
+          </ul>
+        </nav>
+        <!-- /.sidebar-menu -->
+      </div>
+      <!-- /.sidebar -->
+    </aside>
+
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper">
+      <!-- Content Header (Page header) -->
+      <section class="content-header">
+        <div class="container-fluid">
+          <div class="row mb-2">
+            <div class="col-sm-6">
+              <h1>Edit Profile
+
+              </h1>  
+              <% if (message.length> 0) { %>
+                <div class="alert alert-info col-sm-12">
+                  <%= message %>
+                </div>
+                <% } %>
+           
+            </div>
+            <div class="col-sm-6">
+              <ol class="breadcrumb float-sm-right">
+
+                <li class="breadcrumb-item"><a href="/icboard">Home</a></li>
+              
+                <li class="breadcrumb-item active">Edit Profile</li>
+              </ol>
+            </div>
+          </div>
+        </div><!-- /.container-fluid -->
+        
+      </section>
+      <form class="form-horizontal" role="form" method="post" action="/update_profile" onClick="return empty()"
+      enctype="multipart/form-data">
+      <section class="content"id="editsection">
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-md-3">
+  
+              <!-- Profile Image -->
+              <div class="card card-primary card-outline">
+                <div class="card-body box-profile">
+                  <%
+                  if(userData3.length!=0){
+                  var i=1;
+                  userData3.forEach(function(classdata3){
+                  %>
+                  <div class="text-center">
+                    <img class="profile-user-img img-fluid img-circle"
+                    src="/uploads/<%=classdata3.cand_photo %>"
+                    alt="User profile picture" width='100' height="100">
+                  </div>
+                    
+                  <%  i++; }) %>
+                  <% } else{ %>
+  
+                  <% } %>
+                  <%
+                  if(userData.length!=0){
+                  var i=1;
+                  userData.forEach(function(classdata){
+                  %>
+                  <h3 class="profile-username text-center"> <input type='text' name='cand_name' class='form-control text-center'value='<%=classdata.name %>'/></h3>
+  
+                  <p class="text-muted text-center"><label>Candidate ID:</label> <%=classdata.cand_id %></p>
+                  <p>
+                    <input type='text' name='cand_id' hidden value='<%=classdata.cand_id %>'/>
+                    <!-- <form class="form-horizontal" role="form" method="post" action="/mbbs_editcand" onClick="return empty()">
+                      <input type='text' name='cand_id' hidden value='<%=classdata.cand_id %>'/>
+                      <button id="btn-signup" type="submit" class="btn btn-warning btn-block">Edit Profile</button>
+                    </form> -->
+                                    
+                  </p>
+  
+                  <ul class="list-group list-group-unbordered mb-3">
+                    <li class="list-group-item">
+                      <b>Gender</b> <a class="float-right">
+                        <input type='text' name='gender' class='form-control' value='<%=classdata.gender %>'/>
+                        </a>
+                    </li>
+                    <li class="list-group-item">
+                      <b>Academic Year</b> <a class="float-right">
+                        <input type='text' name='academic_year' class='form-control' value='<%=classdata.academic_year %>'/>
+                         </a>
+                    </li>
+                   
+                    <li class="list-group-item">
+                      <b>Date Of Birth</b> <a class="float-right">
+                        <input type='text' name='date_of_birth' class='form-control' value='<%=classdata.date_of_birth %>'/></a>
+                    </li>
+                    <li class="list-group-item">
+                      <b>Father Name</b> <a class="float-right">
+                        <input type='text' name='father_name' class='form-control' value='<%=classdata.father_name %>'/></a>
+                    </li>
+                    <li class="list-group-item">
+                      <b>Mother Name</b> <a class="float-right">
+                        <input type='text' name='mother_name' class='form-control' value='<%=classdata.mother_name %>'/></a>
+                         </a>
+                    </li>
+                    <li class="list-group-item">
+                      <b>Initial</b> <a class="float-right">
+                        <input type='text' name='initial' class='form-control' value='<%=classdata.initial %>'/></a>
+                         </a>
+                    </li>
+                    <li class="list-group-item">
+                      <b>Religion</b> <a class="float-right">
+                        <input type='text' name='religion' class='form-control' value='<%=classdata.religion %>'/></a>
+                        </a>
+                    </li>
+                    <li class="list-group-item">
+                      <b>Community</b> <a class="float-right">
+                        <input type='text' name='community' class='form-control' value='<%=classdata.community %>'/></a>
+                        </a>
+                    </li>
+                    <li class="list-group-item">
+                      <b>Caste</b> <a class="float-right">
+                        <input type='text' name='caste' class='form-control' value='<%=classdata.caste %>'/></a>
+                      </a>
+                    </li>
+                    <li class="list-group-item">
+                      <b>Nationality</b> <a class="float-right">
+                        <input type='text' name='nationality' class='form-control' value='<%=classdata.nationality %>'/></a>
+                      </a>
+                    </li>
+                    <li class="list-group-item">
+                      <b>Blood Group</b> <a class="float-right">
+                        <input type='text' name='blood_group' class='form-control' value='<%=classdata.blood_group %>'/></a>
+                        </a>
+                    </li>
+                    <li class="list-group-item">
+                      <b>Blood Donate</b> <a class="float-right">
+                        <input type='text' name='willing_to_donate_blood' class='form-control' value='<%=classdata.willing_to_donate_blood %>'/></a>
+                      </a>
+                    </li>
+                   
+                    <li class="list-group-item">
+                      <b>Registered</b> <a class="float-right"><%=classdata.registered_time %></a>
+                    </li>
+                   
+                  </ul>
+  
+                
+                  <%  i++; }) %>
+                  <% } else{ %>
+  
+                  <% } %>
+                </div>
+                <!-- /.card-body -->
+              </div>
+              <!-- /.card -->
+  
+              <!-- About Me Box -->
+             
+              <!-- /.card -->
+            </div>
+            <!-- /.col -->
+            <div class="col-md-9">
+              <div class="card">
+                <div class="card-header p-2">
+                  <ul class="nav nav-pills">
+                    <li class="nav-item"><a class="nav-link active" href="#activity" data-toggle="tab">Admission</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#timeline" data-toggle="tab">Address</a></li>
+                
+                    <li class="nav-item"><a class="nav-link" href="#institute" data-toggle="tab">Institute</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#mark" data-toggle="tab">Mark Details</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#neet" data-toggle="tab">NEET</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#bank" data-toggle="tab">Bank Details</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#biometric" data-toggle="tab">Biometric Details</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#certificate" data-toggle="tab">Certificate Details</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#relieving" data-toggle="tab">Relieving Details</a></li>
+                  </ul>
+                </div><!-- /.card-header -->
+           
+                <div class="card-body">
+                  <div class="tab-content">
+                    <div class="active tab-pane" id="activity">
+                      <div class='row'>
+                        <%
+                        if(userData.length!=0){
+                        var i=1;
+                        userData1.forEach(function(classdata1){
+                        %>
+                        <div class="col-md-6">
+                          <div class="card">
+                            <div class="card-header">
+                              <h3 class="card-title">
+                                <i class="fas fa-text-width"></i>
+                               Admission Details
+                              </h3>
+                            </div>
+                            <!-- /.card-header -->
+                          
+                            <div class="card-body">
+                              <dl class="row">
+                                <dt class="col-sm-6">Course</dt>
+                                <dd class="col-sm-6"><input type='text' name='course' class="form-control" value='<%=classdata1.course %>'></dd>
+                                <dt class="col-sm-6">Admission Type</dt>
+                                <dd class="col-sm-6"><input type='text' name='admission_type' class="form-control" value='<%=classdata1.admission_type %>'>
+                                 </dd>
+                                <dt class="col-sm-6">Admission Quota</dt>
+                                <dd class="col-sm-6">
+                                  <input type='text' name='admission_quota' class="form-control" value='<%=classdata1.admission_quota %>'>
+                                </dd>
+                                <dt class="col-sm-6">Course Commencement</dt>
+                                <dd class="col-sm-6">
+                                  <input type='text' name='course_commencement' class="form-control" value='<%=classdata1.course_commencement %>'>
+                                </dd>
+                                <dt class="col-sm-6">Date of Admission</dt>
+                                <dd class="col-sm-6">
+                                  <input type='text' name='date_of_admission' class="form-control" value='<%=classdata1.date_of_admission %>'>
+                                  </dd>
+                                <dt class="col-sm-6">Date of Allotment</dt>
+                                <dd class="col-sm-6">
+                                  <input type='text' name='date_of_allotment' class="form-control" value='<%=classdata1.date_of_allotment %>'>
+                                </dd>
+                                <dt class="col-sm-6">Selected Category</dt>
+                                <dd class="col-sm-6">
+                                  <input type='text' name='selected_category' class="form-control" value='<%=classdata1.selected_category %>'>
+                                  </dd>
+                                <dt class="col-sm-6">Willing for Counciling</dt>
+                                <dd class="col-sm-6">
+                                  <input type='text' name='willing_for_counciling' class="form-control" value='<%=classdata1.willing_for_counciling %>'>
+                                </dd>
+                              </dl>
+                            </div>
+                            <!-- /.card-body -->
+                          </div>
+                          <!-- /.card -->
+                        </div>
+                        <div class="col-md-6">
+                          <div class="card">
+                            <div class="card-header">
+                              <h3 class="card-title">
+                                <i class="fas fa-text-width"></i>
+                    More..
+                              </h3>
+                            </div>
+                            <!-- /.card-header -->
+                            <div class="card-body">
+                              <dl class="row">
+                                <dt class="col-sm-6">Register Number</dt>
+                                <dd class="col-sm-6">
+                                  <input type='text' name='reg_no' class="form-control" value='<%=classdata1.reg_no %>'>
+                            </dd>
+                                <dt class="col-sm-6">Rank</dt>
+                                <dd class="col-sm-6">
+                                  <input type='text' name='rank' class="form-control" value='<%=classdata1.rank %>'>
+                                  </dd>
+                                <dt class="col-sm-6">Rank Number</dt>
+                                <dd class="col-sm-6">
+                                  <input type='text' name='rank_no' class="form-control" value='<%=classdata1.rank_no %>'>
+                                  </dd>
+                                <dt class="col-sm-6">AR Number</dt>
+                                <dd class="col-sm-6">
+                                  <input type='text' name='ar_no' class="form-control" value='<%=classdata1.ar_no %>'>
+                                 </dd>
+                                <dt class="col-sm-6">Total Marks</dt>
+                                <dd class="col-sm-6">
+                                  <input type='text' name='total_mark' class="form-control" value='<%=classdata1.total_mark %>'>
+                                 </dd>
+                                <dt class="col-sm-6">NEET Marks</dt>
+                                <dd class="col-sm-6">
+                                  <input type='text' name='neet_mark' class="form-control" value='<%=classdata1.neet_mark %>'>
+                                  </dd>
+                                <dt class="col-sm-6">Last Update</dt>
+                                <dd class="col-sm-6"><%=classdata1.last_modified_time %></dd>
+                             
+                              </dl>
+                            </div>
+                            <!-- /.card-body -->
+                          </div>
+                          <!-- /.card -->
+                        </div>
+                        <%  i++; }) %>
+                        <% } else{ %>
+        
+                        <% } %>
+                      </div>
+               
+             
+                    </div>
+                    <!-- /.tab-pane -->
+                    <div class="tab-pane" id="timeline">
+                      <!-- The timeline -->
+                      <div class='row'>
+                        <%
+                        if(userData2.length!=0){
+                        var i=1;
+                        userData2.forEach(function(classdata2){
+                        %>
+                        <div class="col-md-6">
+                          <div class="card">
+                            <div class="card-header">
+                              <h3 class="card-title">
+                                <i class="fas fa-text-width"></i>
+                               Address Details
+                              </h3>
+                            </div>
+                            <!-- /.card-header -->
+                          
+                            <div class="card-body">
+                              <h5>Present Address</h5>
+                              <dl class="row">
+                                <dt class="col-sm-6">Address Type</dt>
+                                <dd class="col-sm-6">
+                                  <input type='text' name='address_type' class="form-control" value='<%=classdata2.address_type %>'>
+                                  </dd>
+                                <dt class="col-sm-6">Address</dt>
+                                <dd class="col-sm-6">
+                                  <input type='text' name='ps_address' class="form-control" value='<%=classdata2.ps_address %>'>
+                                  <%=classdata2.ps_address %></dd>
+                                <dt class="col-sm-6">Pincode</dt>
+                                <dd class="col-sm-6">
+                                  <input type='text' name='ps_pincode' class="form-control" value='<%=classdata2.ps_pincode %>'>
+                                  </dd>
+                                <dt class="col-sm-6">State</dt>
+                                <dd class="col-sm-6">
+                                  <input type='text' name='ps_state' class="form-control" value='<%=classdata2.ps_state %>'>
+                                  </dd>
+                                <dt class="col-sm-6">District</dt>
+                                <dd class="col-sm-6">
+                                  <input type='text' name='ps_district' class="form-control" value='<%=classdata2.ps_district %>'>
+                                 </dd>
+                               </dl>
+                               <h3>Permanent Address</h3>
+                               <dl class="row">
+                                 <dt class="col-sm-6">Address</dt>
+                                 <dd class="col-sm-6">
+                                  <input type='text' name='pm_address' class="form-control" value='<%=classdata2.pm_address %>'> 
+                                 </dd>
+                                 <dt class="col-sm-6">Pincode</dt>
+                                 <dd class="col-sm-6">
+                                  <input type='text' name='pm_pincode' class="form-control" value='<%=classdata2.pm_pincode %>'> 
+                                 </dd>
+                                 <dt class="col-sm-6">State</dt>
+                                 <dd class="col-sm-6">
+                                  <input type='text' name='pm_state' class="form-control" value='<%=classdata2.pm_state %>'> 
+                                </dd>
+                                 <dt class="col-sm-6">District</dt>
+                                 <dd class="col-sm-6">
+                                  <input type='text' name='pm_district' class="form-control" value='<%=classdata2.pm_district %>'> 
+                                 </dd>
+                                 <dt class="col-sm-6">Last Update</dt>
+                                 <dd class="col-sm-6"><%=classdata2.last_modified_time %></dd>
+                                                            
+                               </dl>
+                            </div>
+                            <!-- /.card-body -->
+                          </div>
+                          <!-- /.card -->
+                        </div>
+                        <%  i++; }) %>
+                        <% } else{ %>
+        
+                        <% } %>
+                        <%
+                        if(userData8.length!=0){
+                        var i=1;
+                        userData8.forEach(function(classdata8){
+                        %>
+                        <div class="col-md-6">
+                          <div class="card">
+                            <div class="card-header">
+                              <h3 class="card-title">
+                                <i class="fas fa-text-width"></i>
+                    Contact Details
+                              </h3>
+                            </div>
+                            <!-- /.card-header -->
+                            <div class="card-body">
+                           
+                              <dl class="row">
+                                <dt class="col-sm-6">Telephone</dt>
+                                <dd class="col-sm-6">
+                                  <input type='text' name='tel_phone' class="form-control" value='<%=classdata8.tel_phone %>'> 
+                                 </dd>
+                                <dt class="col-sm-6">Mobile</dt>
+                                <dd class="col-sm-6">
+                                  <input type='text' name='mobile_phone' class="form-control" value='<%=classdata8.mobile_phone %>'> 
+                                </dd>
+                                <dt class="col-sm-5">Email Id</dt>
+                                <dd class="col-sm-7">
+                                  <input type='text' name='email_id' class="form-control" value='<%=classdata8.email_id %>'> 
+                            </dd>
+                                <dt class="col-sm-6">Aadhar Card Number</dt>
+                                <dd class="col-sm-6">
+                                  <input type='text' name='email_id' class="form-control" value='<%=classdata8.aadhar_no %>'> 
+                                </dd>
+                                <dt class="col-sm-6">Voter Id Number</dt>
+                                <dd class="col-sm-6">
+                                  <input type='text' name='voter_id' class="form-control" value='<%=classdata8.voter_id %>'> 
+                                  </dd>
+                                <dt class="col-sm-6">Remarks</dt>
+                                <dd class="col-sm-6">
+                                  <input type='text' name='remarks' class="form-control" value='<%=classdata8.remarks %>'> 
+                                </dd>
+                                <dt class="col-sm-6">Last Update</dt>
+                                <dd class="col-sm-6"><%=classdata8.last_modified_time %></dd>
+                                                           
+                              </dl>
+                            </div>
+                            <!-- /.card-body -->
+                          </div>
+                          <!-- /.card -->
+                        </div>
+                        <%  i++; }) %>
+                        <% } else{ %>
+        
+                        <% } %>
+                      </div>
+               
+                    </div>
+                    <!-- /.tab-pane -->
+  
+                    <div class="tab-pane" id="biometric">
+                      <div class='row'>
+                        <%
+                        if(userData3.length!=0){
+                        var i=1;
+                        userData3.forEach(function(classdata3){
+                        %>
+                        <div class="col-md-12">
+                          <div class="card">
+                            <div class="card-header">
+                              <h3 class="card-title">
+                                <i class="fas fa-text-width"></i>
+                               Biometric Details
+                              </h3>
+                            </div>
+                            <div class="card-body">
+                              <dl class="row">
+                                <dt class="col-sm-4">Last Update: <%=classdata3.last_modified_time %></dt>
+                                
+                             
+                              </dl>
+                            </div>
+                         
+                      
+                          
+                            <div class="card-body">
+                            
+                              <div class="timeline-item">
+                                
+      
+                                <div class="timeline-body">
+                            <table>
+                              <tr>
+                                <td>
+                                  <!-- <form class="form-horizontal" role="form" method="post" action="/biometric_dwd" onClick="return empty()">
+                                    <img src="/uploads/<%=classdata3.cand_photo %>" width='100' height="100"/>
+                                    <input type='text' name='cand_download' hidden value='<%=classdata3.cand_photo %>'/>
+                                    <button id="btn-signup" type="submit" class="btn btn-primary ">Download</button>
+                                   </form> -->
+                                   <label for="fileb1" class="btn btn-primary">Upload Photo</label>
+                                   <input id="fileb1" hidden name='n_cand_photo' value='<%=classdata3.cand_photo %>' type="file">
+                                   <!-- <input name="m_cand_photo" class="form-control" type="file" id="fileb1" onchange="preview()"> -->
+                                   
+                                   <!-- <input  hidden type="file"> -->
+                                   <p id="b1"class="text-success"></p>
+
+                                   <p class="text-danger"><%=classdata3.cand_photo %></p>
+                                   <input type='text' name='o_cand_photo' hidden value='<%=classdata3.cand_photo %>' />
+                                </td>
+                                <td>
+                                  <!-- <form class="form-horizontal" role="form" method="post" action="/biometric_dwd" onClick="return empty()">
+                                    <img src="/uploads/<%=classdata3.cand_sign %>" width='100' height="100"/>
+                                    <input type='text' name='cand_download' hidden value='<%=classdata3.cand_sign %>'/>
+                                    <button id="btn-signup" type="submit" class="btn btn-primary ">Download</button>
+                                   </form> -->
+                                   <label for="fileb2" class="btn btn-primary">Upload Signature</label>
+                                   <input id="fileb2" hidden name='n_cand_sign' value='/uploads/<%=classdata3.cand_sign %>' type="file">
+                                   <p id="b2"class="text-success"></p>
+
+                                   <p class="text-danger"><%=classdata3.cand_sign %></p>
+                                   <input type='text' name='o_cand_sign' value='<%=classdata3.cand_sign %>' hidden/>
+                                </td>
+                                <td>
+                                  <!-- <form class="form-horizontal" role="form" method="post" action="/biometric_dwd" onClick="return empty()">
+                                    <img src="/uploads/<%=classdata3.cand_thumb %>" width='100' height="100"/>
+                                    <input type='text' name='cand_download' hidden value='<%=classdata3.cand_thumb %>'/>
+                                    <button id="btn-signup" type="submit" class="btn btn-primary ">Download</button>
+                                   </form> -->
+                                   <label for="fileb3" class="btn btn-primary">Upload Thumb</label>
+                                   <input id="fileb3" hidden name='n_cand_thumb' value='<%=classdata3.cand_thumb %>' type="file">
+                                   <p id="b3"class="text-success"></p>
+
+                                   <p class="text-danger"><%=classdata3.cand_thumb %></p>
+                                   <input type='text' name='o_cand_thumb' value='<%=classdata3.cand_thumb %>' hidden/>
+                                </td>
+                                <td>
+                                  <!-- <form class="form-horizontal" role="form" method="post" action="/biometric_dwd" onClick="return empty()">
+                                    <img src="/uploads/<%=classdata3.cand_finger %>" width='100' height="100"/>
+                                    <input type='text' name='cand_download' hidden value='<%=classdata3.cand_finger %>'/>
+                                    <button id="btn-signup" type="submit" class="btn btn-primary ">Download</button>
+                                   </form> -->
+                                   <label for="fileb4" class="btn btn-primary">Upload Finger Print</label>
+                                   <input id="fileb4" hidden type="file" name='n_cand_finger' value='<%=classdata3.cand_finger %>'>
+                                   <p id="b4"class="text-success"></p>
+
+                                   <p class="text-danger"><%=classdata3.cand_finger %></p>
+                                   <input type='text' name='o_cand_finger' value='<%=classdata3.cand_finger %>' hidden/>
+                                </td>
+
+                              </tr>
+                             
+                               
+                            </table>
+                          
+                                </div>
+                              </div>
+                            </div>
+                      
+                          </div>
+                         
+                        </div>
+                   
+                        <%  i++; }) %>
+                        <% } else{ %>
+        
+                        <% } %>
+                      </div>
+                    </div> 
+                    <div class="tab-pane" id="certificate">
+                      <div class='row'>
+                     
+                        <div class="col-md-12">
+                          <div class="card">
+                            <div class="card-header">
+                              <h3 class="card-title">
+                                <i class="fas fa-text-width"></i>
+                               Certificate Details
+                              </h3>
+                            </div>
+                            <div class="card-body">
+                              <dl class="row">
+                                                             
+                             
+                              </dl>
+                            </div>
+                         
+                            <!-- /.card-header -->
+                          
+                            <div class="card-body">
+                            
+                              <div class="timeline-item">
+                                
+      
+                                <div class="timeline-body">
+                                  <%
+                                  if(userData9.length!=0){
+                                  var i=1;
+                                  userData9.forEach(function(classdata9){
+                                  %>
+                            <table>
+                              <tr>
+                               <td>
+                                    <label for="filess" class="btn btn-primary">Community Certificate</label>
+                                    <input id="filess" hidden type="file" name='n_community' value='<%=classdata9.c1_file%>'>
+                                    <p id="f1"class="text-success"></p>
+
+                                    <p class="text-danger"><%=classdata9.c1_file%></p>
+                                    <input type='text' name='o_community' value='<%=classdata9.c1_file%>' hidden/>
+                                  
+                               </td>
+                                <td>
+                                  <!-- <form class="form-horizontal" role="form" method="post" action="/biometric_dwd" onClick="return empty()">
+                                  
+                                    <input type='text' name='cand_download' hidden value='<%=classdata9.c2_file %>'/>
+                                    <button id="btn-signup" type="submit" class="btn btn-primary ">Transfer Certificate</button>
+                                    <p><%=classdata9.c2_file%></p>
+ 
+                                  </form> -->
+                                  <label for="filess2" class="btn btn-primary">Transfer Certificate</label>
+                                  <input id="filess2" hidden type="file" name='n_transfer' value='<%=classdata9.c2_file%>'>
+                                  <p id="f2"class="text-success"></p>
+
+                                  <p class="text-danger"><%=classdata9.c2_file%></p>
+                                  <input type='text' name='o_transfer' value='<%=classdata9.c2_file%>' hidden/>
+                                </td>
+                                <td>
+                                  <!-- <form class="form-horizontal" role="form" method="post" action="/biometric_dwd" onClick="return empty()">
+                                  
+                                    <input type='text' name='cand_download' hidden value='<%=classdata9.c3_file %>'/>
+                                    <button id="btn-signup" type="submit" class="btn btn-primary ">Conduct Certificate</button>
+                                    <p><%=classdata9.c3_file%></p> -->
+                                    <label for="filess3" class="btn btn-primary">Conduct Certificate</label>
+                                    <input id="filess3" hidden type="file" name='n_conduct' value='<%=classdata9.c3_file%>'>
+                                    <p id="f3"class="text-success"></p>
+
+                                    <p class="text-danger"><%=classdata9.c3_file%></p>
+                                    <input type='text' name='o_conduct' value='<%=classdata9.c3_file%>' hidden/>
+                                  </form>
+                                </td>
+                                <td>
+                                  <!-- <form class="form-horizontal" role="form" method="post" action="/biometric_dwd" onClick="return empty()">
+                                    
+                                    <input type='text' name='cand_download' hidden value='<%=classdata9.c4_file %>'/>
+                                    <button id="btn-signup" type="submit" class="btn btn-primary ">Eligiblity Certificate</button>
+                                    <p><%=classdata9.c4_file%></p>
+
+                                  </form> -->
+                                  <label for="filess4" class="btn btn-primary">Eligiblity Certificate</label>
+                                  <input id="filess4" hidden type="file" name='n_eligiblity' value='<%=classdata9.c4_file%>'>
+                                  <p id="f4"class="text-success"></p>
+
+                                  <p class="text-danger"><%=classdata9.c4_file%></p>
+                                  <input type='text' name='o_eligiblity' value='<%=classdata9.c4_file%>' hidden/>
+                                </td>
+
+                              </tr>
+                             
+                               
+                            </table>
+                            <%  i++; }) %>
+                            <% } else{ %>
+            
+                            <% } %>
+                           
+                            <%
+                            if(userData10.length!=0){
+                            var i=1;
+                            userData10.forEach(function(classdata10){
+                            %>
+                            <table>
+                              
+                              <tr>
+                              
+                                <td>
+                                
+                                   
+                                    <!-- <input type='text' name='cand_download' hidden value='<%=classdata10.c5_file%>'/>
+                                    <button id="btn-signup" type="submit" class="btn btn-primary ">Migration Certificate</button>
+                                    <p><%=classdata10.c5_file%></p>  -->
+
+                                 <label for="filess5" class="btn btn-primary"> Migration Certificate</label>
+                                  <input id="filess5" hidden type="file" name='n_migration' value='<%=classdata10.c5_file%>'>
+                                  <p id="f5"class="text-success"></p>
+
+                                  <p class="text-danger"><%=classdata10.c5_file%></p>
+                                  <input type='text' name='o_migration' value='<%=classdata10.c5_file%>' hidden />
+                                  
+                                </td>
+                                <td>
+                                  
+                                    
+                                    <!-- <input type='text' name='cand_download' hidden value='<%=classdata10.c6_file %>'/>
+                                    <button id="btn-signup" type="submit" class="btn btn-primary ">Admission Certificate</button>
+                                    <p><%=classdata10.c6_file%></p> -->
+                                    <label for="filess6" class="btn btn-primary">Admission Certificate</label>
+                                    <input id="filess6" hidden type="file" name='n_admissioncertificate' value='<%=classdata10.c6_file%>'>
+                                    <p id="f6"class="text-success"></p>
+  
+                                    <p class="text-danger"><%=classdata10.c6_file%></p>
+                                    <input type='text' name='o_admissioncertificate' value='<%=classdata10.c6_file%>' hidden/>
+                                 
+                                </td>
+                                <td>
+                               
+                                    
+                                    <!-- <input type='text' name='cand_download' hidden value='<%=classdata10.c6_file %>'/>
+                                    <button id="btn-signup" type="submit" class="btn btn-primary ">Admission Certificate</button>
+                                    <p><%=classdata10.c6_file%></p> -->
+                                    <label for="filess7" class="btn btn-primary">Admission Committee form</label>
+                                    <input id="filess7" hidden type="file" name='n_admissioncommittee' value='<%=classdata10.c7_file%>'>
+                                    <p id="f7" class="text-success"></p>
+  
+                                    <p class="text-danger"><%=classdata10.c7_file%></p>
+                                    <input type='text' name='o_admissioncommittee' value='<%=classdata10.c7_file%>' hidden/>
+                                
+                                </td>
+                                <td>
+                               
+                                    
+                                    <!-- <input type='text' name='cand_download' hidden value='<%=classdata10.c6_file %>'/>
+                                    <button id="btn-signup" type="submit" class="btn btn-primary ">Admission Certificate</button>
+                                    <p><%=classdata10.c6_file%></p> -->
+                                    <label for="filess8" class="btn btn-primary">Others</label>
+                                    <input id="filess8" hidden type="file" name='n_others' value='<%=classdata10.c8_file%>'>
+                                    <p id="f8"class="text-success"></p>
+  
+                                    <p class="text-danger"><%=classdata10.c8_file%></p>
+                                    <input type='text' name='o_others' value='<%=classdata10.c8_file%>' hidden/>
+                                
+                                </td>
+                                <br>
+
+                              </tr>
+                             
+                               
+                            </table>
+                                                        <strong class="ml-3">Last Update: <%=classdata10.last_modified_time %></strong>
+                            
+                            <%  i++; }) %>
+                            <% } else{ %>
+            
+                            <% } %>
+                           
+                                </div>
+                              </div>
+                            </div>
+                            <!-- /.card-body -->
+                          </div>
+                          <!-- /.card -->
+                        </div>
+                   
+                       
+                      </div>
+                    </div>
+                    <!-- /.tab-pane -->
+                    <div class="tab-pane" id="institute">
+                      <div class='row'>
+                        <%
+                        if(userData4.length!=0){
+                        var i=1;
+                        userData4.forEach(function(classdata4){
+                        %>
+                        <div class="col-md-6">
+                          <div class="card">
+                            <div class="card-header">
+                              <h3 class="card-title">
+                                <i class="fas fa-text-width"></i>
+                                Institute Details
+                              </h3>
+                            </div>
+                            <!-- /.card-header -->
+                          
+                            <div class="card-body">
+                              <dl class="row">
+                                <dt class="col-sm-6">Institute Name</dt>
+                                <dd class="col-sm-6">
+                                  <input type='text' name='institute_name' value='<%=classdata4.institute_name %>'/></dd>
+                                <dt class="col-sm-6">Place</dt>
+                                <dd class="col-sm-6">
+                                <input type='text' name='place' value='<%=classdata4.place %>'/></dd>
+                             
+                                <dt class="col-sm-6">District</dt>
+                                <dd class="col-sm-6">
+                                <input type='text' name='district' value='<%=classdata4.district %>'/></dd>
+                               
+                                <dt class="col-sm-6">State</dt>
+                                <dd class="col-sm-6">
+                                <input type='text' name='state' value='<%=classdata4.state %>'/></dd>
+                               
+                                <dt class="col-sm-6">Board</dt>
+                                <dd class="col-sm-6">
+                                <input type='text' name='board' value='<%=classdata4.board %>'/></dd>
+                          
+                                <dt class="col-sm-6">Relieved Date</dt>
+                                <dd class="col-sm-6">
+                                <input type='text' name='relieving_date' value='<%=classdata4.relieving_date %>'/></dd>
+                         
+                               </dl>
+                            </div>
+                            <!-- /.card-body -->
+                          </div>
+                          <!-- /.card -->
+                        </div>
+                        <div class="col-md-6">
+                          <div class="card">
+                            <div class="card-header">
+                              <h3 class="card-title">
+                                <i class="fas fa-text-width"></i>
+                    More..
+                              </h3>
+                            </div>
+                            <!-- /.card-header -->
+                            <div class="card-body">
+                              <dl class="row">
+                                <dt class="col-sm-4">Register Number</dt>
+                                <dd class="col-sm-6">
+                                  <input type='text' name='register_no' value='<%=classdata4.register_no %>'/></dd>
+                             
+                                <dt class="col-sm-4">Duration</dt>
+                                <dd class="col-sm-6">
+                                  <input type='text' name='duration' value='<%=classdata4.duration %>'/></dd>
+                              
+                                <dt class="col-sm-4">Exam Passed</dt>
+                                <dd class="col-sm-6">
+                                  <input type='text' name='exam_passed' value='<%=classdata4.exam_passed %>'/></dd>
+                             
+                                <dt class="col-sm-4">Month Of Passing</dt>
+                                <dd class="col-sm-6">
+                                  <input type='text' name='month_of_passing' value='<%=classdata4.month_of_passing %>'/></dd>
+                            
+                                <dt class="col-sm-4">Year Of Passing </dt>
+                                <dd class="col-sm-6">
+                                  <input type='text' name='year_of_passing' value='<%=classdata4.year_of_passing %>'/></dd>
+                              
+                                <dt class="col-sm-4">Last Year </dt>
+                                <dd class="col-sm-8"><%=classdata4.last_modified_time %></dd>
+                                                           
+                              </dl>
+                            </div>
+                            <!-- /.card-body -->
+                          </div>
+                          <!-- /.card -->
+                        </div>
+                        <%  i++; }) %>
+                        <% } else{ %>
+        
+                        <% } %>
+                      </div>
+                    </div>
+                  
+                    <div class="tab-pane" id="mark">
+                      <div class='row'>
+                        <%
+                        if(userData5.length!=0){
+                        var i=1;
+                        userData5.forEach(function(classdata5){
+                        %>
+                        <div class="col-md-6">
+                          <div class="card">
+                            <div class="card-header">
+                              <h3 class="card-title">
+                                <i class="fas fa-text-width"></i>
+                                Mark Details
+                              </h3>
+                            </div>
+                            <!-- /.card-header -->
+                          
+                            <div class="card-body">
+                              <i>Language</i><br/>
+                              <dl class="row">
+                               
+                                <dt class="col-sm-6">Theory</dt>
+                                <dd class="col-sm-6">
+                                  <input type='text' name='lang_theory' class="form-control" value='<%=classdata5.lang_theory %>'> 
+                                </dd>
+                                <dt class="col-sm-6">Practical</dt>
+                                <dd class="col-sm-6">
+                                  <input type='text' name='lang_practical' class="form-control" value='<%=classdata5.lang_practical %>'> 
+                                 </dd>
+                                <dt class="col-sm-6">Internal</dt>
+                                <dd class="col-sm-6">
+                                  <input type='text' name='lang_internal' class="form-control" value='<%=classdata5.lang_internal %>'> 
+                                 </dd>
+                                <dt class="col-sm-6">Total</dt>
+                                <dd class="col-sm-6">
+                                  <input type='text' name='lang_total' class="form-control" value='<%=classdata5.lang_total %>'>
+                                  </dd>
+                                <dt class="col-sm-6">Maximum</dt>
+                                <dd class="col-sm-6">
+                                  <input type='text' name='lang_max' class="form-control" value='<%=classdata5.lang_max %>'>   
+                                 </dd>
+                                </dl>
+                                <i>English</i><br/>
+                                <dl class="row">
+                                <dt class="col-sm-6">Theory</dt>
+                                <dd class="col-sm-6">
+                                  <input type='text' name='eng_theory' class="form-control" value='<%=classdata5.eng_theory %>'>   
+                               </dd>
+                                <dt class="col-sm-6">Practical</dt>
+                                <dd class="col-sm-6">
+                                  <input type='text' name='eng_practical' class="form-control" value='<%=classdata5.eng_practical %>'>   
+                                 </dd>
+                                <dt class="col-sm-6">Internal</dt>
+                                <dd class="col-sm-6">
+                                  <input type='text' name='eng_internal' class="form-control" value='<%=classdata5.eng_internal %>'> 
+                                 </dd>
+                                <dt class="col-sm-6">Total</dt>
+                                <dd class="col-sm-6">
+                                  <input type='text' name='eng_total' class="form-control" value='<%=classdata5.eng_total %>'> 
+                                  </dd>
+                                <dt class="col-sm-6">Maximum</dt>
+                                <dd class="col-sm-6">
+                                  <input type='text' name='eng_max' class="form-control" value='<%=classdata5.eng_max %>'> 
+                               </dd>
+                                </dl>
+                                <i>Mathematics</i><br/>
+                                <dl class="row">
+                                <dt class="col-sm-6">Theory</dt>
+                                <dd class="col-sm-6">
+                                  <input type='text' name='mat_theory' class="form-control" value='<%=classdata5.mat_theory %>'> 
+                                  </dd>
+                                <dt class="col-sm-6">Practical</dt>
+                                <dd class="col-sm-6">
+                                  <input type='text' name='mat_practical' class="form-control" value='<%=classdata5.mat_practical %>'>
+                                </dd>
+                                <dt class="col-sm-6">Internal</dt>
+                                <dd class="col-sm-6">
+                                  <input type='text' name='mat_internal' class="form-control" value='<%=classdata5.mat_internal %>'>
+                                 </dd>
+                                <dt class="col-sm-6">Total</dt>
+                                <dd class="col-sm-6">
+                                  <input type='text' name='mat_total' class="form-control" value='<%=classdata5.mat_total %>'>
+                                 </dd>
+                                <dt class="col-sm-6">Maximum</dt>
+                                <dd class="col-sm-6">
+                                  <input type='text' name='mat_max' class="form-control" value='<%=classdata5.mat_max %>'>
+                                 </dd>
+                                </dl>
+                                <i>Physics</i><br/>
+                                <dl class="row">
+                                <dt class="col-sm-6">Theory</dt>
+                                <dd class="col-sm-6">
+                                  <input type='text' name='phy_theory' class="form-control" value='<%=classdata5.phy_theory %>'>
+                                 </dd>
+                                <dt class="col-sm-6">Practical</dt>
+                                <dd class="col-sm-6">
+                                  <input type='text' name='phy_practical' class="form-control" value='<%=classdata5.phy_practical %>'>
+                                 </dd>
+                                <dt class="col-sm-6">Internal</dt>
+                                <dd class="col-sm-6">
+                                  <input type='text' name='phy_internal' class="form-control" value='<%=classdata5.phy_internal %>'>
+                                  </dd>
+                                <dt class="col-sm-6">Total</dt>
+                                <dd class="col-sm-6">
+                                  <input type='text' name='phy_total' class="form-control" value='<%=classdata5.phy_total %>'>
+                                  </dd>
+                                <dt class="col-sm-6">Maximum</dt>
+                                <dd class="col-sm-6">
+                                  <input type='text' name='phy_max' class="form-control" value='<%=classdata5.phy_max %>'>
+                                  </dd>
+                               </dl>
+                            </div>
+                            <!-- /.card-body -->
+                          </div>
+                          <!-- /.card -->
+                        </div>
+                        <div class="col-md-6">
+                          <div class="card">
+                            <div class="card-header">
+                              <h3 class="card-title">
+                                <i class="fas fa-text-width"></i>
+                    More..
+                              </h3>
+                            </div>
+                            <!-- /.card-header -->
+                            <div class="card-body">
+                              <i>Chemistry</i><br/>
+                              <dl class="row">
+                                <dt class="col-sm-6">Theory</dt>
+                                <dd class="col-sm-6">
+                                  <input type='text' name='chem_theory' class="form-control" value='<%=classdata5.chem_theory %>'>
+                             </dd>
+                                <dt class="col-sm-6">Practical</dt>
+                                <dd class="col-sm-6">
+                                  <input type='text' name='chem_practical' class="form-control" value='<%=classdata5.chem_practical %>'>
+                                </dd>
+                                <dt class="col-sm-6">Internal</dt>
+                                <dd class="col-sm-6">
+                                  <input type='text' name='chem_internal' class="form-control" value='<%=classdata5.chem_internal %>'>
+                                </dd>
+                                <dt class="col-sm-6">Total</dt>
+                                <dd class="col-sm-6">
+                                  <input type='text' name='chem_total' class="form-control" value='<%=classdata5.chem_total %>'>
+                                </dd>
+                                <dt class="col-sm-6">Maximum</dt>
+                                <dd class="col-sm-6">
+                                  <input type='text' name='chem_max' class="form-control" value='<%=classdata5.chem_max %>'>
+                               </dd>
+                                                           
+                              </dl>
+                              <i>Biology</i><br/>
+                              <dl class="row">
+                                <dt class="col-sm-6">Theory</dt>
+                                <dd class="col-sm-6">
+                                  <input type='text' name='bio_theory' class="form-control" value='<%=classdata5.bio_theory %>'>
+                                </dd>
+                                <dt class="col-sm-6">Practical</dt>
+                                <dd class="col-sm-6">
+                                  <input type='text' name='bio_practical' class="form-control" value='<%=classdata5.bio_practical %>'>
+                                 </dd>
+                                <dt class="col-sm-6">Internal</dt>
+                                <dd class="col-sm-6">
+                                  <input type='text' name='bio_internal' class="form-control" value='<%=classdata5.bio_internal %>'>
+                                 </dd>
+                                <dt class="col-sm-6">Total</dt>
+                                <dd class="col-sm-6">
+                                  <input type='text' name='bio_total' class="form-control" value='<%=classdata5.bio_total %>'>
+                                 </dd>
+                                <dt class="col-sm-6">Maximum</dt>
+                                <dd class="col-sm-6">
+                                  <input type='text' name='bio_max' class="form-control" value='<%=classdata5.bio_max %>'>
+                                 </dd>
+                                                           
+                              </dl>
+                              <i>Botany</i><br/>
+                              <dl class="row">
+                                <dt class="col-sm-6">Theory</dt>
+                                <dd class="col-sm-6">
+                                  <input type='text' name='bot_theory' class="form-control" value='<%=classdata5.bot_theory %>'>
+                                </dd>
+                                <dt class="col-sm-6">Practical</dt>
+                                <dd class="col-sm-6">
+                                  <input type='text' name='bot_practical' class="form-control" value='<%=classdata5.bot_practical %>'>
+                                </dd>
+                                <dt class="col-sm-6">Internal</dt>
+                                <dd class="col-sm-6">
+                                  <input type='text' name='bot_internal' class="form-control" value='<%=classdata5.bot_internal %>'>
+                                </dd>
+                                <dt class="col-sm-6">Total</dt>
+                                <dd class="col-sm-6">
+                                  <input type='text' name='bot_total' class="form-control" value='<%=classdata5.bot_total %>'>
+                                </dd>
+                                <dt class="col-sm-6">Maximum</dt>
+                                <dd class="col-sm-6">
+                                  <input type='text' name='bot_max' class="form-control" value='<%=classdata5.bot_max %>'>
+                                </dd>
+                                                           
+                              </dl>
+                              <i>Zoology</i><br/>
+                              <dl class="row">
+                                <dt class="col-sm-6">Theory</dt>
+                                <dd class="col-sm-6">
+                                  <input type='text' name='zoo_theory' class="form-control" value='<%=classdata5.zoo_theory %>'>
+                                </dd>
+                                <dt class="col-sm-6">Practical</dt>
+                                <dd class="col-sm-6">
+                                  <input type='text' name='zoo_practical' class="form-control" value='<%=classdata5.zoo_practical %>'>
+                                </dd>
+                                <dt class="col-sm-6">Internal</dt>
+                                <dd class="col-sm-6">
+                                  <input type='text' name='zoo_internal' class="form-control" value='<%=classdata5.zoo_internal %>'>
+                                 </dd>
+                                <dt class="col-sm-6">Total</dt>
+                                <dd class="col-sm-6">
+                                  <input type='text' name='zoo_total' class="form-control" value='<%=classdata5.zoo_total %>'>
+                               </dd>
+                                <dt class="col-sm-6">Maximum</dt>
+                                <dd class="col-sm-6">
+                                  <input type='text' name='zoo_max' class="form-control" value='<%=classdata5.zoo_max %>'>
+                                </dd>
+                                                           
+                              </dl>
+                               <dl class="row">
+                                <dt class="col-sm-6">Language Paper</dt>
+                                <dd class="col-sm-6">
+                                  <input type='text' name='lang_paper' class="form-control" value='<%=classdata5.lang_paper %>'>
+                                  </dd>
+                                <dt class="col-sm-6">Subject Code</dt>
+                                <dd class="col-sm-6">
+                                  <input type='text' name='subj_code' class="form-control" value='<%=classdata5.subj_code %>'>
+                               </dd>
+                                <dt class="col-sm-6">Total Mark</dt>
+                                <dd class="col-sm-6">
+                                  <input type='text' name='total_mark_m' class="form-control" value='<%=classdata5.total_mark %>'>
+                                 </dd>
+                                <dt class="col-sm-6">Maximum Mark</dt>
+                                <dd class="col-sm-6">
+                                  <input type='text' name='max_mark' class="form-control" value='<%=classdata5.max_mark %>'>
+                                </dd>
+                                
+                                                           
+                              </dl>
+                            </div>
+                            <!-- /.card-body -->
+                          </div>
+                          <!-- /.card -->
+                        </div>
+                        <%  i++; }) %>
+                        <% } else{ %>
+        
+                        <% } %>
+                      </div>
+                    </div>
+                    <div class="tab-pane" id="neet">
+                      <div class='row'>
+                        <%
+                        if(userData6.length!=0){
+                        var i=1;
+                        userData6.forEach(function(classdata6){
+                        %>
+                        <div class="col-md-6">
+                          <div class="card">
+                            <div class="card-header">
+                              <h3 class="card-title">
+                                <i class="fas fa-text-width"></i>
+                                NEET Details
+                              </h3>
+                            </div>
+                            <!-- /.card-header -->
+                          
+                            <div class="card-body">
+                              <dl class="row">
+                                <dt class="col-sm-6">Physics Mark</dt>
+                                <dd class="col-sm-6">
+                                  <input type='text' name='phy_mark' class="form-control" value='<%=classdata6.phy_mark %>'>
+                                 </dd>
+                                <dt class="col-sm-6">Physics Max. Mark</dt>
+                                <dd class="col-sm-6">
+                                  <input type='text' name='phy_max_mark' class="form-control" value='<%=classdata6.phy_max_mark %>'>
+                                </dd>
+                                <dt class="col-sm-6">Chemistry</dt>
+                                <dd class="col-sm-6">
+                                  <input type='text' name='chem_mark' class="form-control" value='<%=classdata6.chem_mark %>'>
+                                 </dd>
+                                <dt class="col-sm-6">Chemistry Max. Mark</dt>
+                                <dd class="col-sm-6">
+                                  <input type='text' name='chem_max_mark' class="form-control" value='<%=classdata6.chem_max_mark %>'>
+                                </dd>
+                                <dt class="col-sm-6">Biology</dt>
+                                <dd class="col-sm-6">
+                                  <input type='text' name='bio_mark' class="form-control" value='<%=classdata6.bio_mark %>'>
+                                 </dd>
+                                <dt class="col-sm-6">Biology Max. Mark</dt>
+                                <dd class="col-sm-6">
+                                  <input type='text' name='bio_max_mark' class="form-control" value='<%=classdata6.bio_max_mark %>'>
+                                  </dd>
+                                <dt class="col-sm-6">Aggregate Mark</dt>
+                                <dd class="col-sm-6">
+                                  <input type='text' name='agg_mark' class="form-control" value='<%=classdata6.agg_mark %>'>
+                                </dd>
+                                <dt class="col-sm-6">Aggregate Max. Mark</dt>
+                                <dd class="col-sm-6">
+                                  <input type='text' name='agg_max_mark' class="form-control" value='<%=classdata6.agg_max_mark %>'>
+                                </dd>
+                                <dt class="col-sm-6">Last Updated </dt>
+                                <dd class="col-sm-6"><%=classdata6.last_modified_time %></dd>
+                               </dl>
+                            </div>
+                            <!-- /.card-body -->
+                          </div>
+                          <!-- /.card -->
+                        </div>
+                   
+                        <%  i++; }) %>
+                        <% } else{ %>
+        
+                        <% } %>
+                      </div>
+                    </div>
+                    <div class="tab-pane" id="bank">
+                      <div class='row'>
+                        <%
+                        if(userData7.length!=0){
+                        var i=1;
+                        userData7.forEach(function(classdata7){
+                        %>
+                        <div class="col-md-6">
+                          <div class="card">
+                            <div class="card-header">
+                              <h3 class="card-title">
+                                <i class="fas fa-text-width"></i>
+                                Bank Details
+                              </h3>
+                            </div>
+                            <!-- /.card-header -->
+                          
+                            <div class="card-body">
+                              <dl class="row">
+                                <dt class="col-sm-6">Account Number</dt>
+                                <dd class="col-sm-6">
+                                  <input type='text' name='account_no' class="form-control" value='<%=classdata7.account_no %>'>
+                                  </dd>
+                                <dt class="col-sm-6">Bank Name</dt>
+                                <dd class="col-sm-6">
+                                  <input type='text' name='bank_name' class="form-control" value='<%=classdata7.bank_name %>'>
+                                  </dd>
+                                <dt class="col-sm-6">Branch Name</dt>
+                                <dd class="col-sm-6">
+                                  <input type='text' name='branch_name' class="form-control" value='<%=classdata7.branch_name %>'>
+                                  </dd>
+                                <dt class="col-sm-6">IFSC Code</dt>
+                                <dd class="col-sm-6">
+                                  <input type='text' name='ifsc' class="form-control" value='<%=classdata7.ifsc %>'>
+                                 </dd>
+                                <dt class="col-sm-6">MICR Code</dt>
+                                <dd class="col-sm-6">
+                                  <input type='text' name='micr' class="form-control" value='<%=classdata7.micr %>'>
+                                </dd>
+                                <dt class="col-sm-6">PAN Number</dt>
+                                <dd class="col-sm-6">
+                                  <input type='text' name='pan_no' class="form-control" value='<%=classdata7.pan_no %>'>
+                                </dd>
+                                <dt class="col-sm-6">Last Updated </dt>
+                                <dd class="col-sm-6"><%=classdata7.last_modified_time %></dd>
+                               </dl>
+                            </div>
+                            <!-- /.card-body -->
+                          </div>
+                          <!-- /.card -->
+                        </div>
+                     
+                        <%  i++; }) %>
+                        <% } else{ %>
+        
+                        <% } %>
+                      </div>
+                    </div>
+                    <div class="tab-pane" id="relieving">
+                      <div class='row'>
+                        <%
+                        if(userData11.length!=0){
+                        var i=1;
+                        userData11.forEach(function(classdata11){
+                        %>
+                        <div class="col-md-6">
+                          <div class="card">
+                            <div class="card-header">
+                              <h3 class="card-title">
+                                <i class="fas fa-text-width"></i>
+                                Relieving Details
+                              </h3>
+                            </div>
+                            <!-- /.card-header -->
+                          
+                            <div class="card-body">
+                              <dl class="row">
+                                <dt class="col-sm-6">Relieved</dt>
+                                <dd class="col-sm-6">
+                                  <input type='text' name='relieved' value='<%=classdata11.relieved %>'/>
+                                  </dd>
+                                <dt class="col-sm-6">Amount Refunded</dt>
+                                <dd class="col-sm-6">
+                                  <input type='text' name='amount_refunded' value='<%=classdata11.amount_refunded %>'/>
+                                 </dd>
+                                <dt class="col-sm-6">Date of Relieving</dt>
+                                <dd class="col-sm-6">
+                                  <input type='text' name='date_of_relieving' value='<%=classdata11.date_of_relieving %>'/>
+                                </dd>
+                                <dt class="col-sm-6">Date of Reallotment</dt>
+                                <dd class="col-sm-6">
+                                  <input type='text' name='date_of_reallotment' value='<%=classdata11.date_of_reallotment %>'/>
+                                </dd>
+                                <dt class="col-sm-6">College Name</dt>
+                                <dd class="col-sm-6">
+                                  <input type='text' name='college_name' value='<%=classdata11.college_name %>'/>
+                                </dd>
+                                 <dt class="col-sm-6">Last Updated </dt>
+                                <dd class="col-sm-6"><%=classdata11.last_modified_time %></dd>
+                               </dl>
+                            </div>
+                            <!-- /.card-body -->
+                          </div>
+                          <!-- /.card -->
+                        </div>
+                     
+                        <%  i++; }) %>
+                        <% } else{ %>
+        
+                        <% } %>
+                      </div>
+                    </div>
+                    <!-- <div class="tab-pane" id="certificate">
+                      <div class='row'>
+                        <%
+                        if(userData9.length!=0){
+                        var i=1;
+                        userData9.forEach(function(classdata9){
+                        %>
+                        <div class="col-md-12">
+                          <div class="card">
+                            <div class="card-header">
+                              <h3 class="card-title">
+                                <i class="fas fa-text-width"></i>
+                               Certificate Details
+                              </h3>
+                            </div>
+                            <div class="card-body">
+                              <dl class="row">
+                                <dt class="col-sm-4">Last Update: <%=classdata9.last_modified_time %></dt>
+                                
+                             
+                              </dl>
+                            </div>
+                         
+                          
+                            <div class="card-body">
+                            
+                              <div class="timeline-item">
+                                
+      
+                                <div class="timeline-body">
+                            <table>
+                              <tr>
+                                <td>
+                                  <form class="form-horizontal" role="form" method="post" action="/biometric_dwd" onClick="return empty()">
+                                 
+                                    <input type='text' name='cand_download' hidden value='<%=classdata9.c1_file %>'/>
+                                    <button id="btn-signup" type="submit" class="btn btn-primary ">Community Certificate</button>
+                                   </form>
+                                </td>
+                                <td>
+                                  <form class="form-horizontal" role="form" method="post" action="/biometric_dwd" onClick="return empty()">
+                                  
+                                    <input type='text' name='cand_download' hidden value='<%=classdata9.c2_file %>'/>
+                                    <button id="btn-signup" type="submit" class="btn btn-primary ">Transfer Certificate</button>
+                                   </form>
+                                </td>
+                                <td>
+                                  <form class="form-horizontal" role="form" method="post" action="/biometric_dwd" onClick="return empty()">
+                                  
+                                    <input type='text' name='cand_download' hidden value='<%=classdata9.c3_file %>'/>
+                                    <button id="btn-signup" type="submit" class="btn btn-primary ">Conduct Certificate</button>
+                                   </form>
+                                </td>
+                              
+
+                              </tr>
+                             
+                               
+                            </table>
+                            <table>
+                              <tr>
+                                <td>
+                                  <form class="form-horizontal" role="form" method="post" action="/biometric_dwd" onClick="return empty()">
+                                    
+                                    <input type='text' name='cand_download' hidden value='<%=classdata9.c4_file %>'/>
+                                    <button id="btn-signup" type="submit" class="btn btn-primary ">Eligiblity Certificate</button>
+                                   </form>
+                                </td>
+                            
+                              </tr>
+                             
+                               
+                            </table>
+                                </div>
+                              </div>
+                            </div>
+                           
+                          </div>
+                         
+                        </div>
+                   
+                        <%  i++; }) %>
+                        <% } else{ %>
+        
+                        <% } %>
+                      </div>
+                    </div> -->
+                  </div>
+                  <!-- /.tab-content -->
+                </div><!-- /.card-body -->
+                <div class="card-body">
+                  <button id="btn-signup" type="submit" class="btn btn-info btn-block">Update Profile</button>
+                  </div>
+                  </form>
+              </div>
+              <!-- /.nav-tabs-custom -->
+            </div>
+            <!-- /.col -->
+          </div>
+          <!-- /.row -->
+        </div><!-- /.container-fluid -->
+      </section>
+      <!-- /.content -->
+
+   
+    
+        </div>
+        <!-- /.col -->
+    </div>
+    <!-- /.row -->
+  </div>
+  <!-- /.container-fluid -->
+
+  <!-- /.content -->
+  </div>
+  <!-- /.content-wrapper -->
+  <!---------------------------------Add new student modal ------------------------>
+
+  <!-- Modal -->
+
+
+  <!-- Modal -->
+  <div class="modal fade " id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle"
+    aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLongTitle">Add New Student</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+     
+        <button type="submit" class="btn btn-secondary">Save & Print </button>
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
+
+      </div>
+    </div>
+  </div>
+  </div>
+
+  <!-- ------------------------table profile view modal   -------------->
+
+  <!-- The Modal -->
+
+
+
+  <!-- Modal -->
+  <div class="modal  " id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModal" aria-hidden="true">
+    <div class="modal-dialog modal-lg " id="overflow" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="myModal">Student Profile</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <!-- start -->
+          <div class="card-group">
+
+            <div class="card" id="profilecard">
+              <div class="row">
+
+                <div class="col-md-3 ">
+                  <img class="card-img-top img-fluid" id="profile"
+                    src="https://cdn2.iconfinder.com/data/icons/men-avatars/33/man_2-512.png" alt="Card image cap">
+                </div>
+                <div class="col-md-9">
+                  <div class="card-body" id="profilebody">
+                    <div class="row">
+                      <div class="col-md-5">
+                        <h5 class="card-title"><strong> Kavya</strong></h5>
+                        <p class="card-text">MBBS</p>
+                      </div>
+                      <div class="col-md-7 ">
+                        <button class="btn btn-default" data-toggle="modal" data-target="#fee"><i
+                            class="fa fa-money-bill-alt text-success mr-2"></i>Fee</button>
+
+                        <button class="btn btn-default" data-toggle="modal" data-target="#edit"><i
+                            class="fa fa-pencil-alt text-primary mr-2"></i>Edit</button>
+
+                        <button class="btn btn-default" data-toggle="modal" data-target="#del"><i
+                            class="fa fa-trash-alt text-danger mr-2"></i>Delete</button>
+
+                      </div>
+                    </div>
+                    <hr>
+
+
+                    <div class="row">
+                      <div class="col-md-6">
+                        <p><i class="fa fa-envelope mr-3 text-primary"></i>madhu@gmail.com</p>
+                      </div>
+                      <div class="col-md-6">
+                        <p><i class="fa fa-phone mr-3 text-primary"></i>(+91)9090909090</p>
+                      </div>
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+          <!-------------------------- main file---------------------------------------------->
+
+          <section id="regmbbs" class="py-4">
+            <div class="container">
+              <ul class="nav nav-tabs" id="myTab" role="tablist">
+                <li class="nav-item">
+                  <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab"
+                    aria-controls="home" aria-selected="true">Student Details</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profilee" role="tab"
+                    aria-controls="profile" aria-selected="false">Qualification details</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" id="bank-tab" data-toggle="tab" href="#bankk" role="tab" aria-controls="bank"
+                    aria-selected="false">Bank details</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab"
+                    aria-controls="contact" aria-selected="false">Certificate details</a>
+                </li>
+
+                <li class="nav-item">
+                  <a class="nav-link" id="relv-tab" data-toggle="tab" href="#relv" role="tab" aria-controls="relv"
+                    aria-selected="false">Relieving details</a>
+                </li>
+
+              </ul>
+             
+           
+              <div class="tab-content" id="myTabContent">
+                <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+
+                  <!-------------------------- main file---------------------------------------------->
+                  <!-------------------------- Canditate--------------------------------------------->
+
+                  <section id="candetails" class="">
+                    <div class="container">
+                      <h5>Candidate Details</h5>
+
+
+                      <div class="row">
+                        <div class="col-md-6">
+
+                          <div class="form-group">
+                            <label for="exampleFormControlInput1" class="text-danger">Name *</label>
+                            <input type="text" class="form-control" id="exampleFormControlInput1"
+                            name='full_name' />
+
+                          </div>
+
+
+                          <div class="form-group">
+                            <label for="exampleFormControlInput1">Expansion</label>
+                            <input type="text" class="form-control" id="exampFormControlInput1">
+                          </div>
+                          <div class="form-group">
+                            <label for="birthday">DOB </label>
+                            <input type="Date" id="birthday" class="form-control" name="birthday">
+                          </div>
+
+
+
+
+                        </div>
+                        <div class="col-md-6">
+                          <div class="form-group">
+                            <label for="exampleFormControlInput1"> Initial </label>
+                            <input type="text" class="form-control" id="exampleFormControlInput1" name='initial'>
+                          </div>
+                          <div class="form-group">
+                            <label for="exampleFormControlput1">Father's Name </label>
+                            <input type="text" class="form-control" id="exampleForControlInput1">
+                          </div>
+
+                          <div class="form-group">
+                            <label for="exampleFormConnput1">Mother's Name</label>
+                            <input type="text" class="form-control" id="exeFormControlInput1">
+                          </div>
+
+
+
+                        </div>
+                        <div class="col-md-4">
+                          <div class="form-group  p-1">
+                            <label for="exampleFormControlSelect2" class="text-danger">Gender *</label>
+                            <div class="d-flex ">
+                              <div class="form-check form-check-inline ">
+                                <input class="form-check-input" type="radio" name id="inlineRadio1" value="Male">
+                                <label class="form-check-label" for="inlineRadio1">Male </label>
+                              </div>
+                              <div class="form-check form-check-inline  ">
+                                <input class="form-check-input" type="radio" id="inlineRadio2" value="Female">
+                                <label class="form-check-label" for="inlineRadio2">Female</label>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="form-group">
+                            <label for="exampleFormControlTextarea1" class="text-danger">Blood Group * </label>
+                            <input type="text" class="form-control" id="examplontrolInput1">
+
+                          </div>
+                          <div class="form-group">
+                            <label for="exampleFormControlTextarea1">Academic Year</label>
+                            <input type="text" class="form-control" id="examplontrolInput1">
+
+                          </div>
+                        </div>
+                        <div class="col-md-4">
+                          <div class="form-group">
+                            <label for="community" class="text-danger">Nationality *</label>
+                            <i class="fa fa-caret-down " id="drop"></i>
+
+                            <select class="form-control" disabled>
+                              <option value="volvo">Indian</option>
+                              <option value="saab">Srilankan</option>
+
+
+                            </select>
+                          </div>
+                          <div class="form-group">
+                            <label for="exampleFormConolTextarea1">Student Code</label>
+                            <input type="text" class="form-control" id="examplontrolIput1">
+
+                          </div>
+                          <div class="form-group">
+                            <label for="community">Willing To Donate Blood</label>
+
+                            <i class="fa fa-caret-down " id="drop"></i>
+
+                            <select class="form-control" disabled>
+
+                              <option value="volvo">Yes</option>
+                              <option value="saab">No</option>
+
+
+                            </select>
+                          </div>
+                        </div>
+                        <div class="col-md-4">
+                          <div class="form-group">
+                            <label for="community" class="text-danger">Religion *
+
+                            </label>
+
+                            <i class="fa fa-caret-down " id="drop"></i>
+
+                            <select class="form-control" disabled>
+                              <option selected="" hidden="">&nbsp;</option>
+                              <option value="volvo">Hindu</option>
+                              <option value="saab">Christian</option>
+                              <option value="mercedes">Islam</option>
+
+                            </select>
+
+                          </div>
+                          <div class="form-group">
+                            <label for="birthday">Caste </label>
+                            <input type="text" class="form-control" name="caste">
+                          </div>
+                          <div class="form-group">
+                            <label for="community">Community</label>
+
+                            <i class="fa fa-caret-down " id="drop"></i>
+
+                            <select class="form-control" disabled>
+                              <option selected="" hidden="">&nbsp;</option>
+
+                              <option value="volvo">OC</option>
+                              <option value="saab">BC</option>
+                              <option value="mercedes">SC</option>
+                              <option value="audi">MBC</option>
+                            </select>
+                          </div>
+                        </div>
+
+
+                      </div>
+
+                    </div>
+
+                  </section>
+
+                  <!-------------------------- adimission---------------------------------------------->
+                  <section id="admission" class="">
+
+                    <div class="container">
+                      <h3 class="pb-4">Admission details</h3>
+
+                      <div class="row">
+                        <div class="col-md-4">
+                          <div class="form-group">
+                            <label for="exampleFormControlInput1">Rank</label>
+                            <input type="text" class="form-control" id="exampleFormControlInput1">
+                          </div>
+                          <div class="form-group">
+                            <label for="exampleFormControlTextarea1">Neet Roll Number</label>
+                            <input type="number" id="quantity" name="quantity" class="form-control">
+                          </div>
+                          <div class="form-group">
+                            <label for="examplrolTextarea1">Course Commensement</label>
+
+                            <input class="textbox-n form-control" type="text" onfocus="(this.type='Date')" id="Date">
+                          </div>
+
+                          <div class="form-group">
+                            <label for="birthday">Select Category</label>
+                            <i class="fa fa-caret-down " id="drop"></i>
+
+                            <select class="form-control" disabled>
+                              <option value="volvo">OC</option>
+                              <option value="saab">BC</option>
+                              <option value="mercedes">SC</option>
+                              <option value="audi">MBC</option>
+                            </select>
+                          </div>
+
+                        </div>
+                        <div class="col-md-4">
+
+                          <div class="form-group">
+                            <label for="exampleFormControlInput1">Ar Number</label>
+                            <input type="number" class="form-control">
+                          </div>
+                          <div class="form-group">
+                            <label for="exampleFormControlTextarea1">Rank Number</label>
+                            <input type="number" id="quantity" name="quantity" class="form-control">
+                          </div>
+                          <div class="form-group">
+                            <label for="exampleFormControlea1">Date Of Admission</label>
+
+                            <input placeholder="" class="textbox-n form-control" class="form-control" type="text"
+                              onfocus="(this.type='Date')" id="Date">
+                          </div>
+
+                          <div class="form-group">
+                            <label for="exampleFormControlTextarea1">Admission Type</label>
+                            <i class="fa fa-caret-down " id="drop"></i>
+
+                            <select class="form-control" disabled>
+                              <option value="volvo">Regular Admission</option>
+                              <option value="saab">BC</option>
+                              <option value="mercedes">SC</option>
+                              <option value="audi">MBC</option>
+                            </select>
+                          </div>
+
+                        </div>
+                        <div class="col-md-4">
+
+                          <div class="form-group">
+                            <label for="exampleFormControlInput1">Total Mark</label>
+                            <input type="number" class="form-control">
+                          </div>
+                          <div class="form-group">
+                            <label for="exampleFormControlTextarea1">Neet Mark</label>
+                            <input type="number" id="quantity" name="quantity" class="form-control">
+                          </div>
+                          <div class="form-group">
+                            <label for="exampleFormControlTextarea1">Date Of Allotement</label>
+
+                            <input placeholder="" class="textbox-n form-control" type="text"
+                              onfocus="(this.type='Date')" id="Date">
+                          </div>
+
+                          <div class="form-group">
+                            <label for="exampleFormControlInput1">Course</label>
+                            <input type="text" class="form-control">
+                          </div>
+
+                        </div>
+
+                      </div>
+                    </div>
+
+                  </section>
+
+                  <!-------------------------- Address---------------------------------------------->
+
+              
+                  <div class="container">
+                    <div class="row">
+                      <div class="col-md-6">
+
+                        <div class="form-group">
+                          <label for="exampleFormContro">Tele Phone</label>
+
+                          <input type="number" class="form-control" placeholder="">
+                        </div>
+
+                        <div class="form-group">
+                          <label for="exampltrolInput1">Email Address</label>
+
+                          <input type="email" class="form-control" placeholder="" id="exampleInputEmail1"
+                            aria-describedby="emailHelp">
+                        </div>
+                        <div class="form-group">
+                          <label for="exampleFormControlInput120">Voter Id</label>
+                          <input type="number" class="form-control" id="exampleFormControlInput120">
+                        </div>
+
+                      </div>
+
+                      <div class="col-md-6">
+                        <div class="form-group">
+                          <label for="exampleFormCon1">Mobile Phone</label>
+
+                          <input type="text" name="Phone Number" class="form-control" placeholder=""
+                            pattern="[6-9]{1}[0-9]{9}">
+
+                        </div>
+                        <div class="form-group">
+                          <label for="exampleFormControlInput120">Aadhar Number</label>
+                          <input type="number" class="form-control" id="exampleFormControlInput120">
+                        </div>
+                        <div class="form-group">
+                          <label for="exam">Remarks</label>
+
+                          <textarea class="form-control" id="exampleFormControlTextarea2" placeholder=""
+                            rows="2"></textarea>
+                        </div>
+                      </div>
+                      <div class="col-md-12">
+                        <h5>Biometric Details</h5>
+                        <div class="row">
+                          <div class="col-md-3">
+                            <div class="custom-file my-2">
+                              <input type="file" accept="image/" name="image" id="file"
+                                style="display: none !important;" onchange="loadFile(event)" disabled="">
+                              <label for="file" style="cursor: pointer;" class="p-2">Upload photo</label>
+
+                              <script>
+                                var loadFile = function (event) {
+                                  var image = document.getElementById('output');
+                                  image.src = URL.createObjectURL(event.target.files[0]);
+                                };
+                              </script>
+                            </div>
+                            <img id="output"
+                              src="https://www.seekpng.com/png/detail/46-462959_unknown-person-icon-png-download-single-people-logo.png"
+                              class="img-fluid mt-1" width="150">
+
+                          </div>
+
+
+
+                          <div class="col-md-3">
+                            <div class="custom-file my-2">
+                              <input type="file" accept="image/" name="image" id="file" style="display: none!important;"
+                                onchange="loadFile(event)">
+                              <label for="file" style="cursor :pointer;" class="p-2">Scan Finger Print</label>
+
+                              <script>
+                                var loadFile = function (event) {
+                                  var scan = document.getElementById('scan');
+                                  scan.src = URL.createObjectURL(event.target.files[0]);
+                                };
+                              </script>
+                            </div>
+                            <img id="scan" style="height:80px;"
+                              src="https://i.pinimg.com/originals/89/60/53/89605396d7eabcdf01ab78ce48aa0c6d.png"
+                              alt="scan" class="img-fluid mt-1" width="150">
+
+                          </div>
+
+                          <div class="col-md-3">
+                            <div class="custom-file my-2">
+                              <input type="file" accept="image/" name="image" id="file" style="display:none!important"
+                                onchange="loadFile(event)">
+                              <label for="file" style="cursor :pointer;" class="p-2">Upload Signature</label>
+
+                              <script>
+                                var loadFile = function (event) {
+                                  var image = document.getElementById('sign');
+                                  image.src = URL.createObjectURL(event.target.files[0]);
+                                };
+                              </script>
+                              <img id="sign" style=" height:80px"
+                                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS1YpRbqBJDnQHbdXxHvzrakMNXhgP-z9jpfw&amp;usqp=CAU"
+                                alt="scan" class="img-fluid mt-1" width="150">
+
+                            </div>
+                          </div>
+
+
+                          <div class="col-md-3">
+                            <div class="custom-file my-2">
+                              <input type="file" accept="image/" name="image" id="file"
+                                style="display: none !important;" onchange="loadFile(event)">
+                              <label for="file" style="cursor: pointer;" class="p-2">Image Capture</label>
+
+                              <script>
+                                var loadFile = function (event) {
+                                  var image = document.getElementById('image');
+                                  image.src = URL.createObjectURL(event.target.files[0]);
+                                };
+                              </script>
+                              <img id="image"
+                                src="https://www.seekpng.com/png/detail/46-462959_unknown-person-icon-png-download-single-people-logo.png"
+                                alt="scan" class="img-fluid mt-1" width="150">
+
+                            </div>
+
+                          </div>
+                          <div class="col-md-3">
+                            <div class="custom-file my-2">
+                              <input type="file" accept="image/" name="image" id="file"
+                                style="display: none !important;" onchange="loadFile(event)">
+                              <label for="file" style="cursor: pointer;" class="p-2">Capture Signature</label>
+
+                              <script>
+                                var loadFile = function (event) {
+                                  var thumb1 = document.getElementById('sign1');
+                                  image.src = URL.createObjectURL(event.target.files[0]);
+                                };
+                              </script>
+                              <img id="sign1" style=" height:80px"
+                                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS1YpRbqBJDnQHbdXxHvzrakMNXhgP-z9jpfw&amp;usqp=CAU"
+                                alt="scan" class="img-fluid mt-1" width="150">
+
+                            </div>
+
+                          </div>
+                        </div>
+                      </div>
+
+                    </div>
+                  </div>
+
+
+                </div>
+
+
+                <!-------------------------- Qualification---------------------------------------------->
+
+
+                <div class="tab-pane fade" id="profilee" role="tabpanel" aria-labelledby="profile-tab">
+                  <section id="Qualification" class="">
+                    <div class="container">
+                      <h3>
+                        Institute Details
+                      </h3>
+                      <div class="row">
+                        <div class="col-md-6">
+
+                          <div class="form-group">
+                            <label for="exampleFormControlInput8">Name </label>
+
+                            <input type="text" id="Exam" class="form-control" name="Exam">
+
+                          </div>
+                          <div class="form-group row">
+
+
+                            <div class="col-md-6">
+                              <label for="School">Place </label>
+                              <input type="text" id="birthday" class="form-control" name="School">
+                            </div>
+                            <div class="col-md-6">
+                              <label for="reg">Registration Number</label>
+
+                              <input type="number" id="reg" class="form-control" name="reg">
+
+                            </div>
+                          </div>
+
+
+                          <div class="form-group row">
+                            <div class="col-md-6">
+                              <label for="Exam">Exam Passed</label>
+                              <input type="text" class="form-control" id="exampleFormControlInput8">
+
+                            </div>
+                            <div class="col-md-6">
+
+                              <label for="Exam"> Releiving Date</label>
+                              <input type="Date" id="Date" class="form-control" name="Date">
+
+                            </div>
+
+                          </div>
+
+
+                        </div>
+                        <div class="col-md-3">
+                          <div class="form-group">
+                            <label for="exampleFormControlInput0">District</label>
+                            <input type="text" class="form-control" id="exampleFormControlInput0">
+                          </div>
+                          <div class="form-group">
+                            <label for="exampleFormControlInput9">Board </label>
+                            <input type="text" class="form-control" id="exampleFormControlInput9">
+                          </div>
+                          <div class="form-group">
+                            <label for="exampleFormControlSelect4">Month Of Passing</label>
+                            <i class="fa fa-caret-down " id="drop"></i>
+
+                            <select class="form-control" id="exampleFormControlSelect4" disabled>
+
+                              <option>March</option>
+                              <option>2</option>
+                              <option>3</option>
+                              <option>4</option>
+                              <option>5</option>
+                            </select>
+                          </div>
+                        </div>
+                        <div class="col-md-3">
+                          <div class="form-group">
+                            <label for="exampleFormControlInput0">State</label>
+                            <input type="text" class="form-control" id="exampleFormControlInput0">
+                          </div>
+                          <div class="form-group">
+                            <label for="exampleFormControlInput9">Duration </label>
+                            <input type="number" class="form-control" id="exampleFormControlInput9">
+                          </div>
+                          <div class="form-group">
+                            <label for="exampleFormControlSelect4">Year Of Passing</label>
+                            <i class="fa fa-caret-down " id="drop"></i>
+
+                            <select class="form-control" id="exampleFormControlSelect4" disabled>
+
+                              <option>2010</option>
+                              <option>2</option>
+                              <option>3</option>
+                              <option>4</option>
+                              <option>5</option>
+                            </select>
+                          </div>
+                        </div>
+
+                      </div>
+                    </div>
+
+                  </section>
+
+
+                  <section id="mark" class="">
+                    <div class="container">
+                      <h3 class="">Mark Details </h3>
+
+                      <div class="row">
+                        <div class="table-responsive">
+                          <table class="table ">
+                            <thead class=" text-dark">
+                              <tr>
+                                <th></th>
+                                <th scope="col">THEORY</th>
+                                <th scope="col">PRACTICAL</th>
+                                <th scope="col">INTERNAL</th>
+                                <th scope="col">TOTAL</th>
+                                <th scope="col">MAX.MARKS</th>
+
+
+
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <tr>
+                                <th scope="row" class=" text-dark"> LANGUAGE</th>
+                                <td><input type="text" name="" class="form-control"></td>
+                                <td><input type="text" name="" class="form-control"></td>
+                                <td><input type="text" name="" class="form-control"></td>
+                                <td><input type="text" name="" class="form-control"></td>
+
+                                <td><input type="text" name="" class="form-control"></td>
+                                <!-- <th scope="row"class=" text-dark">LANGUAGE PAPER</th>
+                      <td><input type="text" name=""class="form-control"placeholder="tamil"></td> -->
+
+
+                              </tr>
+                              <tr>
+                                <th scope="row" class=" text-dark">ENGLISH</th>
+                                <td><input type="text" name="" class="form-control"></td>
+                                <td><input type="text" name="" class="form-control"></td>
+                                <td><input type="text" name="" class="form-control"></td>
+                                <td><input type="text" name="" class="form-control"></td>
+
+                                <td><input type="text" name="" class="form-control"></td>
+                                <!-- <th scope="row"class=" text-dark">SUBJECT GROUP CODE</th>
+                      <td><input type="text" name=""class="form-control"placeholder="098"></td> -->
+                              </tr>
+                              <tr>
+                                <th scope="row" class=" text-dark">MATHEMATICS</th>
+                                <td><input type="text" name="" class="form-control"></td>
+                                <td><input type="text" name="" class="form-control"></td>
+                                <td><input type="text" name="" class="form-control"></td>
+                                <td><input type="text" name="" class="form-control"></td>
+
+                                <td><input type="text" name="" class="form-control"></td>
+                                <!-- <th scope="row"class=" text-dark">TOTAL MARKS</th>
+                      <td><input type="text" name=""class="form-control"placeholder="700"></td> -->
+                              </tr>
+                              <tr>
+                                <th scope="row" class=" text-dark">PHYSICS</th>
+                                <td><input type="text" name="" class="form-control"></td>
+                                <td><input type="text" name="" class="form-control"></td>
+                                <td><input type="text" name="" class="form-control"></td>
+                                <td><input type="text" name="" class="form-control"></td>
+
+                                <td><input type="text" name="" class="form-control"></td>
+                                <!-- <th scope="row"class=" text-dark">MAX. MARKS</th>
+                      <td><input type="text" name=""class="form-control"placeholder="700"></td> -->
+                              </tr>
+                              <tr>
+                                <th scope="row" class=" text-dark">CHEMISTRY</th>
+                                <td><input type="text" name="" class="form-control"></td>
+                                <td><input type="text" name="" class="form-control"></td>
+                                <td><input type="text" name="" class="form-control"></td>
+                                <td><input type="text" name="" class="form-control"></td>
+
+                                <td><input type="text" name="" class="form-control"></td>
+                                <!-- <th scope="row"class=" text-dark">PERCENTAGE</th>
+                      <td><input type="text" name=""class="form-control"placeholder="98"></td> -->
+                              </tr>
+                              <tr>
+                                <th scope="row" class=" text-dark">BIOLOGY</th>
+                                <td><input type="text" name="" class="form-control"></td>
+                                <td><input type="text" name="" class="form-control"></td>
+                                <td><input type="text" name="" class="form-control"></td>
+                                <td><input type="text" name="" class="form-control"></td>
+
+                                <td><input type="text" name="" class="form-control"></td>
+                              </tr>
+                              <tr>
+                                <th scope="row" class=" text-dark">BOTONY</th>
+                                <td><input type="text" name="" class="form-control"></td>
+                                <td><input type="text" name="" class="form-control"></td>
+                                <td><input type="text" name="" class="form-control"></td>
+                                <td><input type="text" name="" class="form-control"></td>
+
+                                <td><input type="text" name="" class="form-control"></td>
+                              </tr>
+                              <tr>
+                                <th scope="row" class=" text-dark">ZOOLOGY</th>
+                                <td><input type="text" name="" class="form-control"></td>
+                                <td><input type="text" name="" class="form-control"></td>
+                                <td><input type="text" name="" class="form-control"></td>
+                                <td><input type="text" name="" class="form-control"></td>
+
+                                <td><input type="text" name="" class="form-control"></td>
+
+                              </tr>
+
+                            </tbody>
+                          </table>
+                          <table class="table">
+                            <thead class=" text-dark">
+                              <tr>
+                                <th scope="col">LANGUAGE PAPER</th>
+                                <th width='200px;' scope="col"> SUBJECT GROUP CODE</th>
+                                <th scope="col">TOTAL MARKS</th>
+                                <th scope="col">MAX.MARKS</th>
+
+
+
+                              </tr>
+
+                            </thead>
+                            <tbody>
+                              <tr>
+                                <td><input type="text" name="" class="form-control" placeholder=""></td>
+
+                                <td><input type="text" name="" class="form-control" placeholder=""></td>
+                                <td><input type="text" name="" class="form-control" placeholder=""></td>
+                                <td><input type="text" name="" class="form-control" placeholder=""></td>
+                              </tr>
+                            </tbody>
+                          </table>
+                        </div>
+                      </div>
+                    </div>
+                  </section>
+                  <section id="Neet">
+                    <div class="container">
+                      <h3 class="">NEET Percentile Details </h3>
+
+                      <div class="table-responsive">
+                        <table class="table ">
+                          <thead class=" text-dark">
+                            <tr>
+                              <th></th>
+                              <th scope="col">PHYSICS</th>
+                              <th scope="col">CHEMISTRY</th>
+                              <th scope="col"> BIOLOGY</th>
+                              <th scope="col"> AGGREGATE</th>
+
+
+
+
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr>
+                              <th width='165px' scope="row" class=" text-dark"> OBTAINED MARKS</th>
+                              <td><input type="text" name="" class="form-control"></td>
+                              <td><input type="text" name="" class="form-control"></td>
+                              <td><input type="text" name="" class="form-control"></td>
+                              <td><input type="text" name="" class="form-control"></td>
+
+
+
+
+                            </tr>
+
+                            <tr>
+                              <th width='165px;' scope="row" class=" text-dark"> MAX. MARKS</th>
+                              <td><input type="text" name="" class="form-control"></td>
+                              <td><input type="text" name="" class="form-control"></td>
+                              <td><input type="text" name="" class="form-control"></td>
+                              <td><input type="text" name="" class="form-control"></td>
+
+
+                            </tr>
+
+
+
+
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
+
+                  </section>
+
+
+
+
+                </div>
+                <!-------------------------- bank details---------------------------------------------->
+                <div class="tab-pane fade p-3" id="bankk" role="tabpanel" aria-labelledby="bank-tab">
+                  <section id="bank">
+                    <div class="container">
+                      <div class="row">
+                        <div class="col-md-3">
+
+                          <div class="form-group">
+                            <label for="exampleFormControlInput3">Account Number</label>
+                            <input type="number" class="form-control" id="exampleFormControlInput3">
+                          </div>
+                          <div class="form-group">
+                            <label for="exampleFormControlInput12">IFSC</label>
+                            <input type="number" class="form-control" id="exampleFormControlInput12">
+                          </div>
+
+                        </div>
+                        <div class="col-md-4">
+
+                          <div class="form-group">
+                            <label for="exampleFormControlInput13">Bank Name</label>
+                            <input type="text" class="form-control" id="exampleFormControlInput13">
+                          </div>
+                          <div class="form-group">
+                            <label for="exampleFormControlInput120">PAN Number</label>
+                            <input type="number" class="form-control" id="exampleFormControlInput120">
+                          </div>
+
+                        </div>
+                        <div class="col-md-4">
+
+                          <div class="form-group">
+                            <label for="exampleFormControlInput13">MICR</label>
+                            <input type="text" class="form-control" id="exampleFormControlInput13">
+                          </div>
+                          <div class="form-group">
+                            <label for="exampleFormControlInput13">Branch Name</label>
+                            <input type="text" class="form-control" id="exampleFormControlInput13">
+                          </div>
+
+
+                        </div>
+
+                      </div>
+                    </div>
+                  </section>
+                </div>
+                <!-------------------------- certificate details---------------------------------------------->
+
+                <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
+                  <section id="certificate">
+                    <div class="container">
+
+                      <div class="table-responsive">
+                        <table class="table ">
+                          <thead class=" text-dark">
+                            <tr>
+                              <th>Certificate Details</th>
+                              <th scope="col">Registrate/Certificate No</th>
+                              <th scope="col" style="width:180px;">Date</th>
+
+                              <th width="200px" scope="col">Issue Authority</th>
+
+                              <th scope="col">Place/Taluk</th>
+                              <th scope="col">Upload</th>
+
+
+
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr>
+                              <th scope="row" class=" text-dark" style="width :210px;">
+                                <div class="form-group">
+                                  <select class="form-control" id="exampleFormControlSelect1" disabled>
+                                    <option>Community Certificate</option>
+                                    <option>Transfer Certificate</option>
+                                    <option>Conduct Certificate</option>
+                                    <option>Eligiblity Certificate</option>
+                                    <option>Migration Certificate</option>
+                                    <option>Admission Commitee Form</option>
+                                  </select>
+                                </div>
+                              </th>
+                              <td><input type="text" name="" class="form-control"></td>
+                              <td><input type="Date" name="" class="form-control"></td>
+                              <td><input type="text" name="" class="form-control"></td>
+                              <td><input type="text" name="" class="form-control"></td>
+                              <td><button type="button" disabled class="btn-sm" data-toggle="modal"
+                                  data-target="#upload"><i class="fa fa-upload text-primary"></i></button></td>
+
+                            </tr>
+
+                          </tbody>
+                        </table>
+                      </div>
+
+
+
+                    </div>
+                  </section>
+
+
+
+                </div>
+
+                <!-------------------------- Releiveing details---------------------------------------------->
+
+                <div class="tab-pane fade" id="relv" role="tabpanel" aria-labelledby="relv-tab">
+                  <div class="container">
+                    <h3 class="">Relieving Details</h3>
+                    <div class="row">
+                      <div class="col-md-3">
+
+                        <div class="form-group">
+                          <label for="exampleFormControlSelect8">Relieved </label>
+                          <select class="form-control" id="exampleFormControlSelect8" disabled>
+                            <option>ALL</option>
+                            <option>2</option>
+                            <option>3</option>
+                            <option>4</option>
+                            <option>5</option>
+                          </select>
+                        </div>
+                        <div class="form-group">
+                          <label for="exampleFormControlInput129">Date Of Reallotment</label>
+                          <input type="Date" class="form-control" id="exampleFormControlInput129">
+                        </div>
+
+                      </div>
+                      <div class="col-md-3">
+                        <div class="form-group">
+                          <label for="exampleFormControlInput89">College Name</label>
+                          <input type="text" class="form-control" id="exampleFormControlInput89">
+                        </div>
+                      </div>
+                      <div class="col-md-3">
+                        <div class="form-group">
+                          <label for="exampleFormControlInput09">Amount Refunded</label>
+                          <input type="number" class="form-control" id="exampleFormControlInput09">
+                        </div>
+                      </div>
+                      <div class="col-md-3">
+                        <div class="form-group">
+                          <label for="exampleFormControlInput81">Date Of Relieving</label>
+                          <input type="Date" class="form-control" id="exampleFormControlInput81">
+                        </div>
+                      </div>
+
+                    </div>
+
+                  </div>
+                </div>
+
+              </div>
+            
+            </div>
+          </section>
+        </div>
+        <!-- end -->
+
+
+      </div>
+    </div>
+  </div>
+  <!---------------------------------Edit student modal ------------------------>
+
+  <!-- Modal -->
+
+
+  <!-- Modal -->
+  <div class="modal fade " id="edit" tabindex="-1" role="dialog" aria-labelledby="edit" aria-hidden="true">
+    <div class="modal-dialog modal-lg  role=" document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="Edit">Edit Student</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <!-- <div class="steps-progress  bg-white">
+          <div class="container">
+             <div class="d-flex flex-wrap justify-content-center justify-content-sm-start">
+              <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="#collapseOne">Toggle second element</button>
+                <button class="btn btn-sm btn-step-progress collapsed" type="button" aria-controls="#collapseTwo"data-toggle="collapse" aria-expanded="false" data-target="#collapseTwo">2 <span>Qualifications and Experience</span></button>
+                <button class="btn btn-sm btn-step-progress collapsed" type="button" data-toggle="collapse" data-target="#collapseThree">3 <span>Preferences & References</span></button>
+             </div>
+            </div>
+            </div> -->
+
+
+          <div id="accordion5">
+            <div class="crd">
+              <div class="card-header" id="heading-15">
+                <h3 class="mb-0">
+                  <a role="button" data-toggle="collapse" href="#collapse-15" aria-expanded="true"
+                    aria-controls="collapse-15">
+                    Student Details<i class="fa fa-caret-down ml-5" aria-hidden="true"></i>
+                  </a>
+                </h3>
+              </div>
+
+
+
+              <div id="collapse-15" class="collapse show" data-parent="#accordion5" aria-labelledby="heading-15">
+                <div class="card-body">
+                  <div class="">
+
+                    <!-------------------------- Canditate--------------------------------------------->
+
+                    <section id="candetails" class="">
+                      <div class="container">
+                        <h5>Candidate Details</h5>
+
+
+                        <div class="row">
+                          <div class="col-md-6">
+
+                            <div class="form-group">
+                              <label for="exampleFormControlInput1" class="text-danger">Name *</label>
+                              <input type="text" class="form-control" id="exampleFormControlInput1">
+
+                            </div>
+
+
+                            <div class="form-group">
+                              <label for="exampleFormControlInput1">Expansion</label>
+                              <input type="text" class="form-control" id="exampFormControlInput1">
+                            </div>
+                            <div class="form-group">
+                              <label for="birthday">DOB </label>
+                              <input type="Date" id="birthday" class="form-control" name="birthday">
+                            </div>
+
+
+
+
+                          </div>
+                          <div class="col-md-6">
+                            <div class="form-group">
+                              <label for="exampleFormControlInput1"> Initial </label>
+                              <input type="text" class="form-control" id="exampleFormControlInput1">
+                            </div>
+                            <div class="form-group">
+                              <label for="exampleFormControlput1">Father's Name </label>
+                              <input type="text" class="form-control" id="exampleForControlInput1">
+                            </div>
+
+                            <div class="form-group">
+                              <label for="exampleFormConnput1">Mother's Name</label>
+                              <input type="text" class="form-control" id="exeFormControlInput1">
+                            </div>
+
+
+
+                          </div>
+                          <div class="col-md-4">
+                            <div class="form-group  p-1">
+                              <label for="exampleFormControlSelect2" class="text-danger">Gender *</label>
+                              <div class="d-flex ">
+                                <div class="form-check form-check-inline ">
+                                  <input class="form-check-input" type="radio" name="inlineRadioOptions"
+                                    id="inlineRadio1" value="option1">
+                                  <label class="form-check-label" for="inlineRadio1">Male </label>
+                                </div>
+                                <div class="form-check form-check-inline  ">
+                                  <input class="form-check-input" type="radio" name="inlineRadioOptions"
+                                    id="inlineRadio2" value="option2">
+                                  <label class="form-check-label" for="inlineRadio2">Female</label>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="form-group">
+                              <label for="exampleFormControlTextarea1" class="text-danger">Blood Group * </label>
+                              <input type="text" class="form-control" id="examplontrolInput1">
+
+                            </div>
+                            <div class="form-group">
+                              <label for="exampleFormControlTextarea1">Academic Year</label>
+                              <input type="text" class="form-control" id="examplontrolInput1">
+
+                            </div>
+                          </div>
+                          <div class="col-md-4">
+                            <div class="form-group">
+                              <label for="community" class="text-danger">Nationality *</label>
+                              <i class="fa fa-caret-down " id="drop"></i>
+
+                              <select class="form-control">
+                                <option selected="" hidden="">&nbsp;</option>
+
+                                <option value="volvo">Indian</option>
+                                <option value="saab">Srilankan</option>
+
+
+                              </select>
+                            </div>
+                            <div class="form-group">
+                              <label for="exampleFormConolTextarea1">Student Code</label>
+                              <input type="text" class="form-control" id="examplontrolIput1">
+
+                            </div>
+                            <div class="form-group">
+                              <label for="community">Willing To Donate Blood</label>
+
+                              <i class="fa fa-caret-down " id="drop"></i>
+
+                              <select class="form-control">
+                                <option selected="" hidden="">&nbsp;</option>
+
+                                <option value="volvo">Yes</option>
+                                <option value="saab">No</option>
+
+
+                              </select>
+                            </div>
+                          </div>
+                          <div class="col-md-4">
+                            <div class="form-group">
+                              <label for="community" class="text-danger">Religion *
+
+                              </label>
+
+                              <i class="fa fa-caret-down " id="drop"></i>
+
+                              <select class="form-control">
+                                <option selected="" hidden="">&nbsp;</option>
+                                <option value="volvo">Hindu</option>
+                                <option value="saab">Christian</option>
+                                <option value="mercedes">Islam</option>
+
+                              </select>
+
+                            </div>
+                            <div class="form-group">
+                              <label for="birthday">Caste </label>
+                              <input type="text" class="form-control" name="caste">
+                            </div>
+                            <div class="form-group">
+                              <label for="community">Community</label>
+
+                              <i class="fa fa-caret-down " id="drop"></i>
+
+                              <select class="form-control">
+                                <option selected="" hidden="">&nbsp;</option>
+
+                                <option value="volvo">OC</option>
+                                <option value="saab">BC</option>
+                                <option value="mercedes">SC</option>
+                                <option value="audi">MBC</option>
+                              </select>
+                            </div>
+                          </div>
+
+
+                        </div>
+
+                      </div>
+
+                    </section>
+
+
+                  </div>
+
+
+                  <div id="accordion-15">
+                    <div class="cad">
+                      <div class="card-header" id="heading-15-15">
+                        <h5 class="mb-0">
+                          <a class="collapsed" role="button" data-toggle="collapse" href="#collapse-15-15"
+                            aria-expanded="false" aria-controls="collapse-15-15">
+
+                            Admission Details<i class="fa fa-caret-down ml-5" aria-hidden="true"></i>
+                          </a>
+                        </h5>
+                      </div>
+                      <div id="collapse-15-15" class="collapse" data-parent="#accordion-15"
+                        aria-labelledby="heading-15-15">
+                        <div class="card-body">
+
+                          <div id="accordion-15-15">
+                            <!-------------------------- adimission---------------------------------------------->
+                            <section id="admission" class="">
+
+                              <div class="container">
+
+                                <div class="row">
+                                  <div class="col-md-4">
+
+                                    <div class="form-group">
+                                      <label for="exampleFormControlInput1">Rank</label>
+                                      <input type="text" class="form-control" id="exampleFormControlInput1">
+                                    </div>
+                                    <div class="form-group">
+                                      <label for="exampleFormControlTextarea1">Neet Roll Number</label>
+                                      <input type="number" id="quantity" name="quantity" class="form-control">
+                                    </div>
+                                    <div class="form-group">
+                                      <label for="examplrolTextarea1">Course Commensement</label>
+
+                                      <input class="textbox-n form-control" type="text" onfocus="(this.type='Date')"
+                                        id="Date">
+                                    </div>
+
+                                    <div class="form-group">
+                                      <label for="birthday">Select Category</label>
+                                      <i class="fa fa-caret-down " id="drop"></i>
+
+                                      <select class="form-control">
+                                        <option selected="" hidden="">&nbsp;</option>
+
+                                        <option value="volvo">OC</option>
+                                        <option value="saab">BC</option>
+                                        <option value="mercedes">SC</option>
+                                        <option value="audi">MBC</option>
+                                      </select>
+                                    </div>
+
+                                  </div>
+                                  <div class="col-md-4">
+
+                                    <div class="form-group">
+                                      <label for="exampleFormControlInput1">Ar Number</label>
+                                      <input type="number" class="form-control">
+                                    </div>
+                                    <div class="form-group">
+                                      <label for="exampleFormControlTextarea1">Rank Number</label>
+                                      <input type="number" id="quantity" name="quantity" class="form-control">
+                                    </div>
+                                    <div class="form-group">
+                                      <label for="exampleFormControlea1">Date Of Admission</label>
+
+                                      <input placeholder="" class="textbox-n form-control" type="text"
+                                        onfocus="(this.type='Date')" id="Date">
+                                    </div>
+
+                                    <div class="form-group">
+                                      <label for="exampleFormControlTextarea1">Admission Type</label>
+                                      <i class="fa fa-caret-down " id="drop"></i>
+
+                                      <select class="form-control">
+                                        <option selected="" hidden="">&nbsp;</option>
+
+                                        <option value="volvo">Regular Admission</option>
+                                        <option value="saab">BC</option>
+                                        <option value="mercedes">SC</option>
+                                        <option value="audi">MBC</option>
+                                      </select>
+                                    </div>
+
+                                  </div>
+                                  <div class="col-md-4">
+
+                                    <div class="form-group">
+                                      <label for="exampleFormControlInput1">Total Mark</label>
+                                      <input type="number" class="form-control">
+                                    </div>
+                                    <div class="form-group">
+                                      <label for="exampleFormControlTextarea1">Neet Mark</label>
+                                      <input type="number" id="quantity" name="quantity" class="form-control">
+                                    </div>
+                                    <div class="form-group">
+                                      <label for="exampleFormControlTextarea1">Date Of Allotement</label>
+
+                                      <input placeholder="" class="textbox-n form-control" type="text"
+                                        onfocus="(this.type='Date')" id="Date">
+                                    </div>
+
+                                    <div class="form-group">
+                                      <label for="exampleFormControlInput1">Course</label>
+                                      <input type="text" class="form-control">
+                                    </div>
+
+                                  </div>
+
+                                </div>
+                              </div>
+
+                            </section>
+
+                          </div>
+                        </div>
+                      </div>
+
+
+                    </div>
+                    <div class="crd">
+                      <div class="card-header" id="heading-1-1-25">
+                        <h5 class="mb-0">
+                          <a class="collapsed" role="button" data-toggle="collapse" href="#collapse-1-1-25"
+                            aria-expanded="false" aria-controls="collapse-1-1-25">
+                            Address Details <i class="fa fa-caret-down ml-5" aria-hidden="true"></i>
+                          </a>
+                        </h5>
+                      </div>
+                      <div id="collapse-1-1-25" class="collapse" data-parent="#accordion-15"
+                        aria-labelledby="heading-1-1-25">
+                        <div class="card-body">
+                          <!-------------------------- Address---------------------------------------------->
+                          <section id="admission" class="">
+
+                            <div class="container">
+
+                              <div class="row" id="addressborder">
+                                <div class="col-md-6">
+
+                                  <div class="form-group">
+                                    <label for="exampleFormControlTextarea1"> Present Address</label>
+                                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                                  </div>
+                                  <div class="form-group">
+                                    <label for="exampleFormControlTextarea1">Pincode</label>
+                                    <input type="number" id="quantity" name="quantity" class="form-control">
+                                  </div>
+                                  <div class="form-group">
+                                    <label for="exampleFormControlTextarea1">State</label>
+                                    <select name="state" id="state" class="form-control">
+                                      <option selected="" hidden="">&nbsp;</option>
+
+                                      <option value="Andhra Pradesh">Andhra Pradesh</option>
+                                      <option value="Andaman and Nicobar Islands">Andaman and Nicobar Islands</option>
+                                      <option value="Arunachal Pradesh">Arunachal Pradesh</option>
+                                      <option value="Assam">Assam</option>
+                                      <option value="Bihar">Bihar</option>
+                                      <option value="Chandigarh">Chandigarh</option>
+                                      <option value="Chhattisgarh">Chhattisgarh</option>
+                                      <option value="Dadar and Nagar Haveli">Dadar and Nagar Haveli</option>
+                                      <option value="Daman and Diu">Daman and Diu</option>
+                                      <option value="Delhi">Delhi</option>
+                                      <option value="Lakshadweep">Lakshadweep</option>
+                                      <option value="Puducherry">Puducherry</option>
+                                      <option value="Goa">Goa</option>
+                                      <option value="Gujarat">Gujarat</option>
+                                      <option value="Haryana">Haryana</option>
+                                      <option value="Himachal Pradesh">Himachal Pradesh</option>
+                                      <option value="Jammu and Kashmir">Jammu and Kashmir</option>
+                                      <option value="Jharkhand">Jharkhand</option>
+                                      <option value="Karnataka">Karnataka</option>
+                                      <option value="Kerala">Kerala</option>
+                                      <option value="Madhya Pradesh">Madhya Pradesh</option>
+                                      <option value="Maharashtra">Maharashtra</option>
+                                      <option value="Manipur">Manipur</option>
+                                      <option value="Meghalaya">Meghalaya</option>
+                                      <option value="Mizoram">Mizoram</option>
+                                      <option value="Nagaland">Nagaland</option>
+                                      <option value="Odisha">Odisha</option>
+                                      <option value="Punjab">Punjab</option>
+                                      <option value="Rajasthan">Rajasthan</option>
+                                      <option value="Sikkim">Sikkim</option>
+                                      <option value="Tamil Nadu">Tamil Nadu</option>
+                                      <option value="Telangana">Telangana</option>
+                                      <option value="Tripura">Tripura</option>
+                                      <option value="Uttar Pradesh">Uttar Pradesh</option>
+                                      <option value="Uttarakhand">Uttarakhand</option>
+                                      <option value="West Bengal">West Bengal</option>
+                                    </select>
+                                  </div>
+                                  <div class="form-group">
+                                    <label for="exampleFormControlTextarea1">District</label>
+                                    <input type="text" id="quantity" name="quantity" class="form-control">
+                                  </div>
+
+
+                                </div>
+                                <div class="col-md-6">
+
+                                  <div class="form-group">
+                                    <label for="exampleFormControlTextarea1">Permanent Address</label>
+                                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                                  </div>
+                                  <div class="form-group">
+                                    <label for="exampleFormControlTextarea1">Pincode</label>
+                                    <input type="number" id="quantity" name="quantity" class="form-control">
+                                  </div>
+                                  <div class="form-group">
+                                    <label for="exampleFormControlTextarea1">State</label>
+
+                                    <select name="state" id="state" class="form-control">
+                                      <option selected="" hidden="">&nbsp;</option>
+
+                                      <option value="Andhra Pradesh">Andhra Pradesh</option>
+                                      <option value="Andaman and Nicobar Islands">Andaman and Nicobar Islands</option>
+                                      <option value="Arunachal Pradesh">Arunachal Pradesh</option>
+                                      <option value="Assam">Assam</option>
+                                      <option value="Bihar">Bihar</option>
+                                      <option value="Chandigarh">Chandigarh</option>
+                                      <option value="Chhattisgarh">Chhattisgarh</option>
+                                      <option value="Dadar and Nagar Haveli">Dadar and Nagar Haveli</option>
+                                      <option value="Daman and Diu">Daman and Diu</option>
+                                      <option value="Delhi">Delhi</option>
+                                      <option value="Lakshadweep">Lakshadweep</option>
+                                      <option value="Puducherry">Puducherry</option>
+                                      <option value="Goa">Goa</option>
+                                      <option value="Gujarat">Gujarat</option>
+                                      <option value="Haryana">Haryana</option>
+                                      <option value="Himachal Pradesh">Himachal Pradesh</option>
+                                      <option value="Jammu and Kashmir">Jammu and Kashmir</option>
+                                      <option value="Jharkhand">Jharkhand</option>
+                                      <option value="Karnataka">Karnataka</option>
+                                      <option value="Kerala">Kerala</option>
+                                      <option value="Madhya Pradesh">Madhya Pradesh</option>
+                                      <option value="Maharashtra">Maharashtra</option>
+                                      <option value="Manipur">Manipur</option>
+                                      <option value="Meghalaya">Meghalaya</option>
+                                      <option value="Mizoram">Mizoram</option>
+                                      <option value="Nagaland">Nagaland</option>
+                                      <option value="Odisha">Odisha</option>
+                                      <option value="Punjab">Punjab</option>
+                                      <option value="Rajasthan">Rajasthan</option>
+                                      <option value="Sikkim">Sikkim</option>
+                                      <option value="Tamil Nadu">Tamil Nadu</option>
+                                      <option value="Telangana">Telangana</option>
+                                      <option value="Tripura">Tripura</option>
+                                      <option value="Uttar Pradesh">Uttar Pradesh</option>
+                                      <option value="Uttarakhand">Uttarakhand</option>
+                                      <option value="West Bengal">West Bengal</option>
+                                    </select>
+                                  </div>
+                                  <div class="form-group">
+                                    <label for="exampleFormControlTextarea1">District</label>
+                                    <input type="text" id="quantity" name="quantity" class="form-control">
+                                  </div>
+                                  <div class="form-check">
+                                    <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                                    <label class="form-check-label" for="exampleCheck1">Same As Present Address</label>
+                                  </div>
+
+                                </div>
+
+
+                              </div>
+                            </div>
+
+                          </section>
+                          <section>
+                            <div class="container">
+                              <div class="row">
+                                <div class="col-md-6">
+
+                                  <div class="form-group">
+                                    <label for="exampleFormContro">Tele Phone</label>
+
+                                    <input type="number" class="form-control" placeholder="">
+                                  </div>
+
+                                  <div class="form-group">
+                                    <label for="exampltrolInput1">Email Address</label>
+
+                                    <input type="email" class="form-control" placeholder="" id="exampleInputEmail1"
+                                      aria-describedby="emailHelp">
+                                  </div>
+                                  <div class="form-group">
+                                    <label for="exampleFormControlInput120">Voter Id</label>
+                                    <input type="number" class="form-control" id="exampleFormControlInput120">
+                                  </div>
+
+                                </div>
+
+                                <div class="col-md-6">
+                                  <div class="form-group">
+                                    <label for="exampleFormCon1">Mobile Phone</label>
+
+                                    <input type="text" name="Phone Number" class="form-control" placeholder=""
+                                      pattern="[6-9]{1}[0-9]{9}">
+
+                                  </div>
+                                  <div class="form-group">
+                                    <label for="exampleFormControlInput120">Aadhar Number</label>
+                                    <input type="number" class="form-control" id="exampleFormControlInput120">
+                                  </div>
+                                  <div class="form-group">
+                                    <label for="exam">Remarks</label>
+
+                                    <textarea class="form-control" id="exampleFormControlTextarea2" placeholder=""
+                                      rows="2"></textarea>
+                                  </div>
+                                </div>
+                                <div class="col-md-12">
+                                  <h5>Biometric Details</h5>
+                                  <div class="row">
+                                    <div class="col-md-3">
+                                      <div class="custom-file my-2">
+                                        <input type="file" accept="image/" name="image" id="file"
+                                          style="display: none !important;" onchange="loadFile(event)" disabled="">
+                                        <label for="file" style="cursor: pointer;" class="p-2">Upload photo</label>
+
+                                        <script>
+                                          var loadFile = function (event) {
+                                            var image = document.getElementById('output');
+                                            image.src = URL.createObjectURL(event.target.files[0]);
+                                          };
+                                        </script>
+                                      </div>
+                                      <img id="output"
+                                        src="https://www.seekpng.com/png/detail/46-462959_unknown-person-icon-png-download-single-people-logo.png"
+                                        class="img-fluid mt-1" width="150">
+
+                                    </div>
+
+
+
+                                    <div class="col-md-3">
+                                      <div class="custom-file my-2">
+                                        <input type="file" accept="image/" name="image" id="file"
+                                          style="display: none!important;" onchange="loadFile(event)">
+                                        <label for="file" style="cursor :pointer;" class="p-2">Scan Finger Print</label>
+
+                                        <script>
+                                          var loadFile = function (event) {
+                                            var scan = document.getElementById('scan');
+                                            scan.src = URL.createObjectURL(event.target.files[0]);
+                                          };
+                                        </script>
+                                      </div>
+                                      <img id="scan" style="height:80px;"
+                                        src="https://i.pinimg.com/originals/89/60/53/89605396d7eabcdf01ab78ce48aa0c6d.png"
+                                        alt="scan" class="img-fluid mt-1" width="150">
+
+                                    </div>
+
+                                    <div class="col-md-3">
+                                      <div class="custom-file my-2">
+                                        <input type="file" accept="image/" name="image" id="file"
+                                          style="display:none!important" onchange="loadFile(event)">
+                                        <label for="file" style="cursor :pointer;" class="p-2">Upload Signature</label>
+
+                                        <script>
+                                          var loadFile = function (event) {
+                                            var image = document.getElementById('sign');
+                                            image.src = URL.createObjectURL(event.target.files[0]);
+                                          };
+                                        </script>
+                                        <img id="sign" style=" height:80px"
+                                          src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS1YpRbqBJDnQHbdXxHvzrakMNXhgP-z9jpfw&amp;usqp=CAU"
+                                          alt="scan" class="img-fluid mt-1" width="150">
+
+                                      </div>
+                                    </div>
+
+
+                                    <div class="col-md-3">
+                                      <div class="custom-file my-2">
+                                        <input type="file" accept="image/" name="image" id="file"
+                                          style="display: none !important;" onchange="loadFile(event)">
+                                        <label for="file" style="cursor: pointer;" class="p-2">Image Capture</label>
+
+                                        <script>
+                                          var loadFile = function (event) {
+                                            var image = document.getElementById('image');
+                                            image.src = URL.createObjectURL(event.target.files[0]);
+                                          };
+                                        </script>
+                                        <img id="image"
+                                          src="https://www.seekpng.com/png/detail/46-462959_unknown-person-icon-png-download-single-people-logo.png"
+                                          alt="scan" class="img-fluid mt-1" width="150">
+
+                                      </div>
+
+                                    </div>
+                                    <div class="col-md-3">
+                                      <div class="custom-file my-2">
+                                        <input type="file" accept="image/" name="image" id="file"
+                                          style="display: none !important;" onchange="loadFile(event)">
+                                        <label for="file" style="cursor: pointer;" class="p-2">Capture Signature</label>
+
+                                        <script>
+                                          var loadFile = function (event) {
+                                            var thumb1 = document.getElementById('sign1');
+                                            image.src = URL.createObjectURL(event.target.files[0]);
+                                          };
+                                        </script>
+                                        <img id="sign1" style=" height:80px"
+                                          src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS1YpRbqBJDnQHbdXxHvzrakMNXhgP-z9jpfw&amp;usqp=CAU"
+                                          alt="scan" class="img-fluid mt-1" width="150">
+
+                                      </div>
+
+                                    </div>
+                                  </div>
+                                </div>
+
+                              </div>
+                            </div>
+
+
+                        </div>
+
+
+
+                        </section>
+
+                      </div>
+                    </div>
+
+                  </div>
+
+                </div>
+
+
+              </div>
+
+            </div>
+
+            <div id="accordion-25">
+              <!--------------- Qualifications Details ---------------->
+
+              <div class="crd">
+                <div class="card-header" id="heading-1-155">
+                  <h3 class="mb-0">
+                    <a class="collapsed" role="button" data-toggle="collapse" href="#collapse-1-25"
+                      aria-expanded="false" aria-controls="collapse-1-1">
+                      Qualifications Details<i class="fa fa-caret-down ml-5" aria-hidden="true"></i>
+
+                    </a>
+                  </h3>
+                </div>
+                <div id="collapse-1-25" class="collapse" data-parent="#accordion5" aria-labelledby="heading-1-155">
+                  <div class="card-body">
+
+                    <div id="accordion-1-25">
+
+                      <div class="crd">
+                        <div class="card-header" id="heading-1-1-35">
+                          <h5 class="mb-0">
+                            <a class="collapsed" role="button" data-toggle="collapse" href="#collapse-1-1-35"
+                              aria-expanded="false" aria-controls="collapse-1-1-3">
+
+                              Institute Details
+                              <i class="fa fa-caret-down ml-5" aria-hidden="true"></i>
+                            </a>
+                          </h5>
+                        </div>
+                        <div id="collapse-1-1-35" class="collapse" data-parent="#accordion-1-25"
+                          aria-labelledby="heading-1-1-35">
+                          <div class="card-body">
+                            <!--------------- Instidute Details ---------------->
+
+                            <section id="Qualification" class="">
+                              <div class="container">
+                                <div class="row">
+                                  <div class="col-md-6">
+
+                                    <div class="form-group">
+                                      <label for="exampleFormControlInput8">Name </label>
+
+                                      <input type="text" id="Exam" class="form-control" name="Exam">
+
+                                    </div>
+                                    <div class="form-group row">
+
+
+                                      <div class="col-md-6">
+                                        <label for="School">Place </label>
+                                        <input type="text" id="birthday" class="form-control" name="School">
+                                      </div>
+                                      <div class="col-md-6">
+                                        <label for="reg">Registration Number</label>
+
+                                        <input type="number" id="reg" class="form-control" name="reg">
+
+                                      </div>
+                                    </div>
+
+
+                                    <div class="form-group row">
+                                      <div class="col-md-6">
+                                        <label for="Exam">Exam Passed</label>
+                                        <input type="text" class="form-control" id="exampleFormControlInput8">
+
+                                      </div>
+                                      <div class="col-md-6">
+
+                                        <label for="Exam"> Releiving Date</label>
+                                        <input type="Date" id="Date" class="form-control" name="Date">
+
+                                      </div>
+
+                                    </div>
+
+
+                                  </div>
+                                  <div class="col-md-3">
+                                    <div class="form-group">
+                                      <label for="exampleFormControlInput0">District</label>
+                                      <input type="text" class="form-control" id="exampleFormControlInput0">
+                                    </div>
+                                    <div class="form-group">
+                                      <label for="exampleFormControlInput9">Board </label>
+                                      <input type="text" class="form-control" id="exampleFormControlInput9">
+                                    </div>
+                                    <div class="form-group">
+                                      <label for="exampleFormControlSelect4">Month Of Passing</label>
+                                      <i class="fa fa-caret-down " id="drop"></i>
+
+                                      <select class="form-control" id="exampleFormControlSelect4">
+                                        <option selected="" hidden="">&nbsp;</option>
+
+                                        <option>March</option>
+                                        <option>2</option>
+                                        <option>3</option>
+                                        <option>4</option>
+                                        <option>5</option>
+                                      </select>
+                                    </div>
+                                  </div>
+                                  <div class="col-md-3">
+                                    <div class="form-group">
+                                      <label for="exampleFormControlInput0">State</label>
+                                      <input type="text" class="form-control" id="exampleFormControlInput0">
+                                    </div>
+                                    <div class="form-group">
+                                      <label for="exampleFormControlInput9">Duration </label>
+                                      <input type="number" class="form-control" id="exampleFormControlInput9">
+                                    </div>
+                                    <div class="form-group">
+                                      <label for="exampleFormControlSelect4">Year Of Passing</label>
+                                      <i class="fa fa-caret-down " id="drop"></i>
+
+                                      <select class="form-control" id="exampleFormControlSelect4">
+                                        <option hiden="" selected="">&nbsp;</option>
+
+                                        <option>2010</option>
+                                        <option>2</option>
+                                        <option>3</option>
+                                        <option>4</option>
+                                        <option>5</option>
+                                      </select>
+                                    </div>
+                                  </div>
+
+                                </div>
+                              </div>
+
+                            </section>
+
+                          </div>
+                        </div>
+                      </div>
+                      <div class="crd">
+                        <div class="card-header" id="heading-1-1-35">
+                          <h5 class="mb-0">
+                            <a class="collapsed" role="button" data-toggle="collapse" href="#collapse-1-1-45"
+                              aria-expanded="false" aria-controls="collapse-1-1-3" 5>
+                              Mark Details<i class="fa fa-caret-down ml-5" aria-hidden="true"></i>
+                            </a>
+                          </h5>
+                        </div>
+                        <div id="collapse-1-1-45" class="collapse" data-parent="#accordion-1-25"
+                          aria-labelledby="heading-1-1-45">
+                          <div class="card-body">
+                            <!-- -------------mark detail ---------------->
+
+                            <section id="mark" class="">
+                              <div class="container">
+                                <div class="row">
+                                  <div class="table-responsive">
+                                    <table class="table ">
+                                      <thead class=" text-dark">
+                                        <tr>
+                                          <th></th>
+                                          <th scope="col">THEORY</th>
+                                          <th scope="col">PRACTICAL</th>
+                                          <th scope="col">INTERNAL</th>
+                                          <th scope="col">TOTAL</th>
+                                          <th scope="col">MAX.MARKS</th>
+
+
+
+                                        </tr>
+                                      </thead>
+                                      <tbody>
+                                        <tr>
+                                          <th scope="row" class=" text-dark"> LANGUAGE</th>
+                                          <td><input type="text" name="" class="form-control"></td>
+                                          <td><input type="text" name="" class="form-control"></td>
+                                          <td><input type="text" name="" class="form-control"></td>
+                                          <td><input type="text" name="" class="form-control"></td>
+
+                                          <td><input type="text" name="" class="form-control"></td>
+                                          <!-- <th scope="row"class=" text-dark">LANGUAGE PAPER</th>
+      <td><input type="text" name=""class="form-control"placeholder="tamil"></td> -->
+
+
+                                        </tr>
+                                        <tr>
+                                          <th scope="row" class=" text-dark">ENGLISH</th>
+                                          <td><input type="text" name="" class="form-control"></td>
+                                          <td><input type="text" name="" class="form-control"></td>
+                                          <td><input type="text" name="" class="form-control"></td>
+                                          <td><input type="text" name="" class="form-control"></td>
+
+                                          <td><input type="text" name="" class="form-control"></td>
+                                          <!-- <th scope="row"class=" text-dark">SUBJECT GROUP CODE</th>
+      <td><input type="text" name=""class="form-control"placeholder="098"></td> -->
+                                        </tr>
+                                        <tr>
+                                          <th scope="row" class=" text-dark">MATHEMATICS</th>
+                                          <td><input type="text" name="" class="form-control"></td>
+                                          <td><input type="text" name="" class="form-control"></td>
+                                          <td><input type="text" name="" class="form-control"></td>
+                                          <td><input type="text" name="" class="form-control"></td>
+
+                                          <td><input type="text" name="" class="form-control"></td>
+                                          <!-- <th scope="row"class=" text-dark">TOTAL MARKS</th>
+      <td><input type="text" name=""class="form-control"placeholder="700"></td> -->
+                                        </tr>
+                                        <tr>
+                                          <th scope="row" class=" text-dark">PHYSICS</th>
+                                          <td><input type="text" name="" class="form-control"></td>
+                                          <td><input type="text" name="" class="form-control"></td>
+                                          <td><input type="text" name="" class="form-control"></td>
+                                          <td><input type="text" name="" class="form-control"></td>
+
+                                          <td><input type="text" name="" class="form-control"></td>
+                                          <!-- <th scope="row"class=" text-dark">MAX. MARKS</th>
+      <td><input type="text" name=""class="form-control"placeholder="700"></td> -->
+                                        </tr>
+                                        <tr>
+                                          <th scope="row" class=" text-dark">CHEMISTRY</th>
+                                          <td><input type="text" name="" class="form-control"></td>
+                                          <td><input type="text" name="" class="form-control"></td>
+                                          <td><input type="text" name="" class="form-control"></td>
+                                          <td><input type="text" name="" class="form-control"></td>
+
+                                          <td><input type="text" name="" class="form-control"></td>
+                                          <!-- <th scope="row"class=" text-dark">PERCENTAGE</th>
+      <td><input type="text" name=""class="form-control"placeholder="98"></td> -->
+                                        </tr>
+                                        <tr>
+                                          <th scope="row" class=" text-dark">BIOLOGY</th>
+                                          <td><input type="text" name="" class="form-control"></td>
+                                          <td><input type="text" name="" class="form-control"></td>
+                                          <td><input type="text" name="" class="form-control"></td>
+                                          <td><input type="text" name="" class="form-control"></td>
+
+                                          <td><input type="text" name="" class="form-control"></td>
+                                        </tr>
+                                        <tr>
+                                          <th scope="row" class=" text-dark">BOTONY</th>
+                                          <td><input type="text" name="" class="form-control"></td>
+                                          <td><input type="text" name="" class="form-control"></td>
+                                          <td><input type="text" name="" class="form-control"></td>
+                                          <td><input type="text" name="" class="form-control"></td>
+
+                                          <td><input type="text" name="" class="form-control"></td>
+                                        </tr>
+                                        <tr>
+                                          <th scope="row" class=" text-dark">ZOOLOGY</th>
+                                          <td><input type="text" name="" class="form-control"></td>
+                                          <td><input type="text" name="" class="form-control"></td>
+                                          <td><input type="text" name="" class="form-control"></td>
+                                          <td><input type="text" name="" class="form-control"></td>
+
+                                          <td><input type="text" name="" class="form-control"></td>
+
+                                        </tr>
+
+                                      </tbody>
+                                    </table>
+                                    <table class="table ">
+                                      <thead class=" text-dark">
+                                        <tr>
+                                          <th scope="col">LANGUAGE PAPER</th>
+                                          <th scope="col" width="200"> SUBJECT GROUP CODE</th>
+                                          <th scope="col">TOTAL MARKS</th>
+                                          <th scope="col">MAX. MARKS</th>
+
+
+
+                                        </tr>
+
+                                      </thead>
+                                      <tbody>
+                                        <tr>
+                                          <td><input type="text" name="" class="form-control"></td>
+
+                                          <td><input type="text" name="" class="form-control"></td>
+                                          <td><input type="text" name="" class="form-control"></td>
+                                          <td><input type="text" name="" class="form-control"></td>
+                                        </tr>
+                                      </tbody>
+                                    </table>
+                                  </div>
+                                </div>
+                              </div>
+                            </section>
+
+
+                          </div>
+
+                        </div>
+
+                      </div>
+                      <div class="cad">
+                        <div class="card-header" id="heading-1-135">
+                          <h5 class="mb-0">
+                            <a class="collapsed" role="button" data-toggle="collapse" href="#collapse-1-135"
+                              aria-expanded="false" aria-controls="collapse-1-13">
+                              NEET Percentile Details <i class="fa fa-caret-down ml-5" aria-hidden="true"></i> </a>
+                          </h5>
+                        </div>
+                        <div id="collapse-1-135" class="collapse" data-parent="#accordion-1-25"
+                          aria-labelledby="heading-1-135">
+                          <div class="card-body">
+                            <!-- ----------NEET Percentile Details  ------------------- -->
+                            <section id="Neet">
+                              <div class="container">
+
+                                <div class="table-responsive">
+                                  <table class="table ">
+                                    <thead class=" text-dark">
+                                      <tr>
+                                        <th></th>
+                                        <th scope="col">PHYSICS</th>
+                                        <th scope="col">CHEMISTRY</th>
+                                        <th scope="col"> BIOLOGY</th>
+                                        <th scope="col"> AGGREGATE</th>
+
+
+
+
+                                      </tr>
+                                    </thead>
+                                    <tbody>
+                                      <tr>
+                                        <th width='165px' scope="row" class=" text-dark"> OBTAINED MARKS</th>
+                                        <td><input type="text" name="" class="form-control"></td>
+                                        <td><input type="text" name="" class="form-control"></td>
+                                        <td><input type="text" name="" class="form-control"></td>
+                                        <td><input type="text" name="" class="form-control"></td>
+
+
+
+
+                                      </tr>
+
+                                      <tr>
+                                        <th width='165px;' scope="row" class=" text-dark"> MAX. MARKS</th>
+                                        <td><input type="text" name="" class="form-control"></td>
+                                        <td><input type="text" name="" class="form-control"></td>
+                                        <td><input type="text" name="" class="form-control"></td>
+                                        <td><input type="text" name="" class="form-control"></td>
+
+
+                                      </tr>
+
+
+
+
+                                    </tbody>
+                                  </table>
+                                </div>
+                              </div>
+
+                            </section>
+
+
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                  </div>
+                </div>
+              </div>
+              <div class="crd">
+                <div class="card-header" id="heading-115">
+                  <h3 class="mb-0">
+                    <a class="collapsed" role="button" data-toggle="collapse" href="#collapse-115" aria-expanded="false"
+                      aria-controls="collapse-115">
+                      Bank Details<i class="fa fa-caret-down ml-5" aria-hidden="true"></i> </a>
+                  </h3>
+                </div>
+                <div id="collapse-115" class="collapse" data-parent="#accordion5" aria-labelledby="heading-115">
+                  <div class="card-body">
+                    <!--------------- Bank details ----------------->
+                    <section id="bank">
+                      <div class="container">
+                        <div class="row">
+                          <div class="col-md-3">
+
+                            <div class="form-group">
+                              <label for="exampleFormControlInput3">Account Number</label>
+                              <input type="number" class="form-control" id="exampleFormControlInput3" readonly="">
+                            </div>
+                            <div class="form-group">
+                              <label for="exampleFormControlInput12">IFSC</label>
+                              <input type="number" class="form-control" id="exampleFormControlInput12" readonly="">
+                            </div>
+
+                          </div>
+                          <div class="col-md-4">
+
+                            <div class="form-group">
+                              <label for="exampleFormControlInput13">Bank Name</label>
+                              <input type="text" class="form-control" id="exampleFormControlInput13" readonly="">
+                            </div>
+                            <div class="form-group">
+                              <label for="exampleFormControlInput120">PAN Number</label>
+                              <input type="number" class="form-control" id="exampleFormControlInput120" readonly="">
+                            </div>
+
+                          </div>
+                          <div class="col-md-4">
+
+                            <div class="form-group">
+                              <label for="exampleFormControlInput13">MICR</label>
+                              <input type="text" class="form-control" id="exampleFormControlInput13" readonly="">
+                            </div>
+                            <div class="form-group">
+                              <label for="exampleFormControlInput13">Branch Name</label>
+                              <input type="text" class="form-control" id="exampleFormControlInput13" readonly="">
+                            </div>
+
+
+                          </div>
+
+                        </div>
+                      </div>
+                    </section>
+
+                  </div>
+                </div>
+              </div>
+              <div class="car">
+                <div class="card-header" id="heading-125">
+                  <h3 class="mb-0">
+                    <a class="collapsed" role="button" data-toggle="collapse" href="#collapse-125" aria-expanded="false"
+                      aria-controls="collapse-125">
+                      Certificate Details<i class="fa fa-caret-down ml-5" aria-hidden="true"></i> </a>
+                  </h3>
+                </div>
+                <div id="collapse-125" class="collapse" data-parent="#accordion5" aria-labelledby="heading-125">
+                  <div class="card-body">
+                    <!--------------- Certificate details ----------------->
+                    <section id="certificate">
+                      <div class="container">
+
+                        <div class="table-responsive">
+                          <table class="table ">
+                            <tr>
+                              <th>Certificate Details</th>
+                              <th scope="col">Registration/Certificate No</th>
+                              <th scope="col" style="width: 200px;">Date</th>
+
+                              <th scope="col" width="200px">Issue Authority</th>
+
+                              <th scope="col">Place/Taluk</th>
+
+                              <th scope="col">Upload</th>
+
+
+                            </tr>
+                            </thead>
+                            <tbody>
+                              <tr>
+                                <th scope="row" class=" text-dark">
+                                  <div class="form-group">
+                                    <i class="fa fa-caret-down " id="drop"></i>
+
+                                    <select class="form-control" id="exampleFormControlSelect1" style="width: 200px;">
+                                      <option hidde="" selected="">&nbsp;</option>
+
+                                      <option>Community Certificate</option>
+                                      <option>Transfer Certificate</option>
+                                      <option>Conduct Certificate</option>
+                                      <option>Eligiblity Certificate</option>
+                                      <option>Migration Certificate</option>
+                                      <option>Admission Commitee Form</option>
+                                    </select>
+                                  </div>
+                                </th>
+                                <td><input type="text" name="" class="form-control"></td>
+                                <td><input type="Date" name="" class="form-control"></td>
+                                <td><input type="text" name="" class="form-control"></td>
+                                <td><input type="text" name="" class="form-control"></td>
+
+                                <td><button type="button" class="btn-sm" data-toggle="modal" data-target="#upload"><i
+                                      class="fa fa-upload text-primary"></i></button></td>
+
+
+                              </tr>
+
+
+
+
+
+                            </tbody>
+                          </table>
+                        </div>
+
+
+
+                      </div>
+                    </section>
+
+                  </div>
+                </div>
+              </div>
+
+              <div class="cad">
+                <div class="card-header" id="heading-195">
+                  <h3 class="mb-0">
+                    <a class="collapsed" role="button" data-toggle="collapse" href="#collapse-195" aria-expanded="false"
+                      aria-controls="collapse-195">
+                      Relieving Details<i class="fa fa-caret-down ml-5" aria-hidden="true"></i> </a>
+                  </h3>
+                </div>
+                <div id="collapse-195" class="collapse" data-parent="#accordion5" aria-labelledby="heading-195">
+                  <div class="card-body">
+                    <!---------------Releiving details ----------------->
+                    <div class="container">
+                      <div class="row">
+                        <div class="col-md-3">
+
+                          <div class="form-group">
+                            <label for="exampleFormControlSelect8">Relieved </label>
+                            <select class="form-control" id="exampleFormControlSelect8">
+                              <option>ALL</option>
+                              <option>2</option>
+                              <option>3</option>
+                              <option>4</option>
+                              <option>5</option>
+                            </select>
+                          </div>
+                          <div class="form-group">
+                            <label for="exampleFormControlInput129">Date of Reallotment</label>
+                            <input type="Date" class="form-control" id="exampleFormControlInput129">
+                          </div>
+
+                        </div>
+                        <div class="col-md-3">
+                          <div class="form-group">
+                            <label for="exampleFormControlInput89">College Name</label>
+                            <input type="text" class="form-control" id="exampleFormControlInput89">
+                          </div>
+                        </div>
+                        <div class="col-md-3">
+                          <div class="form-group">
+                            <label for="exampleFormControlInput09">Amount Refunded</label>
+                            <input type="number" class="form-control" id="exampleFormControlInput09">
+                          </div>
+                        </div>
+                        <div class="col-md-3">
+                          <div class="form-group">
+                            <label for="exampleFormControlInput81">Date Of Relieving</label>
+                            <input type="Date" class="form-control" id="exampleFormControlInput81">
+                          </div>
+                        </div>
+
+                      </div>
+
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              </section>
+            </div>
+          </div>
+        </div>
+
+
+
+
+
+
+        <div class="modal-footer ">
+          <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
+
+          <button type="submit" class="btn btn-primary">Update </button>
+          <button type="submit" class="btn btn-secondary">Print </button>
+
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- upload modal -->
+
+  <!-- Modal -->
+
+  <!--------------------------- delete modal -------------------------->
+
+
+  <!-- Modal -->
+
+  <!--------------------- ----------------fee modal------------ ---------------------->
+
+
+  <!-- Modal -->
+
+
+  <footer class="main-footer">
+    <div class="float-right d-none d-sm-block">
+      <b>All rights reserved.</b>
+    </div>
+    <strong>Copyright &copy; 2021 <a href="https://ashiantechnologies.com/">Ashian Technologies</a>.</strong>
+  </footer>
+
+  <!-- Control Sidebar -->
+  <aside class="control-sidebar control-sidebar-dark">
+    <!-- Control sidebar content goes here -->
+  </aside>
+  <!-- /.control-sidebar -->
+  </div>
+  <!-- ./wrapper -->
+
+  <!-- jQuery bootstrap -->
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+    integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+    integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+    crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+    integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+    crossorigin="anonymous"></script>
+  <script>
+    UPLOADCARE_PUBLIC_KEY = 'demopublickey';
+  </script>
+  <script src="https://ucarecdn.com/libs/widget/3.x/uploadcare.full.min.js" charset="utf-8"></script>
+  <!-- AdminLTE App -->
+  <script src="/assets/dashboard/dist/js/adminlte.js"></script>
+  <script src="/assets/dashboard/dist/js/mbbs.js"></script>
+
+  <!-- AdminLTE for demo purposes -->
+  <script src="/assets/dashboard/dist/js/demo.js"></script>
+  <!-- page script -->
+<script>
+    $(document).ready(function() {
+
+  $("#filess").change(function() {
+     var filename = this.files[0].name;
+     $("#f1").text(filename );
+    })
+    
+  $("#filess2").change(function() {
+     var filename = this.files[0].name;
+     $(" #f2").text(filename );
+    })
+    $("#filess3").change(function() {
+     var filename = this.files[0].name;
+     $(" #f3").text(filename );
+    })
+    $("#filess4").change(function() {
+     var filename = this.files[0].name;
+     $(" #f4").text(filename );
+    })
+    $("#filess5").change(function() {
+     var filename = this.files[0].name;
+     $(" #f5").text(filename );
+    })
+    $("#filess6").change(function() {
+     var filename = this.files[0].name;
+     $(" #f6").text(filename );
+    })
+    $("#filess7").change(function() {
+     var filename = this.files[0].name;
+     $(" #f7").text(filename );
+    })
+    $("#filess8").change(function() {
+     var filename = this.files[0].name;
+     $(" #f8").text(filename );
+    })
+    $("#fileb1").change(function() {
+     var filename = this.files[0].name;
+     $(" #b1").text(filename );
+    })
+    $("#fileb2").change(function() {
+     var filename = this.files[0].name;
+     $(" #b2").text(filename );
+    })
+    $("#fileb3").change(function() {
+     var filename = this.files[0].name;
+     $(" #b3").text(filename );
+    })
+    $("#fileb4").change(function() {
+     var filename = this.files[0].name;
+     $(" #b4").text(filename );
+    })
+  });
+</script>
+</body>
+
+</html>

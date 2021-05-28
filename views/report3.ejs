@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Ponmari_Sample</title>
+  <!-- Tell the browser to be responsive to screen width -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="/assets/dashboard/plugins/fontawesome-free/css/all.min.css">
+  <!-- Ionicons -->
+  <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+  <!-- bootsrtap -->
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <!-- Theme style -->
+  <link rel="stylesheet" href="/assets/dashboard/dist/css/alter.css">
+  <link rel="stylesheet" href="/assets/dashboard/dist/css/mbbs.css">
+  <!-- Google Font Source Sans Pro -->
+  <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro300,400,400i,700" rel="stylesheet">
+  
+</head>
+<body class="hold-transition sidebar-mini">
+    <div class="toolbar no-print">
+      <button class="btn btn-info" onclick="window.print()">
+        Print Certificate
+      </button>
+    </div>
+   
+<section id="report"class="blue ">
+  <div class="container-fluid">
+         <div id="reportcard"class="card ">
+    <div class="card m-4 p-3"id="border">
+ 
+<div class="row">
+  <div class="col-md-3 text-center"><img src="img/r1.png"class="img-fluid"width="150"></div>
+  <div class="col-md-6"><h2 class="other-font ">Tirunelveli Medical College</h2>
+          <h5 class="text-center "><strong class="blue">Highground, Tirunelveli-627011<br>
+Ph:0462-2572733-PABX, 0462-2572944, website: www.tvmc.ac.in</strong>
+</h5></div>
+  <div class="col-md-3 text-center"><img src="img/r2.png"class="img-fluid"width="150"></div>
+</div>
+      <br />
+          <hr>
+          <h4 class="text-center"><strong> 
+ACKNOWLEDGEMENT
+</strong></h4>
+  <br />
+  <h5>RECEIVED THE FOLLOWING ORIGINAL CERTIFICATES ON <u>26-Mar-2021</u>
+</h5><br>
+<ul id="li">
+  <li><p>FEE RECEIPT</p></li>
+    <li><p>10TH MARK SHEET</p></li>
+  <li><p>10TH PASS CERTIFICATE
+</p></li>
+  <li><p>12TH MARK SHEET
+</p></li>
+  <li><p> 12TH PASS CERTIFICATE
+</p></li>
+  <li><p>COMMUNITY CERTIFICATE</p></li>
+  <li><p>TRANSFER CERTIFICATE</p></li>
+  <li><p>CONDUCT CERTIFICATE
+</p></li>
+  <li><p>MIGRATION CERTIFICATE</p></li>
+  <li><p> ELIGIBILITY CERTIFICATE</p></li>
+  <li><p>PHYSICAL WITH DISABILITY CERTIFICATE</p></li>
+  <li><p> PHYSICALLY CHALANGED CERTIFICATE</p></li>
+  <br><br>
+<li style="list-style: none;">
+  <div class="row">
+    <div class="col-md-2">
+<p>Candidate Name:</p>
+<p>Father Name :
+</p>
+<p>Mother Name:</p>
+<p>Address:</p>
+    </div>
+    <div class="col-md-7">
+      <%
+if(userData.length!=0){
+var i=1;
+userData.forEach(function(classdata){
+%>
+      <p><%=classdata.name %></p>
+            <p><%=classdata.father_name %></p>
+      <p><%=classdata.mother_name %></p>
+      <p><%=classdata.name %></p>
+      <%  i++; }) %>
+      <% } else{ %>
+      
+      <% } %>
+      <%
+      if(userData2.length!=0){
+      var i=1;
+      userData2.forEach(function(classdata2){
+      %>
+      <%=classdata2.ps_address %>
+      <%=classdata2.ps_pincode %>
+      <%=classdata2.ps_state %>
+      <%=classdata2.ps_district %>
+      <%  i++; }) %>
+      <% } else{ %>
+      
+      <% } %>
+    </div>
+     <div class="col-md-3">
+      <p>Signature of the Candidate</p>
+      <%
+      if(userData3.length!=0){
+      var i=1;
+      userData3.forEach(function(classdata3){
+      %>
+      <img src="/uploads/<%=classdata3.cand_sign %>" width='150' height="100"/>
+     
+      <%  i++; }) %>
+      <% } else{ %>
+      
+      <% } %>
+    </div>
+  </div>
+</li>
+</ul>
+  
+  </div>
+  </div>
+</div>
+</div>
+</section>
+
+
+
+
+ 
+<!-- jQuery bootstrap -->
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+<script>
+UPLOADCARE_PUBLIC_KEY = 'demopublickey';
+</script>
+<script src="https://ucarecdn.com/libs/widget/3.x/uploadcare.full.min.js" charset="utf-8"></script>
+<!-- AdminLTE App -->
+<script src="js/adminlte.js"></script>
+<script src="js/mbbs.js"></script>
+
+<!-- AdminLTE for demo purposes -->
+<script src="js/demo.js"></script>
+<!-- page script -->
+
+
+</body>
+
+</html>

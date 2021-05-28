@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Ponmari_Sample</title>
+  <!-- Tell the browser to be responsive to screen width -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="/assets/dashboard/plugins/fontawesome-free/css/all.min.css">
+  <!-- Ionicons -->
+  <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+  <!-- bootsrtap -->
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <!-- Theme style -->
+  <link rel="stylesheet" href="/assets/dashboard/dist/css/alter.css">
+  <link rel="stylesheet" href="/assets/dashboard/dist/css/mbbs.css">
+  <!-- Google Font Source Sans Pro -->
+  <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro300,400,400i,700" rel="stylesheet">
+  
+</head>
+<body class="hold-transition sidebar-mini">
+    <div class="toolbar no-print">
+      <button class="btn btn-info" onclick="window.print()">
+        Print Certificate
+      </button>
+    </div>
+   
+<section id="report"class="blue ">
+  <div class="container">
+         <div id="reportcard"class="">
+ 
+<div class="row justify-content-center">
+  <div class="col-md-12"><h4 class="other-font ">TIRUNELVELI MEDICAL COLLEGE, TIRUNELVELI-11. 
+</h4>
+     </div>
+        <br>
+
+      
+</div>
+     
+
+<br>
+<i><div class="row text-left justify-content-center">
+  <div class="col-md-3">
+
+<p><b>Name:</b></p>
+<p><b>Community:</b></p>
+<p><b>Year Of Admission:</b></p>
+<p><b>A.R No:</b></p>
+<p><b>Neet Mark:</b></p>
+
+
+
+
+  </div>
+  <div class="col-md-3">
+      <%
+      if(userData.length!=0){
+      var i=1;
+      userData.forEach(function(classdata){
+      %>
+      <p><b><%=classdata.name %></b></p>
+      <p><b><%=classdata.community %></b></p>
+      <p><b><%=classdata.academic_year %></b></p>
+      <%  i++; }) %>
+<% } else{ %>
+
+<% } %>
+
+
+<%
+if(userData1.length!=0){
+var i=1;
+userData1.forEach(function(classdata1){
+%>
+<p><b><%=classdata1.ar_no%></b></p>
+<p><b><%=classdata1.neet_mark%></b></p>
+
+<p><b><%=classdata1.academic_year %></b></p>
+
+<%  i++; }) %>
+<% } else{ %>
+
+<% } %>
+    
+ 
+  </div>
+
+  <div class="col-md-3">
+      <p><b>Date Of Admission:</b></p>
+      <p><b>Rank:</b></p>
+      
+      <p><b>Select Category:</b></p>
+      <p><b>Name Of The Course:</b></p>
+      <p><b>Neet UG Roll No:</b></p>
+  </div>
+
+  <div class="col-md-3">
+      <%
+      if(userData1.length!=0){
+      var i=1;
+      userData1.forEach(function(classdata1){
+      %>
+      <p><b><%=classdata1.date_of_admission %></b></p>
+      <p><b><%=classdata1.rank%></b></p>
+      <p><b><%=classdata1.selected_category %></b></p>
+      <p><b><%=classdata1.course %></b></p>
+      <%  i++; }) %>
+      <% } else{ %>
+    
+      <% } %>
+      <%
+if(userData1.length!=0){
+var i=1;
+userData1.forEach(function(classdata1){
+%>
+<p><b><%=classdata1.neet_roll_no %></b></p>
+<%  i++; }) %>
+      <% } else{ %>
+    
+      <% } %>
+  </div>
+
+  <br>
+</div></i>
+<h5 class="text-center"><span class="blue">ANNEXURE  IX</span></h5>
+ <h5 class="text-center "><span class="blue">AGREEMENT BOND FORM FOR CANDIDATES ADMITTED FOR M.B.B.S. COURSE FOR 2020-2021 ACADEMIC YEAR</span></h5>
+<br>
+<i><p>This   agreement   made   on    this--------------------------------------------day    of----------------------------2020    between    the    Governor    of    Tamil   Nadu  (herein  after  called  the  Governor  which  expression  shall,  where  the  context  so  admits  include  his  successor  in  Office)  of         the  one  part  and    son/daughter  of     resident  of     in  the  Taluk   of  /  district/State  (herein  after  called  the  candidate)  which  expression     shall, where the context so admits include his/her heirs, executers, administrators and representatives of the other part.</p></i>
+<br><br>
+<i><p>WHEREAS the  candidate  has,  on  his/her  application  been  selected  to  undergo  training  for  the                       course  in  the  TIRUNELVELI MEDICAL COLLEGE.TIRUNELVELI.d </p>
+
+                   
+                   </i>
+                   <i><p>AND WHEREAS the candidate has agreed to complete  his/her  training  for  the  said  course,  at  the  said  college,  subject  to  the  condition herein after appearing.</p>
+                   
+                   </i><br>
+                   <i><p>Now THEREFORE, this agreement witnesses and it is hereby agreed as follows:</p></i>
+                   <ul>
+                     <li><p>(1) The  candidate  shall  diligently  complete  his/her  training  for  the  said  course  at  the  said  college,  shall  abide  by  the  rules  of  the    said  college  for  the  time  being  in  force  regulating  the  conduct  of  students  at  the  said  college  and  shall  pass   all   the   examinations prescribed the said course by the University or the Medical Institution concerned.</p></li>
+  <li><p>
+(2) Upon  passing  the  final  M.B.B.S.  examination  the  candidate  shall  serve  as  “Intern”  for  the  prescribed  period   as   laid   down   by    the Medical Council Act.1956 (Central Act 102 of 1956).
+</p></li>
+  <li><p>
+
+(3) (i) The candidate shall,  on  demand  made  by  the  Government  within  two  years  from  the  date  of  which  he/she  registers  himself/herself  as  a  Medical  Practitioner,  serve  for  a  period  of  not  less  than  five  years  and  in  such  rural  areas   as   the Government may be General or Special Orders specify.
+ii. those candidates who fail to comply with clause 3 ( i ) shall have to pay a sum of Rs.5,00,000/- (Five Lakhs Only) or as the Government may direct as penalty for having breached the   contract in the bond.
+56).
+</p></li>
+ <li><p>
+
+(4) During  the  period  of  Internship  under  clause  (2)  and  while  in  service  under  clause  (3)  the   candidate   shall   faithfully,  diligently   and with skill and ability perform his/her duties and observe the  rules  for  the  time  being  in  force  made  by  the  Governor  or  the  President as the case may be for regulating the conduct of Government Servants.
+</p></li>
+ <li><p>
+
+(5) While  in  service  under  clause  (3)  the  Pay  and  Allowances  and  Other  conditions  of  service  of  the  candidate   shall   be  regulated   by the rules and orders of the Government for the time being in force, for the post to which he/she is appointed.
+</p></li>
+ <li><p>
+
+(6) Candidates   who   discontinue   the   course   between   ---------------------   to   -------------------    are   bound   by   the   Bond   and   thereby they  shall  have  to  pay  a  sum  of  Rs.1,00,000/-  (Rupees  One  Lakh  Only)  as  penalty  for  having  breached  the  contract  in  the      bond  and  the  candidates  who  discontinue  the    course  on  or  after  ----------------------  and  in  any  date  of  the   subsequent  years     they shall have to pay a sum of Rs. 10,00,000/- (Rupees Ten Lakhs only) as penalty.
+</p></li>
+ <li><p>
+
+(7) Any sum falling due from the candidate under this agreement shall be recovered from him/her as an arrear of land revenue..
+</p></li>
+ <li><p>
+
+(8) If any dispute shall arise between the parties hereto in  respect  of  this  agreement  or  any  of  the  provisions  here  in  contained  or  anything  arising  hereunto  except  in  respect  of  matters  on  which  decision  of  the  Government  under  clause  (6)  is  declared  to         be final and binding, the same shall be referred to the arbitration of Director of Medical Education whose decision thereon
+</p></li>
+<li><p>
+
+(9)   The witness shall  bear  the  stamp duty  payable  in  respect  of  this  agreement  if  required.  In  witness where of the parties hereto have appended their signature hereunto on the dates respectively
+mentioned against the signature
+
+</p></li>
+
+<li>Witness: </li>
+<ol >
+<li style="list-style: decimal"></li><br>
+<li style="list-style: decimal"></li>
+</ol>
+<li>
+  <div class="row">
+    <div class="col-md-4">
+      <p>
+   Signature of the Parent wit date
+</p>
+</div>
+  <div class="col-md-4">
+    <p>COUNTER SIGNED.</p>
+</div>
+  <div class="col-md-4">
+    <p>Signature of the Candidate with date </p>
+</div>
+
+</li>
+<li><p>To</p></li>
+<li><p><b>The Governor of Tamil Nadu.</b></p></li>
+ <li><p><b>WHEREAS, the  Governor  has,  in  order  to  secure   due   performance   of   the   above   agreement   demanded   security from the candidate.</b></p></li>
+ <li><p><b>Now, THEREFORE,  in  consideration  of  the  admission  of  the  candidate  to  the  said  college  and  his/her  continuance there, for training as aforesaid and at the request of the candidate.</b></p></li>
+  <li><p><b>(i) - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - S/ o  D/ o--------------------------------- Resident  of
+----------------------------------------------------in  the Taluk of  District
+of  (Parent)
+</b></p></li>
+
+ <li><p><b>
+(ii)  - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - S / o D / o R e s i d e n t
+o f - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - i n t h e T a l u k of-----------------------------------------------------------District of-----------------------------------------------
+
+</b></p></li>
+ <li><p><b>
+(iii) - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - S / o D / o R e s i d e n t
+o f - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - i n t h e T a l u k of-----------------------------------------------------------District of-----------------------------------------------
+
+
+</b></p></li>
+ <li><p><b>
+Herein after called  “the  sureties”  on  behalf  of  the  candidate  do  hereby  jointly  and  severally  agree  that  in  the event of  the  candidate  committing  any  breach  of  any  term  of  the  above  agreement  to   which   the   breach   the decision  of  the  Government  shall  be  final  and  binding  on  the  sureties,  we  shall  pay  the  Government  on  demand    and  without  demur  the  sum  of  Rs.5,00,000/-  (Rupees  Five  Lakhs  only)/   Rs.10,00,000/-  (Rupees  Ten   lakhs  only)   as   the case may be; or as the  Government  may  direct  and  we  hereby  bind  ourselves  and  representatives for  such  payment. We further agree that any sum due hereunder shall be recovered as an arrear of land revenue.
+
+
+</b></p></li>
+ <li><p><b>
+We also agree that not with standing the provision of section 133 and 135 of the India Contract Act 1872
+(Central Act IX of  1872)  or  any  other  rule  of  Law  or  equity  in  that  behalf,  any  indulgence  of  forbearance  shown  by the  Government  to  the  candidates  or  any  variance  in  the  terms  of  the  contract  with  the  candidate  whether  with        or without  the  consent  of  the  sureties  or  either  of  this  shall  not  operate  as  a   discharge   of   the   sureties   obligations under this bond.
+
+
+
+</b></p></li>
+ <li><p><b>Signed by us this  day of  2020.
+
+
+
+</b></p></li>
+
+  <div class="row">
+<div class="col-md-9">
+
+<li>Witness: </li>
+<ol >
+<li style="list-style: decimal"></li><br>
+<li style="list-style: decimal"></li>
+</ol>
+</div>
+<div class="col-md-3">
+<ol >
+<li style="list-style: decimal"> Signature of First Surety
+Parent or Guardian of Candidate Full Address:
+</li><br>
+<li style="list-style: decimal">Signature of Second Surety
+Full Address:
+</li>
+<li style="list-style: decimal">3.  Signature of Third Surety Full Address:
+</li>
+</ol>
+  </div>
+</div>
+<div class="row justify-content-center">
+  <div class="col-md-12"><h4 class="other-font ">TIRUNELVELI MEDICAL COLLEGE, TIRUNELVELI-11. 
+</h4>
+     </div>
+        <br>
+
+      
+</div><br>
+<div class="row justify-content-center">
+  <div class="col-md-2">
+    <p><b><i>Name:</i></b></p>
+        <p><b><i>A.R.No. :
+</i></b></p>
+ <p><b><i>Neet Mark:</i></b></p>
+    <p><b><i>Neet UG Roll No :</i></b></p>
+    <p><b><i>Year of Admission:</i></b></p>
+
+</div>
+  <div class="col-md-2">
+        <p><b><i>devi</i></b></p>
+        <p><b><i>devi:</i></b></p>
+        <p><b><i>devi:</i></b></p>
+        <p><b><i>devi:</i></b></p>
+        <p><b><i>devi:</i></b></p>
+
+</div>
+  <div class="col-md-2">
+     <p><b><i>Date of Admission:</i></b></p>
+        <p><b><i>Rank:
+</i></b></p>
+ <p><b><i>Community:
+</i></b></p>
+    <p><b><i>Selected Category: </i></b></p>
+        <p><b><i>Name of the Course: </i></b></p>
+
+</div>
+   <div class="col-md-3">
+        <p><b><i>devi</i></b></p>
+        <p><b><i>devi:</i></b></p>
+        <p><b><i>devi:</i></b></p>
+        <p><b><i>devi:</i></b></p>
+        <p><b><i>devi:</i></b></p>
+
+</div>
+</div>
+<h5 class="text-center"><span class="blue">ANNEXURE  X</span></h5>
+<h5 class="text-center "><span class="blue">Joint Declaration by the candidate and Parent / Guardian (This should not be enclosed with the application
+but should be submitted only at the time of admission)
+</span></h5>
+<br>
+          <p><b><i>I / We do hereby Solemnly and sincerely affirm</i></b></p>
+
+<li>
+          <p><b><i>1.   that the statements made and information furnished  in  the  application  submitted  and  also  in  all  the  enclosures  thereto  submitted by him/her are true. Should it  however  be  found  that  any  information  furnished  therein  is  untrue  in  material  particulars,  I/we  realize  that  he/she  is  liable  for  criminal  prosecution  and  forfeiture  of  his  /  her  seat   in   the   Institution   allotted during the counseling.</i></b></p>
+
+</li>
+<li>
+          <p><b><i>2. that my son/daughter/ward would conform strictly to  all  the  rules  and  regulations  prescribed  by  the  Tamil  Nadu  Dr.  M.G.R.  Medical University, Chennai in force now or  which  may  be  introduced  in  the  Institution  hereafter  and  that  I /we  realize  that  breach  of  discipline  and  rules  on  my  son’s/daughter’s/ward’s  part  would  entail  forfeiture  of   his   /   her   seat   in   the   Institution.</i></b></p>
+
+</li>
+<li>
+          <p><b><i>3. that my son/daughter/ward shall not make any claim for admission to a particular college as a matter of right during allotment/Re-allotment..</i></b></p>
+
+</li>
+<li>
+          <p><b><i>4. that  my  son/daughter/ward  agrees  to  pay  any  amount  that  may  become  due  as  and  when  the  fee  structure  is  revised  as    may be decided by Government of Tamil Nadu /Committee appointed by the Government for the purpose..</i></b></p>
+
+</li>
+<li>
+          <p><b><i>5. that my son/daughter/ward  do  hereby  agree  to  conform  to  follow  the  rules  and  regulations  including  those  relating  to  the  hostel  laid  down  or  to  be  laid  down  by  the  Dean  of  the  Institution  for  due  maintenance  of  discipline  at  the  said  College    and  assure  that  he/she  will  not  join  any  agitation   /strike  of  any  kind  during  course  of  study  and  further  agree  to  make    good  when  called  upon  to  do  so  to  the  Government  of  Tamil  Nadu  any  damage  to  furniture,  apparatus  or  other  articles  which may be caused by any carelessness negligence and wantonly on his/her part.</i></b></p>
+
+</li>
+<li>
+          <p><b><i>6. that my son/daughter/ward who is a Native of Tamil Nadu and will not claim dual Nativity in future.</i></b></p>
+
+</li>
+<li>
+          <p><b><i>7. that my son/daughter/ward hereby declare that he/she belongs to ----------------------------------
+Community  (Sub  caste-------------------------)  and  is  fully   aware   that   producing   a   false   Community   certificate   leads   to expulsion from any course of study at any time besides initiation of criminal action against him/her as per law.
+.</i></b></p>
+
+</li>
+<li>
+          <p><b><i>
+8.    that  we  are  fully  aware,  as  per  the  directions  of  the  Hon’ble  Supreme  Court  of  India  and  Tamil  Nadu  Prohibition   of   Ragging Act 1997, Ragging is an offence, and is banned in  the  Institution  and  anyone  indulging  in  ragging  is  liable  to  be  punished by expulsion from the Institution and /or rigorous imprisonment up to 3 years, and / or fine up to Rs.25,000/-
+
+</i></b></p>
+
+</li>
+<li><p><b>PLACE:</b></p></li>
+
+<li><p><b>DATE:</b></p></li>
+
+  </div>
+<div class="row"id="bd">
+  <div class="col-md-9">
+   <p><b>Signature of the Parent / Guardian</b></p>
+
+  </div>
+  <div class="col-md-3">
+    <p><b>Signature of the Candidate</b></p>
+
+  </div>
+</div>
+<div class="row justify-content-center">
+  <div class="col-md-12"><h4 class="other-font ">TIRUNELVELI MEDICAL COLLEGE, TIRUNELVELI-11. 
+</h4>
+     </div>
+        <br>
+
+      
+</div><br>
+<div class="row justify-content-center">
+  <div class="col-md-2">
+    <p><b><i>Name:</i></b></p>
+        <p><b><i>A.R.No. :
+</i></b></p>
+ <p><b><i>Neet Mark:</i></b></p>
+    <p><b><i>Neet UG Roll No :</i></b></p>
+    <p><b><i>Year of Admission:</i></b></p>
+
+</div>
+  <div class="col-md-2">
+        <p><b><i>devi</i></b></p>
+        <p><b><i>devi:</i></b></p>
+        <p><b><i>devi:</i></b></p>
+        <p><b><i>devi:</i></b></p>
+        <p><b><i>devi:</i></b></p>
+
+</div>
+  <div class="col-md-2">
+     <p><b><i>Date of Admission:</i></b></p>
+        <p><b><i>Rank:
+</i></b></p>
+ <p><b><i>Community:
+</i></b></p>
+    <p><b><i>Selected Category: </i></b></p>
+        <p><b><i>Name of the Course: </i></b></p>
+
+</div>
+   <div class="col-md-3">
+        <p><b><i>devi</i></b></p>
+        <p><b><i>devi:</i></b></p>
+        <p><b><i>devi:</i></b></p>
+        <p><b><i>devi:</i></b></p>
+        <p><b><i>devi:</i></b></p>
+
+</div>
+</div>
+
+<li>UNDERTAKING BY THE CANDIDATE / STUDENT</li><br>
+<li><p><b><i>1.  I, Mr./Mrs./Ms. (full name of parent / guardian) father/mother/guardian of, (full name of student with admission / registration/enrolment number) , having been admitted to Tirunelveli Medical College, Tirunelveli-11 name of the Institution), have received a copy of the UGC Regulations on Curbing the Menace of Ragging in Higher Educational Institutions, 2009, (hereinafter called the Regulations”), carefully read and fully understood the provisions contained in the said Regulations.”</i></b></p></li>
+<li><p><b><i>2.  I have, in particular, perused clause 3 of the Regulations and am aware as to what constitutes ragging.</i></b></p></li>
+<li><p><b><i>3.  I have also, in particular, perused clause 7 and clause 9.1 of the Regulations and am fully aware of the penal and administrative action that is liable to be taken against my ward in case he/she is found guilty of or abetting ragging, actively or passively, or being part of a conspiracy to promote ragging.</i></b></p></li>
+<li><p><b><i>4.  I hereby solemnly aver and undertake that
+
+(a) My ward will not indulge in any behaviour or act that may be constituted as ragging under clause 3 of the Regulations.
+(b) My ward will not participate in or abet or propagate through any act of commission or omission that may be constituted as ragging under clause 3 of the Regulations.</i></b></p>
+</li>
+<li><p><b><i>5.  I hereby affirm that, if found guilty of ragging, my ward is liable for punishment according to clause 9.1 of the Regulations, without prejudice to any other criminal action that may be taken against my ward under any penal law or any law for the time being in force.</i></b></p></li>
+<li><p><b><i>6.  I hereby declare that my ward has not been expelled or debarred from admission in any institution in the country on account of being found guilty of, abetting or being part of a conspiracy to promote, ragging: and further affirm that, in case the declaration is found to be untrue, the admission of my ward is liable to be cancelled.</i></b></p></li>
+<li><p><b><i>Declared this   day of  month of  year</i></b></p></li>
+<li class="text-right"><p><b><i>Name</i></b></p></li>
+<li class="text-right"><p><b><i>Address:</i></b></p></li>
+<li class="text-right"><p><b><i>Telephone/Mobile No.:  </i></b></p></li>
+<li class="text-center"><p><b><i>VERIFICATION  </i></b></p></li>
+<li class="text-center"><p><b><i>Verified that the contents of this undertaking are true to the best of my knowledge and no part of the undertaking is false and nothing has been concealed or misstated therein. </i></b></p></li>
+<li class="text-left"><p><b><i>
+Verified at   on this the   of      
+(Place) (day) (month), (year)
+</i></b></p></li>
+<li class="text-right"><p><b><i>Name</i></b></p></li>
+<li class="text-right"><p><b><i>Address:</i></b></p></li>
+<li class="text-right"><p><b><i>Telephone/Mobile No.:  </i></b></p></li>
+
+
+                   </ul>
+  </div>
+</div>
+</div>
+</section>
+
+
+
+ 
+<!-- jQuery bootstrap -->
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+<script>
+UPLOADCARE_PUBLIC_KEY = 'demopublickey';
+</script>
+<script src="https://ucarecdn.com/libs/widget/3.x/uploadcare.full.min.js" charset="utf-8"></script>
+<!-- AdminLTE App -->
+<script src="js/adminlte.js"></script>
+<script src="js/mbbs.js"></script>
+
+<!-- AdminLTE for demo purposes -->
+<script src="js/demo.js"></script>
+<!-- page script -->
+
+
+</body>
+
+</html>

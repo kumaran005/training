@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Ponmari_Sample</title>
+  <!-- Tell the browser to be responsive to screen width -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="/assets/dashboard/plugins/fontawesome-free/css/all.min.css">
+  <!-- Ionicons -->
+  <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+  <!-- bootsrtap -->
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <!-- Theme style -->
+  <link rel="stylesheet" href="/assets/dashboard/dist/css/alter.css">
+  <link rel="stylesheet" href="/assets/dashboard/dist/css/mbbs.css">
+  <!-- Google Font Source Sans Pro -->
+  <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro300,400,400i,700" rel="stylesheet">
+  
+</head>
+<body class="hold-transition sidebar-mini">
+    <div class="toolbar no-print">
+        <button class="btn btn-info" onclick="window.print()">
+          Print Certificate
+        </button>
+        
+      </div>
+<section id="report2"class=" text-center">
+    <div class="container">
+<h4><u><b>Tirunelveli Medical College,Tirunelveli-11</b></u></h4>
+<br>
+<h4><u><b>DEMAND SLIP</b></u></h4>
+<br><br>
+<i><div class="row text-left justify-content-center">
+    <div class="col-md-3">
+
+<p><b>Name:</b></p>
+<p><b>Community:</b></p>
+<p><b>Year Of Admission:</b></p>
+<p><b>A.R No:</b></p>
+<p><b>Neet Mark:</b></p>
+
+
+
+
+    </div>
+    <div class="col-md-3">
+        <%
+        if(userData.length!=0){
+        var i=1;
+        userData.forEach(function(classdata){
+        %>
+        <p><b><%=classdata.name %></b></p>
+        <p><b><%=classdata.community %></b></p>
+        <p><b><%=classdata.academic_year %></b></p>
+        <%  i++; }) %>
+<% } else{ %>
+
+<% } %>
+
+
+<%
+if(userData1.length!=0){
+var i=1;
+userData1.forEach(function(classdata1){
+%>
+<p><b><%=classdata1.ar_no%></b></p>
+<p><b><%=classdata1.neet_mark%></b></p>
+
+<p><b><%=classdata1.academic_year %></b></p>
+
+<%  i++; }) %>
+<% } else{ %>
+
+<% } %>
+      
+   
+    </div>
+
+    <div class="col-md-3">
+        <p><b>Date Of Admission:</b></p>
+        <p><b>Rank:</b></p>
+        
+        <p><b>Select Category:</b></p>
+        <p><b>Name Of The Course:</b></p>
+        <p><b>Neet UG Roll No:</b></p>
+    </div>
+  
+    <div class="col-md-3">
+        <%
+        if(userData1.length!=0){
+        var i=1;
+        userData1.forEach(function(classdata1){
+        %>
+        <p><b><%=classdata1.date_of_admission %></b></p>
+        <p><b><%=classdata1.rank%></b></p>
+        <p><b><%=classdata1.selected_category %></b></p>
+        <p><b><%=classdata1.course %></b></p>
+        <%  i++; }) %>
+        <% } else{ %>
+      
+        <% } %>
+        <%
+if(userData1.length!=0){
+var i=1;
+userData1.forEach(function(classdata1){
+%>
+<p><b><%=classdata1.neet_roll_no %></b></p>
+<%  i++; }) %>
+        <% } else{ %>
+      
+        <% } %>
+    </div>
+  
+    <br>
+</div></i>
+<h4><b>FEES TO BE PAID</b></h4>
+<div class="row text-justify justify-content-center">
+    <div class="col-md-1">
+        <p><b>S.NO</b></p>
+        <P>1</P>
+        <p>2</p>
+        <p>3</p>
+        <p>4</p>
+        <p>5</p>
+        <p>6</p>
+        <p>7</p>
+        <p>8</p>
+        <p>9</p>
+        <p>10</p>
+
+
+    </div>
+    <div class="col-md-3">
+  
+        <p><b>Particulars</b></p>
+        <p>Tuition fee</p>
+<p>Special Fees</p>
+<p>Medical Exam Fees</p>
+<p>Caution Deposit</p>
+<p>Library Fees</p>
+<p>University Fees</p>
+<p>LIC Fees</p>
+<p>Red Cross Fees</p>
+<p>Miscellaneous Fees</p>
+<p>Flag Day</p>
+
+<p><b>Total</b></p>
+
+    </div>
+
+    <div class="col-md-2">
+        <%
+        if(userData11.length!=0){
+        var i=1;
+        userData11.forEach(function(classdata11){
+        %>
+        <p><b>Amount (Rs.)</b></p>
+<p><%=classdata11.tution_fee%></p>
+<p><%=classdata11.special_fee%></p>
+<p><%=classdata11.medical_fee%></p>
+<p><%=classdata11.caution_fee%></p>
+<p><%=classdata11.lib_fee%></p>
+<p><%=classdata11.univ_fee%></p>
+<p><%=classdata11.lic_fee%></p>
+<p><%=classdata11.red_fee%></p>
+<p><%=classdata11.misc_fee%></p>
+<p><%=classdata11.flag_fee%></p>
+
+<p id="totalline"><b><%=classdata11.total_fee%></b></p>
+<%  i++; }) %>
+<% } else{ %>
+
+<% } %>
+    </div>
+
+</div>
+<%
+if(userData11.length!=0){
+var i=1;
+userData11.forEach(function(classdata11){
+%>
+<p>Please collect a sum of Rs.<%=classdata11.total_fee%>/- (Zero Only) from the student.</p>
+<%  i++; }) %>
+<% } else{ %>
+
+<% } %>
+<br><br><br>
+<div class="row">
+    <div class="col-md-3">
+        <p>Asst. (ME)</p>
+    </div>
+    <div class="col-md-3">
+        <p>OS</p>
+    </div>
+    <div class="col-md-3">
+        <p>JAO</p>
+    </div>
+    <div class="col-md-3">
+        <p>AO</p>
+    </div><br><br>
+<div class="col-md-3 text-left">
+    <div class="t ">
+        <p><b>Receipt No:</b></p>
+        <p><b>Date:</b></p>
+    </div>
+    <br><br>
+    <p class=""><b>CASHIER</b></p>
+</div>
+</div>
+
+</div>
+</section>
+</body>
+
+</html>
