@@ -1,0 +1,239 @@
+/*------------------------ mycss---------------- */
+#logomedical{
+    height: 56px;
+    margin-top: -14px;
+  }
+  .btn-link{
+    text-decoration: unset!important;
+  }
+  .card-header{
+    background-color: #fff;
+    color: #000!important;
+  }
+  .card-header h3 a,h5,h3{ 
+    font-style: italic;
+    font-size: 20px;
+  }
+  .card-header{
+    border-bottom: none!important;
+  }
+  .card-header h5 a,.card-header h3 a{
+    color: #000;
+
+  }
+  #large{
+    color: blue;
+    font-size: 18px;
+    
+  }
+  label{
+    font-size: 13px;
+  }
+  
+
+td {
+
+    padding: 16px;
+    text-align: center;
+
+}
+#myTable tr:hover ,.modal-header,.main-sidebar{
+  color: #fff;
+
+    background: linear-gradient(to right, #141e30, #243b55);
+
+  }
+  .uploadcare--widget__button_type_open {
+    background: #8080801f !important;
+    color: blue!important;
+    cursor: pointer;
+    margin-top: 3px;
+    padding: 1px;
+}
+#td{
+  display: ruby-base;
+  white-space: nowrap;
+}
+/* .uploadcare--widget__button{
+  display: non
+} */
+  #myTable td{
+    text-align: left;
+    width: 200px;
+overflow-wrap: anywhere;
+  }
+  .uploadcare--widget__file-size {
+    display:none;
+   }
+    .uploadcare--widget__button_type_remove,   .uploadcare--widget__button_type_remove:hover
+    {
+    padding: 1px;
+    font-size: 10px;
+    background-color: white;
+    color: #dc3545 ;
+
+   }
+
+  
+  #id{
+    width: 120px!important;
+  }
+  #myModal label,#myModal .text-dark{
+    color: #a9aea9 !important;
+  }
+  #myModal .text-danger{
+    color: #dc354591 !important;
+  }
+  .uploadcare--widget__button_type_open {
+    background: #8080801f!important;
+    color: #1a1616!important;
+    cursor: pointer;
+  }
+  .modal-content{
+    position: relative;
+    /* top: -28px; */
+  
+  }
+  .modal-lg{
+    max-width: 953px;
+    position: relative;
+    left: 203px;
+  }
+  #myTable tr:hover{
+  cursor: pointer;
+  }
+  .card-header i{
+      float: right;
+  }
+
+  #heading-1-1 a,#heading-1-1-2 a{
+      color: #000;
+  }
+  .custom-file label{
+    width: 150px;
+    text-align: center;
+  }
+  .modal .close{
+    color: #fff;
+  }
+  #hr{
+    border-top: 1px solid #ffffff63
+  }
+  .btn-sm{
+    padding: 2px;
+    font-size: 12px;
+  }
+  input,select{
+display: block!important;
+border: none!important;
+    border-bottom-color: currentcolor!important;
+    border-bottom-style: none!important;
+    border-bottom-width: medium!important;
+box-sizing: border-box!important;
+  }
+  input,select{
+  border-bottom: 1px solid rgb(221, 217, 217)!important;
+  margin-top: -11px;
+  }
+  .form-group{
+margin-top: -10px;
+  }
+  label{
+    font-weight: 600;
+  }
+  /* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
+  select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    text-indent: 1px;
+    text-overflow: '';
+}
+#mbbsfee .form-group{
+  display: flex;
+  margin-bottom: 23px;
+  justify-content: space-between;
+}
+#Neet .table th,.table td, #mark .table th,.table td{
+  border-top: unset!important;
+}
+#addressborder{
+padding: 10px 0;
+}
+#drop{
+  display: flex;
+  float: right;
+  position: relative;
+  top: 40px;
+}
+  .form-control:focus{
+    border-bottom: 3px solid  #243b55  !important;
+    box-shadow: none;
+
+  }
+#profile{
+  border-radius: 50%;
+width: 100px;
+position: relative;
+left: 18px;
+top: 10px;
+border: 3px solid;
+}
+#overflow{
+  overflow-x: auto;
+}
+#profilecard{
+  height: 130px;
+}
+#profilebody{
+  padding-top: 5px;
+}
+.table th ,.table td{
+  padding: 6px;
+}
+
+#myModal input::-moz-placeholder {
+  color:#938989b8!important;
+}
+#regmbbs label,#regmbbs table,.form-control[readonly],.form-control:disabled,.form-control-file:disabled {
+
+  font-style: italic;
+
+}
+.main-footer{
+  font-size: 15px;
+}
+tfoot th{
+  border-top: unset!important;
+}
+
+.form-control[readonly],.form-control:disabled,.form-control-file:disabled {
+  background-color: #fff;
+  color: #938989b8;
+  border-bottom: unset;
+}
+
+#delete{
+  width: 120px;
+}
+.form-control[readonly]:focus {
+  border-bottom: unset!important;
+}
+
+@media only screen and (max-width: 768px) {
+#profilecard{
+  height: 100%;
+}
+}
+  
+  
+  

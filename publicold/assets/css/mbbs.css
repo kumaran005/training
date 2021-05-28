@@ -1,0 +1,372 @@
+
+
+body{
+font-size: 13px;
+
+}
+
+
+/*------------------------ mycss---------------- */
+#logomedical{
+    height: 56px;
+    margin-top: -14px;
+  }
+  .btn-link{
+    text-decoration: unset!important;
+  }
+  #myModal input,#myModal select{
+    border-bottom: unset!important;
+  }
+  #myModal .academic select {
+    -webkit-appearance: none!important;
+}
+  #myModal textarea{
+    border: none;
+  }
+  #group{
+    width: 200px;
+  }
+.content-header h1,.content-header .breadcrumb  {
+    font-size: 14px;
+  }
+  #myInput ,.card-detail,.card-detail .btn-primary,.surety button
+{
+    font-size: 13px;
+  }
+.card-detail{
+      margin-top: -14px;
+
+}
+  #group input{
+    border-bottom: unset!important;
+  }
+  #browse{
+  visibility:hidden;
+  position:absolute;
+}
+  .card-header{
+    background-color: #fff;
+    color: #000!important;
+  }
+  .card-header h3 a,h5,h3,.table th{ 
+/*    font-style: italic;
+*/    font-size: 14px;
+  }
+  .academic #drop {
+   display: none;
+} 
+#fee .modal-content{
+      margin-left: -92px;
+
+}
+.surety .card{
+  box-shadow: 3px 3px 5px 6px #cccccc3b;
+  padding: 10px;
+}
+.academic select{
+      -webkit-appearance: auto!important;
+
+}
+.academic table,.neet table {
+  white-space: nowrap; 
+}
+  .card-header{
+    border-bottom: none!important;
+  }
+  .card-header h5 a,.card-header h3 a{
+    color: #000;
+
+  }
+  #large{
+    color: blue;
+    font-size: 18px;
+    
+  }
+  label{
+    font-size: 13px;
+  }
+  
+
+td {
+
+    padding: 16px;
+    text-align: center;
+
+}
+ #myTable tr.selected,.modal-header,.main-sidebar{
+  color: #fff;
+
+    background: linear-gradient(to right, #141e30, #243b55);
+
+  }
+  
+  #myTable tr:hover{
+    background-color:lightgrey;
+  }
+
+  .uploadcare--widget__button_type_open {
+    background: #8080801f !important;
+    color: blue!important;
+    cursor: pointer;
+    margin-top: 3px;
+    padding: 1px;
+}
+#myTable span{
+  left: -60px;
+}
+#studtable span{
+  left: -64px;
+}
+#studtable span,#myTable span{
+  position: relative;
+
+}
+#td{
+  display: ruby-base;
+  display: -webkit-inline-box;
+  white-space: nowrap;
+}
+/* .uploadcare--widget__button{
+  display: non
+} */
+  #myTable td{
+    text-align: left;
+    
+    font-size: 13px;
+overflow-wrap: anywhere;
+  }
+  #myTablee input{
+    background: #f4f6f9;
+  }
+  #myTablee input:focus{
+    outline: none;
+  }
+  .uploadcare--widget__file-size {
+    display:none;
+   }
+    .uploadcare--widget__button_type_remove,   .uploadcare--widget__button_type_remove:hover
+    {
+    padding: 1px;
+    font-size: 10px;
+    background-color: white;
+    color: #dc3545 ;
+
+   }
+
+  
+ 
+ 
+ /* #fee span{
+  /* margin-left: 140px; */
+
+ /* } */ 
+  .uploadcare--widget__button_type_open {
+    background: #8080801f!important;
+    color: #1a1616!important;
+    cursor: pointer;
+  }
+  .modal-content{
+    position: relative;
+    /* top: -28px; */
+  
+  }
+  .modal-lg{
+    max-width: 1017px;
+    position: relative;
+    left: 157px;
+  }
+  #delbox{
+    
+    position: relative;
+    left: -104px;
+}
+
+ 
+  #myTable tr:hover{
+  cursor: pointer;
+  }
+  .card-header i{
+      float: right;
+  }
+
+  #heading-1-1 a,#heading-1-1-2 a{
+      color: #000;
+  }
+  .custom-file label{
+    width: 150px;
+    text-align: center;
+  }
+  .modal .close{
+    color: #fff;
+  }
+  #hr{
+    border-top: 1px solid #ffffff63
+  }
+  .btn-sm{
+    padding: 2px;
+    font-size: 12px;
+  }
+  input,select{
+display: block!important;
+border: none!important;
+    border-bottom-color: currentcolor!important;
+    border-bottom-style: none!important;
+    border-bottom-width: medium!important;
+box-sizing: border-box!important;
+  }
+  input,select{
+  border-bottom: 1px solid rgb(221, 217, 217)!important;
+  margin-top: -11px;
+  }
+  .form-group{
+margin-top: -10px;
+  }
+  label{
+    font-weight: 600;
+  }
+  /* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
+  select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    text-indent: 1px;
+    text-overflow: '';
+}
+#mbbsfee .form-group{
+  /* display: flex; */
+  margin-bottom: 23px;
+  /* justify-content: space-between; */
+}
+#Neet .table th,.table td, #mark .table th,.table td{
+  border-top: unset!important;
+}
+#addressborder{
+padding: 10px 0;
+}
+/* #certificate .form-control{
+  padding: 0px 13px;
+}
+#certificate select{
+  height: unset;
+}
+#certificate #drop{
+  position: absolute;
+  right: 10px;
+  top: 0px;
+} */
+/* #certificate #drop{
+  position: absolute;
+  right: 10px;
+  top: 20px;
+}  */
+ #certificate td,#TextBoxContainerr th,#TextBoxContainer th
+
+ {
+  position: relative;
+  top: 16px;
+}
+#canDetails input[type="date"]::-webkit-calendar-picker-indicator
+ { 
+   position: absolute; 
+   left: 150px;
+
+   }
+ 
+   #canDetails input[type="date"]{
+    width: 205px;
+
+   }
+   .text-info {
+    position: relative;
+    top: -18px;
+  } 
+#drop{
+  
+  display: flex;
+  position: relative;
+  top: 38px;
+  float: right;
+}
+  .form-control:focus{
+    border-bottom: 1px solid #003e80 !important;
+    box-shadow: none;
+
+  }
+#profile{
+  border-radius: 50%;
+width: 100px;
+position: relative;
+left: 18px;
+top: 10px;
+border: 3px solid;
+}
+#overflow{
+  overflow-x: auto;
+}
+#myModal #drop{
+  display: none;
+}
+#profilecard{
+  height: 130px;
+}
+#profilebody{
+  padding-top: 5px;
+}
+.table th ,.table td{
+  padding: 6px;
+}
+.clickable{
+  cursor: pointer;
+}
+#myModal input::-moz-placeholder {
+  color:#938989b8!important;
+}
+#regmbbs label,#regmbbs table,.form-control[readonly],.form-control:disabled,.form-control-file:disabled {
+
+  font-style: italic;
+
+}
+.main-footer{
+  font-size: 15px;
+}
+tfoot th{
+  border-top: unset!important;
+}
+
+.form-control[readonly],.form-control:disabled,.form-control-file:disabled {
+  background-color: #fff;
+  border-bottom: unset;
+}
+
+#delete{
+  width: 120px;
+}
+.form-control[readonly]:focus {
+  border-bottom: unset!important;
+}
+
+@media only screen and (max-width: 768px) {
+#profilecard{
+  height: 100%;
+}
+#fee .modal-content{
+      margin-left:0;
+
+}
+.modal-lg,#delbox{
+  position: relative;
+  left: 0;
+}
+}
+  
+  
+  
