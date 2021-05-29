@@ -2580,4 +2580,4 @@ app.post('/reli_check', user.reli_check);
 app.get('/home/logout', user.logout);
 
 //Middleware
-server.listen(80)
+server.listen(600)
