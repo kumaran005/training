@@ -30,9 +30,8 @@
       <li class="nav-item">
         <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
       </li>
-      <li class="nav-item d-none d-sm-inline-block">
-        <a href="#" class="nav-link"><img src="/assets/design/img/logo.gif" id="logomedical"></a>
-      </li>
+     
+      
     
     </ul>
 
@@ -56,7 +55,7 @@
       <!-- Notifications Dropdown Menu -->
       <li class="nav-item dropdown">
         <a class="nav-link" data-toggle="dropdown" href="#">
-       <img src='/assets/img/account.png' width='35' height="35" title='Logout' alt='Logout'>
+       <img src='/assets/img/account.png' width='25'  title='Logout' alt='Logout'>
           <span class="badge badge-warning navbar-badge"></span>
         </a>
         <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
@@ -76,7 +75,7 @@
         
         </div>
       </li>
-   
+  
     </ul>
   </nav>
   <!-- /.navbar -->
@@ -86,7 +85,7 @@
     <!-- Brand Logo -->
   
     <!-- Sidebar -->
-    <div class="sidebar">
+    <div class="sidebar"style="width:182px!important;overflow-x:hidden">
       <!-- Sidebar user panel (optional) -->
       <div class="user-panel mt-3 pb-3 mb-3 d-flex">
         <div class="image">
@@ -103,85 +102,40 @@
 
       <!-- Sidebar Menu -->
       <nav class="mt-2">
-        <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+        <ul class="nav nav-pills  flex-column" data-widget="treeview" role="menu" data-accordion="false">
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
-          <li class="nav-item has-treeview">
-            <a href="/icboard" class="nav-link active">
-              <i class="nav-icon fa fa-chalkboard-teacher"></i>
-          
-              <p>
-                Dashboard
-              
-              </p>
-            </a>
-         
-          </li>
-        
-          <li class="nav-item has-treeview">
-            <a href="#" class="nav-link">
-              <i class="nav-icon fa fa-book"></i>
-         
-              <p>
-            Admission
-                <i class="right fas fa-angle-left"></i>
-              </p>
-            </a>
-            <ul class="nav nav-treeview ">
-              <li class="nav-item">
-                <a href="#" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>MDMS</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="#" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>MBBS</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="#" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>B.Sc.</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="#" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>AISSC</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="#" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Nursing Diploma</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="#" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Paramedical Diploma</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="#" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Paramedical Certificate</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="#" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Stipend Register</p>
-                </a>
-              </li>
+           
+              <div class="dropdown show">
+                <button type="button" class="btn btn-link dropdown-toggle text-white"  role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  <i class="nav-icon fa fa-chalkboard-teacher"></i>
+                  <span id="dash">Dashboard</span>
+                              </button>
+                           
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                  <li><a class="dropdown-item" href="/stipend">Stipend Register</a></li>
+
+                  <li class="dropdown-submenu"><a class="dropdown-item dropdown-toggle" href="#">Courses</a>
+                    <ul class="dropdown-menu">
+                      <li><a class="dropdown-item" href="/aissc_board">AISSC</a></li>
+                      <li><a class="dropdown-item" href="/bsc_board">B.Sc.</a></li>
+                      <li><a class="dropdown-item" href="/mbbs_board">MBBS</a></li>
+                      <li><a class="dropdown-item" href="/mdms_board">MDMS</a></li>
+                      <li><a class="dropdown-item" href="/nursing">Nursing Diploma</a></li>
+                      <li><a class="dropdown-item" href="/para_diploma">Paramedical Diploma</a></li>
+                      <li><a class="dropdown-item" href="/para_certificate">Paramedical Certificate</a></li>
+            
+                    </ul>
+                  </li>
+                </ul>
+              </div>
             
             
-            </ul>
-          </li>
+            
+            
         
         </ul>
+     
       </nav>
       <!-- /.sidebar-menu -->
     </div>
@@ -190,160 +144,12 @@
 
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
-    <!-- Content Header (Page header) -->
-    <section class="content-header">
-      <div class="container-fluid">
-        <div class="row mb-2">
-          <div class="col-sm-6">
-            <h1>Dashboard</h1>
-        
-          </div>
-       
-          <div class="col-sm-6">
-            <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">Dashboard</li>
-            </ol>
-          </div>
-        </div>
-        <hr/>
-      </div><!-- /.container-fluid -->
-    </section>
+ 
 
-    <!-- Main content -->
-    <section class="content">
-      <div class="container-fluid">
-        <div class='row'>
-          <div class="col-md-4">
-            <h5>Admission Courses</h5>
-          </div>
-          <div class="col-md-4">
-            <img src='/assets/img/admission.png' width="200"/>
-          </div>
-          <div class="col-md-4">
-          </div>
-        </div>
-       <div class='row'>
-        <div class="col-md-2">
-          </div> 
-          <div class="col-md-4">
-            <!-- Info Boxes Style 2 -->
-            <a href="/mdms_board" title='MDMS Admission dashboard'>
-            <div class="info-box mb-3 bg-warning">
-              <span class="info-box-icon"><img src='/assets/img/doc1.png'/></span>
-  
-              <div class="info-box-content">
-            
-                <span class="info-box-number">MDMS</span>
-                <span class="info-box-text"> Admission</span>
-              </div>
-              <!-- /.info-box-content -->
-            </div>
-          </a>
-            <!-- /.info-box --><a href="/mbbs_board" title='MBBS Admission dashboard'>
-            <div class="info-box mb-3 bg-success">
-              
-              <span class="info-box-icon"><img src='/assets/img/doc2.png'/></span>
-  
-              <div class="info-box-content">
-              
-                <span class="info-box-number">MBBS</span>
-                <span class="info-box-text"> Admission</span>
-              </div>
-          
-            </div>
-          </a>
-            <!-- /.info-box -->
-            <a href="/bsc_board" title='B.Sc. Admission dashboard'>
-            <div class="info-box mb-3 bg-danger">
-              <span class="info-box-icon"><img src='/assets/img/arts.png'/></span>
-  
-              <div class="info-box-content">
-                <span class="info-box-number">B.Sc.</span>
-                <span class="info-box-text"> Admission</span>
-              
-              </div>
-              <!-- /.info-box-content -->
-            </div>
-          </a>
-            <!-- /.info-box -->
-            <a href="/aissc_board" title='AISSC Admission dashboard'>
-            <div class="info-box mb-3 bg-info">
-              <span class="info-box-icon"><img src='/assets/img/exec.png'/></span>
-  
-              <div class="info-box-content">
-       
-                <span class="info-box-number">AISSC</span>
-                <span class="info-box-text"> Admission</span>
-              </div>
-              </div>
-              </a>
-              <!-- 
-          /.row -->
-        </div><!-- /.container-fluid -->
-        <div class="col-md-4">
-          <!-- Info Boxes Style 2 -->
-          <a href="/nursing" title='Nursing Diploma dashboard'>
-          <div class="info-box mb-3 bg-warning">
-            <span class="info-box-icon"><img src='/assets/img/nurse.png'/></span>
-
-            <div class="info-box-content">
-              <span class="info-box-number">NURSING</span>
-              <span class="info-box-text">Diploma </span>
-             
-            </div>
-            <!-- /.info-box-content -->
-          </div>
-          </a>
-          <!-- /.info-box -->
-          <a href="/para_diploma" title='Paramedical Diploma dashboard'>
-          <div class="info-box mb-6 bg-success">
-            <span class="info-box-icon"><img src='/assets/img/paramed.png'/></span>
-
-            <div class="info-box-content">
-        
-              <span class="info-box-number">PARAMEDICAL</span>
-              <span class="info-box-text"> Diploma</span>
-            </div>
-            <!-- /.info-box-content -->
-          </div>
-          </a>
-          <!-- /.info-box -->
-          <a href="para_certificate" title='Paramedical Certificate dashboard'>
-          <div class="info-box mb-3 bg-danger">
-            <span class="info-box-icon"><img src='/assets/img/certificate.png'/></span>
-
-            <div class="info-box-content">
-            
-              <span class="info-box-number">PARAMEDICAL</span>
-              <span class="info-box-text"> Certificate</span>
-            </div>
-            <!-- /.info-box-content -->
-          </div>
-          </a>
-          <!-- /.info-box -->
-          <a href="/stipend" title='Stipend Register dashboard'>
-          <div class="info-box mb-3 bg-info">
-            <span class="info-box-icon"><img src='/assets/img/stip.png'/></span>
-
-            <div class="info-box-content">
-           
-              <span class="info-box-number">STIPEND </span>Register
-            </div>
-            </div>
-          </a>
-            <!-- 
-        /.row -->
-      </div><!-- /.container-fluid -->
-       </div>
-     
-      
-    </section>
+ 
     <!-- /.content -->
 
-    <a id="back-to-top" href="#" class="btn btn-primary back-to-top float-right" role="button" aria-label="Scroll to top">
-      <i class="fas fa-chevron-up"></i>
-    </a>
+    
   </div>
   <!-- /.content-wrapper -->
 
@@ -364,11 +170,34 @@
 
 <!-- jQuery -->
 <script src="/assets/dashboard/plugins/jquery/jquery.min.js"></script>
+
 <!-- Bootstrap 4 -->
 <script src="/assets/dashboard/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
 <!-- AdminLTE App -->
 <script src="/assets/dashboard/dist/js/adminlte.min.js"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="/assets/dashboard/dist/js/demo.js"></script>
+<script>
+  $(document).ready(function(){
+
+
+$('.dropdown-menu a.dropdown-toggle').on('click', function(e) {
+  if (!$(this).next().hasClass('show')) {
+    $(this).parents('.dropdown-menu').first().find('.show').removeClass("show");
+  }
+  var $subMenu = $(this).next(".dropdown-menu");
+  $subMenu.toggleClass('show');
+
+
+  $(this).parents('li.nav-item.dropdown.show').on('hidden.bs.dropdown', function(e) {
+    $('.dropdown-submenu .show').removeClass("show");
+  });
+
+
+  return false;
+});
+  });
+  </script>
+ 
 </body>
 </html>
