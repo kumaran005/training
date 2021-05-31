@@ -107,6 +107,7 @@ $('.clickable').click(function(){
 
 
 
+
 $(document).on('keypress', ':input[type="number"]', function (e) {
   if (isNaN(e.key)) {
       return false;
