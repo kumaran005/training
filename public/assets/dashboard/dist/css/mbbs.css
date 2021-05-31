@@ -10,6 +10,9 @@
     background-color: #fff;
     color: #000!important;
   }
+  .main-header {
+    height: 30px;
+}
   .card-header h3 a,h5,h3{ 
     font-style: italic;
     font-size: 20px;
@@ -169,6 +172,27 @@ input[type=number] {
 #addressborder{
 padding: 10px 0;
 }
+.dropdown-submenu .dropdown-menu {
+  top: unset!important;
+  left: 0!important;
+  margin-top: -1px!important;
+
+
+  
+}
+
+
+[class*='sidebar-dark-'] .sidebar a:hover, [class*='sidebar-dark-'] .sidebar a:focus {
+    color: blue;}
+    
+.dropdown-menu.show,.dropdown-submenu .dropdown-menu {
+  background-color: transparent;
+}
+aside{
+  height: 100%!important;
+}
+
+
 #drop{
   display: flex;
   float: right;
