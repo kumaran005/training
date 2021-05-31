@@ -34,6 +34,7 @@ font-size: 13px;
   }
 .card-detail{
       margin-top: -14px;
+      margin-bottom: -8px;
 
 }
   #group input{
@@ -354,6 +355,28 @@ tfoot th{
 }
 .file-name,.file-name1,.file-name2,.file-name3,.file-name4,.file-name5,.file-name6,.file-name7{
   margin-top: 19px;
+}
+.dropdown-submenu .dropdown-menu {
+  top: unset!important;
+  left: 0!important;
+  margin-top: -1px!important;
+
+}
+aside{
+  height: 100%;
+}
+.main-header {
+  
+  height: 30px;
+}
+[class*='sidebar-dark-'] .sidebar a:hover, [class*='sidebar-dark-'] .sidebar a:focus {
+    color: blue;}
+    
+.sidebar .dropdown-menu.show,.sidebar .dropdown-submenu .dropdown-menu {
+  background-color: transparent;
+}
+aside{
+  height: 100%!important;
 }
 
 @media only screen and (max-width: 768px) {
