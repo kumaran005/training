@@ -32,9 +32,7 @@
           <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
         </li>
 
-        <li class="nav-item d-none d-sm-inline-block">
-          <a href="#" class="nav-link"><img src='/assets/design/img/logo.gif' id="logomedical" /><label class='form-label'></label></a>
-        </li>
+        
 
 
       </ul>
@@ -45,7 +43,7 @@
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
             aria-haspopup="true" aria-expanded="false">
-            <button class="btn-sm btn-primary"><i class="fa fa-plus "></i></button>
+            <button class="btn-sm btn-primary" style="font-size:9px;"><i class="fa fa-plus "></i></button>
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
             <a href="#" class="dropdown-item" data-toggle="modal" data-target="#exampleModalLong" data-backdrop="static"
@@ -56,15 +54,13 @@
 
         </li>
 
-        <li class="nav-item d-none d-sm-inline-block">
-          <a href="#" class="nav-link"><i class="fa fa-bell " aria-hidden="true" id="large"></i></a>
-        </li>
+        
 
 
         <!-- Notifications Dropdown Menu -->
         <li class="nav-item dropdown">
           <a class="nav-link" data-toggle="dropdown" href="#">
-            <img src='/assets/design/img/account.png' width='35' height="35" title='Logout' alt='Logout'>
+            <img src='/assets/design/img/account.png' width='25'  title='Logout' alt='Logout'>
             <span class="badge badge-secondary navbar-badge"></span>
           </a>
           <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
@@ -91,65 +87,72 @@
     <!-- /.navbar -->
 
     <!-- Main Sidebar Container -->
-    <aside class="main-sidebar elevation-4">
+    <aside class="main-sidebar sidebar-dark-primary elevation-4">
       <!-- Brand Logo -->
-
+    
       <!-- Sidebar -->
-      <div class="sidebar">
-        <!-- Sidebar user (optional) -->
+      <div class="sidebar" style="width:182px!important;overflow-x:hidden">
+        <!-- Sidebar user panel (optional) -->
         <div class="user-panel mt-3 pb-3 mb-3 d-flex">
           <div class="image">
             <a href="dashboard.html">
               <img src="/assets/design/img/logo.gif" class=" img-fluid img-circle elevation-2" alt="User Image"></a>
           </div>
-
+  
           <div class="info">
-            <label class='form-label'>ASSISTANT</label>
-
-
+            <a href="/login" class="d-block">ASSISTANT</a>
+  
+  
           </div>
         </div>
-        <hr id="hr">
+  
         <!-- Sidebar Menu -->
         <nav class="mt-2">
-          <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+          <ul class="nav nav-pills  flex-column" data-widget="treeview" role="menu" data-accordion="false">
             <!-- Add icons to the links using the .nav-icon class
                  with font-awesome or any other icon font library -->
-            <li class="nav-item has-treeview">
-              <a href="/icboard" class="nav-link ">
-                <i class="nav-icon fa fa-chalkboard-teacher"></i>
-
-                <p>
-                  Dashboard
-
-                </p>
-              </a>
-
-            </li>
-            <li class="nav-item has-treeview">
-              <a href="/mbbs_board" class="nav-link active">
-                <i class="fa fa-users fa-1x" aria-hidden="true"></i>
-                <p>
-                  MBBS-Student
-                </p>
-              </a>
-
-            </li>
-        
-
+             
+                <div class="dropdown show">
+                  <button type="button" class="btn btn-link dropdown-toggle text-white" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <i class="nav-icon fa fa-chalkboard-teacher"></i>
+                    <span id="dash">Dashboard</span>
+                                </button>
+                             
+                  <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                    <li><a class="dropdown-item" href="/stipend">Stipend Register</a></li>
+  
+                    <li class="dropdown-submenu"><a class="dropdown-item dropdown-toggle" href="#">Courses</a>
+                      <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="/aissc_board">AISSC</a></li>
+                        <li><a class="dropdown-item" href="/bsc_board">B.Sc.</a></li>
+                        <li><a class="dropdown-item" href="/mbbs_board">MBBS</a></li>
+                        <li><a class="dropdown-item" href="/mdms_board">MDMS</a></li>
+                        <li><a class="dropdown-item" href="/nursing">Nursing Diploma</a></li>
+                        <li><a class="dropdown-item" href="/para_diploma">Paramedical Diploma</a></li>
+                        <li><a class="dropdown-item" href="/para_certificate">Paramedical Certificate</a></li>
+              
+                      </ul>
+                    </li>
+                  </ul>
+                </div>
+              
+              
+              
+              
+          
           </ul>
+       
         </nav>
         <!-- /.sidebar-menu -->
       </div>
       <!-- /.sidebar -->
     </aside>
-
     <!-- Content Wrapper. Contains page content -->
     <div class="content-wrapper">
       <!-- Content Header (Page header) -->
       <section class="content-header">
         <div class="container-fluid">
-          <div class="row mb-2">
+          <div class="row mb-2"style="margin-top:-10px">
             <div class="col-sm-6">
               <h1>MBBS - Student</h1>
               <% if (message.length> 0) { %>
@@ -163,6 +166,7 @@
 
                 <li class="breadcrumb-item"><a href="/icboard">Home</a></li>
                 <li class="breadcrumb-item active">MBBS-Dashboard</li>
+               
               </ol>
             </div>
           </div>
@@ -183,20 +187,22 @@
               <!-- /.card -->
               <div class="card-detail">
                 <div class="cb">
-                  <div class='row'>
-                    <div class="col-md-6">
+                  <div class='row justify-content-between'>
+                    <div class="col-md-2">
                       <form class="form-inline my-2 my-lg-0">
                         <input class="form-control" id="myInput" type="search" placeholder="Find Student"
-                          aria-label="Search">
+                          aria-label="Search" style="    height: 36px;
+                          position: absolute;
+                          top: -4px;">
                         <div class="btn btn-sm bg-white text-primary d-flex my-0 my-sm-0 mr-0" type="submit"
                           style="position: absolute;top: -5px;  left: 158px;"><i class="fa fa-search "></i></div>
                       </form>
                       <!-- <p style="font-style: italic;">33 Records Found !</p> -->
                     </div>
-                    <div class="col-md-4">
-                      <form class="form-inline my-2 my-lg-0" role="form" method="post" action="/reli_check"
+                    <div class="col-md-3">
+                      <form class="form-inline my-2 my-lg-0"style="position:relative;top:-8px"role="form" method="post" action="/reli_check"
                           onClick="return empty()">
-                       <select name='reli_info' class="form-control" style="font-size: 13px;-webkit-appearance: auto;">
+                       <select name='reli_info' class="form-control col-md-8" style="font-size: 13px;-webkit-appearance: auto;">
                          <option value='All'>Select Student Type</option>
                          <option value='All'>All Students</option>
                          <option value='Yes'>Relieved Students</option>
@@ -204,11 +210,40 @@
                        </select>
                    
                        &nbsp;&nbsp;
-                       <button id="btn-signup" type="submit" class="btn btn-primary "style="font-size:13px">Change Type</button>
+                       <button id="btn-signup" type="submit" class="btn btn-primary "style="font-size:13px; position: relative;
+                       top: -6px;">Change </button>
                       </form>
                       <!-- <p style="font-style: italic;">33 Records Found !</p> -->
                     </div>
-                    <div class="">
+                    <div class="col-md-3">
+                      <form class="form-inline my-2 my-lg-0"style="position:relative;top:-8px"role="form" method="post" action="/"
+                          onClick="return empty()">
+                       <select name='reli_info' class="form-control col-md-8" style="font-size: 13px;-webkit-appearance: auto;">
+                        <option value=''readonly>Select Document Type</option> 
+                        <option value=''>Admission Register/option>
+                         <option value=''>Admission Letter</option>
+                         <option value=''>Check Slip</option>
+                         <option value=''> Student Details</option>
+                         <option value=''> Education Details</option>
+                         <option value=''> Bond Form</option>
+                         <option value=''> Relieving Letter</option>
+                         <option value=''> Bonofide Certificate</option>
+                         <option value=''> Certificate Return Acknowledgment</option>
+                         <option value=''> University Form</option>
+                         <option value=''> Transfer Certificate</option>
+                         <option value=''> Conduct Certificate</option>
+                         <option value=''> Scholarship Register</option>
+                         <option value=''> Bonofide Register</option>
+                         <option value=''> Report</option>
+                       </select>
+                   
+                       &nbsp;&nbsp;
+                       <button id="btn-signup" type="submit" class="btn btn-primary "style="font-size:13px; position: relative;
+                       top: -6px;">Print </button>
+                      </form>
+                      <!-- <p style="font-style: italic;">33 Records Found !</p> -->
+                    </div>
+                    <div class="col-md-"style="margin-top:-15px">
                       <!-- Button trigger modal -->
                       <button type="button" class="btn btn-primary mb-2" data-toggle="modal"
                         data-target="#exampleModalLong" data-backdrop="static" data-keyboard="false">
@@ -229,8 +264,10 @@
                 <thead>
                   <tr>
                     <th scope="col">View</th>
+                    <th scope="col">Student Id</th>
+                    <th scope="col"width="300"> Candidate Name</th>
                     <th scope="col">Registration No</th>
-                    <th scope="col"> Candidate Name</th>
+                    
                     <th scope="col">Admission Type</th>
                     <th scope="col">Date of Admission</th>
 
@@ -251,12 +288,18 @@
                       </td>
                       <td id="id">
 
-                        <%=classdata.reg_no %>
+                        <%=classdata.cand_id %>
                       </td>
                       <td>
 
                         <%=classdata.cand_name %>
                       </td>
+                     
+                      <td id="id">
+
+                        <%=classdata.reg_no %>
+                      </td>
+                    
                       <td>
                         <%=classdata.admission_type %>
                       </td>
@@ -3462,9 +3505,30 @@
         var filename = this.files[0].name;
         $(" #b4").text(filename);
       })
+      
     });
   </script>
+<script>
+    $(document).ready(function(){
 
+
+$('.dropdown-menu a.dropdown-toggle').on('click', function(e) {
+  if (!$(this).next().hasClass('show')) {
+    $(this).parents('.dropdown-menu').first().find('.show').removeClass("show");
+  }
+  var $subMenu = $(this).next(".dropdown-menu");
+  $subMenu.toggleClass('show');
+
+
+  $(this).parents('li.nav-item.dropdown.show').on('hidden.bs.dropdown', function(e) {
+    $('.dropdown-submenu .show').removeClass("show");
+  });
+
+
+  return false;
+});
+  });
+</script>
 </body>
 
 </html>
