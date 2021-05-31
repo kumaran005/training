@@ -32,9 +32,7 @@
           <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
         </li>
 
-        <li class="nav-item d-none d-sm-inline-block">
-          <a href="#" class="nav-link"><img src='/assets/design/img/logo.gif' id="logomedical" /><label class='form-label'></label></a>
-        </li>
+        
 
 
       </ul>
@@ -45,7 +43,7 @@
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
             aria-haspopup="true" aria-expanded="false">
-            <button class="btn-sm btn-primary"><i class="fa fa-plus "></i></button>
+            <button class="btn-sm btn-primary" style="font-size:9px;"><i class="fa fa-plus "></i></button>
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
             <a href="#" class="dropdown-item" data-toggle="modal" data-target="#exampleModalLong" data-backdrop="static"
@@ -56,15 +54,13 @@
 
         </li>
 
-        <li class="nav-item d-none d-sm-inline-block">
-          <a href="#" class="nav-link"><i class="fa fa-bell " aria-hidden="true" id="large"></i></a>
-        </li>
+        
 
 
         <!-- Notifications Dropdown Menu -->
         <li class="nav-item dropdown">
           <a class="nav-link" data-toggle="dropdown" href="#">
-            <img src='/assets/design/img/account.png' width='35' height="35" title='Logout' alt='Logout'>
+            <img src='/assets/design/img/account.png' width='25'  title='Logout' alt='Logout'>
             <span class="badge badge-secondary navbar-badge"></span>
           </a>
           <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
@@ -91,65 +87,72 @@
     <!-- /.navbar -->
 
     <!-- Main Sidebar Container -->
-    <aside class="main-sidebar elevation-4">
+    <aside class="main-sidebar sidebar-dark-primary elevation-4">
       <!-- Brand Logo -->
-
+    
       <!-- Sidebar -->
-      <div class="sidebar">
-        <!-- Sidebar user (optional) -->
+      <div class="sidebar" style="width:182px!important;overflow-x:hidden">
+        <!-- Sidebar user panel (optional) -->
         <div class="user-panel mt-3 pb-3 mb-3 d-flex">
           <div class="image">
             <a href="dashboard.html">
               <img src="/assets/design/img/logo.gif" class=" img-fluid img-circle elevation-2" alt="User Image"></a>
           </div>
-
+  
           <div class="info">
-            <label class='form-label'>ASSISTANT</label>
-
-
+            <a href="/login" class="d-block">ASSISTANT</a>
+  
+  
           </div>
         </div>
-        <hr id="hr">
+  
         <!-- Sidebar Menu -->
         <nav class="mt-2">
-          <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+          <ul class="nav nav-pills  flex-column" data-widget="treeview" role="menu" data-accordion="false">
             <!-- Add icons to the links using the .nav-icon class
                  with font-awesome or any other icon font library -->
-            <li class="nav-item has-treeview">
-              <a href="/icboard" class="nav-link ">
-                <i class="nav-icon fa fa-chalkboard-teacher"></i>
-
-                <p>
-                  Dashboard
-
-                </p>
-              </a>
-
-            </li>
-            <li class="nav-item has-treeview">
-              <a href="/mbbs_board" class="nav-link active">
-                <i class="fa fa-users fa-1x" aria-hidden="true"></i>
-                <p>
-                  MBBS-Student
-                </p>
-              </a>
-
-            </li>
-        
-
+             
+                <div class="dropdown show">
+                  <button type="button" class="btn btn-link dropdown-toggle text-white" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <i class="nav-icon fa fa-chalkboard-teacher"></i>
+                    <span id="dash">Dashboard</span>
+                                </button>
+                             
+                  <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                    <li><a class="dropdown-item" href="/stipend">Stipend Register</a></li>
+  
+                    <li class="dropdown-submenu"><a class="dropdown-item dropdown-toggle" href="#">Courses</a>
+                      <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="/aissc_board">AISSC</a></li>
+                        <li><a class="dropdown-item" href="/bsc_board">B.Sc.</a></li>
+                        <li><a class="dropdown-item" href="/mbbs_board">MBBS</a></li>
+                        <li><a class="dropdown-item" href="/mdms_board">MDMS</a></li>
+                        <li><a class="dropdown-item" href="/nursing">Nursing Diploma</a></li>
+                        <li><a class="dropdown-item" href="/para_diploma">Paramedical Diploma</a></li>
+                        <li><a class="dropdown-item" href="/para_certificate">Paramedical Certificate</a></li>
+              
+                      </ul>
+                    </li>
+                  </ul>
+                </div>
+              
+              
+              
+              
+          
           </ul>
+       
         </nav>
         <!-- /.sidebar-menu -->
       </div>
       <!-- /.sidebar -->
     </aside>
-
     <!-- Content Wrapper. Contains page content -->
     <div class="content-wrapper">
       <!-- Content Header (Page header) -->
       <section class="content-header">
         <div class="container-fluid">
-          <div class="row mb-2">
+          <div class="row mb-2"style="margin-top:-10px">
             <div class="col-sm-6">
               <h1>MBBS - Student</h1>
               <% if (message.length> 0) { %>
@@ -163,6 +166,7 @@
 
                 <li class="breadcrumb-item"><a href="/icboard">Home</a></li>
                 <li class="breadcrumb-item active">MBBS-Dashboard</li>
+               
               </ol>
             </div>
           </div>
@@ -183,20 +187,22 @@
               <!-- /.card -->
               <div class="card-detail">
                 <div class="cb">
-                  <div class='row'>
-                    <div class="col-md-6">
+                  <div class='row justify-content-between'>
+                    <div class="col-md-2">
                       <form class="form-inline my-2 my-lg-0">
                         <input class="form-control" id="myInput" type="search" placeholder="Find Student"
-                          aria-label="Search">
+                          aria-label="Search" style="    height: 36px;
+                          position: absolute;
+                          top: -4px;">
                         <div class="btn btn-sm bg-white text-primary d-flex my-0 my-sm-0 mr-0" type="submit"
                           style="position: absolute;top: -5px;  left: 158px;"><i class="fa fa-search "></i></div>
                       </form>
                       <!-- <p style="font-style: italic;">33 Records Found !</p> -->
                     </div>
-                    <div class="col-md-4">
-                      <form class="form-inline my-2 my-lg-0" role="form" method="post" action="/reli_check"
+                    <div class="col-md-3">
+                      <form class="form-inline my-2 my-lg-0"style="position:relative;top:-8px"role="form" method="post" action="/reli_check"
                           onClick="return empty()">
-                       <select name='reli_info' class="form-control" style="font-size: 13px;-webkit-appearance: auto;">
+                       <select name='reli_info' class="form-control col-md-8" style="font-size: 13px;-webkit-appearance: auto;">
                          <option value='All'>Select Student Type</option>
                          <option value='All'>All Students</option>
                          <option value='Yes'>Relieved Students</option>
@@ -204,11 +210,40 @@
                        </select>
                    
                        &nbsp;&nbsp;
-                       <button id="btn-signup" type="submit" class="btn btn-primary "style="font-size:13px">Change Type</button>
+                       <button id="btn-signup" type="submit" class="btn btn-primary "style="font-size:13px; position: relative;
+                       top: -6px;">Change </button>
                       </form>
                       <!-- <p style="font-style: italic;">33 Records Found !</p> -->
                     </div>
-                    <div class="">
+                    <div class="col-md-3">
+                      <form class="form-inline my-2 my-lg-0"style="position:relative;top:-8px"role="form" method="post" action="/"
+                          onClick="return empty()">
+                       <select name='reli_info' class="form-control col-md-8" style="font-size: 13px;-webkit-appearance: auto;">
+                        <option value=''readonly>Select Document Type</option> 
+                        <option value=''>Admission Register/option>
+                         <option value=''>Admission Letter</option>
+                         <option value=''>Check Slip</option>
+                         <option value=''> Student Details</option>
+                         <option value=''> Education Details</option>
+                         <option value=''> Bond Form</option>
+                         <option value=''> Relieving Letter</option>
+                         <option value=''> Bonofide Certificate</option>
+                         <option value=''> Certificate Return Acknowledgment</option>
+                         <option value=''> University Form</option>
+                         <option value=''> Transfer Certificate</option>
+                         <option value=''> Conduct Certificate</option>
+                         <option value=''> Scholarship Register</option>
+                         <option value=''> Bonofide Register</option>
+                         <option value=''> Report</option>
+                       </select>
+                   
+                       &nbsp;&nbsp;
+                       <button id="btn-signup" type="submit" class="btn btn-primary "style="font-size:13px; position: relative;
+                       top: -6px;">Print </button>
+                      </form>
+                      <!-- <p style="font-style: italic;">33 Records Found !</p> -->
+                    </div>
+                    <div class="col-md-"style="margin-top:-15px">
                       <!-- Button trigger modal -->
                       <button type="button" class="btn btn-primary mb-2" data-toggle="modal"
                         data-target="#exampleModalLong" data-backdrop="static" data-keyboard="false">
@@ -229,8 +264,10 @@
                 <thead>
                   <tr>
                     <th scope="col">View</th>
+                    <th scope="col">Student Id</th>
+                    <th scope="col"width="300"> Candidate Name</th>
                     <th scope="col">Registration No</th>
-                    <th scope="col"> Candidate Name</th>
+                    
                     <th scope="col">Admission Type</th>
                     <th scope="col">Date of Admission</th>
 
@@ -257,6 +294,12 @@
 
                         <%=classdata.cand_name %>
                       </td>
+                     
+                      <td id="id">
+
+                        <%=classdata.reg_no %>
+                      </td>
+                    
                       <td>
                         <%=classdata.admission_type %>
                       </td>
@@ -537,7 +580,7 @@
                                       </div>
                                       <div class="form-group">
                                         <label for="exampleFormControlTextarea1">Neet Roll Number</label>
-                                        <input type="number" id="quantity" name="neet_roll_no" class="form-control">
+                                        <input type="text" id="quantity" name="neet_roll_no" class="form-control">
                                       </div>
                                       <div class="form-group">
                                         <label for="examplrolTextarea1">Course Commensement</label>
@@ -589,11 +632,11 @@
 
                                       <div class="form-group">
                                         <label for="exampleFormControlInput1">Ar Number</label>
-                                        <input type="number" class="form-control" name='ar_no'>
+                                        <input type="text" class="form-control" name='ar_no'>
                                       </div>
                                       <div class="form-group">
                                         <label for="exampleFormControlTextarea1">Rank Number</label>
-                                        <input type="number" id="quantity" name="rank_no" class="form-control">
+                                        <input type="text" id="quantity" name="rank_no" class="form-control">
                                       </div>
                                       <div class="form-group">
                                         <label for="exampleFormControlea1">Date Of Admission</label>
@@ -624,7 +667,7 @@
                                       <div class="form-group">
                                         <label for="">Registration Number</label>
 
-                                        <input type="number" id="quantity" name="reg_no" class="form-control">
+                                        <input type="text" id="quantity" name="reg_no" class="form-control">
                                       </div>
                                     </div>
                                     <div class="col-md-4">
@@ -709,42 +752,16 @@
                                       <select id="address2Ship" class="form-control" name='ps_state'>
                                         <option hidden selected>&#160;</option>
 
-                                        <option value="Andhra Pradesh">Andhra Pradesh</option>
-                                        <option value="Andaman and Nicobar Islands">Andaman and Nicobar Islands</option>
-                                        <option value="Arunachal Pradesh">Arunachal Pradesh</option>
-                                        <option value="Assam">Assam</option>
-                                        <option value="Bihar">Bihar</option>
-                                        <option value="Chandigarh">Chandigarh</option>
-                                        <option value="Chhattisgarh">Chhattisgarh</option>
-                                        <option value="Dadar and Nagar Haveli">Dadar and Nagar Haveli</option>
-                                        <option value="Daman and Diu">Daman and Diu</option>
-                                        <option value="Delhi">Delhi</option>
-                                        <option value="Lakshadweep">Lakshadweep</option>
-                                        <option value="Puducherry">Puducherry</option>
-                                        <option value="Goa">Goa</option>
-                                        <option value="Gujarat">Gujarat</option>
-                                        <option value="Haryana">Haryana</option>
-                                        <option value="Himachal Pradesh">Himachal Pradesh</option>
-                                        <option value="Jammu and Kashmir">Jammu and Kashmir</option>
-                                        <option value="Jharkhand">Jharkhand</option>
-                                        <option value="Karnataka">Karnataka</option>
-                                        <option value="Kerala">Kerala</option>
-                                        <option value="Madhya Pradesh">Madhya Pradesh</option>
-                                        <option value="Maharashtra">Maharashtra</option>
-                                        <option value="Manipur">Manipur</option>
-                                        <option value="Meghalaya">Meghalaya</option>
-                                        <option value="Mizoram">Mizoram</option>
-                                        <option value="Nagaland">Nagaland</option>
-                                        <option value="Odisha">Odisha</option>
-                                        <option value="Punjab">Punjab</option>
-                                        <option value="Rajasthan">Rajasthan</option>
-                                        <option value="Sikkim">Sikkim</option>
-                                        <option value="Tamil Nadu">Tamil Nadu</option>
-                                        <option value="Telangana">Telangana</option>
-                                        <option value="Tripura">Tripura</option>
-                                        <option value="Uttar Pradesh">Uttar Pradesh</option>
-                                        <option value="Uttarakhand">Uttarakhand</option>
-                                        <option value="West Bengal">West Bengal</option>
+                                        <%
+                                        if(userData10.length!=0){
+                                        var i=1;
+                                        userData10.forEach(function(classdata10){
+                                        %>
+                                        <option value='<%=classdata10.name %>'><%=classdata10.name %></option>
+                                        <%  i++; }) %>
+                                        <% } else{ %>
+                                    
+                                        <% } %>
                                       </select>
                                     </div>
                                     <div class="form-group">
@@ -770,43 +787,16 @@
 
                                       <select name="pm_state" id="address2Bill" class="form-control">
                                         <option hidden selected>&#160;</option>
-
-                                        <option value="Andhra Pradesh">Andhra Pradesh</option>
-                                        <option value="Andaman and Nicobar Islands">Andaman and Nicobar Islands</option>
-                                        <option value="Arunachal Pradesh">Arunachal Pradesh</option>
-                                        <option value="Assam">Assam</option>
-                                        <option value="Bihar">Bihar</option>
-                                        <option value="Chandigarh">Chandigarh</option>
-                                        <option value="Chhattisgarh">Chhattisgarh</option>
-                                        <option value="Dadar and Nagar Haveli">Dadar and Nagar Haveli</option>
-                                        <option value="Daman and Diu">Daman and Diu</option>
-                                        <option value="Delhi">Delhi</option>
-                                        <option value="Lakshadweep">Lakshadweep</option>
-                                        <option value="Puducherry">Puducherry</option>
-                                        <option value="Goa">Goa</option>
-                                        <option value="Gujarat">Gujarat</option>
-                                        <option value="Haryana">Haryana</option>
-                                        <option value="Himachal Pradesh">Himachal Pradesh</option>
-                                        <option value="Jammu and Kashmir">Jammu and Kashmir</option>
-                                        <option value="Jharkhand">Jharkhand</option>
-                                        <option value="Karnataka">Karnataka</option>
-                                        <option value="Kerala">Kerala</option>
-                                        <option value="Madhya Pradesh">Madhya Pradesh</option>
-                                        <option value="Maharashtra">Maharashtra</option>
-                                        <option value="Manipur">Manipur</option>
-                                        <option value="Meghalaya">Meghalaya</option>
-                                        <option value="Mizoram">Mizoram</option>
-                                        <option value="Nagaland">Nagaland</option>
-                                        <option value="Odisha">Odisha</option>
-                                        <option value="Punjab">Punjab</option>
-                                        <option value="Rajasthan">Rajasthan</option>
-                                        <option value="Sikkim">Sikkim</option>
-                                        <option value="Tamil Nadu">Tamil Nadu</option>
-                                        <option value="Telangana">Telangana</option>
-                                        <option value="Tripura">Tripura</option>
-                                        <option value="Uttar Pradesh">Uttar Pradesh</option>
-                                        <option value="Uttarakhand">Uttarakhand</option>
-                                        <option value="West Bengal">West Bengal</option>
+                                        <%
+                                        if(userData10.length!=0){
+                                        var i=1;
+                                        userData10.forEach(function(classdata10){
+                                        %>
+                                        <option value='<%=classdata10.name %>'><%=classdata10.name %></option>
+                                        <%  i++; }) %>
+                                        <% } else{ %>
+                                    
+                                        <% } %>
                                       </select>
                                     </div>
                                     <div class="form-group">
@@ -847,7 +837,7 @@
                                     </div>
                                     <div class="form-group">
                                       <label for="exampleFormControlInput120">Voter Id</label>
-                                      <input type="number" class="form-control" id="exampleFormControlInput120"
+                                      <input type="text" class="form-control" id="exampleFormControlInput120"
                                         name='voter_id'>
                                     </div>
 
@@ -858,7 +848,7 @@
                                       <label for="exampleFormCon1">Mobile Phone</label>
 
                                       <input type="text" name="Phone Number" class="form-control" placeholder=""
-                                        pattern="[6-9]{1}[0-9]{9}" name='mobile_phone'>
+                                         name='mobile_phone'>
 
                                     </div>
                                     <div class="form-group">
@@ -899,12 +889,12 @@
   
                                         <img id="frame1" src="https://i.pinimg.com/originals/89/60/53/89605396d7eabcdf01ab78ce48aa0c6d.png" width="80" />
                                       </div>
-                                      <div class='col-md-3'>
+                                      <!-- <div class='col-md-3'>
                                         <input  name='n_cand_finger' class="form-control" type="file"hidden id="file3" onchange="document.getElementById('frame3').src = window.URL.createObjectURL(this.files[0])">
                                         <label for="file3"style="cursor: pointer;" class="p-2"> Scan Finger Print</label>
   
                                         <img id="frame3" src="https://i.pinimg.com/originals/89/60/53/89605396d7eabcdf01ab78ce48aa0c6d.png" width="80" />
-                                      </div>
+                                      </div> -->
                                       <div class="col-md-3">
 
                                         <div id="container" class="container">
@@ -1015,7 +1005,7 @@
                                         <div class="col-md-6">
                                           <label for="reg">Registration Number</label>
 
-                                          <input type="number" id="reg" class="form-control" name="register_no" />
+                                          <input type="text" id="reg" class="form-control" name="register_no" />
 
                                         </div>
                                       </div>
@@ -1137,12 +1127,12 @@
                                         <tbody>
                                           <tr>
                                             <th scope="row" class=" text-dark"> LANGUAGE</th>
-                                            <td><input type="text" name="lang_theory" class="form-control"></td>
-                                            <td><input type="text" name="lang_practical" class="form-control"></td>
-                                            <td><input type="text" name="lang_internal" class="form-control"></td>
-                                            <td><input type="text" name="lang_total" class="form-control"></td>
+                                            <td><input type="number" name="lang_theory" class="form-control"></td>
+                                            <td><input type="number" name="lang_practical" class="form-control"></td>
+                                            <td><input type="number" name="lang_internal" class="form-control"></td>
+                                            <td><input type="number" name="lang_total" class="form-control"></td>
 
-                                            <td><input type="text" name="lang_max" class="form-control"></td>
+                                            <td><input type="number" name="lang_max" class="form-control"></td>
                                             <!-- <th scope="row"class=" text-dark">LANGUAGE PAPER</th>
     <td><input type="text" name=""class="form-control"placeholder="tamil"></td> -->
 
@@ -1150,74 +1140,74 @@
                                           </tr>
                                           <tr>
                                             <th scope="row" class=" text-dark">ENGLISH</th>
-                                            <td><input type="text" name="eng_theory" class="form-control"></td>
-                                            <td><input type="text" name="eng_practical" class="form-control"></td>
-                                            <td><input type="text" name="eng_internal" class="form-control"></td>
-                                            <td><input type="text" name="eng_total" class="form-control"></td>
+                                            <td><input type="number" name="eng_theory" class="form-control"></td>
+                                            <td><input type="number" name="eng_practical" class="form-control"></td>
+                                            <td><input type="number" name="eng_internal" class="form-control"></td>
+                                            <td><input type="number" name="eng_total" class="form-control"></td>
 
-                                            <td><input type="text" name="eng_max" class="form-control"></td>
+                                            <td><input type="number" name="eng_max" class="form-control"></td>
                                             <!-- <th scope="row"class=" text-dark">SUBJECT GROUP CODE</th>
     <td><input type="text" name=""class="form-control"placeholder="098"></td> -->
                                           </tr>
                                           <tr>
                                             <th scope="row" class=" text-dark">MATHEMATICS</th>
-                                            <td><input type="text" name="mat_theory" class="form-control"></td>
-                                            <td><input type="text" name="mat_practical" class="form-control"></td>
-                                            <td><input type="text" name="mat_internal" class="form-control"></td>
-                                            <td><input type="text" name="mat_total" class="form-control"></td>
+                                            <td><input type="number" name="mat_theory" class="form-control"></td>
+                                            <td><input type="number" name="mat_practical" class="form-control"></td>
+                                            <td><input type="number" name="mat_internal" class="form-control"></td>
+                                            <td><input type="number" name="mat_total" class="form-control"></td>
 
-                                            <td><input type="text" name="mat_max" class="form-control"></td>
+                                            <td><input type="number" name="mat_max" class="form-control"></td>
                                             <!-- <th scope="row"class=" text-dark">TOTAL MARKS</th>
     <td><input type="text" name=""class="form-control"placeholder="700"></td> -->
                                           </tr>
                                           <tr>
                                             <th scope="row" class=" text-dark">PHYSICS</th>
-                                            <td><input type="text" name="phy_theory" class="form-control"></td>
-                                            <td><input type="text" name="phy_practical" class="form-control"></td>
-                                            <td><input type="text" name="phy_internal" class="form-control"></td>
-                                            <td><input type="text" name="phy_total" class="form-control"></td>
+                                            <td><input type="number" name="phy_theory" class="form-control"></td>
+                                            <td><input type="number" name="phy_practical" class="form-control"></td>
+                                            <td><input type="number" name="phy_internal" class="form-control"></td>
+                                            <td><input type="number" name="phy_total" class="form-control"></td>
 
-                                            <td><input type="text" name="phy_max" class="form-control"></td>
+                                            <td><input type="number" name="phy_max" class="form-control"></td>
                                             <!-- <th scope="row"class=" text-dark">MAX. MARKS</th>
     <td><input type="text" name=""class="form-control"placeholder="700"></td> -->
                                           </tr>
                                           <tr>
                                             <th scope="row" class=" text-dark">CHEMISTRY</th>
-                                            <td><input type="text" name="chem_theory" class="form-control"></td>
-                                            <td><input type="text" name="chem_practical" class="form-control"></td>
-                                            <td><input type="text" name="chem_internal" class="form-control"></td>
-                                            <td><input type="text" name="chem_total" class="form-control"></td>
+                                            <td><input type="number" name="chem_theory" class="form-control"></td>
+                                            <td><input type="number" name="chem_practical" class="form-control"></td>
+                                            <td><input type="number" name="chem_internal" class="form-control"></td>
+                                            <td><input type="number" name="chem_total" class="form-control"></td>
 
-                                            <td><input type="text" name="chem_max" class="form-control"></td>
+                                            <td><input type="number" name="chem_max" class="form-control"></td>
                                             <!-- <th scope="row"class=" text-dark">PERCENTAGE</th>
     <td><input type="text" name=""class="form-control"placeholder="98"></td> -->
                                           </tr>
                                           <tr>
                                             <th scope="row" class=" text-dark">BIOLOGY</th>
-                                            <td><input type="text" name="bio_theory" class="form-control"></td>
-                                            <td><input type="text" name="bio_practical" class="form-control"></td>
-                                            <td><input type="text" name="bio_internal" class="form-control"></td>
-                                            <td><input type="text" name="bio_total" class="form-control"></td>
+                                            <td><input type="number" name="bio_theory" class="form-control"></td>
+                                            <td><input type="number" name="bio_practical" class="form-control"></td>
+                                            <td><input type="number" name="bio_internal" class="form-control"></td>
+                                            <td><input type="number" name="bio_total" class="form-control"></td>
 
-                                            <td><input type="text" name="bio_max" class="form-control"></td>
+                                            <td><input type="number" name="bio_max" class="form-control"></td>
                                           </tr>
                                           <tr>
                                             <th scope="row" class=" text-dark">BOTONY</th>
-                                            <td><input type="text" name="bot_theory" class="form-control"></td>
-                                            <td><input type="text" name="bot_practical" class="form-control"></td>
-                                            <td><input type="text" name="bot_internal" class="form-control"></td>
-                                            <td><input type="text" name="bot_total" class="form-control"></td>
+                                            <td><input type="number" name="bot_theory" class="form-control"></td>
+                                            <td><input type="number" name="bot_practical" class="form-control"></td>
+                                            <td><input type="number" name="bot_internal" class="form-control"></td>
+                                            <td><input type="number" name="bot_total" class="form-control"></td>
 
-                                            <td><input type="text" name="bot_max" class="form-control"></td>
+                                            <td><input type="number" name="bot_max" class="form-control"></td>
                                           </tr>
                                           <tr>
                                             <th scope="row" class=" text-dark">ZOOLOGY</th>
-                                            <td><input type="text" name="zoo_theory" class="form-control"></td>
-                                            <td><input type="text" name="zoo_practical" class="form-control"></td>
-                                            <td><input type="text" name="zoo_internal" class="form-control"></td>
-                                            <td><input type="text" name="zoo_total" class="form-control"></td>
+                                            <td><input type="number" name="zoo_theory" class="form-control"></td>
+                                            <td><input type="number" name="zoo_practical" class="form-control"></td>
+                                            <td><input type="number" name="zoo_internal" class="form-control"></td>
+                                            <td><input type="number" name="zoo_total" class="form-control"></td>
 
-                                            <td><input type="text" name="zoo_max" class="form-control"></td>
+                                            <td><input type="number" name="zoo_max" class="form-control"></td>
 
                                           </tr>
 
@@ -1238,15 +1228,15 @@
                                         </thead>
                                         <tbody>
                                           <tr>
-                                            <td><input type="text" name="lang_paper" class="form-control"
+                                            <td><input type="number" name="lang_paper" class="form-control"
                                                 placeholder="">
                                             </td>
 
-                                            <td><input type="text" name="subj_code" class="form-control"
+                                            <td><input type="number" name="subj_code" class="form-control"
                                                 placeholder=""></td>
-                                            <td><input type="text" name="total_mark" class="form-control"
+                                            <td><input type="number" name="total_mark" class="form-control"
                                                 placeholder=""></td>
-                                            <td><input type="text" name="max_mark" class="form-control"
+                                            <td><input type="number" name="max_mark" class="form-control"
                                                 placeholder=""></td>
                                           </tr>
                                         </tbody>
@@ -1292,10 +1282,10 @@
                                       <tbody>
                                         <tr>
                                           <th width='165px' scope="row" class=" text-dark"> OBTAINED MARKS</th>
-                                          <td><input type="text" name="phy_neet_mark" class="form-control"></td>
-                                          <td><input type="text" name="chem_neet_mark" class="form-control"></td>
-                                          <td><input type="text" name="bio_neet_mark" class="form-control"></td>
-                                          <td><input type="text" name="agg_neet_mark" class="form-control"></td>
+                                          <td><input type="number" name="phy_neet_mark" class="form-control"></td>
+                                          <td><input type="number" name="chem_neet_mark" class="form-control"></td>
+                                          <td><input type="number" name="bio_neet_mark" class="form-control"></td>
+                                          <td><input type="number" name="agg_neet_mark" class="form-control"></td>
 
 
 
@@ -1304,10 +1294,10 @@
 
                                         <tr>
                                           <th width='165px;' scope="row" class=" text-dark"> MAX. MARKS</th>
-                                          <td><input type="text" name="phy_neet_max" class="form-control"></td>
-                                          <td><input type="text" name="chem_neet_max" class="form-control"></td>
-                                          <td><input type="text" name="bio_neet_max" class="form-control"></td>
-                                          <td><input type="text" name="agg_neet_max" class="form-control"></td>
+                                          <td><input type="number" name="phy_neet_max" class="form-control"></td>
+                                          <td><input type="number" name="chem_neet_max" class="form-control"></td>
+                                          <td><input type="number" name="bio_neet_max" class="form-control"></td>
+                                          <td><input type="number" name="agg_neet_max" class="form-control"></td>
 
 
                                         </tr>
@@ -1457,7 +1447,7 @@
                                   <tr>
                                     <td>
                                       <input type="text" name="c2" value='Transfer Certificate'
-                                        placeholder="Transfer Certificate" class="form-control" disabled="">
+                                        placeholder="Transfer Certificate" class="form-control" readonly>
                                     </td>
                                     <td><input type="text" name="c2_reg_no" class="form-control"></td>
                                     <td><input type="Date" name="c2_date" class="form-control"></td>
@@ -1479,7 +1469,7 @@
                                   <tr class="collapse row2" id="row2">
                                     <td>
                                       <input type="text" name="c3" value='Conduct Certificate'
-                                        placeholder="Conduct Certificate" class="form-control" disabled>
+                                        placeholder="Conduct Certificate" class="form-control" readonly>
                                     </td>
                                     <td><input type="text" name="c3_reg_no" class="form-control"></td>
                                     <td><input type="Date" name="c3_date" class="form-control"></td>
@@ -1502,7 +1492,7 @@
                                   <tr class="collapse row2" id="row2">
                                     <td>
                                       <input type="text" name="c4" value='Eligiblity Certificate'
-                                        placeholder="Eligiblity Certificate" class="form-control" disabled>
+                                        placeholder="Eligiblity Certificate" class="form-control" readonly>
                                     </td>
                                     <td><input type="text" name="c4_reg_no" class="form-control"></td>
                                     <td><input type="Date" name="c4_date" class="form-control"></td>
@@ -1525,7 +1515,7 @@
                                   <tr class="collapse row2" id="row2">
                                     <td>
                                       <input type="text" name="c5" value='Migration Certificate'
-                                        placeholder="Migration Certificate" class="form-control" disabled>
+                                        placeholder="Migration Certificate" class="form-control" readonly>
                                     </td>
                                     <td><input type="text" name="c5_reg_no" class="form-control"></td>
                                     <td><input type="Date" name="c5_date" class="form-control"></td>
@@ -1547,7 +1537,7 @@
                                   <tr class="collapse row2" id="row2">
                                     <td>
                                       <input type="text" name="c6" value='Admission Certificate'
-                                        placeholder="Admission Certificate" class="form-control" disabled>
+                                        placeholder="Admission Certificate" class="form-control" readonly>
                                     </td>
                                     <td><input type="text" name="c6_reg_no" class="form-control"></td>
                                     <td><input type="Date" name="c6_date" class="form-control"></td>
@@ -1572,7 +1562,7 @@
 
                                     <td scope="row" class=" text-dark">
                                       <input type="text" name="c7" class="form-control" value="Admission Commitee Form"
-                                        disabled="">
+                                        readonly>
                                     </td>
                                     <td><input type="text" name="c7_reg_no" class="form-control"></td>
                                     <td><input type="Date" name="c7_date" class="form-control"></td>
@@ -1597,7 +1587,7 @@
                                   <tr class="row2 collapse " id="row2">
 
                                     <td scope="row" class=" text-dark">
-                                      <input type="text" name="c8" class="form-control" value="Others" disabled="">
+                                      <input type="text" name="c8" class="form-control" value="Others" >
                                     </td>
                                     <td><input type="text" name="c8_reg_no" class="form-control"></td>
                                     <td><input type="Date" name="c8_date" class="form-control"></td>
@@ -1932,7 +1922,7 @@
                                       </div>
                                       <div class="form-group">
                                         <label for="exampleFormControlTextarea1">Neet Roll Number</label>
-                                        <input type="number" id="quantity" name="quantity" class="form-control">
+                                        <input type="text" id="quantity" name="quantity" class="form-control">
                                       </div>
                                       <div class="form-group">
                                         <label for="examplrolTextarea1">Course Commencement</label>
@@ -1957,7 +1947,7 @@
                                       <div class="form-group">
                                         <label for="">Registration Number</label>
 
-                                        <input type="number" id="quantity" name="quantity" class="form-control">
+                                        <input type="text" id="quantity" name="quantity" class="form-control">
                                       </div>
                                     </form>
                                   </div>
@@ -2240,8 +2230,8 @@
                                   <div class="form-group">
                                     <label for="exampleFormCon1">Mobile Phone</label>
 
-                                    <input type="text" name="Phone Number" class="form-control" placeholder=""
-                                      pattern="[6-9]{1}[0-9]{9}" required="">
+                                    <input type="number" name="Phone Number" class="form-control" placeholder=""
+                                      >
 
                                   </div>
                                   <div class="form-group">
@@ -3515,9 +3505,30 @@
         var filename = this.files[0].name;
         $(" #b4").text(filename);
       })
+      
     });
   </script>
+<script>
+    $(document).ready(function(){
 
+
+$('.dropdown-menu a.dropdown-toggle').on('click', function(e) {
+  if (!$(this).next().hasClass('show')) {
+    $(this).parents('.dropdown-menu').first().find('.show').removeClass("show");
+  }
+  var $subMenu = $(this).next(".dropdown-menu");
+  $subMenu.toggleClass('show');
+
+
+  $(this).parents('li.nav-item.dropdown.show').on('hidden.bs.dropdown', function(e) {
+    $('.dropdown-submenu .show').removeClass("show");
+  });
+
+
+  return false;
+});
+  });
+</script>
 </body>
 
 </html>
