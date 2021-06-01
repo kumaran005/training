@@ -1056,6 +1056,80 @@ exports.mbbs_board = function (req, res, next) {
    });
    
 };
+//UPDATE new_one.new_table SET images=LOAD_FILE('D:/Training/medical_1.1/public/Uploads/account.png') where idnew_table='1';
+
+exports.mdms_board = function (req, res) {
+   var message = '';
+ 
+   var userId = req.session.userId;
+   var post = req.body;
+   var cand_id = post.cand_id;
+   
+   var sql18 = "SELECT * FROM `ems`.`cand_institute_details_mdms` ;"
+   db.query(sql18, function (err, data18) { 
+      var sql17 = "SELECT * FROM `ems`.`cand_academic_mdms_2` ;"
+      db.query(sql17, function (err, data17) { 
+         var sql16 = "SELECT * FROM `ems`.`cand_academic_mdms_1` ;"
+         db.query(sql16, function (err, data16) { 
+            var sql15 = "SELECT * FROM `ems`.`cand_academic_mdms` ;"
+            db.query(sql15, function (err, data15) { 
+               var sql14 = "SELECT * FROM `ems`.`cand_neet_marks_mdms` ;"
+               db.query(sql14, function (err, data14) { 
+                  var sql12 = "SELECT * FROM `ems`.`cand_surety_details` ;"
+                  db.query(sql12, function (err, data12) {
+                     var sql11 = "select * from `ems`.`cand_relieving_details` where cand_id in (select cand_id from cand_admission_details where course ='MDMS');"
+                     db.query(sql11, function (err, data11) {
+                        var sql10 = "SELECT * FROM `ems`.`cand_certificate2_details` ;"
+                        db.query(sql10, function (err, data10) {
+                           var sql9 = "SELECT * FROM `ems`.`cand_certificate_details` ;"
+                           db.query(sql9, function (err, data9) {
+                              var sql8 = "SELECT * FROM `ems`.`cand_contact_details` ;"
+                              db.query(sql8, function (err, data8) {
+                                 var sql7 = "SELECT * FROM `ems`.`cand_bank_details` ;"
+                                 db.query(sql7, function (err, data7) {
+                                    var sql6 = "SELECT * FROM `ems`.`cand_neet_mark_details` ;"
+                                    db.query(sql6, function (err, data6) {
+                                       var sql5 = "SELECT * FROM `ems`.`cand_marks_details` ;"
+                                       db.query(sql5, function (err, data5) {
+                                          var sql4 = "SELECT * FROM `ems`.`cand_institute_details`;"
+                                          db.query(sql4, function (err, data4) {
+                                             var sql3 = "SELECT * FROM `ems`.`biometric_details` ;"
+                                             db.query(sql3, function (err, data3) {
+                                                var sql2 = "SELECT * FROM `ems`.`cand_address_details` ;"
+                                                db.query(sql2, function (err, data2) {
+                                                   var sql1 = "SELECT * FROM `ems`.`cand_profile_details` ;"
+                                                   db.query(sql1, function (err, data1) {
+                                                      var sql = "SELECT * FROM  `ems`.`cand_admission_details`;"
+                                                      db.query(sql, function (err, data) {
+
+                                                      // select * from ems.cand_profile_details where cand_id in (select cand_id from cand_admission_details where couse ='MDMS');
+
+                                                         res.render('mdms_viewstudent.ejs', {message: message, userData: data, userData1: data1,
+                                                                                             userData2:data2, userData3: data3, userData4: data4, userData5: data5, userData6: data6,
+                                                                                             userData7:data7, userData8: data8, userData9: data9, userData10: data10, userData11: data11, 
+                                                                                             userData12:data12,userData14:data14, userData15:data15,userData16:data16,userData17:data17,
+                                                                                             userData18:data18});
+                     
+                                                                  });
+                                                               });
+                                                            });
+                                                         });
+                                                      });
+                                                   });
+                                                });
+                                             });
+                                          });
+                                       });
+                                    });
+                                 });
+                              });
+                           });
+                        });
+                     });
+                  });
+               });
+            };
+
 
 //-----------------------------------------------dashboard page functionality----------------------------------------------
 

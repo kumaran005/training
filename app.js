@@ -2553,8 +2553,8 @@ app.post('/view_report', user.view_report);
 app.post('/add_user', user.add_user);
 app.get('/collect_fees', user.collect_fees);
 app.post('/collect_fees', user.collect_fees);
-
 app.get('/mbbs_viewstudent', user.mbbs_viewstudent);
+
 
 app.get('/pwdrecovery', user.pwdrecovery);
 app.post('/pwdrecovery', user.pwdrecovery);
@@ -2571,6 +2571,8 @@ app.get('/logout', user.logout);
 app.post('/login', user.login);
 app.get('/home/icdashboard', user.icdashboard);
 app.get('/mbbs_board', user.mbbs_board);
+app.get('/mdms_board', user.mdms_board);
+app.post('/mdms_board', user.mdms_board);
 
 app.get('/add_candidate', user.add_candidate);
 app.post('/add_candidate', user.add_candidate);
