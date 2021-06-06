@@ -24,14 +24,13 @@
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro300,400,400i,700" rel="stylesheet">
   <script type="text/javascript">
   
-   var clidata1 = <%-JSON.stringify(userData)%>;
+   var admission_detail = <%-JSON.stringify(userData)%>;
    var profile_detail = <%-JSON.stringify(userData1)%>;
    var address_detail = <%-JSON.stringify(userData2)%>;
    var photos = <%-JSON.stringify(userData3)%>;   
-   var institute_detail = <%-JSON.stringify(userData4)%>;
    var bank_detail = <%-JSON.stringify(userData7)%>;
    var contact_detail =<%-JSON.stringify(userData8)%>;
-   var certificate = <%-JSON.stringify(userData9)%>;
+   var cert_detail = <%-JSON.stringify(userData9)%>;
    var relieving_detail = <%-JSON.stringify(userData11)%>;
    var surety_detail = <%-JSON.stringify(userData12)%>;
    var neet_mark_mdms =<%-JSON.stringify(userData14)%>;
@@ -42,20 +41,24 @@
   
   function reply_click(clicked_id)
   {
+     bio(clicked_id);
      view(clicked_id);
      edit(clicked_id);
-     bio(clicked_id);
-      
+     cert(clicked_id); 
+
+
   }
 
 
-  bio = (clicked_id) =>{
-    alert("id"+clicked_id);
+  bio=(clicked_id) =>{
+    //alert("id"+clicked_id);
     var category = ['Photo','Sign','Thumb'];
      for (i in photos){
-      
+     
+    //var cand =[];
       if(clicked_id == photos[i].cand_id){
-        alert('id:'+photos[i].cand_id);
+        //alert(photos[i].cand_id);
+        //cand.push(photos[i].cand_id);
         // alert(photos[i].cand_id);
         //   for(j in category ){
         // //  if(category[j] == photos[i].category){
@@ -65,10 +68,15 @@
         // //    }
 
         //    }
+        //if(clicked_id == cand){
+          //alert(typeof(cand));
+
         if(category[0] == photos[i].category){
+
           document.getElementById('cand_photo').src = '/uploads/'+photos[i].Filename;
           document.getElementById('cand_photo_1').src = '/uploads/'+photos[i].Filename;
-          document.getElementById('cand_photo_link').innerHTML = photos[i].Filename; 
+          document.getElementById('cand_photo_link').innerHTML = photos[i].Filename;
+          document.getElementById('cand_photo_link1').innerHTML =photos[i].Filename; 
         }
         if(category[1] == photos[i].category){
           document.getElementById('cand_sign').src = '/uploads/'+photos[i].Filename;
@@ -78,23 +86,48 @@
           document.getElementById('cand_thumb').src ='/uploads/'+photos[i].Filename;
           document.getElementById('cand_thumb_link').innerHTML =photos[i].Filename;
         }
-
-      }
+       // }else{
+       //   document.getElementById('cand_photo').src = ' ';
+       //   document.getElementById('cand_photo_1').src = ' ';
+       //   document.getElementById('cand_photo_link').innerHTML = ' ';
+       //   document.getElementById('cand_sign').src = ' ';
+       //   document.getElementById('cand_sign_link').innerHTML = ' ';
+       //   document.getElementById('cand_thumb').src =' ';
+       //   document.getElementById('cand_thumb_link').innerHTML =' ';
+        
+       // }
+      
+       }
       
      }
-  }
-
-
+   }
+  cert=(clicked_id)=>{
+      certificate =['Community Certificate',
+'Transfer Certificate',
+'Migration Certificate',
+'Conduct Certificate',
+'Others',
+'Admission Certificate',
+'Eligiblity Certificate',
+'Admission Commitee Form'];
+  
+    for (i in cert_detail){
+      if(clicked_id == cert_detail[i].cand_id){
+        if(certificate[0] == cert_detail[i].all_certificate){
+          // document.getElementById('admission_Commitee_Form_link').innerHTML = cert_detail[i].Filename;
+          // document.getElementById('admission_Commitee_Form').src ='/uploads/'+cert_detail[i].Filename;
+        }
+      }
+    }
+}
   view=(clicked_id)=>{
-    for(var i = 0; i < clidata1.length; i++) {
-      var admission = clidata1[i];
+
+    for(i in admission_detail) {
+      var admission = admission_detail[i];
       var profile = profile_detail[i];
       var address = address_detail[i];
-      //var photo = photos[i];
-      var institute = institute_detail[i];
       var bank = bank_detail[i];
       var contact = contact_detail[i];
-      var cert = certificate[i];
       var relieving = relieving_detail[i];
       var surety = surety_detail[i];
       var neet_mdms=neet_mark_mdms[i];
@@ -103,16 +136,28 @@
       var academic_mdms_2 = academic_detail_mdms_2[i];
       var institute_mdms = institute_detail_mdms[i];
       
+      // &&
+      //    clicked_id == profile.cand_id &&
+      //    clicked_id == address.cand_id &&
+      //    clicked_id == bank.cand_id && 
+      //    clicked_id == contact.cand_id &&
+      //    clicked_id == relieving.cand_id &&
+      //    clicked_id == surety.cand_id &&
+      //    clicked_id == academic_mdms.cand_id &&
+      //    clicked_id == photo.cand_id
       
-      if(clicked_id == admission.cand_id && 
+      if(clicked_id == admission.cand_id &&
          clicked_id == profile.cand_id &&
          clicked_id == address.cand_id &&
-         clicked_id == bank.cand_id && 
+         clicked_id == bank.cand_id &&
          clicked_id == contact.cand_id &&
          clicked_id == relieving.cand_id &&
          clicked_id == surety.cand_id &&
+         clicked_id == neet_mdms.cand_id &&
          clicked_id == academic_mdms.cand_id &&
-         clicked_id == photo.cand_id)
+         clicked_id == academic_mdms_1.cand_id &&
+         clicked_id == academic_mdms_2.cand_id &&
+         clicked_id == institute_mdms.cand_id)
          {
         
         //admission
@@ -246,22 +291,17 @@
         document.getElementById("cand_amount").innerHTML = institute_mdms['amount_of_agreement'];
         document.getElementById("cand_period").innerHTML = institute_mdms['period_of_agreement'];
 
-        // document.getElementById('cand_photo').src = '/uploads/'+photo['cand_photo'];
-        // document.getElementById('cand_sign').src = '/uploads/'+photo['cand_sign'];
       break;
       }
     }
   }
   edit=(clicked_id)=>{
-      for(var i = 0; i < clidata1.length; i++) {
-        var admission = clidata1[i];
+      for( i in admission_detail) {
+        var admission = admission_detail[i];
         var profile = profile_detail[i];
         var address = address_detail[i];
-        var photo = photos[i];
-        var institute = institute_detail[i];
         var bank = bank_detail[i];
         var contact = contact_detail[i];
-        var cert = certificate[i];
         var relieving = relieving_detail[i];
         var surety = surety_detail[i];
         var neet_mdms=neet_mark_mdms[i];
@@ -269,147 +309,151 @@
         var academic_mdms_1 = academic_detail_mdms_1[i];
         var academic_mdms_2 = academic_detail_mdms_2[i];
         var institute_mdms = institute_detail_mdms[i];
+      
         
-      if(clicked_id == admission.cand_id && 
-        clicked_id == profile.cand_id &&
-        clicked_id == address.cand_id &&
-        clicked_id == bank.cand_id && 
-        clicked_id == contact.cand_id &&
-        clicked_id == relieving.cand_id &&
-        clicked_id == surety.cand_id &&
-        clicked_id == academic_mdms.cand_id)
-        {  
-
-          document.getElementById("edit_name").placeholder = admission['cand_name'];
-          document.getElementById("edit_rank").placeholder = admission['rank'];
-          document.getElementById("edit_rank_no").placeholder = admission['rank_no'];
-          document.getElementById("edit_ar_no").placeholder = admission['ar_no'];
-          document.getElementById("edit_total_mark").placeholder = admission['total_mark'];
-          document.getElementById("edit_neet_mark").placeholder = admission['neet_mark'];
-          document.getElementById("edit_reg_no").placeholder = admission['reg_no'];
-          document.getElementById("edit_neet_roll_no").placeholder = admission['neet_roll_no'];
-          document.getElementById("edit_course").placeholder = admission['course'];
-          document.getElementById("edit_course1").placeholder =admission['course'];
-          document.getElementById("edit_admission_type").placeholder = admission['admission_type'];
-          document.getElementById("edit_admission_quota").placeholder = admission['admission_quota'];
-          document.getElementById("edit_course_commencement").placeholder = admission['course_commencement'];
-          document.getElementById("edit_date_of_admission").placeholder = admission['date_of_admission'];
-          document.getElementById("edit_date_of_allotment").placeholder = admission['date_of_allotment'];
-          document.getElementById("edit_selected_category").placeholder = admission['selected_category'];
-          document.getElementById("edit_willing_for_counciling").placeholder = admission['willing_for_counciling'];
+        if(clicked_id == admission.cand_id &&
+           clicked_id == profile.cand_id &&
+           clicked_id == address.cand_id &&
+           clicked_id == bank.cand_id &&
+           clicked_id == contact.cand_id &&
+           clicked_id == relieving.cand_id &&
+           clicked_id == surety.cand_id &&
+           clicked_id == neet_mdms.cand_id &&
+           clicked_id == academic_mdms.cand_id &&
+           clicked_id == academic_mdms_1.cand_id &&
+           clicked_id == academic_mdms_2.cand_id &&
+           clicked_id == institute_mdms.cand_id)
+         {
+          document.getElementById("edit_cand_id").value =admission['cand_id'];
+          document.getElementById("edit_name").value = admission['cand_name'];
+          document.getElementById("edit_rank").value = admission['rank'];
+          document.getElementById("edit_rank_no").value = admission['rank_no'];
+          document.getElementById("edit_ar_no").value = admission['ar_no'];
+          document.getElementById("edit_total_mark").value = admission['total_mark'];
+          document.getElementById("edit_neet_mark").value = admission['neet_mark'];
+          document.getElementById("edit_reg_no").value = admission['reg_no'];
+          document.getElementById("edit_neet_roll_no").value = admission['neet_roll_no'];
+          document.getElementById("edit_course").value = admission['course'];
+          //document.getElementById("edit_course1").placeholder =admission['course'];
+          document.getElementById("edit_admission_type").value = admission['admission_type'];
+          document.getElementById("edit_admission_quota").value = admission['admission_quota'];
+          document.getElementById("edit_course_commencement").value = admission['course_commencement'];
+          document.getElementById("edit_date_of_admission").value = admission['date_of_admission'];
+          document.getElementById("edit_date_of_allotment").value = admission['date_of_allotment'];
+          document.getElementById("edit_selected_category").value = admission['selected_category'];
+          document.getElementById("edit_willing_for_counciling").value = admission['willing_for_counciling'];
 
           //profile details
-          document.getElementById("edit_name1").placeholder = profile['name'];
-          document.getElementById("edit_initial").placeholder = profile['initial'];
-          document.getElementById("edit_initial_expansion").placeholder = profile['initial_expansion'];
-          document.getElementById("edit_father_name").placeholder = profile['father_name'];
-          document.getElementById("edit_mother_name").placeholder = profile['mother_name'];
-          document.getElementById("edit_date_of_birth").placeholder = profile['date_of_birth'];
-          document.getElementById("edit_gender").placeholder = profile['gender'];
-          document.getElementById("edit_blood_group").placeholder = profile['blood_group'];
-          document.getElementById("edit_religion").placeholder = profile['religion'];
-          document.getElementById("edit_community").placeholder = profile['community'];
-          document.getElementById("edit_caste").placeholder = profile['caste'];
-          document.getElementById("edit_nationality").placeholder = profile['nationality'];
-          document.getElementById("edit_willing_to_donate_blood").placeholder = profile['willing_to_donate_blood'];
-          document.getElementById("edit_academic_year").placeholder = profile['academic_year'];
-          document.getElementById("edit_student_code").placeholder = profile['student_code'];
-
+          document.getElementById("edit_initial").value = profile['initial'];
+          document.getElementById("edit_initial_expansion").value = profile['initial_expansion'];
+          document.getElementById("edit_father_name").value = profile['father_name'];
+          document.getElementById("edit_mother_name").value = profile['mother_name'];
+          document.getElementById("edit_date_of_birth").value = profile['date_of_birth'];
+          document.getElementById("edit_gender").value = profile['gender'];
+          document.getElementById("edit_blood_group").value = profile['blood_group'];
+          document.getElementById("edit_religion").value = profile['religion'];
+          document.getElementById("edit_community").value = profile['community'];
+          document.getElementById("edit_caste").value = profile['caste'];
+          document.getElementById("edit_nationality").value = profile['nationality'];
+          document.getElementById("edit_willing_to_donate_blood").value = profile['willing_to_donate_blood'];
+          document.getElementById("edit_academic_year").value = profile['academic_year'];
+          document.getElementById("edit_student_code").value = profile['student_code'];
+          
           // //adress detail    
-          document.getElementById("edit_ps_address").placeholder = address['ps_address'];
-          document.getElementById("edit_ps_pincode").placeholder = address['ps_pincode'];
-          document.getElementById("edit_ps_state").placeholder = address['ps_state'];
-          document.getElementById("edit_ps_district").placeholder = address['ps_district'];
-          document.getElementById("edit_pm_address").placeholder = address['pm_address'];
-          document.getElementById("edit_pm_pincode").placeholder = address['pm_pincode'];
-          document.getElementById("edit_pm_state").placeholder = address['pm_state'];
-          document.getElementById("edit_pm_district").placeholder = address['pm_district'];
+          document.getElementById("edit_ps_address").value = address['ps_address'];
+          document.getElementById("edit_ps_pincode").value = address['ps_pincode'];
+          document.getElementById("edit_ps_state").value = address['ps_state'];
+          document.getElementById("edit_ps_district").value = address['ps_district'];
+          document.getElementById("edit_pm_address").value = address['pm_address'];
+          document.getElementById("edit_pm_pincode").value = address['pm_pincode'];
+          document.getElementById("edit_pm_state").value = address['pm_state'];
+          document.getElementById("edit_pm_district").value = address['pm_district'];
 
           // contact detail
-          document.getElementById("edit_tel_phone").placeholder= contact['tel_phone'];
-          document.getElementById("edit_mobile_phone").placeholder=contact['mobile_phone'];
-          document.getElementById("edit_email_id").placeholder= contact['email_id'];
-          document.getElementById("edit_mobile_phone_1").placeholder=contact['mobile_phone'];
-          document.getElementById("edit_email_id_1").placeholder= contact['email_id'];
-          document.getElementById("edit_aadhar_no").placeholder= contact['aadhar_no'];
-          document.getElementById("edit_voter_id").placeholder= contact['voter_id'];
-          document.getElementById("edit_remarks").placeholder= contact['remarks'];
+          document.getElementById("edit_tel_phone").value= contact['tel_phone'];
+          document.getElementById("edit_mobile_phone").value=contact['mobile_phone'];
+          document.getElementById("edit_email_id").value= contact['email_id'];
+          document.getElementById("edit_mobile_phone_1").value=contact['mobile_phone'];
+          document.getElementById("edit_email_id_1").value= contact['email_id'];
+          document.getElementById("edit_aadhar_no").value= contact['aadhar_no'];
+          document.getElementById("edit_voter_id").value= contact['voter_id'];
+          document.getElementById("edit_remarks").value= contact['remarks'];
 
 
           //institute_detail_mdms
-          document.getElementById("edit_institute_name").placeholder = institute_mdms['name'];
-          document.getElementById("edit_post").placeholder = institute_mdms['post'];
-          document.getElementById("edit_amount").placeholder = institute_mdms['amount_of_agreement'];
-          document.getElementById("edit_period").placeholder = institute_mdms['period_of_agreement'];
+          document.getElementById("edit_institute_name").value = institute_mdms['name'];
+          document.getElementById("edit_post").value = institute_mdms['post'];
+          document.getElementById("edit_amount").value = institute_mdms['amount_of_agreement'];
+          document.getElementById("edit_period").value = institute_mdms['period_of_agreement'];
 
 
           //academic details
-          document.getElementById("edit_mbbs_name").placeholder = academic_mdms['mbbs_name'];
-          document.getElementById("edit_mbbs_place").placeholder = academic_mdms['mbbs_place'];
-          document.getElementById("edit_mbbs_district").placeholder = academic_mdms['mbbs_district'];
-          document.getElementById("edit_mbbs_state").placeholder = academic_mdms['mbbs_state'];
-          document.getElementById("edit_mbbs_university").placeholder = academic_mdms['mbbs_university'];
-          document.getElementById("edit_mbbs_marksheet_no").placeholder = academic_mdms['mbbs_marksheet_no'];
-          document.getElementById("edit_mbbs_passing_month").placeholder = academic_mdms['mbbs_passing_month'];
-          document.getElementById("edit_mbbs_passing_year").placeholder = academic_mdms['mbbs_passing_year'];
-          document.getElementById("edit_mbbs_speciality").placeholder = academic_mdms['mbbs_speciality'];
+          document.getElementById("edit_mbbs_name").value = academic_mdms['mbbs_name'];
+          document.getElementById("edit_mbbs_place").value = academic_mdms['mbbs_place'];
+          document.getElementById("edit_mbbs_district").value = academic_mdms['mbbs_district'];
+          document.getElementById("edit_mbbs_state").value = academic_mdms['mbbs_state'];
+          document.getElementById("edit_mbbs_university").value = academic_mdms['mbbs_university'];
+          document.getElementById("edit_mbbs_marksheet_no").value = academic_mdms['mbbs_marksheet_no'];
+          document.getElementById("edit_mbbs_passing_month").value = academic_mdms['mbbs_passing_month'];
+          document.getElementById("edit_mbbs_passing_year").value = academic_mdms['mbbs_passing_year'];
+          document.getElementById("edit_mbbs_speciality").value = academic_mdms['mbbs_speciality'];
           
 
-          document.getElementById("edit_pg_diplamo_name").placeholder = academic_mdms_1['pg_diplamo_name'];
-          document.getElementById("edit_pg_diplamo_place").placeholder = academic_mdms_1['pg_diplamo_place'];
-          document.getElementById("edit_pg_diplamo_district").placeholder = academic_mdms_1['pg_diplamo_district'];
-          document.getElementById("edit_pg_diplamo_state").placeholder = academic_mdms_1['pg_diplamo_state'];
-          document.getElementById("edit_pg_diplamo_university").placeholder = academic_mdms_1['pg_diplamo_university'];
-          document.getElementById("edit_pg_diplamo_marksheet_no").placeholder = academic_mdms_1['pg_diplamo_marksheet_no'];
-          document.getElementById("edit_pg_diplamo_passing_month").placeholder = academic_mdms_1['pg_diplamo_passing_month'];
-          document.getElementById("edit_pg_diplamo_passing_year").placeholder = academic_mdms_1['pg_diplamo_passing_year'];
-          document.getElementById("edit_pg_diplamo_speciality").placeholder = academic_mdms_1['pg_diplamo_speciality'];
+          document.getElementById("edit_pg_diplamo_name").value = academic_mdms_1['pg_diplamo_name'];
+          document.getElementById("edit_pg_diplamo_place").value = academic_mdms_1['pg_diplamo_place'];
+          document.getElementById("edit_pg_diplamo_district").value = academic_mdms_1['pg_diplamo_district'];
+          document.getElementById("edit_pg_diplamo_state").value = academic_mdms_1['pg_diplamo_state'];
+          document.getElementById("edit_pg_diplamo_university").value = academic_mdms_1['pg_diplamo_university'];
+          document.getElementById("edit_pg_diplamo_marksheet_no").value = academic_mdms_1['pg_diplamo_marksheet_no'];
+          document.getElementById("edit_pg_diplamo_passing_month").value = academic_mdms_1['pg_diplamo_passing_month'];
+          document.getElementById("edit_pg_diplamo_passing_year").value = academic_mdms_1['pg_diplamo_passing_year'];
+          document.getElementById("edit_pg_diplamo_speciality").value = academic_mdms_1['pg_diplamo_speciality'];
           
 
-          document.getElementById("edit_mdms_name").placeholder = academic_mdms_2['mdms_name'];
-          document.getElementById("edit_mdms_place").placeholder = academic_mdms_2['mdms_place'];
-          document.getElementById("edit_mdms_district").placeholder = academic_mdms_2['mdms_district'];
-          document.getElementById("edit_mdms_state").placeholder = academic_mdms_2['mdms_state'];
-          document.getElementById("edit_mdms_university").placeholder = academic_mdms_2['mdms_university'];
-          document.getElementById("edit_mdms_marksheet_no").placeholder = academic_mdms_2['mdms_marksheet_no'];
-          document.getElementById("edit_mdms_passing_month").placeholder = academic_mdms_2['mdms_passing_month'];
-          document.getElementById("edit_mdms_passing_year").placeholder = academic_mdms_2['mdms_passing_year'];
-          document.getElementById("edit_mdms_speciality").placeholder = academic_mdms_2['mdms_speciality'];
+          document.getElementById("edit_mdms_name").value = academic_mdms_2['mdms_name'];
+          document.getElementById("edit_mdms_place").value = academic_mdms_2['mdms_place'];
+          document.getElementById("edit_mdms_district").value = academic_mdms_2['mdms_district'];
+          document.getElementById("edit_mdms_state").value = academic_mdms_2['mdms_state'];
+          document.getElementById("edit_mdms_university").value = academic_mdms_2['mdms_university'];
+          document.getElementById("edit_mdms_marksheet_no").value = academic_mdms_2['mdms_marksheet_no'];
+          document.getElementById("edit_mdms_passing_month").value = academic_mdms_2['mdms_passing_month'];
+          document.getElementById("edit_mdms_passing_year").value = academic_mdms_2['mdms_passing_year'];
+          document.getElementById("edit_mdms_speciality").value = academic_mdms_2['mdms_speciality'];
 
           //neet_marks_mdms
-          document.getElementById("edit_mbbs_mark").placeholder = neet_mdms['mbbs_marks'];
-          document.getElementById("edit_pg_diplamo_mark").placeholder = neet_mdms['pg_diplamo_marks'];
-          document.getElementById("edit_md/ms_mark").placeholder = neet_mdms['mdms_marks'];
-          document.getElementById("edit_percentile_mark").placeholder = neet_mdms['neet_percentile'];
+          document.getElementById("edit_mbbs_mark").value = neet_mdms['mbbs_marks'];
+          document.getElementById("edit_pg_diplamo_mark").value = neet_mdms['pg_diplamo_marks'];
+          document.getElementById("edit_md/ms_mark").value = neet_mdms['mdms_marks'];
+          document.getElementById("edit_percentile_mark").value = neet_mdms['neet_percentile'];
 
           //bank details
-          document.getElementById("edit_account_no").placeholder = bank['account_no'];
-          document.getElementById("edit_bank_name").placeholder = bank['bank_name'];
-          document.getElementById("edit_branch_name").placeholder = bank['branch_name'];
-          document.getElementById("edit_ifsc").placeholder = bank['ifsc'];
-          document.getElementById("edit_micr").placeholder = bank['micr'];
-          document.getElementById("edit_pan_no").placeholder = bank['pan_no'];
+          document.getElementById("edit_account_no").value = bank['account_no'];
+          document.getElementById("edit_bank_name").value = bank['bank_name'];
+          document.getElementById("edit_branch_name").value = bank['branch_name'];
+          document.getElementById("edit_ifsc").value = bank['ifsc'];
+          document.getElementById("edit_micr").value = bank['micr'];
+          document.getElementById("edit_pan_no").value = bank['pan_no'];
           
           //surety detail
-          document.getElementById("edit_surety_one_name").placeholder = surety['surety_one_name'];
-          document.getElementById("edit_surety_one_aadhaar").placeholder = surety['surety_one_aadhaar'];
-          document.getElementById("edit_surety_one_pan").placeholder = surety['surety_one_pan'];
-          document.getElementById("edit_surety_one_address").placeholder = surety['surety_one_address'];
-          document.getElementById("edit_surety_two_name").placeholder = surety['surety_two_name'];
-          document.getElementById("edit_surety_two_aadhaar").placeholder = surety['surety_two_aadhaar'];
-          document.getElementById("edit_surety_two_pan").placeholder = surety['surety_two_pan'];
-          document.getElementById("edit_surety_two_address").placeholder = surety['surety_two_address'];
-          document.getElementById("edit_surety_three_name").placeholder = surety['surety_three_name'];
-          document.getElementById("edit_surety_three_aadhaar").placeholder = surety['surety_three_aadhaar'];
-          document.getElementById("edit_surety_three_pan").placeholder = surety['surety_three_pan'];
-          document.getElementById("edit_surety_three_address").placeholder = surety['surety_three_address'];
+          document.getElementById("edit_surety_one_name").value = surety['surety_one_name'];
+          document.getElementById("edit_surety_one_aadhaar").value = surety['surety_one_aadhaar'];
+          document.getElementById("edit_surety_one_pan").value = surety['surety_one_pan'];
+          document.getElementById("edit_surety_one_address").value = surety['surety_one_address'];
+          document.getElementById("edit_surety_two_name").value = surety['surety_two_name'];
+          document.getElementById("edit_surety_two_aadhaar").value = surety['surety_two_aadhaar'];
+          document.getElementById("edit_surety_two_pan").value = surety['surety_two_pan'];
+          document.getElementById("edit_surety_two_address").value = surety['surety_two_address'];
+          document.getElementById("edit_surety_three_name").value = surety['surety_three_name'];
+          document.getElementById("edit_surety_three_aadhaar").value = surety['surety_three_aadhaar'];
+          document.getElementById("edit_surety_three_pan").value = surety['surety_three_pan'];
+          document.getElementById("edit_surety_three_address").value = surety['surety_three_address'];
           
           //relieveing detail
-          document.getElementById("edit_relieved").placeholder = relieving['relieved'];
-          document.getElementById("edit_college_name").placeholder = relieving['college_name'];
-          document.getElementById("edit_amount_refunded").placeholder = relieving['amount_refunded'];
-          document.getElementById("edit_date_of_relieving").placeholder = relieving['date_of_relieving'];
-          document.getElementById("edit_date_of_reallotment").placeholder = relieving['date_of_reallotment'];
+          document.getElementById("edit_relieved").value = relieving['relieved'];
+          document.getElementById("edit_college_name").value = relieving['college_name'];
+          document.getElementById("edit_amount_refunded").value = relieving['amount_refunded'];
+          document.getElementById("edit_date_of_relieving").value = relieving['date_of_relieving'];
+          document.getElementById("edit_date_of_reallotment").value = relieving['date_of_reallotment'];
 
           break;  
         }
@@ -626,6 +670,7 @@ Add New Student
                   <% if(userData.length!=0){ var i=1; userData.forEach(function(classdata1){ %>
                     <tr >
                       <td>
+                        <input type='text' name='cand_id' hidden value='<%=classdata1.cand_id %>' />
                         <button id="3" onClick="reply_click(this.name)" class="btn btn-info btn-sm" type="button" data-toggle="modal" name= "<%=classdata1.cand_id %>"   data-target="#myModal">View </button>
                       </td>
                     <td id="id">
@@ -669,6 +714,10 @@ Add New Student
 
 
 <!-- Modal -->
+
+<form class="form-horizontal"   role="form" method="post" action="/add_students"> 
+  <!-- <form class="form-horizontal" role="form" method="post" action="/add_students" onClick="return empty()"
+  enctype="multipart/form-data">   -->
 <div class="modal fade " id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
   <div class="modal-dialog modal-lg"role="document">
     <div class="modal-content">
@@ -709,38 +758,31 @@ Add New Student
                     <form action="/action_page.php" method="get" name="myForm">
                <div class="form-group">
                  <label for="exampleFormControlInput1" class="text-danger">Name *</label>
-                 <input type="text" class="form-control" id="exampleFormControlInput1" required />
+                 <input type="text" class="form-control" id="exampleFormControlInput1" name="full_name" required />
                  
                </div>
                
               
                <div class="form-group">
                 <label for="exampleFormControlInput1">Expansion</label>
-                <input type="text" class="form-control" id="exampFormControlInput1" >
+                <input type="text" class="form-control" id="exampFormControlInput1" name="initial_expansion">
               </div>
               <div class="form-group row">
                 <div class="col-md-6">
                 <label for="birthday">DOB </label>
-             <input type="Date" id="birthday" class="form-control" name="birthday"required /> 
+             <input type="Date" id="birthday" class="form-control" name="date_of_birth" required /> 
                </div>
                <div class="col-md-6">
                       <div class="">
                     <label for="exampleFormControlTextarea1"> Type Of Allotment</label>
                     <i class="fa fa-caret-down "id="drop"></i>
                 
-                    <select class="form-control">
+                    <select class="form-control" name="type_of_allotment">
                       <option hidden selected>&#160;</option>
     
-                     <option value="volvo">Service</option>
-                     <option value="saab">B+</option>
-                     <option value="saab">A+</option>
-
-
-
-
-
-
-                    
+                     <option value="Service">Service</option>
+                     <option value="B+">B+</option>
+                     <option value="A+">A+</option>
                     
                     </select>                 
                   </div> 
@@ -754,16 +796,16 @@ Add New Student
              <div class="col-md-6">
               <div class="form-group">
               <label for="exampleFormControlInput1"> Initial </label>
-              <input type="text" class="form-control" id="exampleFormControlInput1" required />
+              <input type="text" class="form-control" id="exampleFormControlInput1" name="initial" required />
             </div>
              <div class="form-group">
               <label for="exampleFormControlput1">Father's Name </label>
-              <input type="text" class="form-control" id="exampleForControlInput1" required />
+              <input type="text" class="form-control" id="exampleForControlInput1" name="father_name"  required/>
             </div>
          
            <div class="form-group">
             <label for="exampleFormConnput1">Mother's Name</label>
-            <input type="text" class="form-control" id="exeFormControlInput1" >
+            <input type="text" class="form-control" id="exeFormControlInput1" name="mother_name">
           </div>
         
         
@@ -774,11 +816,11 @@ Add New Student
                     <label for="exampleFormControlSelect2"class="text-danger">Gender *</label>
                     <div class="d-flex ">
                   <div class="form-check form-check-inline ">
-                  <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
+                  <input class="form-check-input" type="radio" name="gender" id="inlineRadio1" value="Male">
                   <label class="form-check-label" for="inlineRadio1">Male </label>
                 </div>
                 <div class="form-check form-check-inline  ">
-                  <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
+                  <input class="form-check-input" type="radio" name="gender" id="inlineRadio2" value="Female">
                   <label class="form-check-label" for="inlineRadio2">Female</label>
                 </div>
                 </div>
@@ -787,31 +829,24 @@ Add New Student
                     <label for="exampleFormControlTextarea1"class="text-danger">Blood Group * </label>
                     <i class="fa fa-caret-down "id="drop"></i>
                 
-                    <select class="form-control">
+                    <select class="form-control" name="blood_group">
                       <option hidden selected>&#160;</option>
     
-                     <option value="volvo">O+</option>
-                     <option value="saab">B+</option>
-                     <option value="saab">A+</option>
+                     <option value="O+">O+</option>
+                     <option value="B+">B+</option>
+                     <option value="A+">A+</option>
 
-                     <option value="saab">AB+</option>
-                     <option value="saab">A-</option>
-                     <option value="saab">B-</option>
-                     <option value="saab">O-</option>
-                     <option value="saab">O-</option>
-                     <option value="saab">AB-</option>
-
-
-
-
-
-                    
+                     <option value="AB+">AB+</option>
+                     <option value="A-">A-</option>
+                     <option value="B-">B-</option>
+                     <option value="O-">O-</option>
+                     <option value="AB-">AB-</option>
                     
                     </select>                 
                   </div> 
                   <div class="form-group">
                     <label for="exampleFormControlTextarea1">Academic Year</label>
-                        <input type="text" class="form-control" id="examplontrolInput1" >
+                        <input type="text" class="form-control" id="examplontrolInput1" name="academic_year">
                 
                   </div>
                  </div>
@@ -820,18 +855,18 @@ Add New Student
                     <label for="community"class="text-danger">Nationality *</label>
                     <i class="fa fa-caret-down "id="drop"></i>
                 
-                <select class="form-control">
+                <select class="form-control" name="nationality">
                   <option hidden selected>&#160;</option>
 
-                 <option value="volvo">Indian</option>
-                 <option value="saab">Srilankan</option>
+                 <option value="Indian">Indian</option>
+                 <option value="Srilankan">Srilankan</option>
                 
                 
                 </select> 
                  </div>
                  <div class="form-group">
                   <label for="exampleFormConolTextarea1">Student Code</label>
-                      <input type="text" class="form-control" id="examplontrolIput1" required />
+                      <input type="text" class="form-control" id="examplontrolIput1" name="student_code" />
               
                 </div>
                 <div class="form-group">
@@ -839,11 +874,11 @@ Add New Student
              
              <i class="fa fa-caret-down "id="drop"></i>
              
-             <select class="form-control">           
+             <select class="form-control" name="willing_to_donate_blood" >           
               <option hidden selected>&#160;</option>
  
-              <option value="volvo">Yes</option>
-               <option value="saab">No</option>
+              <option value="Yes">Yes</option>
+               <option value="No">No</option>
               
               
              </select> 
@@ -857,31 +892,31 @@ Add New Student
                 
                 <i class="fa fa-caret-down "id="drop"></i>
                 
-                <select class="form-control">       
+                <select class="form-control" name="religion">       
                   <option hidden selected>&#160;</option>
-                  <option value="volvo">Hindu</option>
-                 <option value="saab">Christian</option>
-                 <option value="mercedes">Islam</option>
+                  <option value="Hindu">Hindu</option>
+                 <option value="Christian">Christian</option>
+                 <option value="Islam">Islam</option>
                 
                 </select> 
                 
                  </div>
                  <div class="form-group">
                   <label for="birthday">Caste </label>
-               <input type="text"  class="form-control" name="caste"required /> 
+               <input type="text"  class="form-control" name="caste" /> 
                  </div>
                  <div class="form-group">
                   <label for="community">Community</label>
              
             <i class="fa fa-caret-down "id="drop"></i>
             
-            <select class="form-control">   
+            <select class="form-control" name="community">   
               <option hidden selected>&#160;</option>
 
-              <option value="volvo">OC</option>
-               <option value="saab">BC</option>
-               <option value="mercedes">SC</option>
-               <option value="audi">MBC</option>
+              <option value="OC">OC</option>
+               <option value="BC">BC</option>
+               <option value="SC">SC</option>
+               <option value="MBC">MBC</option>
              </select> 
                </div>
                 </div>
@@ -919,116 +954,119 @@ Add New Student
               
               <div class="row">
               <div class="col-md-4">
-              <form action="/action_page.php" method="get" name="myForm">
+              <!-- <form action="/action_page.php" method="get" name="myForm"> -->
               <div class="form-group">
               <label for="exampleFormControlInput1">Rank</label>
-              <input type="text" class="form-control" id="exampleFormControlInput1" >
+              <input type="text" class="form-control" id="exampleFormControlInput1" name="rank">
               </div>
               <div class="form-group">
               <label for="exampleFormControlTextarea1">Neet Roll Number</label>
-              <input type="number" id="quantity" name="quantity" class="form-control"> 
+              <input type="number" id="quantity" name="neet_roll_no" class="form-control"  > 
               </div>  
               <div class="form-group">
                 <label for="examplrolTextarea1">Course Commencement</label>
 
-              <input  class="textbox-n form-control" type="text" onfocus="(this.type='Date')" id="Date">
+              <input  class="textbox-n form-control" type="text" onfocus="(this.type='Date')" id="Date" name="course_commencement">
               </div>
               
               <div class="form-group">
                 <label for="birthday">Select Category</label>
         <i class="fa fa-caret-down "id="drop"></i>
 
-         <select class="form-control">    
+         <select class="form-control" name="selected_category">    
           <option hidden selected>&#160;</option>
  
-          <option value="volvo">OC</option>
-                <option value="saab">BC</option>
-                <option value="mercedes">SC</option>
-                <option value="audi">MBC</option>
-                </select>   </div>
+          <option value="OC">OC</option>
+                <option value="BC">BC</option>
+                <option value="SC">SC</option>
+                <option value="MBC">MBC</option>
+                </select>   
+              </div>
                 <div class="form-group">
                   <label for="">Registration Number</label>
   
-                  <input type="number" id="quantity" name="quantity" class="form-control"> 
+                  <input type="number" id="quantity" name="reg_no" class="form-control"> 
                 </div>
-              </form>
+              <!-- </form> -->
               </div>
               <div class="col-md-4">
-              <form action="/action_page.php" method="get" name="myForm">
+              <!-- <form action="/action_page.php" method="get" name="myForm"> -->
               <div class="form-group">
               <label for="exampleFormControlInput1">Ar Number</label>
-              <input type="number" class="form-control"> 
+              <input type="number" class="form-control" name="ar_no"> 
               </div>
               <div class="form-group">
               <label for="exampleFormControlTextarea1">Rank Number</label>
-              <input type="number" id="quantity" name="quantity" class="form-control"> 
+              <input type="number" id="quantity" name="rank_no" class="form-control"> 
               </div>  
               <div class="form-group">
                 <label for="exampleFormControlea1">Date Of Admission</label>
 
-              <input placeholder="" class="textbox-n form-control" class="form-control"type="text" onfocus="(this.type='Date')" id="Date">
+              <input placeholder="" class="textbox-n form-control" class="form-control"type="text" onfocus="(this.type='Date')" id="Date" name="date_of_admission">
               </div>
               
               <div class="form-group">
                 <label for="exampleFormControlTextarea1">Admission Type</label>
         <i class="fa fa-caret-down "id="drop"></i>
 
-         <select class="form-control">    
+         <select class="form-control" name="admission_type">    
           <option hidden selected>&#160;</option>
  
-          <option value="volvo">Regular Admission</option>
-                <option value="saab">BC</option>
-                <option value="mercedes">SC</option>
-                <option value="audi">MBC</option>
+          <option value="Regular Admission">Regular Admission</option>
+                <option value="BC">BC</option>
+                <option value="SC">SC</option>
+                <option value="MBC">MBC</option>
                 </select>  
                </div>  
                <div class="form-group">
                 <label for="exampleFormControlTextarea1">Admission Quota</label>
         <i class="fa fa-caret-down "id="drop"></i>
 
-         <select class="form-control">    
+         <select class="form-control" name="admission_quota">    
           <option hidden selected>&#160;</option>
  
-          <option value="volvo">State Quota</option>
-                <option value="saab">CBSE Quota</option>
-                <option value="mercedes">ALL INDIA Quota</option>
+          <option value="State Quota">State Quota</option>
+                <option value="CBSE Quota">CBSE Quota</option>
+                <option value="ALL INDIA Quota">ALL INDIA Quota</option>
                 </select>  
                </div>  
-              </form>
+              <!-- </form> -->
               </div>
               <div class="col-md-4">
-              <form action="/action_page.php" method="get" name="myForm">
+        <!-- <form action="/action_page.php" method="get" name="myForm"> -->
               <div class="form-group">
               <label for="exampleFormControlInput1">Total Mark</label>
-              <input type="number" class="form-control"> 
+              <input type="number" name="total_mark" class="form-control"> 
               </div>
               <div class="form-group">
               <label for="exampleFormControlTextarea1">Neet Mark</label>
-              <input type="number" id="quantity" name="quantity" class="form-control"> 
+              <input type="number" id="quantity" name="neet_mark" class="form-control"> 
               </div>  
               <div class="form-group">
                 <label for="exampleFormControlTextarea1">Date Of Allotment</label>
 
-              <input placeholder="" class="textbox-n form-control" type="text" onfocus="(this.type='Date')" id="Date">
+              <input placeholder="" class="textbox-n form-control" type="text" onfocus="(this.type='Date')" id="Date" name="date_of_allotment">
               </div>
               
               <div class="form-group">
                 <label for="exampleFormControlInput1">Course</label>
-                <input type="text" class="form-control" placeholder='MDMS' value='MDMS'
-                  name='course'>
-              </div>                <div class="form-group">
+                <!-- <input type="text" class="form-control" placeholder='MDMS' value='MDMS' name='course'> -->
+                <input type="text" class="form-control" placeholder='MDMS' value='MDMS'name='course'>
+                <!-- <input type="text" class="form-control" id="exampleForControlInput1" value="MDMS" required name="course"/> -->
+              </div>  
+              <div class="form-group">
                   <label for="exampleFormControlTextarea1">Willing For Counselling</label>
           <i class="fa fa-caret-down "id="drop"></i>
   
-           <select class="form-control">    
+           <select class="form-control" name="willing_for_counciling">    
             <option hidden selected>&#160;</option>
    
-            <option value="volvo">Yes</option>
-                  <option value="saab">No</option>
+            <option value="Yes">Yes</option>
+                  <option value="No">No</option>
             
                   </select>  
                  </div>  
-              </form>
+              <!-- </form> -->
               </div>
             
               </div>
@@ -1059,22 +1097,22 @@ Add New Student
   
     <div class="row"id="addressborder">
       <div class="col-md-6">
-         <form action="/action_page.php" method="get" name="myForm">
+         <!-- <form action="/action_page.php" method="get" name="myForm"> -->
     <div class="form-group">
       <label for="exampleFormControlTextarea1"> Present Address</label>
-      <textarea class="form-control" id="description_id" onkeyup="new do_resize(this);" cols="10" rows="1" name="description_name"></textarea>
+      <textarea class="form-control"  id="description_id" onkeyup="new do_resize(this);" cols="10" rows="1" name="ps_address" ></textarea>
       <!-- <textarea class="form-control" id="myTextarea" rows="3"></textarea> -->
     </div>
     
     <div class="form-group">
       <label for="exampleFormControlTextarea1">Pincode</label>
-  <input type="number" id="quantity" name="quantity" onclick="myFunction()" class="form-control"> 
+  <input type="number" id="quantity" name="ps_pincode" value="" onclick="myFunction()" class="form-control"> 
 
     </div>  
 
       <div class="form-group">
       <label for="exampleFormControlTextarea1">State</label>
-  <select name="state" id="state" class="form-control">
+  <select name="ps_state" id="state" class="form-control">
     <option hidden selected>&#160;</option>
 
   <option value="Andhra Pradesh">Andhra Pradesh</option>
@@ -1117,25 +1155,25 @@ Add New Student
     </div>  
      <div class="form-group">
       <label for="exampleFormControlTextarea1">District</label>
-  <input type="text" id="quantity" name="quantity" class="form-control"> 
+  <input type="text" id="quantity" name="ps_district" value="" class="form-control"> 
     </div>  
        
-    </form>
+    <!-- </form> -->
   </div>
       <div class="col-md-6">
-         <form action="/action_page.php" method="get" name="myForm">
+         <!-- <form action="/action_page.php" method="get" name="myForm"> -->
     <div class="form-group">
       <label for="exampleFormControlTextarea1">Permanent Address</label>
-      <textarea class="form-control" id="description2" onkeyup="new do_resize(this);" cols="10" rows="1" name="description_name"></textarea>
+      <textarea class="form-control" id="description2"  onkeyup="new do_resize(this);" cols="10" rows="1" name="pm_address"></textarea>
     </div>
     <div class="form-group">
       <label for="exampleFormControlTextarea1">Pincode</label>
-  <input type="number" id="quantity" name="quantity" onclick="desc2()" class="form-control"> 
+  <input type="number" id="quantity" name="pm_pincode" value="" onclick="desc2()" class="form-control"> 
     </div>  
       <div class="form-group">
       <label for="exampleFormControlTextarea1">State</label>
 
-  <select name="state" id="state" class="form-control">
+  <select name="pm_state" id="state" class="form-control">
     <option hidden selected>&#160;</option>
 
   <option value="Andhra Pradesh">Andhra Pradesh</option>
@@ -1178,13 +1216,13 @@ Add New Student
     </div>  
      <div class="form-group">
       <label for="exampleFormControlTextarea1">District</label>
-  <input type="text" id="quantity" name="quantity" class="form-control"> 
+  <input type="text" id="quantity" name="pm_district" value="" class="form-control"> 
     </div>  
         <div class="form-check">
       <input type="checkbox" class="form-check-input" id="exampleCheck1">
       <label class="form-check-label" for="exampleCheck1">Same As Present Address</label>
     </div>
-    </form>
+    <!-- </form> -->
   </div>
   
   
@@ -1196,21 +1234,21 @@ Add New Student
     <div class="container">
       <div class="row">
     <div class="col-md-6" >
-         <form action="/action_page.php" method="get" name="myForm">
+         <!-- <form action="/action_page.php" method="get" name="myForm"> -->
     <div class="form-group">
       <label for="exampleFormContro">Tele Phone</label>
 
-  <input type="number" class="form-control"placeholder=""> 
+  <input type="number" name="tel_phone" value="" class="form-control"placeholder=""> 
     </div>
     
     <div class="form-group">
       <label for="exampltrolInput1">Email Address</label>
 
-      <input type="email" class="form-control"placeholder="" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email"required>
+      <input type="email"  class="form-control"placeholder="" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="test@gmail.com" name="email_id" >
     </div>
     <div class="form-group">
       <label for="exampleFormControlInput120">Voter Id</label>
-      <input type="number" class="form-control" id="exampleFormControlInput120" >
+      <input type="number" name="voter_id" class="form-control" id="exampleFormControlInput120" >
     </div>
  
   </div>
@@ -1219,17 +1257,17 @@ Add New Student
       <div class="form-group">
       <label for="exampleFormCon1">Mobile Phone</label>
 
-      <input type="text" name="Phone Number" class="form-control"placeholder="" pattern="[6-9]{1}[0-9]{9}"required >
+      <input type="text" name="mobile_phone" class="form-control"placeholder="" pattern="[6-9]{1}[0-9]{9}" >
       
         </div> 
         <div class="form-group">
           <label for="exampleFormControlInput120">Aadhar Number</label>
-          <input type="number" class="form-control" id="exampleFormControlInput120" >
+          <input type="number" name="aadhar_no"  class="form-control" id="exampleFormControlInput120" >
         </div>
         <div class="form-group">
           <label for="exam">Remarks</label>
 
-          <textarea class="form-control" id="description1"   rows="2" name="description_name"></textarea>
+          <textarea class="form-control" id="description1"   rows="2" name="remarks"></textarea>
         </div>
   </div>
   <div class="col-md-12 mb-5">
@@ -1342,7 +1380,7 @@ image.src = URL.createadmissionectURL(event.target.files[0]);
   
   </div>
   
-  </form>
+  <!-- </form> -->
   
   </section>
   
@@ -1391,7 +1429,7 @@ image.src = URL.createadmissionectURL(event.target.files[0]);
 
                 <section id="Qualification" class="">
                   <div class="container">
-                      <form action="/action_page.php" method="get" name="myForm">
+                      <!-- <form action="/action_page.php" method="get" name="myForm"> -->
 
                     <div class="row">
 
@@ -1399,14 +1437,14 @@ image.src = URL.createadmissionectURL(event.target.files[0]);
               <div class="form-group">
                       <label for="period4">Name </label>
   
-                    <input type="text" id='period4'class="form-control" name="Exam"required /> 
+                    <input type="text" id='period4'class="form-control" name="institute_name" /> 
                     
                     </div>
                     <div class="form-group">
                       <label for="period3">Amount Of Agreement
 </label>
   
-                    <input type="text" id='period3' class="form-control" name="Exam"required /> 
+                    <input type="text" id='period3' class="form-control" name="amount_of_agreement"/> 
                     
                     </div>
            </div>
@@ -1414,28 +1452,29 @@ image.src = URL.createadmissionectURL(event.target.files[0]);
               <div class="form-group">
                       <label for="period2">Post </label>
   
-                    <input type="text" id='period2' class="form-control" name="Exam"required /> 
+                    <input type="text" id='period2' class="form-control" name="college_post" /> 
                     
                     </div>
                        <div class="form-group">
                 <label for="period1">Period Of Agreement</label>
                 <i class="fa fa-caret-down "id="drop"></i>
 
-                <select class="form-control" id="period1">
+                <select class="form-control" name="period_of_agreement" id="period1">
                   <option hidden selected>&#160;</option>
 
-                  <option>2 Years</option>
-                  <option>5 Years</option>
-                  <option>10 Years</option>
-                  <option>Till Superannuation</option>
-                  <option>3 Years</option>
+                  <option value="2 Years">2 Years</option>
+                  <option value="5 Years">5 Years</option>
+                  <option value="3 Years">3 Years</option>
+                  <option value="10 Years">10 Years</option>
+                  <option value="Till Superannuation">Till Superannuation</option>
+                  
                 </select>
               </div>
            </div>
      
             
                     </div>
-                        </form>
+                        <!-- </form> -->
                   </div>
                   
                 </section>
@@ -1475,9 +1514,9 @@ image.src = URL.createadmissionectURL(event.target.files[0]);
   <tbody>
     <tr>
       <th scope="row"class=" text-dark">  NAME</th>
-      <td><input type="text" name=""class="form-control"></td>
-      <td><input type="text" name=""class="form-control"></td>
-            <td><input type="text" name=""class="form-control"></td>
+      <td><input type="text" name="mbbs_name"class="form-control"></td>
+      <td><input type="text" name="pg_diplamo_name"class="form-control"></td>
+      <td><input type="text" name="mdms_name"class="form-control"></td>
             
                   <!-- <th scope="row"class=" text-dark">LANGUAGE PAPER</th>
       <td><input type="text" name=""class="form-control"placeholder="tamil"></td> -->
@@ -1486,18 +1525,18 @@ image.src = URL.createadmissionectURL(event.target.files[0]);
     </tr>
     <tr>
       <th scope="row"class=" text-dark">PLACE</th>
-      <td><input type="text" name=""class="form-control"></td>
-      <td><input type="text" name=""class="form-control"></td>
-      <td><input type="text" name=""class="form-control"></td>
+      <td><input type="text" name="mbbs_place"class="form-control"></td>
+      <td><input type="text" name="pg_diplamo_place" class="form-control"></td>
+      <td><input type="text" name="mdms_place"class="form-control"></td>
            
       
         </tr>
   
       <tr>
       <th scope="row"class=" text-dark">DISTRICT</th>
-       <td><input type="text" name=""class="form-control"></td>
-      <td><input type="text" name=""class="form-control"></td>
-      <td><input type="text" name=""class="form-control"></td>
+       <td><input type="text" name="mbbs_district"class="form-control"></td>
+      <td><input type="text" name="pg_diplamo_district"class="form-control"></td>
+      <td><input type="text" name="mdms_district"class="form-control"></td>
       
     </tr>
       <tr>
@@ -1505,7 +1544,7 @@ image.src = URL.createadmissionectURL(event.target.files[0]);
        <td>     
             <i class="fa fa-caret-down " id="drop"></i>
 
-  <select name="state" id="state" class="form-control">
+  <select name="mbbs_state" id="state" class="form-control">
                           <option hidden selected>&#160;</option>
 
   <option value="Andhra Pradesh">Andhra Pradesh</option>
@@ -1550,7 +1589,7 @@ image.src = URL.createadmissionectURL(event.target.files[0]);
       <td>
                   <i class="fa fa-caret-down " id="drop"></i>
 
-  <select name="state" id="state" class="form-control">
+  <select name="pg_diplamo_state" id="state" class="form-control">
                           <option hidden selected>&#160;</option>
 
   <option value="Andhra Pradesh">Andhra Pradesh</option>
@@ -1596,7 +1635,7 @@ image.src = URL.createadmissionectURL(event.target.files[0]);
       <td>
                   <i class="fa fa-caret-down " id="drop"></i>
 
-  <select name="state" id="state" class="form-control">
+  <select name="mdms_state" id="state" class="form-control">
                           <option hidden selected>&#160;</option>
 
   <option value="Andhra Pradesh">Andhra Pradesh</option>
@@ -1642,16 +1681,16 @@ image.src = URL.createadmissionectURL(event.target.files[0]);
     </tr>
       <tr>
       <th scope="row"class=" text-dark">UNIVERSITY</th>
-       <td><input type="text" name=""class="form-control"></td>
-      <td><input type="text" name=""class="form-control"></td>
-      <td><input type="text" name=""class="form-control"></td>
+       <td><input type="text" name="mbbs_university"class="form-control"></td>
+      <td><input type="text" name="pg_diplamo_university"class="form-control"></td>
+      <td><input type="text" name="mdms_university"class="form-control"></td>
       
     </tr>
       <tr>
       <th scope="row"class=" text-dark">MARK SHEET NO</th>
-       <td><input type="text" name=""class="form-control"></td>
-      <td><input type="text" name=""class="form-control"></td>
-      <td><input type="text" name=""class="form-control"></td>
+       <td><input type="text" name="mbbs_marksheet_no"class="form-control"></td>
+      <td><input type="text" name="pg_diplamo_marksheet_no" class="form-control"></td>
+      <td><input type="text" name="mdms_marksheet_no"class="form-control"></td>
                </tr>
       <tr>
       <th scope="row"class=" text-dark">MONTH OF PASSING</th>
@@ -1659,12 +1698,12 @@ image.src = URL.createadmissionectURL(event.target.files[0]);
                   <div class="form-group">
                     <i class="fa fa-caret-down "id="drop"></i>
                 
-                    <select class="form-control">
+                    <select name="mbbs_passing_month"class="form-control">
                       <option hidden selected>&#160;</option>
     
-                     <option value="volvo">2019</option>
-                     <option value="saab">2020</option>
-                     <option value="saab">2021</option>
+                     <option value="2019">2019</option>
+                     <option value="2020">2020</option>
+                     <option value="2021">2021</option>
 
                      
 
@@ -1681,7 +1720,7 @@ image.src = URL.createadmissionectURL(event.target.files[0]);
                   <div class="form-group">
                     <i class="fa fa-caret-down "id="drop"></i>
                 
-                    <select class="form-control">
+                    <select  name="pg_diplamo_passing_month" class="form-control">
                       <option hidden selected>&#160;</option>
     
                      <option value="volvo">2019</option>
@@ -1703,12 +1742,12 @@ image.src = URL.createadmissionectURL(event.target.files[0]);
                   <div class="form-group">
                     <i class="fa fa-caret-down "id="drop"></i>
                 
-                    <select class="form-control">
+                    <select name="mdms_passing_month" class="form-control">
                       <option hidden selected>&#160;</option>
     
-                     <option value="volvo">2019</option>
-                     <option value="saab">2020</option>
-                     <option value="saab">2021</option>
+                     <option value="2019">2019</option>
+                     <option value="2020">2020</option>
+                     <option value="2021">2021</option>
 
                      
 
@@ -1726,16 +1765,16 @@ image.src = URL.createadmissionectURL(event.target.files[0]);
     </tr>
    <tr>
       <th scope="row"class=" text-dark">YEAR OF PASSING</th>
-       <td><input type="text" name=""class="form-control"></td>
-      <td><input type="text" name=""class="form-control"></td>
-      <td><input type="text" name=""class="form-control"></td>
+       <td><input type="text" name="mbbs_passing_year"class="form-control"></td>
+      <td><input type="text" name="pg_diplamo_passing_year"class="form-control"></td>
+      <td><input type="text" name="mdms_passing_year"class="form-control"></td>
       
     </tr>
        <tr>
       <th scope="row"class=" text-dark">SPECIALITY</th>
-       <td></td>
-      <td><input type="text" name=""class="form-control"></td>
-      <td><input type="text" name=""class="form-control"></td>
+       <td><input type="text" name="mbbs_speciality"class="form-control"></td>
+      <td><input type="text" name="pg_diplamo_speciality"class="form-control"></td>
+      <td><input type="text" name="mdms_speciality"class="form-control"></td>
       
     </tr>
   </tbody>
@@ -1783,10 +1822,10 @@ image.src = URL.createadmissionectURL(event.target.files[0]);
                                   <tbody>
                                     <tr>
                                       <th width= '165px' scope="row"class=" text-dark">  OBTAINED MARKS</th>
-                                      <td><input type="text" name=""class="form-control"></td>
-                                      <td><input type="text" name=""class="form-control"></td>
-                                      <td><input type="text" name=""class="form-control"></td>
-                                      <td><input type="text" name=""class="form-control"></td>
+                                      <td><input type="text" name="mbbs_marks"class="form-control"></td>
+                                      <td><input type="text" name="pg_diplamo_marks"class="form-control"></td>
+                                      <td><input type="text" name="mdms_marks"class="form-control"></td>
+                                      <td><input type="text" name="neet_percentile"class="form-control"></td>
                 
                                       
                                 
@@ -1826,41 +1865,41 @@ image.src = URL.createadmissionectURL(event.target.files[0]);
                         <div class="container">
                           <div class="row">
                             <div class="col-md-3">
-                              <form>
+                              <!-- <form> -->
                     <div class="form-group">
                       <label for="exampleFormControlInput3">Account Number</label>
-                      <input type="number" class="form-control" id="exampleFormControlInput3" >
+                      <input type="number"  name="account_no" class="form-control" id="exampleFormControlInput3" >
                     </div>
                       <div class="form-group">
                       <label for="exampleFormControlInput12">IFSC</label>
-                      <input type="number" class="form-control" id="exampleFormControlInput12" >
+                      <input type="number" name="ifsc" class="form-control" id="exampleFormControlInput12" >
                     </div>
-                  </form>
+                  <!-- </form> -->
                             </div>
                              <div class="col-md-4">
-                              <form>
+                              <!-- <form> -->
                     <div class="form-group">
                       <label for="exampleFormControlInput13">Bank Name</label>
-                      <input type="text" class="form-control" id="exampleFormControlInput13" >
+                      <input type="text" name="bank_name" class="form-control" id="exampleFormControlInput13" >
                     </div>
                       <div class="form-group">
                       <label for="exampleFormControlInput120">PAN Number</label>
-                      <input type="number" class="form-control" id="exampleFormControlInput120" >
+                      <input type="number" name="pan_no" class="form-control" id="exampleFormControlInput120" >
                     </div>
-                  </form>
+                  <!-- </form> -->
                             </div>
                                 <div class="col-md-4">
-                              <form>
+                              <!-- <form> -->
                     <div class="form-group">
                       <label for="exampleFormControlInput13">MICR</label>
-                      <input type="text" class="form-control" id="exampleFormControlInput13" >
+                      <input type="text" name="micr"  class="form-control" id="exampleFormControlInput13" >
                     </div>
                     <div class="form-group">
                       <label for="exampleFormControlInput13">Branch Name</label>
-                      <input type="text" class="form-control" id="exampleFormControlInput13" >
+                      <input type="text"name="branch_name" class="form-control" id="exampleFormControlInput13" >
                     </div>
                     
-                  </form>
+                  <!-- </form> -->
                             </div>
                             
                           </div>
@@ -1889,19 +1928,19 @@ image.src = URL.createadmissionectURL(event.target.files[0]);
                       
                       <div class="form-group">
                    <label for="birthday">Name </label>
-                <input type="text" class="form-control" name="Name" required=""> 
+                <input type="text" class="form-control" name="surety_name_one"> 
                   </div>
                   <div class="form-group">
                    <label for="number">Aadhar Number </label>
-                <input type="number" class="form-control" name="number" required=""> 
+                <input type="number" class="form-control" name="surety_aadhaar_one" > 
                   </div>
                    <div class="form-group">
                    <label for="pan">Pan Number </label>
-                <input type="text" class="form-control" name="Name" required=""> 
+                <input type="text" class="form-control" name="surety_pan_one" > 
                   </div>
                   <div class="form-group">
       <label for="exampleFormControlTextarea1"> Address</label>
-      <textarea class="form-control" id="description2" onkeyup="new do_resize(this);" cols="10" rows="1" name="description_name"></textarea>
+      <textarea class="form-control"  id="description2" onkeyup="new do_resize(this);" cols="10" rows="1" name="surety_address_one"></textarea>
     </div>
   </div>
                     </div>
@@ -1910,19 +1949,19 @@ image.src = URL.createadmissionectURL(event.target.files[0]);
                       <h5>Surety Two Details</h5>
                                     <div class="form-group">
                    <label for="birthday">Name </label>
-                <input type="text" class="form-control" name="Name" required=""> 
+                <input type="text" class="form-control" name="surety_name_two" > 
                   </div>
                   <div class="form-group">
                    <label for="number">Aadhar Number </label>
-                <input type="number" class="form-control" name="number" required=""> 
+                <input type="number" class="form-control" name="surety_aadhaar_two" > 
                   </div>
                    <div class="form-group">
                    <label for="pan">Pan Number </label>
-                <input type="text" class="form-control" name="Name" required=""> 
+                <input type="text" class="form-control" name="surety_pan_two" > 
                   </div>
                   <div class="form-group">
       <label for="exampleFormControlTextarea1"> Address</label>
-      <textarea class="form-control" id="description2" onkeyup="new do_resize(this);" cols="10" rows="1" name="description_name"></textarea>
+      <textarea class="form-control" id="description2" onkeyup="new do_resize(this);" cols="10" rows="1" name="surety_address_two"></textarea>
     </div>
                     </div>
                   </div>
@@ -1931,19 +1970,19 @@ image.src = URL.createadmissionectURL(event.target.files[0]);
                       <h5>Surety Three Details</h5>
                                     <div class="form-group">
                    <label for="birthday">Name </label>
-                <input type="text" class="form-control" name="Name" required=""> 
+                <input type="text" class="form-control" name="surety_name_three" > 
                   </div>
                   <div class="form-group">
                    <label for="number">Aadhar Number </label>
-                <input type="number" class="form-control" name="number" required=""> 
+                <input type="number" class="form-control" name="surety_aadhaar_three" > 
                   </div>
                    <div class="form-group">
                    <label for="pan">Pan Number </label>
-                <input type="text" class="form-control" name="Name" required=""> 
+                <input type="text" class="form-control" name="surety_pan_three" > 
                   </div>
                   <div class="form-group">
       <label for="exampleFormControlTextarea1"> Address</label>
-      <textarea class="form-control" id="description2" onkeyup="new do_resize(this);" cols="10" rows="1" name="description_name"></textarea>
+      <textarea class="form-control" id="description2" onkeyup="new do_resize(this);" cols="10" rows="1" name="surety_address_three"></textarea>
     </div>
                     </div>       
                           </div>
@@ -1998,9 +2037,10 @@ image.src = URL.createadmissionectURL(event.target.files[0]);
                                 </tr>
                               </thead>
                               <tbody id="TextBoxContainer">
-                                <tr>
+                                <!-- <tr>
                                   <td>
-                                    <input style="width: 200px " type="text" name="c1" value="Community Certificate" placeholder="Community Certificate" readonly="" class="form-control">
+                                    <input style="    width: 200px "type="text" name="c1" value='Community Certificate'
+                                      placeholder="Community Certificate" class="form-control">
                                   </td>
                                   <td><input type="text" name="c1_reg_no" class="form-control"></td>
                                   <td><input type="Date" name="c1_date" class="form-control"></td>
@@ -2008,15 +2048,37 @@ image.src = URL.createadmissionectURL(event.target.files[0]);
                                   <td><input type="text" name="c1_place" class="form-control"></td>
   
                                   <td id="td">
-                                    <label for="files" style="height:0px"> <span id="selImg" class=" btn text-info mt-3"><i class="fa fa-upload "></i><p id="ii"></p></span></label>
+                                    <label for="files"style="height:0px"> <span id="selImg" class=" btn text-info mt-3"><i class="fa fa-upload "></i><p id="ii"></p></span></label>
   
-                                    <input type="file" id="files" name="myimage10" style="visibility: hidden; position: absolute;" class="form-control">
+                                    <input type="file" id="files" name="myimage10"  style="visibility: hidden; position: absolute;" class="form-control">
                                  
                                
-                                  <button class="btn-sm btn-danger remove ml-3 " id="close"><i class="fa fa-times" aria-hidden="true"></i></button>                       
-  </td>
-                                </tr>
+                                  <button  class="btn-sm btn-danger remove ml-3 " id="close"><i class="fa fa-times" aria-hidden="true"></i></button>                       
+                              </td>
+                                </tr> -->
+                                
                                 <tr>
+
+                                  <td>
+                                    <input style="    width: 200px " type="text" name="c1"
+                                      value='Community Certificate' readonly placeholder="Community Certificate"
+                                      class="form-control">
+                                  </td>
+                                  <td><input type="text" name="c1_reg_no" class="form-control"></td>
+                                  <td><input type="Date" name="c1_date" class="form-control"></td>
+                                  <td><input type="text" name="c1_issue" class="form-control"></td>
+                                  <td><input type="text" name="c1_place" class="form-control"></td>
+                                
+                                    <td id="td">
+
+                                      <label for="files21"style="height:0px"> <span id="selImg" class=" btn text-info mt-3"></span><i class="fa fa-upload mt-4 mr-2 text-info"></i></span></label>
+                                      <input class="file-name21 text-info" type="text" placeholder="" style="border-bottom: none!important;" readonly="">
+                                      
+                                      <input type="file" id="files21" name='n_community' hidden class="form-control">
+                                   
+    </td>
+      </tr>  
+                                 <tr>
                                   <td>
                                     <input type="text" name="c2" value="Transfer Certificate" placeholder="Transfer Certificate" class="form-control" readonly="">
                                   </td>
@@ -2194,6 +2256,7 @@ image.src = URL.createadmissionectURL(event.target.files[0]);
     </div>
   </div>
 </div>
+</form>
       <!-- ------------------------table profile view modal   -------------->
         
      <!-- The Modal -->
@@ -2220,7 +2283,7 @@ image.src = URL.createadmissionectURL(event.target.files[0]);
             <div class="row">
 
             <div class="col-md-3 ">
-            <img class="card-img-top img-fluid" id="cand_photo" src="" alt="Card image cap"style="width:120px" ></div>
+            <img class="card-img-top img-fluid" id="cand_photo" src="/" alt="Card image cap"style="width:120px;height: 128px;" ></div>
             <div class="col-md-9">
             <div class=""id="profilebody">
               <div class="row">
@@ -2266,23 +2329,23 @@ image.src = URL.createadmissionectURL(event.target.files[0]);
   <div class="container">
     <ul class="nav nav-tabs" id="myTab" role="tablist">
   <li class="nav-item">
-    <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab"  onclick="home()"aria-controls="home" aria-selected="true">Student Details</a>
+    <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab"  aria-controls="home" aria-selected="true">Student Details</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profilee" onclick="profile()" role="tab" aria-controls="profile" aria-selected="false">Qualification Details</a>
+    <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profilee"  role="tab" aria-controls="profile" aria-selected="false">Qualification Details</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" id="bank-tab" data-toggle="tab" href="#bankk"  onclick="bank()"role="tab" aria-controls="bank" aria-selected="false">Bank Details</a>
+    <a class="nav-link" id="bank-tab" data-toggle="tab" href="#bankk"  role="tab" aria-controls="bank" aria-selected="false">Bank Details</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" id="surety-tab" data-toggle="tab" href="#surety"  onclick="surety()"role="tab" aria-controls="surety" aria-selected="false">Surety Details</a>
+    <a class="nav-link" id="surety-tab" data-toggle="tab" href="#surety"  role="tab" aria-controls="surety" aria-selected="false">Surety Details</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" id="contact-tab" data-toggle="tab"  onclick="contact()"href="#contact" role="tab" aria-controls="contact" aria-selected="false">Certificate Details</a>
+    <a class="nav-link" id="contact-tab" data-toggle="tab"  href="#contact" role="tab" aria-controls="contact" aria-selected="false">Certificate Details</a>
   </li>
   
    <li class="nav-item">
-    <a class="nav-link" id="relv-tab" data-toggle="tab" onclick="relv()"href="#relv" role="tab" aria-controls="relv" aria-selected="false">Relieving Details</a>
+    <a class="nav-link" id="relv-tab" data-toggle="tab" href="#relv" role="tab" aria-controls="relv" aria-selected="false">Relieving Details</a>
   </li>
   
 </ul>
@@ -2295,7 +2358,7 @@ image.src = URL.createadmissionectURL(event.target.files[0]);
 <section id="canDetails" class="">
               <div class="container">
               <h5>Candidate Details</h5>
-              <form action="/action_page.php" method="get" name="myForm">
+              <!-- <form action="/action_page.php" method="get" name="myForm"> -->
                
               <div class="row">
                <div class="col-md-6">
@@ -2387,7 +2450,7 @@ image.src = URL.createadmissionectURL(event.target.files[0]);
             </div>
              </div>
               </div>
-            </form>
+            <!-- </form> -->
               
               </div>
               
@@ -2401,7 +2464,7 @@ image.src = URL.createadmissionectURL(event.target.files[0]);
 
         <div class="row">
         <div class="col-md-4">
-        <form action="/action_page.php" method="get" name="myForm">
+        <!-- <form action="/action_page.php" method="get" name="myForm"> -->
           
           <div class="form-group">
         <label for="cand_rank" >Rank</label>
@@ -2425,10 +2488,10 @@ image.src = URL.createadmissionectURL(event.target.files[0]);
             <p id="cand_reg_no"> </p>
              
           </div>
-        </form>
+        <!-- </form> -->
         </div>
         <div class="col-md-4">
-        <form action="/action_page.php" method="get" name="myForm">
+        <!-- <form action="/action_page.php" method="get" name="myForm"> -->
         <div class="form-group">
         <label for="cand_ar_no">Ar Number</label>
         <p id="cand_ar_no"></p> 
@@ -2450,10 +2513,10 @@ image.src = URL.createadmissionectURL(event.target.files[0]);
           <label for="cand_admission_quota">Admission Quota</label>
           <p id="cand_admission_quota"></p>
          </div>  
-        </form>
+        <!-- </form> -->
         </div>
         <div class="col-md-4">
-        <form action="/action_page.php" method="get" name="myForm">
+        <!-- <form action="/action_page.php" method="get" name="myForm"> -->
         <div class="form-group">
         <label for="cand_total_mark">Total Mark</label>
         <p id="cand_total_mark"></p>
@@ -2480,7 +2543,7 @@ image.src = URL.createadmissionectURL(event.target.files[0]);
           <p id="cand_willing_for_counciling"></p>
            </div> 
           
-        </form>
+        <!-- </form> -->
         </div>
       
         </div>
@@ -2498,7 +2561,7 @@ image.src = URL.createadmissionectURL(event.target.files[0]);
   
     <div class="row"id="addressborder">
       <div class="col-md-6">
-         <form action="/action_page.php" method="get" name="myForm">
+         <!-- <form action="/action_page.php" method="get" name="myForm"> -->
          
     <div class="form-group">
       <label for="cand_ps_address">Present Address</label>
@@ -2516,10 +2579,10 @@ image.src = URL.createadmissionectURL(event.target.files[0]);
       <label for="cand_ps_district">District</label>
       <p id="cand_ps_district"></p>
     </div> 
-    </form>
+    <!-- </form> -->
   </div>
       <div class="col-md-6">
-         <form action="/action_page.php" method="get" name="myForm">
+         <!-- <form action="/action_page.php" method="get" name="myForm"> -->
           
     <div class="form-group">
       <label for="cand_pm_address">Permanent Address</label>
@@ -2539,7 +2602,7 @@ image.src = URL.createadmissionectURL(event.target.files[0]);
       <p id="cand_pm_district"></p>
     </div>  
     
-    </form>
+    <!-- </form> -->
   </div>
   
   
@@ -2553,7 +2616,7 @@ image.src = URL.createadmissionectURL(event.target.files[0]);
   
     <div class="row">
   <div class="col-md-6">
-       <form action="/action_page.php" method="get" name="myForm">
+       <!-- <form action="/action_page.php" method="get" name="myForm"> -->
   <div class="form-group">
     <label for="cand_tel_phone">Tele Phone</label>
 <p id="cand_tel_phone"></p>
@@ -2569,7 +2632,8 @@ image.src = URL.createadmissionectURL(event.target.files[0]);
     <p id="cand_voter_id"></p>
   </div>
 
-</form></div>
+<!-- </form> -->
+</div>
 
 <div class="col-md-6">
     <div class="form-group">
@@ -2599,17 +2663,15 @@ image.src = URL.createadmissionectURL(event.target.files[0]);
   <div class="custom-file my-2">
     <p id="cand_photo_link" data-toggle="modal" class="btn btn-link" data-target="#link"></p> 
   <label for="fileo" style="cursor: pointer;" class="p-2"> Photo</label>
-  
+<!--   
   <script>
-  // var loadFile = function(event) {
-  //   var image = document.getElementById('output');
-  //   image.src = URL.createadmissionectURL(event.target.files[0]);
-  // };
-  </script>
+  var loadFile = function(event) {
+    var image = document.getElementById('output');
+    image.src = URL.createadmissionectURL(event.target.files[0]);
+  };
+  </script> -->
   </div>
-  <img id="output" style="margin-left: 28px;"src="https://www.seekpng.com/png/detail/46-462959_unknown-person-icon-png-download-single-people-logo.png" class="img-fluid mt-1" width="100">
-
-  </div>
+    </div>
   
   
    
@@ -2625,14 +2687,14 @@ image.src = URL.createadmissionectURL(event.target.files[0]);
     };
     </script> -->
     </div>
-    <img id="scan" style="margin-left: 28px;" src="https://i.pinimg.com/originals/89/60/53/89605396d7eabcdf01ab78ce48aa0c6d.png" alt="scan" class="img-fluid mt-1" width="80">
+    
 
     </div>
     <div class="col-md-3">
       <div class="custom-file my-2">
         <p id="cand_sign_link" data-toggle="modal" class="btn btn-link" data-target="#link_2"></p>    
         
-        <!-- <input type="file" accept="image/" name="image" id="fileo" style="display:none!important" onchange="loadFile(event)"> -->
+        
       <label for="fileo" style="cursor :pointer;" class="p-2">Signature</label>
       
       <!-- <script>
@@ -2641,7 +2703,7 @@ image.src = URL.createadmissionectURL(event.target.files[0]);
         image.src = URL.createadmissionectURL(event.target.files[0]);
       };
       </script> -->
-                  <img id="sign"style="margin-left: 28px;" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS1YpRbqBJDnQHbdXxHvzrakMNXhgP-z9jpfw&amp;usqp=CAU" alt="scan" class="img-fluid mt-1" width="100">
+        
 
       </div>
         </div>
@@ -2654,14 +2716,12 @@ image.src = URL.createadmissionectURL(event.target.files[0]);
 <input type="file" accept="image/" name="image" id="fileo" style="display: none !important;" onchange="loadFile(event)">
 <label for="fileo" style="cursor: pointer;" class="p-2">Iris </label>
 
-<script>
+<!-- <script>
 var loadFile = function(event) {
 var thumb1 = document.getElementById('sign1');
 image.src = URL.createadmissionectURL(event.target.files[0]);
 };
-</script>
-<img id="sign1" style="margin-left: 44px;" src="https://cdn.iconscout.com/icon/premium/png-512-thumb/eye-recognition-486198.png" alt="scan" class="img-fluid mt-1" width="60">
-
+</script> -->
 </div>
 
 </div>
@@ -2688,7 +2748,7 @@ image.src = URL.createadmissionectURL(event.target.files[0]);
                     <h3>
           Institute Details
           </h3>
-                      <form action="/action_page.php" method="get" name="myForm">
+                      <!-- <form action="/action_page.php" method="get" name="myForm"> -->
 
                     <div class="row">
 
@@ -2717,7 +2777,7 @@ image.src = URL.createadmissionectURL(event.target.files[0]);
      
             
                     </div>
-                        </form>
+                        <!-- </form> -->
                   </div>
                   
 
@@ -2853,7 +2913,7 @@ image.src = URL.createadmissionectURL(event.target.files[0]);
                                   </div>
                                   
                                 </section>
-</form>
+<!-- </form> -->
   </div>
    <!-------------------------- bank Details---------------------------------------------->
 
@@ -2874,7 +2934,7 @@ image.src = URL.createadmissionectURL(event.target.files[0]);
 
           </div>
            <div class="col-md-4">
-            <form>
+            <!-- <form> -->
   <div class="form-group">
     <label for="cand_bank_name">Bank Name</label>
   <p id="cand_bank_name"> </p>
@@ -2883,10 +2943,10 @@ image.src = URL.createadmissionectURL(event.target.files[0]);
     <label for="cand_pan_no">PAN Number</label>
     <p id="cand_pan_no"> </p>
   </div>
-</form>
+<!-- </form> -->
           </div>
               <div class="col-md-4">
-            <form>
+            <!-- <form> -->
   <div class="form-group">
     <label for="cand_micr">MICR</label>
     <p id="cand_micr"></p>
@@ -2896,7 +2956,7 @@ image.src = URL.createadmissionectURL(event.target.files[0]);
     <p id="cand_branch_name"></p>  
   </div>
   
-</form>
+<!-- </form> -->
 
           </div>
           
@@ -2993,7 +3053,7 @@ image.src = URL.createadmissionectURL(event.target.files[0]);
   <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
     <section id="certificate">
       <div class="container">
-      <form>
+      <!-- <form> -->
         
         
             <div class="table-responsive">
@@ -3010,10 +3070,13 @@ image.src = URL.createadmissionectURL(event.target.files[0]);
   </thead>
             <tbody  id="TextBoxContainer">
                       <tr>
-                        <th scope="row"class=" text-dark"> 
-                          <input style="    width: 200px " type="text" name=""class="form-control"value="Community Certificate"disabled>
-                          <div id="cand_certificate1" class="input-group-text  text-success ">c1_file</div>  
-                        </th>
+                        <td scope="row"class=" text-dark"> 
+                          <input type="text" name=""class="form-control"value="Community Certificate"disabled>
+                          <!-- <p id="admission_Commitee_Form_link" data-toggle="modal" class="btn btn-link" data-target="#cert_link"></p>   -->
+                          <div id="admission_Commitee_Form_link" data-toggle="modal" data-target="#cert_link" class="input-group-text  text-success" >
+                            <!-- <p id="admission_Commitee_Form_link" data-toggle="modal" class="btn btn-link" data-target="#cert_link"></p> -->
+                          </div> 
+                          </td>
   <td>
 <button type="button"class="btn-sm  btn-outline-info "><i class="fa fa-download" aria-hidden="true"></i></button>                       
 </td>             
@@ -3028,10 +3091,6 @@ image.src = URL.createadmissionectURL(event.target.files[0]);
   <td>
 <button type="button"class="btn-sm  btn-outline-info "><i class="fa fa-download" aria-hidden="true"></i></button>                       
 </td>  
- 
-
-
-                  
 
                       </tr>
                           
@@ -3192,7 +3251,7 @@ image.src = URL.createadmissionectURL(event.target.files[0]);
 </div>
 
 
-      </form>
+      <!-- </form> -->
        </div>
     </section>
 
@@ -3206,7 +3265,7 @@ image.src = URL.createadmissionectURL(event.target.files[0]);
 <div class="container mt-2">
   <div class="row">
     <div class="col-md-3">
-              <form>
+              <!-- <form> -->
   <div class="form-group">
     <label for="cand_relieved">Relieved </label>
     <p id="cand_relieved"></p>
@@ -3215,7 +3274,7 @@ image.src = URL.createadmissionectURL(event.target.files[0]);
     <label for="cand_date_of_reallotment">Date Of Reallotment</label>
     <p id="cand_date_of_reallotment"></p>
     </div>
-</form>
+<!-- </form> -->
     </div>
     <div class="col-md-3">
          <div class="form-group">
@@ -3262,6 +3321,10 @@ image.src = URL.createadmissionectURL(event.target.files[0]);
 
 
 <!-- Modal -->
+<form class="form-horizontal"   role="form" method="post" action="/update_mdms">
+
+  <input type='text' id="edit_cand_id" name='cand_id' hidden value='' />
+
 <div class="modal fade" id="edit" tabindex="-1" role="dialog" aria-labelledby="edit" aria-hidden="true">
   <div class="modal-dialog modal-lg" role="document">
     <div class="modal-content">
@@ -3305,35 +3368,35 @@ image.src = URL.createadmissionectURL(event.target.files[0]);
             <section id="canDetails" class="">
               <div class="container">
               <h5>Candidate Details</h5>
-              <form action="/action_page.php" method="get" name="myForm">
+              <!-- <form action="/action_page.php" method="get" name="myForm"> -->
               
               <div class="row">
                <div class="col-md-6">
                  
             <div class="form-group">
               <label for="edit_name" class="text-danger">Name *</label>
-              <input type="text" class="form-control" id="edit_name" placeholder=" " required="" >
+              <input type="text" class="form-control" id="edit_name" value=''  name="full_name"  >
               
             </div>
             
            
             <div class="form-group">
              <label for="edit_initial_expansion">Expansion</label>
-             <input type="text" class="form-control" id="edit_initial_expansion" placeholder=" " >
+             <input type="text" class="form-control" id="edit_initial_expansion" placeholder="" name="initial_expansion">
            </div>
               <div class="form-group row">
                 <div class="col-md-6">
                 <label for="edit_date_of_birth">DOB </label>
-             <input type="Date" id="edit_date_of_birth" class="form-control" name="birthday" placeholder=" " required="" > 
+             <input type="Date" id="edit_date_of_birth" class="form-control" name="date_of_birth" placeholder=""> 
                </div>
                <div class="col-md-6">
                       <div class="">
                     <label for="exampleFormControlTextarea1"> Type Of Allotment</label>
                     <i class="fa fa-caret-down " id="drop"></i>
                 
-                    <select class="form-control" >
+                    <select class="form-control" id="" >
                       <option hidden="" selected="">&nbsp;</option>
-    
+                      
                      <option value="volvo">Service</option>
                      <option value="saab">B+</option>
                      <option value="saab">A+</option>
@@ -3350,17 +3413,17 @@ image.src = URL.createadmissionectURL(event.target.files[0]);
           <div class="col-md-6">
            <div class="form-group">
            <label for="edit_initial"> Initial </label>
-           <input type="text" class="form-control" id="edit_initial" placeholder=" " required="" >
+           <input type="text" class="form-control" id="edit_initial" placeholder="" name="initial" >
          </div>
           <div class="form-group">
            <label for="edit_father_name">Father's Name </label>
-           <input type="text" class="form-control" id="edit_father_name" placeholder=" " required="" >
+           <input type="text" class="form-control" id="edit_father_name" value="" placeholder="" name="father_name">
          </div>
 
       
         <div class="form-group">
          <label for="edit_mother_name">Mother's Name</label>
-         <input type="text" class="form-control" placeholder=" " id="mother_name" >
+         <input type="text" class="form-control" placeholder="" id="edit_mother_name" name="mother_name" >
        </div>
      
      
@@ -3384,9 +3447,9 @@ image.src = URL.createadmissionectURL(event.target.files[0]);
                 <label for="edit_blood_group" class="text-danger">Blood Group * </label>
                 <i class="fa fa-caret-down " id="drop"></i>
             
-                <select class="form-control" >
+                <select class="form-control" id="edit_blood_group" name="blood_group">
                   <option hidden="" selected="">&nbsp;</option>
-
+                  <option value=""></option>
                  <option value="volvo">O+</option>
                  <option value="saab">B+</option>
                  <option value="saab">A+</option>
@@ -3402,8 +3465,7 @@ image.src = URL.createadmissionectURL(event.target.files[0]);
               </div> 
                <div class="form-group">
                  <label for="edit_academic_year">Academic Year</label>
-                     <input type="text" class="form-control" placeholder=" " id="edit_academic_year" >
-             
+                     <input type="text" class="form-control" placeholder="" id="edit_academic_year"  name="academic_year">    
                </div>
               </div>
               <div class="col-md-4">
@@ -3420,16 +3482,16 @@ image.src = URL.createadmissionectURL(event.target.files[0]);
               </div>
               <div class="form-group">
                <label for="edit_student_code">Student Code</label>
-                   <input type="text" class="form-control" placeholder=" " id="edit_student_code" required="" >
+                   <input type="text" class="form-control" id="edit_student_code" placeholder=""  name="student_code">
            
              </div>
              <div class="form-group">
-               <label for="community">Willing To Donate Blood</label>
+               <label for="edit_willing_to_donate_blood">Willing To Donate Blood</label>
           
           <i class="fa fa-caret-down " id="drop"></i>
           
-          <select class="form-control" >  
-
+          <select class="form-control" id="edit_willing_to_donate_blood" name="willing_to_donate_blood" >  
+            <option value=""></option>
            <option value="volvo">Yes</option>
             <option value="saab">No</option>
            
@@ -3445,8 +3507,9 @@ image.src = URL.createadmissionectURL(event.target.files[0]);
              
              <i class="fa fa-caret-down " id="drop"></i>
              
-              <select class="form-control" >        
+              <select class="form-control" id="edit_religion" name="religion" >        
                <option selected="" hidden="">&nbsp;</option>
+                <option value=""></option>
                <option value="volvo">Hindu</option>
               <option value="saab">Christian</option>
               <option value="mercedes">Islam</option>
@@ -3456,16 +3519,16 @@ image.src = URL.createadmissionectURL(event.target.files[0]);
               </div>
               <div class="form-group">
                <label for="edit_caste">Caste </label>
-            <input type="text" class="form-control" id="edit_caste" placeholder=" " name="caste" required="" > 
+            <input type="text" class="form-control" id="edit_caste" placeholder="" name="caste"  > 
               </div>
               <div class="form-group">
                <label for="edit_community">Community</label>
           
          <i class="fa fa-caret-down " id="drop"></i>
          
-         <select class="form-control" >  
+         <select class="form-control"  id="edit_community" name="community">  
                       <option selected="" hidden="">&nbsp;</option>
-
+            <option value=""></option>
            <option value="volvo">OC</option>
             <option value="saab">BC</option>
             <option value="mercedes">SC</option>
@@ -3475,7 +3538,8 @@ image.src = URL.createadmissionectURL(event.target.files[0]);
              </div>
       
               
-              </div></form>
+              </div>
+            <!-- </form> -->
               
               </div>
               
@@ -3489,28 +3553,28 @@ image.src = URL.createadmissionectURL(event.target.files[0]);
 
         <div class="row">
         <div class="col-md-4">
-        <form action="/action_page.php" method="get" name="myForm">
+        <!-- <form action="/action_page.php" method="get" name="myForm"> -->
         <div class="form-group">
         <label for="edit_rank">Rank</label>
-        <input type="text" class="form-control" placeholder=" " id="edit_rank" >
+        <input type="text" class="form-control" id="edit_rank"  name="rank" >
         </div>
         <div class="form-group">
         <label for="edit_neet_roll_no">Neet Roll Number</label>
-        <input type="number" id="edit_neet_roll_no"placeholder=" " name="quantity" class="form-control" > 
+        <input type="number" id="edit_neet_roll_no" name="neet_roll_no" class="form-control" > 
         </div>  
         <div class="form-group">
           <label for="edit_course_commencement">Course Commencement</label>
 
-        <input class="textbox-n form-control"  placeholder=" " type="text" onfocus="(this.type='Date')" id="edit_course_commencement" >
+        <input class="textbox-n form-control"  type="text" onfocus="(this.type='Date')" id="edit_course_commencement" name="course_commencement">
         </div>
         
         <div class="form-group">
           <label for="birthday">Select Category</label>
   <i class="fa fa-caret-down " id="drop"></i>
 
-   <select class="form-control" >    
+   <select class="form-control" name="selected_category" id="edit_selected_category">    
     <option hidden="" selected="">&nbsp;</option>
-
+    <option value=""></option>
     <option value="volvo">OC</option>
           <option value="saab">BC</option>
           <option value="mercedes">SC</option>
@@ -3519,33 +3583,33 @@ image.src = URL.createadmissionectURL(event.target.files[0]);
           <div class="form-group">
             <label for="edit_reg_no">Registration Number</label>
 
-            <input type="number" id="edit_reg_no" placeholder=" " name="quantity" class="form-control" > 
+            <input type="number" id="edit_reg_no"  name="reg_no" class="form-control" > 
           </div>
-        </form>
+        <!-- </form> -->
         </div>
         <div class="col-md-4">
-        <form action="/action_page.php" method="get" name="myForm">
+        <!-- <form action="/action_page.php" method="get" name="myForm"> -->
         <div class="form-group">
         <label for="edit_ar_no">Ar Number</label>
-        <input type="number" id="edit_ar_no" placeholder=" " class="form-control" > 
+        <input type="number" id="edit_ar_no" class="form-control" name="ar_no" > 
         </div>
         <div class="form-group">
         <label for="edit_rank_no">Rank Number</label>
-        <input type="number" id="edit_rank_no" placeholder=" " name="quantity" class="form-control" > 
+        <input type="number" id="edit_rank_no"  name="rank_no" class="form-control" > 
         </div>  
         <div class="form-group">
           <label for="edit_date_of_admission">Date Of Admission</label>
 
-        <input placeholder="" class="textbox-n form-control"placeholder=" " type="text" onfocus="(this.type='Date')" id="edit_date_of_admission" >
+        <input  class="textbox-n form-control" type="text" onfocus="(this.type='Date')" id="edit_date_of_admission" name="date_of_admission">
         </div>
         
         <div class="form-group">
-          <label for="exampleFormControlTextarea1">Admission Type</label>
+          <label for="edit_admission_type">Admission Type</label>
   <i class="fa fa-caret-down " id="drop"></i>
 
-   <select class="form-control" >    
+   <select class="form-control" id="edit_admission_type" name="admission_type">    
     <option hidden="" selected="">&nbsp;</option>
-
+    <option value=""></option>
     <option value="volvo">Regular Admission</option>
           <option value="saab">BC</option>
           <option value="mercedes">SC</option>
@@ -3553,44 +3617,45 @@ image.src = URL.createadmissionectURL(event.target.files[0]);
           </select>  
          </div>  
          <div class="form-group">
-          <label for="exampleFormControlTextarea1">Admission Quota</label>
+          <label for="edit_admission_quota">Admission Quota</label>
   <i class="fa fa-caret-down " id="drop"></i>
 
-   <select class="form-control" >    
+   <select class="form-control" id="edit_admission_quota" name="admission_quota">    
     <option hidden="" selected="">&nbsp;</option>
-
+    <option value=""></option>
     <option value="volvo">State Quota</option>
           <option value="saab">CBSE Quota</option>
           <option value="mercedes">ALL INDIA Quota</option>
           </select>  
          </div>  
-        </form>
+        <!-- </form> -->
         </div>
         <div class="col-md-4">
-        <form action="/action_page.php" method="get" name="myForm">
+        <!-- <form action="/action_page.php" method="get" name="myForm"> -->
         <div class="form-group">
         <label for="edit_total_mark">Total Mark</label>
-        <input type="number" placeholder=" " id="edit_total_mark" class="form-control" > 
+        <input type="number"  id="edit_total_mark" class="form-control" name="total_mark" > 
         </div>
         <div class="form-group">
         <label for="edit_neet_mark">Neet Mark</label>
-        <input type="number" id="edit_neet_mark" placeholder=" " name="quantity" class="form-control" > 
+        <input type="number" id="edit_neet_mark" name="neet_mark" class="form-control" > 
         </div>  
         <div class="form-group">
           <label for="edit_date_of_allotment">Date Of Allotment</label>
 
-        <input placeholder="" class="textbox-n form-control" placeholder=" "type="text" onfocus="(this.type='Date')" id="edit_date_of_allotment" >
+        <input  class="textbox-n form-control" type="text" onfocus="(this.type='Date')" id="edit_date_of_allotment" name="date_of_allotment">
         </div>
         
               <div class="form-group">
-                <label for="exampleFormControlInput1">Course</label>
+                <label for="edit_course">Course</label>
                 <i class="fa fa-caret-down " id="drop"></i>
 
-                <select class="form-control" >               
-                   <option value="MBBS">MS GENERAL SURGERY  </option>
-                   <option value="MBBS">MD GENERAL MEDICINE </option>
-                    <option value="MBBS">MD ANAESTHESIOLOGY </option>
-                   <option value="MBBS">MD PATHOLOGY  </option>
+                <select name="course" id="edit_course" class="form-control">
+                  <option value=""></option>               
+                   <option value="MDMS">MS GENERAL SURGERY  </option>
+                   <option value="MDMS">MD GENERAL MEDICINE </option>
+                    <option value="MDMS">MD ANAESTHESIOLOGY </option>
+                   <option value="MDMS">MD PATHOLOGY  </option>
                    <option value="MBBS">MS ORTHOPAEDICS </option>
                    <option value="MBBS">MD PEDIATRICS </option>
                    <option value="MBBS">MD PSYCHIATRY </option>
@@ -3613,18 +3678,18 @@ image.src = URL.createadmissionectURL(event.target.files[0]);
            </select>
                 </div>
           <div class="form-group">
-            <label for="exampleFormControlTextarea1">Willing For Counselling</label>
+            <label for="edit_willing_for_counciling">Willing For Counselling</label>
     <i class="fa fa-caret-down " id="drop"></i>
 
-     <select class="form-control" >    
+     <select class="form-control" id="edit_willing_for_counciling" name="willing_for_counciling">    
       <option hidden="" selected="">&nbsp;</option>
-
+      <option value=""></option>
       <option value="volvo">Yes</option>
             <option value="saab">No</option>
       
             </select>  
            </div>  
-        </form>
+        <!-- </form> -->
         </div>
       
         </div>
@@ -3641,18 +3706,18 @@ image.src = URL.createadmissionectURL(event.target.files[0]);
   
     <div class="row" id="addressborder">
       <div class="col-md-6">
-         <form action="/action_page.php" method="get" name="myForm">
+         <!-- <form action="/action_page.php" method="get" name="myForm"> -->
     <div class="form-group">
       <label for="edit_ps_address">Present Address</label>
-      <textarea class="form-control" placeholder=" " id="edit_ps_address" rows="3" ></textarea>
+      <textarea class="form-control" placeholder="" id="edit_ps_address" rows="3" name="ps_address"></textarea>
     </div>
     <div class="form-group">
       <label for="edit_ps_pincode">Pincode</label>
-  <input type="number" id="edit_ps_pincode" placeholder="" name="quantity" class="form-control" > 
+  <input type="number" id="edit_ps_pincode" placeholder="" name="ps_pincode" class="form-control" > 
     </div>  
       <div class="form-group">
-      <label for="exampleFormControlTextarea1">State</label>
-  <select name="state" id="state" class="form-control" >
+      <label for="edit_ps_state">State</label>
+  <select name="ps_state" id="edit_ps_state" class="form-control" >
   <option value="Andhra Pradesh">Andhra Pradesh</option>
   <option value="Andaman and Nicobar Islands">Andaman and Nicobar Islands</option>
   <option value="Arunachal Pradesh">Arunachal Pradesh</option>
@@ -3693,24 +3758,24 @@ image.src = URL.createadmissionectURL(event.target.files[0]);
     </div>  
      <div class="form-group">
       <label for="edit_ps_district">District</label>
-  <input type="text" id="edit_ps_district"placeholder=" "name="quantity" class="form-control" > 
+  <input type="text" id="edit_ps_district"placeholder=""name="ps_address" class="form-control" > 
     </div>  
        
-    </form>
+    <!-- </form> -->
   </div>
       <div class="col-md-6">
-         <form action="/action_page.php" method="get" name="myForm">
+         <!-- <form action="/action_page.php" method="get" name="myForm"> -->
     <div class="form-group">
       <label for="edit_pm_address">Permanent Address</label>
-      <textarea class="form-control" placeholder=" " id="edit_pm_address"rows="3" ></textarea>
+      <textarea class="form-control" placeholder="" id="edit_pm_address"rows="3"  name="pm_address"></textarea>
     </div>
     <div class="form-group">
       <label for="edit_pm_pincode">Pincode</label>
-  <input type="number" id="edit_pm_pincode"placeholder=" " name="quantity" class="form-control" > 
+  <input type="number" id="edit_pm_pincode"placeholder="" name="pm_pincode" class="form-control" > 
     </div>  
       <div class="form-group">
-      <label for="exampleFormControlTextarea1">State</label>
-  <select name="state" id="state" class="form-control" >
+      <label for="edit_pm_state">State</label>
+  <select name="pm_state" id="edit_pm_state" class="form-control" >
   <option value="Andhra Pradesh">Andhra Pradesh</option>
   <option value="Andaman and Nicobar Islands">Andaman and Nicobar Islands</option>
   <option value="Arunachal Pradesh">Arunachal Pradesh</option>
@@ -3751,10 +3816,10 @@ image.src = URL.createadmissionectURL(event.target.files[0]);
     </div>  
      <div class="form-group">
       <label for="edit_pm_district">District</label>
-  <input type="text" id="edit_pm_district" placeholder=" " name="quantity" class="form-control" > 
+  <input type="text" id="edit_pm_district" placeholder="" name="pm_district" class="form-control" > 
     </div>  
       
-    </form>
+    <!-- </form> -->
   </div>
   
   
@@ -3765,40 +3830,41 @@ image.src = URL.createadmissionectURL(event.target.files[0]);
   <div class="container">
     <div class="row">
   <div class="col-md-6">
-       <form action="/action_page.php" method="get" name="myForm">
+       <!-- <form action="/action_page.php" method="get" name="myForm"> -->
   <div class="form-group">
     <label for="edit_tel_phone">Tele Phone</label>
 
-<input type="number" class="form-control" placeholder=" " id="edit_tel_phone" > 
+<input type="number" name="tel_phone" class="form-control" placeholder="" id="edit_tel_phone" > 
   </div>
   
   <div class="form-group">
     <label for="edit_email_id">Email Address</label>
 
-    <input type="email" class="form-control" placeholder=" " id="edit_email_id" aria-describedby="emailHelp" required="" >
+    <input type="email" name="email_id" class="form-control" placeholder="" id="edit_email_id" aria-describedby="emailHelp"  >
   </div>
   <div class="form-group">
     <label for="edit_voter_id">Voter Id</label>
-    <input type="number" class="form-control"placeholder="" id="edit_voter_id" >
+    <input type="number" name="voter_id" class="form-control"placeholder="" id="edit_voter_id" >
   </div>
 
-</form></div>
+<!-- </form> -->
+</div>
 
 <div class="col-md-6">
     <div class="form-group">
     <label for="edit_mobile_phone">Mobile Phone</label>
 
-    <input type="text" name="Phone Number"  class="form-control" placeholder=" " id="edit_mobile_phone" pattern="[6-9]{1}[0-9]{9}" required="" >
+    <input type="text" name="mobile_phone"  class="form-control" placeholder="" id="edit_mobile_phone" pattern="[6-9]{1}[0-9]{9}"  >
     
       </div> 
       <div class="form-group">
         <label for="edit_aadhar_no">Aadhar Number</label>
-        <input type="number" class="form-control" placeholder=" " id="edit_aadhar_no"">
+        <input type="number" name="aadhar_no" class="form-control" placeholder="" id="edit_aadhar_no"">
       </div>
       <div class="form-group">
         <label for="edit_remarks">Remarks</label>
 
-        <textarea class="form-control" id="edit_remarks"placeholder="" rows="2" ></textarea>
+        <textarea class="form-control" id="edit_remarks"placeholder="" rows="2" name="remarks" ></textarea>
       </div>
 </div>
 <div class="col-md-12 mb-5">
@@ -3894,7 +3960,7 @@ image.src = URL.createObjectURL(event.target.files[0]);
                     <h3>
           Institute Details
           </h3>
-                      <form action="/action_page.php" method="get" name="myForm">
+                      <!-- <form action="/action_page.php" method="get" name="myForm"> -->
 
                     <div class="row">
 
@@ -3902,14 +3968,14 @@ image.src = URL.createObjectURL(event.target.files[0]);
               <div class="form-group">
                       <label for="edit_institute_name">Name </label>
   
-                    <input type="text" id="edit_institute_name" placeholder=" " class="form-control" name="Exam" required="" > 
+                    <input type="text" id="edit_institute_name" placeholder="" class="form-control" name="institute_name" > 
                     
                     </div>
                     <div class="form-group">
                       <label for="edit_amount">Amount Of Agreement
 </label>
   
-                    <input type="text" id="edit_amount"placeholder=" " class="form-control" name="Exam" required="" > 
+                    <input type="text" id="edit_amount"placeholder="" class="form-control" name="amount_of_agreement"  > 
                     
                     </div>
            </div>
@@ -3917,16 +3983,16 @@ image.src = URL.createObjectURL(event.target.files[0]);
               <div class="form-group">
                       <label for="edit_post">Post </label>
   
-                    <input type="text" id="edit_post" placeholder=" "class="form-control" name="Exam" required="" > 
+                    <input type="text" id="edit_post" placeholder=""class="form-control" name="college_post"  > 
                     
                     </div>
                        <div class="form-group">
                 <label for="edit_period">Period Of Agreement</label>
                 <i class="fa fa-caret-down " id="drop"></i>
 
-                <select class="form-control" id="period1">
+                <select class="form-control" id="edit_period" name="period_of_agreement">
                   <option hidden="" selected="">&nbsp;</option>
-
+                  <option value=""></option>
                   <option>2 Years</option>
                   <option>5 Years</option>
                   <option>10 Years</option>
@@ -3938,7 +4004,7 @@ image.src = URL.createObjectURL(event.target.files[0]);
      
             
                     </div>
-                        </form>
+                        <!-- </form> -->
                   </div>
                   
                 </section>
@@ -3969,9 +4035,9 @@ image.src = URL.createObjectURL(event.target.files[0]);
   <tbody>
     <tr>
       <th scope="row" class=" text-dark">  NAME</th>
-      <td><input type="text" name="" class="form-control" id="edit_mbbs_name" placeholder=" "></td>
-      <td><input type="text" name="" class="form-control" id="edit_pg_diplamo_name" placeholder=" "></td>
-      <td><input type="text" name="" class="form-control" id="edit_mdms_name"></td>
+      <td><input type="text" name="mbbs_name" class="form-control" id="edit_mbbs_name" placeholder=""></td>
+      <td><input type="text" name="pg_diplamo_name" class="form-control" id="edit_pg_diplamo_name" placeholder=""></td>
+      <td><input type="text" name="mdms_name" class="form-control" id="edit_mdms_name" placeholder=""></td>
             
                   <!-- <th scope="row"class=" text-dark">LANGUAGE PAPER</th>
       <td><input type="text" name=""class="form-control"placeholder="tamil"></td> -->
@@ -3980,16 +4046,16 @@ image.src = URL.createObjectURL(event.target.files[0]);
     </tr>
     <tr>
       <th scope="row" class=" text-dark">PLACE</th>
-      <td><input type="text" name="" class="form-control" id="edit_mbbs_place" placeholder=" "></td>
-      <td><input type="text" name="" class="form-control" id="edit_pg_diplamo_place" placeholder=" " ></td>
-      <td><input type="text" name="" class="form-control" id="edit_mdms_place" placeholder=" "></td>
+      <td><input type="text" name="mbbs_place" class="form-control" id="edit_mbbs_place" placeholder=""></td>
+      <td><input type="text" name="pg_diplamo_place" class="form-control" id="edit_pg_diplamo_place" placeholder="" ></td>
+      <td><input type="text" name="mdms_place" class="form-control" id="edit_mdms_place" placeholder=""></td>
         </tr>
   
       <tr>
       <th scope="row" class=" text-dark">DISTRICT</th>
-       <td><input type="text" name="" class="form-control" id="edit_mbbs_district" placeholder=" " ></td>
-      <td><input type="text" name="" class="form-control"  id="edit_pg_diplamo_district" placeholder=" "></td>
-      <td><input type="text" name="" class="form-control"  id="edit_mdms_district" placeholder=" "></td>
+       <td><input type="text" name="mbbs_district" class="form-control" id="edit_mbbs_district" placeholder="" ></td>
+      <td><input type="text" name="pg_diplamo_district" class="form-control"  id="edit_pg_diplamo_district" placeholder=""></td>
+      <td><input type="text" name="mdms_district" class="form-control"  id="edit_mdms_district" placeholder=""></td>
       
     </tr>
       <tr>
@@ -3997,9 +4063,9 @@ image.src = URL.createObjectURL(event.target.files[0]);
        <td>     
             <i class="fa fa-caret-down " id="drop"></i>
 
-  <select name="state" id="state" class="form-control" >
+  <select name="mbbs_state" id="edit_mbbs_state" class="form-control" >
                           <option hidden="" selected="">&nbsp;</option>
-
+    <option value=""></option>
   <option value="Andhra Pradesh">Andhra Pradesh</option>
   <option value="Andaman and Nicobar Islands">Andaman and Nicobar Islands</option>
   <option value="Arunachal Pradesh">Arunachal Pradesh</option>
@@ -4042,9 +4108,9 @@ image.src = URL.createObjectURL(event.target.files[0]);
       <td>
                   <i class="fa fa-caret-down " id="drop"></i>
 
-  <select name="state" id="state" class="form-control" >
+  <select name="pg_diplamo_state" id="edit_pg_diplamo_state" class="form-control" >
                           <option hidden="" selected="">&nbsp;</option>
-
+    <option value=""></option>
   <option value="Andhra Pradesh">Andhra Pradesh</option>
   <option value="Andaman and Nicobar Islands">Andaman and Nicobar Islands</option>
   <option value="Arunachal Pradesh">Arunachal Pradesh</option>
@@ -4088,9 +4154,9 @@ image.src = URL.createObjectURL(event.target.files[0]);
       <td>
                   <i class="fa fa-caret-down " id="drop"></i>
 
-  <select name="state" id="state" class="form-control" >
+  <select name="mdms_state" id="edit_mdms_state" class="form-control" >
                           <option hidden="" selected="">&nbsp;</option>
-
+    <option value=""></option>
   <option value="Andhra Pradesh">Andhra Pradesh</option>
   <option value="Andaman and Nicobar Islands">Andaman and Nicobar Islands</option>
   <option value="Arunachal Pradesh">Arunachal Pradesh</option>
@@ -4134,16 +4200,16 @@ image.src = URL.createObjectURL(event.target.files[0]);
     </tr>
       <tr>
       <th scope="row" class=" text-dark">UNIVERSITY</th>
-       <td><input type="text" name="" class="form-control" id="edit_mbbs_university" placeholder=" "></td>
-      <td><input type="text" name="" class="form-control" id="edit_pg_diplamo_university" placeholder=" "></td>
-      <td><input type="text" name="" class="form-control" id="edit_mdms_university" placeholder=" "></td>
+       <td><input type="text" name="mbbs_university" class="form-control" id="edit_mbbs_university" placeholder=""></td>
+      <td><input type="text" name="pg_diplamo_university" class="form-control" id="edit_pg_diplamo_university" placeholder=""></td>
+      <td><input type="text" name="mdms_university" class="form-control" id="edit_mdms_university" placeholder=""></td>
       
     </tr>
       <tr>
       <th scope="row" class=" text-dark">MARK SHEET NO</th>
-       <td><input type="text" name="" class="form-control" id="edit_mbbs_marksheet_no" placeholder=" "></td>
-      <td><input type="text" name="" class="form-control" id="edit_pg_diplamo_marksheet_no" placeholder=" "></td>
-      <td><input type="text" name="" class="form-control" id="edit_mdms_marksheet_no" placeholder=" "></td>
+       <td><input type="text" name="mbbs_marksheet_no"  class="form-control" id="edit_mbbs_marksheet_no" placeholder=""></td>
+      <td><input type="text" name="pg_diplamo_marksheet_no"  class="form-control" id="edit_pg_diplamo_marksheet_no" placeholder=""></td>
+      <td><input type="text" name="mdms_marksheet_no"  class="form-control" id="edit_mdms_marksheet_no" placeholder=""></td>
                </tr>
       <tr>
       <th scope="row" class=" text-dark">MONTH OF PASSING</th>
@@ -4151,9 +4217,9 @@ image.src = URL.createObjectURL(event.target.files[0]);
                   <div class="form-group">
                     <i class="fa fa-caret-down " id="drop"></i>
                 
-                    <select class="form-control" >
+                    <select class="form-control" name="mbbs_passing_month" id="edit_mbbs_passing_month">
                       <option hidden="" selected="">&nbsp;</option>
-    
+                      <option value=""></option>
                      <option value="volvo">2019</option>
                      <option value="saab">2020</option>
                      <option value="saab">2021</option>
@@ -4173,9 +4239,9 @@ image.src = URL.createObjectURL(event.target.files[0]);
                   <div class="form-group">
                     <i class="fa fa-caret-down " id="drop"></i>
                 
-                    <select class="form-control">
+                    <select class="form-control" name="pg_diplamo_passing_month" id="edit_pg_diplamo_passing_month">
                       <option hidden="" selected="">&nbsp;</option>
-    
+                      <option value=""></option>
                      <option value="volvo">2019</option>
                      <option value="saab">2020</option>
                      <option value="saab">2021</option>
@@ -4195,9 +4261,9 @@ image.src = URL.createObjectURL(event.target.files[0]);
                   <div class="form-group">
                     <i class="fa fa-caret-down " id="drop"></i>
                 
-                    <select class="form-control">
+                    <select class="form-control" id="edit_mdms_passing_month" name="mdms_passing_month">
                       <option hidden="" selected="">&nbsp;</option>
-    
+                      <option value=""></option>
                      <option value="volvo">2019</option>
                      <option value="saab">2020</option>
                      <option value="saab">2021</option>
@@ -4218,17 +4284,16 @@ image.src = URL.createObjectURL(event.target.files[0]);
     </tr>
    <tr>
       <th scope="row" class=" text-dark">YEAR OF PASSING</th>
-       <td><input type="text" name="" class="form-control" id="edit_mbbs_passing_year" placeholder=" "></td>
-      <td><input type="text" name="" class="form-control" id="edit_pg_diplamo_passing_year" placeholder=" "></td>
-      <td><input type="text" name="" class="form-control" id="edit_mdms_passing_year" placeholder=" "></td>
+       <td><input type="text" name="mbbs_passing_year" class="form-control" id="edit_mbbs_passing_year" placeholder=""></td>
+      <td><input type="text" name="pg_diplamo_passing_year" class="form-control" id="edit_pg_diplamo_passing_year" placeholder=""></td>
+      <td><input type="text" name="mdms_passing_year" class="form-control" id="edit_mdms_passing_year" placeholder=""></td>
       
     </tr>
        <tr>
       <th scope="row" class=" text-dark">SPECIALITY</th>
-       <td></td>
-      <td><input type="text" name="" class="form-control" id="edit_mbbs_speciality" placeholder=" "></td>
-      <td><input type="text" name="" class="form-control" id="edit_pg_diplamo_speciality" placeholder=" "></td>
-      <td><input type="text" name="" class="form-control" id="edit_mdms_speciality" placeholder=" "></td>
+      <td><input type="text" name="mbbs_speciality" class="form-control" id="edit_mbbs_speciality" placeholder=""></td>
+      <td><input type="text" name="pg_diplamo_speciality" class="form-control" id="edit_pg_diplamo_speciality" placeholder=""></td>
+      <td><input type="text" name="mdms_speciality" class="form-control" id="edit_mdms_speciality" placeholder=""></td>
       
     </tr>
   </tbody>
@@ -4260,10 +4325,10 @@ image.src = URL.createObjectURL(event.target.files[0]);
                                   <tbody>
                                     <tr>
                                       <th width="165px" scope="row" class=" text-dark">  OBTAINED MARKS</th>
-                                      <td><input type="text" name="" class="form-control" id="edit_mbbs_mark" placeholder=" "></td>
-                                      <td><input type="text" name="" class="form-control" id="edit_pg_diplamo_mark" placeholder=" "></td>
-                                      <td><input type="text" name="" class="form-control" id="edit_md/ms_mark" placeholder=" "></td>
-                                      <td><input type="text" name="" class="form-control" id="edit_percentile_mark"></td>
+                                      <td><input type="text" name="mbbs_marks" class="form-control" id="edit_mbbs_mark" placeholder=""></td>
+                                      <td><input type="text" name="pg_diplamo_marks" class="form-control" id="edit_pg_diplamo_mark" placeholder=""></td>
+                                      <td><input type="text" name="mdms_marks" class="form-control" id="edit_md/ms_mark" placeholder=""></td>
+                                      <td><input type="text" name="neet_percentile" class="form-control" id="edit_percentile_mark"></td>
                 
                                       
                                 
@@ -4291,38 +4356,38 @@ image.src = URL.createObjectURL(event.target.files[0]);
             
   <div class="form-group">
     <label for="edit_account_no">Account Number</label>
-    <input type="number" class="form-control" id="edit_account_no" placeholder=" " >
+    <input type="number"  name="account_no" class="form-control" id="edit_account_no" placeholder="" >
   </div>
     <div class="form-group">
     <label for="edit_ifsc">IFSC</label>
-    <input type="number" class="form-control" id="edit_ifsc" placeholder=" " >
+    <input type="number"name="ifsc" class="form-control" id="edit_ifsc" placeholder="" >
   </div>
 
           </div>
            <div class="col-md-4">
-            <form>
+            <!-- <form> -->
   <div class="form-group">
     <label for="edit_bank_name">Bank Name</label>
-    <input type="text" class="form-control" id="edit_bank_name" placeholder=" " >
+    <input type="text" name="bank_name"  class="form-control" id="edit_bank_name" placeholder="" >
   </div>
     <div class="form-group">
     <label for="edit_pan_no">PAN Number</label>
-    <input type="number" class="form-control" id="edit_pan_no" placeholder=" ">
+    <input type="number" name="pan_no" class="form-control" id="edit_pan_no" placeholder="">
   </div>
-</form>
+<!-- </form> -->
           </div>
               <div class="col-md-4">
-            <form>
+            <!-- <form> -->
   <div class="form-group">
     <label for="edit_micr">MICR</label>
-    <input type="text" class="form-control" id="edit_micr" placeholder=" ">
+    <input type="text" name="micr" class="form-control" id="edit_micr" placeholder="">
   </div>
   <div class="form-group">
     <label for="edit_branch_name">Branch Name</label>
-    <input type="text" class="form-control" id="edit_branch_name">
+    <input type="text" name="branch_name" class="form-control" id="edit_branch_name"placeholder="">
   </div>
   
-</form>
+<!-- </form> -->
           </div>
           
         </div>
@@ -4343,19 +4408,19 @@ image.src = URL.createObjectURL(event.target.files[0]);
                       
                       <div class="form-group">
                    <label for="edit_surety_one_name">Name </label>
-                <input type="text" class="form-control" name="Name"Id="edit_surety_one_name" placeholder=" " required="" > 
+                <input type="text" class="form-control" name="surety_one_name"Id="edit_surety_one_name" placeholder=""  > 
                   </div>
                   <div class="form-group">
                    <label for="edit_surety_one_aadhaar">Aadhar Number </label>
-                <input type="number" class="form-control" name="number"Id="edit_surety_two_aadhaar"placeholder=""required="" > 
+                <input type="number" class="form-control" name="surety_one_aadhaar"Id="edit_surety_one_aadhaar"placeholder="" > 
                   </div>
                    <div class="form-group">
                    <label for="edit_surety_one_pan">Pan Number </label>
-                <input type="text" class="form-control" name="Name" id="edit_surety_one_pan"placeholder=" "required="" > 
+                <input type="text" class="form-control" name="surety_one_pan" id="edit_surety_one_pan"placeholder="" > 
                   </div> 
                   <div class="form-group">
       <label for="edit_surety_one_address"> Address</label>
-      <textarea class="form-control" id="edit_surety_one_address"placeholder=" " onkeyup="new do_resize(this);" cols="10" rows="1" name="description_name" ></textarea>
+      <textarea class="form-control" id="edit_surety_one_address"placeholder="" onkeyup="new do_resize(this);" cols="10" rows="1" name="surety_one_address" ></textarea>
     </div>
   </div>
                     </div>
@@ -4364,19 +4429,19 @@ image.src = URL.createObjectURL(event.target.files[0]);
                       <h5>Surety Two Details</h5>
                                     <div class="form-group">
                    <label for="edit_surety_two_name">Name </label>
-                <input type="text" class="form-control" name="Name" id="edit_surety_two_name" placeholder=" " required="" > 
+                <input type="text" class="form-control" name="surety_two_name"id="edit_surety_two_name" placeholder=""  > 
                   </div>
                   <div class="form-group">
                    <label for="edit_surety_two_aadhaar">Aadhar Number </label>
-                <input type="number" class="form-control" name="number" id="edit_surety_two_aadhaar"placeholder=" "required="" > 
+                <input type="number" class="form-control" name="surety_two_aadhaar" id="edit_surety_two_aadhaar"placeholder="" > 
                   </div>
                    <div class="form-group">
                    <label for="edit_surety_two_pan">Pan Number </label>
-                <input type="text" class="form-control" name="Name" id="edit_surety_two_pan" placeholder=" " required="" > 
+                <input type="text" class="form-control" name="surety_two_pan" id="edit_surety_two_pan" placeholder=""  > 
                   </div>
                   <div class="form-group">
       <label for="edit_surety_two_address"> Address</label>
-      <textarea class="form-control" id="edit_surety_two_address" placeholder=" "   onkeyup="new do_resize(this);" cols="10" rows="1" name="description_name" ></textarea>
+      <textarea class="form-control" id="edit_surety_two_address" placeholder=""   onkeyup="new do_resize(this);" cols="10" rows="1" name="surety_two_address" ></textarea>
     </div>
                     </div>
                   </div>
@@ -4385,19 +4450,19 @@ image.src = URL.createObjectURL(event.target.files[0]);
                       <h5>Surety Three Details</h5>
                                     <div class="form-group">
                    <label for="edit_surety_three_name">Name </label>
-                <input type="text" class="form-control" name="Name" id="edit_surety_three_name"placeholder=" " required="" > 
+                <input type="text" class="form-control" name="surety_three_name" id="edit_surety_three_name"placeholder=""  > 
                   </div>
                   <div class="form-group">
                    <label for="edit_surety_three_aadhaar">Aadhar Number </label>
-                <input type="number" class="form-control" name="number" id="edit_surety_three_aadhaar"placeholder=" " required="" > 
+                <input type="number" class="form-control" name="surety_three_aadhaar" id="edit_surety_three_aadhaar"placeholder=""  > 
                   </div>
                    <div class="form-group">
                    <label for="edit_surety_three_pan">Pan Number </label>
-                <input type="text" class="form-control" name="Name"id="edit_surety_three_pan"placeholder=" " required="" > 
+                <input type="text" class="form-control" name="surety_three_pan"id="edit_surety_three_pan"placeholder="" > 
                   </div>
                   <div class="form-group">
       <label for="edit_surety_three_address"> Address</label>
-      <textarea class="form-control" id="edit_surety_three_address"placeholder=" "onkeyup="new do_resize(this);" cols="10" rows="1" name="description_name" ></textarea>
+      <textarea class="form-control" id="edit_surety_three_address"placeholder=""onkeyup="new do_resize(this);" cols="10" rows="1" name="surety_three_address" ></textarea>
     </div>
                     </div>       
                           </div>
@@ -4414,7 +4479,7 @@ image.src = URL.createObjectURL(event.target.files[0]);
   <div class="tab-pane fade" id="contact1" role="tabpanel" aria-labelledby="contact1-tab">
     <section id="certificate">
       <div class="container">
-      <form>
+      <!-- <form> -->
             <div class="table-responsive">
           <table class="table ">
             <thead class=" text-dark"style="text-transform uppercase;">
@@ -4601,7 +4666,7 @@ image.src = URL.createObjectURL(event.target.files[0]);
 </div>
 
 
-      </form>
+      <!-- </form> -->
        </div>
     </section>
 
@@ -4615,38 +4680,38 @@ image.src = URL.createObjectURL(event.target.files[0]);
 <div class="container mt-2">
   <div class="row">
     <div class="col-md-3">
-              <form>
+              <!-- <form> -->
   <div class="form-group">
-    <label for="exampleFormControlSelect8">Relieved </label>
-    <select class="form-control" id="exampleFormControlSelect8" >
-      
-      <option>Yes</option>
-      <option>No</option>
+    <label for="edit_relieved">Relieved </label>
+    <select class="form-control" id="edit_relieved"name="relieved">
+      <option value=""></option>
+      <option value="Yes">Yes</option>
+      <option value="No">No</option>
      
     </select>
   </div>
    <div class="form-group">
     <label for="edit_date_of_reallotment">Date Of Reallotment</label>
-    <input type="Date" class="form-control" placeholder=" " id="edit_date_of_reallotment" >
+    <input type="Date" class="form-control" placeholder="" id="edit_date_of_reallotment"  name="date_of_reallotment">
   </div>
-</form>
+<!-- </form> -->
     </div>
     <div class="col-md-3">
          <div class="form-group">
     <label for="edit_college_name">College Name</label>
-    <input type="text" class="form-control" id="edit_college_name" placeholder=" ">
+    <input type="text" class="form-control" id="edit_college_name" placeholder="" name="college_name">
   </div>
     </div>
      <div class="col-md-3">
          <div class="form-group">
     <label for="edit_amount_refunded">Amount Refunded</label>
-    <input type="number" class="form-control" id="edit_amount_refunded" placeholder=" ">
+    <input type="number" class="form-control" id="edit_amount_refunded" placeholder="" name="amount_refunded">
   </div>
     </div>
      <div class="col-md-3">
          <div class="form-group">
     <label for="edit_date_of_relieving">Date Of Relieving</label>
-    <input type="Date" class="form-control" id="edit_date_of_relieving" placeholder=" " >
+    <input type="Date" class="form-control" id="edit_date_of_relieving" placeholder="" name="date_of_relieving" >
   </div>
     </div>
   
@@ -4659,13 +4724,16 @@ image.src = URL.createObjectURL(event.target.files[0]);
   </div>
 </section>
       </div>
+
       <div class="modal-footer justify-content-end">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
         <button type="submit" class="btn btn-primary">Update</button>
       </div>
+      
     </div>
   </div>
 </div>
+</form>
 <!-- upload modal -->
 
 <!-- Modal -->
@@ -4864,7 +4932,8 @@ image.src = URL.createObjectURL(event.target.files[0]);
         </button>
       </div>
       <div class="modal-body">
-        <img id="cand_photo_1" src="" width='100' height="100"/>
+        <img id="cand_photo_1" src="/" width='100' height="100"/>
+        <h4 id="cand_photo_link1"></h4>
       </div>
       <!-- <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -4885,7 +4954,7 @@ image.src = URL.createObjectURL(event.target.files[0]);
         </button>
       </div>
       <div class="modal-body">
-        <img  id="cand_thumb"src="" width='100' height="100"/>
+        <img  id="cand_thumb"src="/" width='100' height="100"/>
       </div>
       <!-- <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -4906,7 +4975,7 @@ image.src = URL.createObjectURL(event.target.files[0]);
         </button>
       </div>
       <div class="modal-body">
-        <img  id="cand_sign" src="" width='100' height="100"/>
+        <img  id="cand_sign" src="/" width='100' height="100"/>
       </div>
       <!-- <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -4915,6 +4984,29 @@ image.src = URL.createObjectURL(event.target.files[0]);
     </div>
   </div>
 </div>
+
+
+<!-- certificate popup -->
+<!-- <div class="modal fade" id="cert_link" tabindex="-1" role="dialog" aria-labelledby="cert_link" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="link">Admission
+        </h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <img  id="admission_Commitee_Form" src="/" width='100' height="100"/>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        
+      </div>
+    </div>
+  </div>
+</div>  -->
   <footer class="main-footer">
     <div class="float-right d-none d-sm-block">
       <b>All rights reserved.</b>
@@ -4940,11 +5032,11 @@ image.src = URL.createObjectURL(event.target.files[0]);
 </script>
 <script src="https://ucarecdn.com/libs/widget/3.x/uploadcare.full.min.js" charset="utf-8"></script>
 <!-- AdminLTE App -->
-<script src="js/adminlte.js"></script>
-<script src="js/mbbs.js"></script>
+<script src="/assets/design/js/adminlte.js"></script>
+<script src="/assets/design/js/mbbs.js"></script>
 
 <!-- AdminLTE for demo purposes -->
-<script src="js/demo.js"></script>
+<script src="/assets/design/js/demo.js"></script>
 <!-- page script -->
 
 </body>

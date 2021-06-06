@@ -253,7 +253,7 @@ var upload = multer({ storage: storage });
 //add_candidate
 app.post('/add_candidate', upload.any(), function (req, res, next) {
  
-  console.log(req.files);
+  console.log('files'+req.files);
 
   var certificate=[];
   var certificates1=[];
@@ -402,6 +402,8 @@ app.post('/add_candidate', upload.any(), function (req, res, next) {
     var x = '';
     x += myObj[i].filename + "<br>";
   }
+  console.log('certificate:',certificate);
+  console.log('myobj:',myObj);
   
   photosarr.forEach(element => {
     console.log('pcategory',pcategory);
@@ -2571,8 +2573,18 @@ app.get('/logout', user.logout);
 app.post('/login', user.login);
 app.get('/home/icdashboard', user.icdashboard);
 app.get('/mbbs_board', user.mbbs_board);
+
+
+//mdms
 app.get('/mdms_board', user.mdms_board);
 app.post('/mdms_board', user.mdms_board);
+app.get('/update_mdms', user.edit_mdmscand);
+app.post('/update_mdms', user.edit_mdmscand);
+//app.get('/add_students',user.insert_mdms);
+app.post('/add_students',user.insert_mdms);
+
+
+
 
 app.get('/add_candidate', user.add_candidate);
 app.post('/add_candidate', user.add_candidate);
@@ -2582,4 +2594,6 @@ app.post('/reli_check', user.reli_check);
 app.get('/home/logout', user.logout);
 
 //Middleware
-server.listen(80)
+server.listen(8080,()=>{
+  console.log('http://localhost:8080')
+});

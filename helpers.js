@@ -6,4 +6,5 @@ const imageFilter = function(req, file, cb) {
     }
     cb(null, true);
 };
+//export
 exports.imageFilter = imageFilter;
