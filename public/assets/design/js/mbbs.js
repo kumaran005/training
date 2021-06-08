@@ -347,12 +347,62 @@ var relatedTarget = target.siblings('.file-name7');
 var fileName = target[0].files[0].name;
 relatedTarget.val(fileName);
 });
-$('#files21').on('change', function () {
-  var target = $(this);
-  var relatedTarget = target.siblings('.file-name21');
-  var fileName = target[0].files[0].name;
-  relatedTarget.val(fileName);
-  });
+
+$('#files71').on('change', function () {
+    var target = $(this);
+    var relatedTarget = target.siblings('.file-name71');
+    var fileName = target[0].files[0].name;
+    relatedTarget.val(fileName);
+    });
+    
+$('#files72').on('change', function () {
+    var target = $(this);
+    var relatedTarget = target.siblings('.file-name72');
+    var fileName = target[0].files[0].name;
+    relatedTarget.val(fileName);
+    });
+    
+$('#files73').on('change', function () {
+    var target = $(this);
+    var relatedTarget = target.siblings('.file-name73');
+    var fileName = target[0].files[0].name;
+    relatedTarget.val(fileName);
+    });
+    
+$('#files74').on('change', function () {
+    var target = $(this);
+    var relatedTarget = target.siblings('.file-name74');
+    var fileName = target[0].files[0].name;
+    relatedTarget.val(fileName);
+    });
+    
+$('#files75').on('change', function () {
+    var target = $(this);
+    var relatedTarget = target.siblings('.file-name75');
+    var fileName = target[0].files[0].name;
+    relatedTarget.val(fileName);
+    });
+    
+$('#files76').on('change', function () {
+    var target = $(this);
+    var relatedTarget = target.siblings('.file-name76');
+    var fileName = target[0].files[0].name;
+    relatedTarget.val(fileName);
+    });
+    
+$('#files77').on('change', function () {
+    var target = $(this);
+    var relatedTarget = target.siblings('.file-name77');
+    var fileName = target[0].files[0].name;
+    relatedTarget.val(fileName);
+    });
+    
+$('#files78').on('change', function () {
+    var target = $(this);
+    var relatedTarget = target.siblings('.file-name78');
+    var fileName = target[0].files[0].name;
+    relatedTarget.val(fileName);
+    });
 });
 
 $(document).ready(function () {

@@ -55,72 +55,134 @@
     var category = ['Photo','Sign','Thumb'];
      for (i in photos){
      
-    //var cand =[];
-      if(clicked_id == photos[i].cand_id){
-        //alert(photos[i].cand_id);
-        //cand.push(photos[i].cand_id);
-        // alert(photos[i].cand_id);
-        //   for(j in category ){
-        // //  if(category[j] == photos[i].category){
-        // //       //alert(photos[i].Filename);
-        // //       document.getElementById('cand_photo').src = '/uploads/'+photo[i].Filename;
-        // //       //document.getElementById('cand_sign').src = '/uploads/'+photo['cand_sign'];
-        // //    }
+    // var cand =[];
+       if(clicked_id == photos[i].cand_id){
 
-        //    }
-        //if(clicked_id == cand){
-          //alert(typeof(cand));
-
+          var cand_id = photos[i].cand_id;
+        if(cand_id){  
         if(category[0] == photos[i].category){
-
+          //view
           document.getElementById('cand_photo').src = '/uploads/'+photos[i].Filename;
           document.getElementById('cand_photo_1').src = '/uploads/'+photos[i].Filename;
           document.getElementById('cand_photo_link').innerHTML = photos[i].Filename;
-          document.getElementById('cand_photo_link1').innerHTML =photos[i].Filename; 
+  
+          //edit
+          document.getElementById('edit_photo').src = '/uploads/'+photos[i].Filename;
+          document.getElementById('edit_photo_link').innerHTML = photos[i].Filename;
+           
         }
         if(category[1] == photos[i].category){
+          //view
           document.getElementById('cand_sign').src = '/uploads/'+photos[i].Filename;
           document.getElementById('cand_sign_link').innerHTML = photos[i].Filename;
+
+          //edit
+          document.getElementById('edit_sign').src = '/uploads/'+photos[i].Filename;
+          document.getElementById('edit_sign_link').innerHTML = photos[i].Filename;
         }
         if(category[2] == photos[i].category){
+          //view
           document.getElementById('cand_thumb').src ='/uploads/'+photos[i].Filename;
           document.getElementById('cand_thumb_link').innerHTML =photos[i].Filename;
+          
+          //edit
+          document.getElementById('edit_thumb').src ='/uploads/'+photos[i].Filename;
+          document.getElementById('edit_thumb_link').innerHTML =photos[i].Filename;
         }
-       // }else{
-       //   document.getElementById('cand_photo').src = ' ';
-       //   document.getElementById('cand_photo_1').src = ' ';
-       //   document.getElementById('cand_photo_link').innerHTML = ' ';
-       //   document.getElementById('cand_sign').src = ' ';
-       //   document.getElementById('cand_sign_link').innerHTML = ' ';
-       //   document.getElementById('cand_thumb').src =' ';
-       //   document.getElementById('cand_thumb_link').innerHTML =' ';
-        
-       // }
-      
-       }
+      }
       
      }
-   }
-  cert=(clicked_id)=>{
+    }
+  }
+    cert=(clicked_id)=>{
       certificate =['Community Certificate',
-'Transfer Certificate',
-'Migration Certificate',
-'Conduct Certificate',
-'Others',
-'Admission Certificate',
-'Eligiblity Certificate',
-'Admission Commitee Form'];
+                    'Transfer Certificate',
+                    'Conduct Certificate',
+                    'Eligiblity Certificate',
+                    'Migration Certificate',
+                    'Admission Certificate',
+                    'Others',
+                    'Admission Commitee Form'];
   
     for (i in cert_detail){
       if(clicked_id == cert_detail[i].cand_id){
         if(certificate[0] == cert_detail[i].all_certificate){
-          // document.getElementById('admission_Commitee_Form_link').innerHTML = cert_detail[i].Filename;
+           document.getElementById('cand_Community_Certificate').innerHTML = cert_detail[i].Filename;
           // document.getElementById('admission_Commitee_Form').src ='/uploads/'+cert_detail[i].Filename;
+          document.getElementById('edit_c1_reg_no').value = cert_detail[i].reg_no;
+          document.getElementById('edit_c1_date').value = cert_detail[i].date;
+          document.getElementById('edit_c1_issue').value = cert_detail[i].issue;
+          document.getElementById('edit_c1_place').value = cert_detail[i].place;
+          document.getElementById('edit_community_cert').value = cert_detail[i].Filename;
+        }
+        if(certificate[1] == cert_detail[i].all_certificate){
+           document.getElementById('cand_Transfer_Certificate').innerHTML = cert_detail[i].Filename;
+          // document.getElementById('admission_Commitee_Form').src ='/uploads/'+cert_detail[i].Filename;
+          document.getElementById('edit_c2_reg_no').value = cert_detail[i].reg_no;
+          document.getElementById('edit_c2_date').value = cert_detail[i].date;
+          document.getElementById('edit_c2_issue').value = cert_detail[i].issue;
+          document.getElementById('edit_c2_place').value = cert_detail[i].place;
+          document.getElementById('edit_transfer').value = cert_detail[i].Filename;
+        }
+        if(certificate[2] == cert_detail[i].all_certificate){
+           document.getElementById('cand_Conduct_Certificate').innerHTML = cert_detail[i].Filename;
+          // document.getElementById('admission_Commitee_Form').src ='/uploads/'+cert_detail[i].Filename;
+          document.getElementById('edit_c3_reg_no').value = cert_detail[i].reg_no;
+          document.getElementById('edit_c3_date').value = cert_detail[i].date;
+          document.getElementById('edit_c3_issue').value = cert_detail[i].issue;
+          document.getElementById('edit_c3_place').value = cert_detail[i].place;
+          document.getElementById('edit_conduct').value = cert_detail[i].Filename;
+        }
+        if(certificate[3] == cert_detail[i].all_certificate){
+           document.getElementById('cand_Eligiblity_Certificate').innerHTML = cert_detail[i].Filename;
+          // document.getElementById('admission_Commitee_Form').src ='/uploads/'+cert_detail[i].Filename;
+          document.getElementById('edit_c4_reg_no').value = cert_detail[i].reg_no;
+          document.getElementById('edit_c4_date').value = cert_detail[i].date;
+          document.getElementById('edit_c4_issue').value = cert_detail[i].issue;
+          document.getElementById('edit_c4_place').value = cert_detail[i].place;
+          document.getElementById('edit_eligiblity').value = cert_detail[i].Filename;
+        }
+        if(certificate[4] == cert_detail[i].all_certificate){
+           document.getElementById('cand_Migration_Certificate').innerHTML = cert_detail[i].Filename;
+          // document.getElementById('admission_Commitee_Form').src ='/uploads/'+cert_detail[i].Filename;
+          document.getElementById('edit_c5_reg_no').value = cert_detail[i].reg_no;
+          document.getElementById('edit_c5_date').value = cert_detail[i].date;
+          document.getElementById('edit_c5_issue').value = cert_detail[i].issue;
+          document.getElementById('edit_c5_place').value = cert_detail[i].place;
+          document.getElementById('edit_migration').value = cert_detail[i].Filename;
+        }
+        if(certificate[5] == cert_detail[i].all_certificate){
+           document.getElementById('cand_Admission_Certificate').innerHTML = cert_detail[i].Filename;
+          // document.getElementById('admission_Commitee_Form').src ='/uploads/'+cert_detail[i].Filename;
+          document.getElementById('edit_c6_reg_no').value = cert_detail[i].reg_no;
+          document.getElementById('edit_c6_date').value = cert_detail[i].date;
+          document.getElementById('edit_c6_issue').value = cert_detail[i].issue;
+          document.getElementById('edit_c6_place').value = cert_detail[i].place;
+          document.getElementById('edit_admission').value = cert_detail[i].Filename;
+        }
+        if(certificate[6] == cert_detail[i].all_certificate){
+           document.getElementById('cand_Others').innerHTML = cert_detail[i].Filename;
+          // document.getElementById('admission_Commitee_Form').src ='/uploads/'+cert_detail[i].Filename;
+          document.getElementById('edit_c7_reg_no').value = cert_detail[i].reg_no;
+          document.getElementById('edit_c7_date').value = cert_detail[i].date;
+          document.getElementById('edit_c7_issue').value = cert_detail[i].issue;
+          document.getElementById('edit_c7_place').value = cert_detail[i].place;
+          document.getElementById('edit_others').value = cert_detail[i].Filename;
+        }
+        if(certificate[7] == cert_detail[i].all_certificate){
+           document.getElementById('cand_Admission_Commitee_Form').innerHTML = cert_detail[i].Filename;
+          // document.getElementById('admission_Commitee_Form').src ='/uploads/'+cert_detail[i].Filename;
+          document.getElementById('edit_c8_reg_no').value = cert_detail[i].reg_no;
+          document.getElementById('edit_c8_date').value = cert_detail[i].date;
+          document.getElementById('edit_c8_issue').value = cert_detail[i].issue;
+          document.getElementById('edit_c8_place').value = cert_detail[i].place;
+          document.getElementById('edit_admission_commitee').value = cert_detail[i].Filename;
         }
       }
     }
 }
-  view=(clicked_id)=>{
+  
+view=(clicked_id)=>{
 
     for(i in admission_detail) {
       var admission = admission_detail[i];
@@ -135,16 +197,6 @@
       var academic_mdms_1 = academic_detail_mdms_1[i];
       var academic_mdms_2 = academic_detail_mdms_2[i];
       var institute_mdms = institute_detail_mdms[i];
-      
-      // &&
-      //    clicked_id == profile.cand_id &&
-      //    clicked_id == address.cand_id &&
-      //    clicked_id == bank.cand_id && 
-      //    clicked_id == contact.cand_id &&
-      //    clicked_id == relieving.cand_id &&
-      //    clicked_id == surety.cand_id &&
-      //    clicked_id == academic_mdms.cand_id &&
-      //    clicked_id == photo.cand_id
       
       if(clicked_id == admission.cand_id &&
          clicked_id == profile.cand_id &&
@@ -183,6 +235,7 @@
         document.getElementById("cand_name1").innerHTML = profile['name'];
         document.getElementById("cand_initial").innerHTML = profile['initial'];
         document.getElementById("cand_initial_expansion").innerHTML = profile['initial_expansion'];
+        document.getElementById("cand_type_of_allotment").innerHTML = profile['type_of_allotment'];
         document.getElementById("cand_father_name").innerHTML = profile['father_name'];
         document.getElementById("cand_mother_name").innerHTML = profile['mother_name'];
         document.getElementById("cand_date_of_birth").innerHTML = profile['date_of_birth'];
@@ -295,7 +348,8 @@
       }
     }
   }
-  edit=(clicked_id)=>{
+  
+edit=(clicked_id)=>{
       for( i in admission_detail) {
         var admission = admission_detail[i];
         var profile = profile_detail[i];
@@ -346,10 +400,12 @@
           //profile details
           document.getElementById("edit_initial").value = profile['initial'];
           document.getElementById("edit_initial_expansion").value = profile['initial_expansion'];
+          document.getElementById("edit_type_of_allotment").value = profile['type_of_allotment'];
           document.getElementById("edit_father_name").value = profile['father_name'];
           document.getElementById("edit_mother_name").value = profile['mother_name'];
           document.getElementById("edit_date_of_birth").value = profile['date_of_birth'];
-          document.getElementById("edit_gender").value = profile['gender'];
+          
+          // document.gendersForm.gender.value = profile.gender;
           document.getElementById("edit_blood_group").value = profile['blood_group'];
           document.getElementById("edit_religion").value = profile['religion'];
           document.getElementById("edit_community").value = profile['community'];
@@ -373,8 +429,8 @@
           document.getElementById("edit_tel_phone").value= contact['tel_phone'];
           document.getElementById("edit_mobile_phone").value=contact['mobile_phone'];
           document.getElementById("edit_email_id").value= contact['email_id'];
-          document.getElementById("edit_mobile_phone_1").value=contact['mobile_phone'];
-          document.getElementById("edit_email_id_1").value= contact['email_id'];
+          // document.getElementById("edit_mobile_phone_1").value=contact['mobile_phone'];
+          // document.getElementById("edit_email_id_1").value= contact['email_id'];
           document.getElementById("edit_aadhar_no").value= contact['aadhar_no'];
           document.getElementById("edit_voter_id").value= contact['voter_id'];
           document.getElementById("edit_remarks").value= contact['remarks'];
@@ -454,6 +510,11 @@
           document.getElementById("edit_amount_refunded").value = relieving['amount_refunded'];
           document.getElementById("edit_date_of_relieving").value = relieving['date_of_relieving'];
           document.getElementById("edit_date_of_reallotment").value = relieving['date_of_reallotment'];
+
+        
+          (profile.gender=='Male')?document.getElementById('radiobtn1').checked = true
+          :(profile.gender =='Female')?document.getElementById('radiobtn2').checked =true
+          :document.getElementById('radiobtn3').checked = true;
 
           break;  
         }
@@ -715,9 +776,7 @@ Add New Student
 
 <!-- Modal -->
 
-<form class="form-horizontal"   role="form" method="post" action="/add_students"> 
-  <!-- <form class="form-horizontal" role="form" method="post" action="/add_students" onClick="return empty()"
-  enctype="multipart/form-data">   -->
+  
 <div class="modal fade " id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
   <div class="modal-dialog modal-lg"role="document">
     <div class="modal-content">
@@ -727,6 +786,10 @@ Add New Student
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
+      <form class="form-horizontal" role="form" method="post" action="/add_students" onClick="return empty()"
+  enctype="multipart/form-data">  
+      <!-- <form class="form-horizontal"   role="form" method="post" action="/add_students">  -->
+
       <div class="modal-body">
       
 
@@ -751,11 +814,11 @@ Add New Student
                  <section id="canDetails" class="ml-3">
                  <div class="container">
                  <h5>Candidate Details</h5>
-                 <form action="/action_page.php" method="get" name="myForm">
+                 <!-- <form action="/action_page.php" method="get" name="myForm"> -->
                  
                  <div class="row">
                   <div class="col-md-6">
-                    <form action="/action_page.php" method="get" name="myForm">
+                    <!-- <form action="/action_page.php" method="get" name="myForm"> -->
                <div class="form-group">
                  <label for="exampleFormControlInput1" class="text-danger">Name *</label>
                  <input type="text" class="form-control" id="exampleFormControlInput1" name="full_name" required />
@@ -778,7 +841,7 @@ Add New Student
                     <i class="fa fa-caret-down "id="drop"></i>
                 
                     <select class="form-control" name="type_of_allotment">
-                      <option hidden selected>&#160;</option>
+                      <option hidden selected>&nbsp;</option>
     
                      <option value="Service">Service</option>
                      <option value="B+">B+</option>
@@ -791,7 +854,7 @@ Add New Student
          
               
                
-               </form>
+               <!-- </form> -->
              </div>
              <div class="col-md-6">
               <div class="form-group">
@@ -822,6 +885,10 @@ Add New Student
                 <div class="form-check form-check-inline  ">
                   <input class="form-check-input" type="radio" name="gender" id="inlineRadio2" value="Female">
                   <label class="form-check-label" for="inlineRadio2">Female</label>
+                </div>
+                <div class="form-check form-check-inline  ">
+                  <input class="form-check-input" type="radio" name="gender" id="inlineRadio2" value="Third Gender">
+                  <label class="form-check-label" for="inlineRadio2">Third Gender</label>
                 </div>
                 </div>
                   </div> 
@@ -903,7 +970,7 @@ Add New Student
                  </div>
                  <div class="form-group">
                   <label for="birthday">Caste </label>
-               <input type="text"  class="form-control" name="caste" /> 
+               <input type="text"  class="form-control" name="caste" > 
                  </div>
                  <div class="form-group">
                   <label for="community">Community</label>
@@ -923,7 +990,7 @@ Add New Student
          
                  
                  </div>
-                 </form>
+                 <!-- </form> -->
                  </div>
                  
                  </section>
@@ -1010,9 +1077,7 @@ Add New Student
         <i class="fa fa-caret-down "id="drop"></i>
 
          <select class="form-control" name="admission_type">    
-          <option hidden selected>&#160;</option>
- 
-          <option value="Regular Admission">Regular Admission</option>
+                <option value="Regular Admission">Regular Admission</option>
                 <option value="BC">BC</option>
                 <option value="SC">SC</option>
                 <option value="MBC">MBC</option>
@@ -1100,19 +1165,20 @@ Add New Student
          <!-- <form action="/action_page.php" method="get" name="myForm"> -->
     <div class="form-group">
       <label for="exampleFormControlTextarea1"> Present Address</label>
-      <textarea class="form-control"  id="description_id" onkeyup="new do_resize(this);" cols="10" rows="1" name="ps_address" ></textarea>
-      <!-- <textarea class="form-control" id="myTextarea" rows="3"></textarea> -->
+      <!-- <textarea class="form-control"  id="nameship" onkeyup="new do_resize(this);" cols="10" rows="1" name="ps_address" ></textarea> -->
+      <textarea class="form-control" id="nameShip" name='ps_address'
+                                        rows="3"></textarea>
     </div>
     
     <div class="form-group">
       <label for="exampleFormControlTextarea1">Pincode</label>
-  <input type="number" id="quantity" name="ps_pincode" value="" onclick="myFunction()" class="form-control"> 
+  <input type="number" id="address1Ship" name="ps_pincode" value="" onclick="myFunction()" class="form-control"> 
 
     </div>  
 
       <div class="form-group">
       <label for="exampleFormControlTextarea1">State</label>
-  <select name="ps_state" id="state" class="form-control">
+  <select name="ps_state" id="address2Ship" class="form-control">
     <option hidden selected>&#160;</option>
 
   <option value="Andhra Pradesh">Andhra Pradesh</option>
@@ -1155,7 +1221,7 @@ Add New Student
     </div>  
      <div class="form-group">
       <label for="exampleFormControlTextarea1">District</label>
-  <input type="text" id="quantity" name="ps_district" value="" class="form-control"> 
+  <input type="text" id="cityShip" name="ps_district" value="" class="form-control"> 
     </div>  
        
     <!-- </form> -->
@@ -1164,16 +1230,18 @@ Add New Student
          <!-- <form action="/action_page.php" method="get" name="myForm"> -->
     <div class="form-group">
       <label for="exampleFormControlTextarea1">Permanent Address</label>
-      <textarea class="form-control" id="description2"  onkeyup="new do_resize(this);" cols="10" rows="1" name="pm_address"></textarea>
+      <!-- <textarea class="form-control" id="nameBill"  onkeyup="new do_resize(this);" cols="10" rows="1" name="pm_address"></textarea> -->
+      <textarea class="form-control" id="nameBill" name='pm_address'
+                                        rows="3"></textarea>
     </div>
     <div class="form-group">
       <label for="exampleFormControlTextarea1">Pincode</label>
-  <input type="number" id="quantity" name="pm_pincode" value="" onclick="desc2()" class="form-control"> 
+  <input type="number" id="address1Bill" name="pm_pincode" value="" onclick="desc2()" class="form-control"> 
     </div>  
       <div class="form-group">
       <label for="exampleFormControlTextarea1">State</label>
 
-  <select name="pm_state" id="state" class="form-control">
+  <select name="pm_state" id="address2Bill" class="form-control">
     <option hidden selected>&#160;</option>
 
   <option value="Andhra Pradesh">Andhra Pradesh</option>
@@ -1216,10 +1284,10 @@ Add New Student
     </div>  
      <div class="form-group">
       <label for="exampleFormControlTextarea1">District</label>
-  <input type="text" id="quantity" name="pm_district" value="" class="form-control"> 
+  <input type="text" id="cityBill" name="pm_district" value="" class="form-control"> 
     </div>  
         <div class="form-check">
-      <input type="checkbox" class="form-check-input" id="exampleCheck1">
+      <input type="checkbox" class="form-check-input" id="chkCopy">
       <label class="form-check-label" for="exampleCheck1">Same As Present Address</label>
     </div>
     <!-- </form> -->
@@ -1270,110 +1338,83 @@ Add New Student
           <textarea class="form-control" id="description1"   rows="2" name="remarks"></textarea>
         </div>
   </div>
-  <div class="col-md-12 mb-5">
+  <div class="col-md-12">
     <h5>Biometric Details</h5>
-   <div class="row">
-     <div class="col-md-3">
-    <div class="custom-file my-2">
-      <input type="file"  accept="image/" name="image" id="file" style="display: none !important;"  onchange="loadFile(event)" >
-    <label for="file" style="cursor: pointer;"class="p-2">Upload photo</label>
-    
-    <script>
-    var loadFile = function(event) {
-      var image = document.getElementById('output');
-      image.src = URL.createadmissionectURL(event.target.files[0]);
-    };
-    </script>
-    </div>
-    <img id="output" width="100"style="margin-left: 28px;" src="https://www.seekpng.com/png/detail/46-462959_unknown-person-icon-png-download-single-people-logo.png" class="img-fluid mt-1" />
 
-    </div>
+    <div class='row'>
+
+      <div class='col-md-3'>
     
-    
-     
-        <div class="col-md-3">
-      <div class="custom-file my-2">
-        <input type="file" accept="image/" name="image" id="file" style="display: none!important;" onchange="loadFile(event)">
-      <label for="file" style="cursor :pointer;" class="p-2">Scan Finger Print</label>
-      
-      <script>
-      var loadFile = function(event) {
-        var scan = document.getElementById('scan');
-     scan.src = URL.createadmissionectURL(event.target.files[0]);
-      };
-      </script>
+        <input name='n_cand_photo' class="form-control" type="file" hidden id="file"onchange="document.getElementById('frame').src = window.URL.createObjectURL(this.files[0])">
+        <label for="file" style="cursor: pointer;" class="p-2">Upload photo</label>
+
+        <img id="frame" src="https://www.seekpng.com/png/detail/46-462959_unknown-person-icon-png-download-single-people-logo.png" width="100px" />
       </div>
-      <img id="scan"width="80"style="margin-left: 28px;" src="https://i.pinimg.com/originals/89/60/53/89605396d7eabcdf01ab78ce48aa0c6d.png"alt="scan"class="img-fluid mt-1">
+      <div class='col-md-3'>
+        <input name='n_cand_sign'  class="form-control" type="file" hidden id="file2" onchange="document.getElementById('frame2').src = window.URL.createObjectURL(this.files[0])">
+        <label for="file2" style="cursor: pointer;" class="p-2"> Upload Signature</label>
+
+        <img id="frame2" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS1YpRbqBJDnQHbdXxHvzrakMNXhgP-z9jpfw&usqp=CAU" width="100px"/>
+
 
       </div>
-           
-       <div class="col-md-3">
-        <div class="custom-file my-2">
-          <input type="file" accept="image/" name="image" id="file" style="display:none!important" onchange="loadFile(event)">
-        <label for="file" style="cursor :pointer;" class="p-2">Upload Signature</label>
+      <div class='col-md-3'style="display: grid;">
+        <input name='n_cand_thumb' class="form-control" type="file"hidden id="file1" onchange="document.getElementById('frame1').src = window.URL.createObjectURL(this.files[0])">
+        <label for="file1"style="cursor: pointer;" class="p-2">Upload thumb </label>
+
+        <img id="frame1" src="https://i.pinimg.com/originals/89/60/53/89605396d7eabcdf01ab78ce48aa0c6d.png" width="80" />
+      </div>
+      <!-- <div class='col-md-3'>
+        <input  name='n_cand_finger' class="form-control" type="file"hidden id="file3" onchange="document.getElementById('frame3').src = window.URL.createObjectURL(this.files[0])">
+        <label for="file3"style="cursor: pointer;" class="p-2"> Scan Finger Print</label>
+
+        <img id="frame3" src="https://i.pinimg.com/originals/89/60/53/89605396d7eabcdf01ab78ce48aa0c6d.png" width="80" />
+      </div> -->
+      <div class="col-md-3">
+
+        <div id="container" class="container">
+
+          <div id="container" class="container">
+
+            <div class="photoContainer">
+<p style="font-size: 12px;
+font-weight: 600;" class="btn btn-default bg-white" data-toggle="modal" data-target="#camera">
+Image Capture
+            </p>
         
-        <script>
-        var loadFile = function(event) {
-          var image = document.getElementById('sign');
-          image.src = URL.createadmissionectURL(event.target.files[0]);
-        };
-        </script>
-                    <img id="sign"width="100"style="margin-left: 28px;"src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS1YpRbqBJDnQHbdXxHvzrakMNXhgP-z9jpfw&usqp=CAU"alt="scan"class="img-fluid mt-1">
-
+              <div 
+              class="canvs"style='height:10px;'>
+              <i class="fa fa-camera-retro fa-5x" style="color: #1b5ea2;"aria-hidden="true"></i>
+              <canvas id="takePhotoCanvas" ></canvas>
+              </div>
+            </div>
+        
+          </div>
+        
+   
         </div>
-          </div>
-          
         
-            <div class="col-md-3">
-          <div class="custom-file my-2">
-            <input type="file" accept="image/" name="image" id="file" style="display: none !important;" onchange="loadFile(event)">
-          <label for="file" style="cursor: pointer;" class="p-2">Image Capture</label>
-          
-          <script>
-          var loadFile = function(event) {
-            var image = document.getElementById('image');
-            image.src = URL.createadmissionectURL(event.target.files[0]);
-          };
-          </script>
-                      <img id="image"width="100"style="margin-left: 28px;" src="https://www.seekpng.com/png/detail/46-462959_unknown-person-icon-png-download-single-people-logo.png"alt="scan"class="img-fluid mt-1">
+      
+      </div>
+      <div class="col-md-3">
+        <%- include('../views/sign'); -%>
 
-          </div>
-          
-          </div>
-            <div class="col-md-3">
-            <div class="custom-file my-2">
-  <input type="file" accept="image/" name="image" id="file" style="display: none !important;" onchange="loadFile(event)">
-<label for="file" style="cursor: pointer;" class="p-2">Capture Signature</label>
+      </div>
+        <div class="col-md-3"style="opacity: .5;"data-toggle="tooltip" title="iris disabled!">
+          <div class="custom-file my-2" >
+        <input type="file" accept="image/" name="image" id="fileo" style="display: none !important;" onchange="loadFile(event)" disabled="">
+        <label for="fileo" style="text-align: left;" >Iris Scan</label>
+        
+    
+        <img id="sign1"  src="https://cdn.iconscout.com/icon/premium/png-512-thumb/eye-recognition-486198.png" alt="scan" class="img-fluid mt-1" width="60">
+        
+        </div>
+        
+        </div>
 
-<script>
-var loadFile = function(event) {
-  var thumb1 = document.getElementById('sign1');
-  image.src = URL.createadmissionectURL(event.target.files[0]);
-};
-</script>
-<img id="sign1"width="100"style="margin-left: 28px;"src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS1YpRbqBJDnQHbdXxHvzrakMNXhgP-z9jpfw&usqp=CAU"alt="scan"class="img-fluid mt-1">
+    </div>
 
   </div>
-  
-</div>
-<div class="col-md-3">
-  <div class="custom-file my-2">
-<input type="file" accept="image/" name="image" id="fileo" style="display: none !important;" onchange="loadFile(event)">
-<label for="fileo" style="cursor: pointer;" class="p-2">Iris Scan</label>
-
-<script>
-var loadFile = function(event) {
-var thumb1 = document.getElementById('sign1');
-image.src = URL.createadmissionectURL(event.target.files[0]);
-};
-</script>
-<img id="sign1" style="margin-left: 44px;" src="https://cdn.iconscout.com/icon/premium/png-512-thumb/eye-recognition-486198.png" alt="scan" class="img-fluid mt-1" width="60">
-
-</div>
-
-</div>
-  </div>
-      </div> 
  
   </div>
   </div>
@@ -1701,9 +1742,18 @@ image.src = URL.createadmissionectURL(event.target.files[0]);
                     <select name="mbbs_passing_month"class="form-control">
                       <option hidden selected>&#160;</option>
     
-                     <option value="2019">2019</option>
-                     <option value="2020">2020</option>
-                     <option value="2021">2021</option>
+                      <option value='1'>January</option>
+                      <option value='2'>February </option>
+                      <option value='3'>March</option>
+                      <option value='4'>April </option>
+                      <option value='5'>May</option>
+                      <option value='5'>June </option>
+                      <option value='5'>July  </option>
+                      <option value='5'>August   </option>
+                      <option value='5'>September    </option>
+                      <option value='5'>October     </option>
+                      <option value='5'>November    </option>
+                      <option value='5'>December    </option>
 
                      
 
@@ -1723,9 +1773,18 @@ image.src = URL.createadmissionectURL(event.target.files[0]);
                     <select  name="pg_diplamo_passing_month" class="form-control">
                       <option hidden selected>&#160;</option>
     
-                     <option value="volvo">2019</option>
-                     <option value="saab">2020</option>
-                     <option value="saab">2021</option>
+                      <option value='1'>January</option>
+                      <option value='2'>February </option>
+                      <option value='3'>March</option>
+                      <option value='4'>April </option>
+                      <option value='5'>May</option>
+                      <option value='5'>June </option>
+                      <option value='5'>July  </option>
+                      <option value='5'>August   </option>
+                      <option value='5'>September    </option>
+                      <option value='5'>October     </option>
+                      <option value='5'>November    </option>
+                      <option value='5'>December    </option>
 
                      
 
@@ -1745,11 +1804,18 @@ image.src = URL.createadmissionectURL(event.target.files[0]);
                     <select name="mdms_passing_month" class="form-control">
                       <option hidden selected>&#160;</option>
     
-                     <option value="2019">2019</option>
-                     <option value="2020">2020</option>
-                     <option value="2021">2021</option>
-
-                     
+                      <option value='1'>January</option>
+                      <option value='2'>February </option>
+                      <option value='3'>March</option>
+                      <option value='4'>April </option>
+                      <option value='5'>May</option>
+                      <option value='5'>June </option>
+                      <option value='5'>July  </option>
+                      <option value='5'>August   </option>
+                      <option value='5'>September    </option>
+                      <option value='5'>October     </option>
+                      <option value='5'>November    </option>
+                      <option value='5'>December    </option>
 
 
 
@@ -2018,220 +2084,239 @@ image.src = URL.createadmissionectURL(event.target.files[0]);
                       <!--------------- Certificate Details ----------------->
                       <section id="certificate">
                         <div class="container">
-  
-                          <div class="table-responsive">
-                            <table class="table ">
-                              <thead class=" text-dark">
-                                <tr>
-                                  <th>Certificate Details</th>
-                                  <th scope="col">Registration/Certificate No</th>
-                                  <th scope="col" style="width: 200px;">Date</th>
-  
-                                  <th width="200px" scope="col">Issue Authority</th>
-  
-                                  <th scope="col">Place/Taluk</th>
-  
-                                  <th scope="col">Upload</th>
-  
-  
-                                </tr>
-                              </thead>
-                              <tbody id="TextBoxContainer">
-                                <!-- <tr>
-                                  <td>
-                                    <input style="    width: 200px "type="text" name="c1" value='Community Certificate'
-                                      placeholder="Community Certificate" class="form-control">
-                                  </td>
-                                  <td><input type="text" name="c1_reg_no" class="form-control"></td>
-                                  <td><input type="Date" name="c1_date" class="form-control"></td>
-                                  <td><input type="text" name="c1_issue" class="form-control"></td>
-                                  <td><input type="text" name="c1_place" class="form-control"></td>
-  
-                                  <td id="td">
-                                    <label for="files"style="height:0px"> <span id="selImg" class=" btn text-info mt-3"><i class="fa fa-upload "></i><p id="ii"></p></span></label>
-  
-                                    <input type="file" id="files" name="myimage10"  style="visibility: hidden; position: absolute;" class="form-control">
-                                 
-                               
-                                  <button  class="btn-sm btn-danger remove ml-3 " id="close"><i class="fa fa-times" aria-hidden="true"></i></button>                       
-                              </td>
-                                </tr> -->
-                                
-                                <tr>
 
-                                  <td>
-                                    <input style="    width: 200px " type="text" name="c1"
-                                      value='Community Certificate' readonly placeholder="Community Certificate"
-                                      class="form-control">
-                                  </td>
-                                  <td><input type="text" name="c1_reg_no" class="form-control"></td>
-                                  <td><input type="Date" name="c1_date" class="form-control"></td>
-                                  <td><input type="text" name="c1_issue" class="form-control"></td>
-                                  <td><input type="text" name="c1_place" class="form-control"></td>
+                          <div class="table-responsive">
+                              <table class="table ">
+                                <thead class=" text-dark">
+                                  <tr>
+                                    <th>Certificate Details</th>
+                                    <th scope="col">Registration/Certificate No</th>
+                                    <th scope="col" style="width: 200px;">Date</th>
+
+                                    <th width="200px" scope="col">Issue Authority</th>
+
+                                    <th scope="col">Place/Taluk</th>
+
+                                    <th scope="col">Upload</th>
+                                  </tr>
+                                </thead>
+
+                                <tbody id="TextBoxContainer">
+
+                                  <tr>
+
+                                    <td>
+                                      <input style="    width: 200px " type="text" name="c1"
+                                        value='Community Certificate' readonly placeholder="Community Certificate"
+                                        class="form-control">
+                                    </td>
+                                    <td><input type="text" name="c1_reg_no" class="form-control"></td>
+                                    <td><input type="Date" name="c1_date" class="form-control"></td>
+                                    <td><input type="text" name="c1_issue" class="form-control"></td>
+                                    <td><input type="text" name="c1_place" class="form-control"></td>
+                                  
+                                      <td id="td">
+
+                                        <label for="files"style="height:0px"> <span id="selImg" class=" btn text-info mt-3"></span><i class="fa fa-upload mt-4 mr-2 text-info"></i></span></label>
+                                        <input class="file-name text-info" type="text" placeholder="" style="border-bottom: none!important;" readonly="">
+                                        
+                                        <input type="file" id="files" name='n_community' hidden class="form-control">
+                                     
+      </td>
+        </tr>
                                 
+                                  <tr>
+                                    <td>
+                                      <input type="text" name="c2" value='Transfer Certificate'
+                                        placeholder="Transfer Certificate" class="form-control" readonly>
+                                    </td>
+                                    <td><input type="text" name="c2_reg_no" class="form-control"></td>
+                                    <td><input type="Date" name="c2_date" class="form-control"></td>
+                                    <td><input type="text" name="c2_issue" class="form-control"></td>
+                                    <td><input type="text" name="c2_place" class="form-control"></td>
                                     <td id="td">
 
-                                      <label for="files21"style="height:0px"> <span id="selImg" class=" btn text-info mt-3"></span><i class="fa fa-upload mt-4 mr-2 text-info"></i></span></label>
-                                      <input class="file-name21 text-info" type="text" placeholder="" style="border-bottom: none!important;" readonly="">
+                                      <label for="files1"style="height:0px"> <span id="selImg" class=" btn text-info mt-3"></span><i class="fa fa-upload mt-4 mr-2 text-info"></i></span></label>
+                                      <input class="file-name1 text-info" type="text" placeholder="" style="border-bottom: none!important;" readonly="">
                                       
-                                      <input type="file" id="files21" name='n_community' hidden class="form-control">
+                                      <input type="file" id="files1" name='n_transfer' hidden class="form-control">
                                    
+                                         
+ 
+
     </td>
-      </tr>  
-                                 <tr>
-                                  <td>
-                                    <input type="text" name="c2" value="Transfer Certificate" placeholder="Transfer Certificate" class="form-control" readonly="">
-                                  </td>
-                                  <td><input type="text" name="c2_reg_no" class="form-control"></td>
-                                  <td><input type="Date" name="c2_date" class="form-control"></td>
-                                  <td><input type="text" name="c2_issue" class="form-control"></td>
-                                  <td><input type="text" name="c2_place" class="form-control"></td>
-  
-                                  <td id="td">
-                                    <label for="files2" style="height:0px"> <span id="selImg" class=" btn text-info mt-3"><i class="fa fa-upload "></i><p id="ii2"></p></span></label>
-  
-                                    <input type="file" id="files2" name="myimage11" style="visibility: hidden; position: absolute;" class="form-control">
+                                  
+                                  </tr>
+                                  <tr class="collapse row2" id="row2">
+                                    <td>
+                                      <input type="text" name="c3" value='Conduct Certificate'
+                                        placeholder="Conduct Certificate" class="form-control" readonly>
+                                    </td>
+                                    <td><input type="text" name="c3_reg_no" class="form-control"></td>
+                                    <td><input type="Date" name="c3_date" class="form-control"></td>
+                                    <td><input type="text" name="c3_issue" class="form-control"></td>
+                                    <td><input type="text" name="c3_place" class="form-control"></td>
+                                    <td id="td">
+
+                                      <label for="files2"style="height:0px"> <span id="selImg" class=" btn text-info mt-3"></span><i class="fa fa-upload mt-4 mr-2 text-info"></i></span></label>
+                                      <input class="file-name2 text-info" type="text" placeholder="" style="border-bottom: none!important;" readonly="">
+                                      
+                                      <input type="file" id="files2" name='n_conduct' hidden class="form-control">
+                                   
+                                         
+ 
+
+    </td>
+            
+                                  
+                                  </tr>
+                                  <tr class="collapse row2" id="row2">
+                                    <td>
+                                      <input type="text" name="c4" value='Eligiblity Certificate'
+                                        placeholder="Eligiblity Certificate" class="form-control" readonly>
+                                    </td>
+                                    <td><input type="text" name="c4_reg_no" class="form-control"></td>
+                                    <td><input type="Date" name="c4_date" class="form-control"></td>
+                                    <td><input type="text" name="c4_issue" class="form-control"></td>
+                                    <td><input type="text" name="c4_place" class="form-control"></td>
+                                    <td id="td">
+
+                                      <label for="files3"style="height:0px"> <span id="selImg" class=" btn text-info mt-3"></span><i class="fa fa-upload mt-4 mr-2 text-info"></i></span></label>
+                                      <input class="file-name3 text-info" type="text" placeholder="" style="border-bottom: none!important;" readonly="">
+                                      
+                                      <input type="file" id="files3" name='n_eligiblity' hidden class="form-control">
+                                   
+                                         
+ 
+
+    </td>
+
+                                  
+                                  </tr>
+                                  <tr class="collapse row2" id="row2">
+                                    <td>
+                                      <input type="text" name="c5" value='Migration Certificate'
+                                        placeholder="Migration Certificate" class="form-control" readonly>
+                                    </td>
+                                    <td><input type="text" name="c5_reg_no" class="form-control"></td>
+                                    <td><input type="Date" name="c5_date" class="form-control"></td>
+                                    <td><input type="text" name="c5_issue" class="form-control"></td>
+                                    <td><input type="text" name="c5_place" class="form-control"></td>
+                                    <td id="td">
+
+                                      <label for="files4"style="height:0px"> <span id="selImg" class=" btn text-info mt-3"></span><i class="fa fa-upload mt-4 mr-2 text-info"></i></span></label>
+                                      <input class="file-name4 text-info" type="text" placeholder="" style="border-bottom: none!important;" readonly="">
+                                      
+                                      <input type="file" id="files4"  name='n_migration' hidden class="form-control">
+                                   
+                                         
+ 
+
+    </td>
+                                  
+                                  </tr>
+                                  <tr class="collapse row2" id="row2">
+                                    <td>
+                                      <input type="text" name="c6" value='Admission Certificate'
+                                        placeholder="Admission Certificate" class="form-control" readonly>
+                                    </td>
+                                    <td><input type="text" name="c6_reg_no" class="form-control"></td>
+                                    <td><input type="Date" name="c6_date" class="form-control"></td>
+                                    <td><input type="text" name="c6_issue" class="form-control"></td>
+                                    <td><input type="text" name="c6_place" class="form-control"></td>
+                                    <td id="td">
+
+                                      <label for="files5"style="height:0px"> <span id="selImg" class=" btn text-info mt-3"></span><i class="fa fa-upload mt-4 mr-2 text-info"></i></span></label>
+                                      <input class="file-name5 text-info" type="text" placeholder="" style="border-bottom: none!important;" readonly="">
+                                      
+                                      <input type="file" id="files5"   name='n_admissioncertificate' hidden class="form-control">
+                                   
+                                         
+ 
+
+    </td>
+              
+
+                                   
+                                  </tr>
+                                  <tr class="row2 collapse " id="row2">
+
+                                    <td scope="row" class=" text-dark">
+                                      <input type="text" name="c7" class="form-control" value="Admission Commitee Form"
+                                        readonly>
+                                    </td>
+                                    <td><input type="text" name="c7_reg_no" class="form-control"></td>
+                                    <td><input type="Date" name="c7_date" class="form-control"></td>
+                                    <td><input type="text" name="c7_issue" class="form-control"></td>
+                                    <td><input type="text" name="c7_place" class="form-control"></td>
+                                    <td id="td">
+
+                                      <label for="files6"style="height:0px"> <span id="selImg" class=" btn text-info mt-3"></span><i class="fa fa-upload mt-4 mr-2 text-info"></i></span></label>
+                                      <input class="file-name6 text-info" type="text" placeholder="" style="border-bottom: none!important;" readonly="">
+                                      
+                                      <input type="file" id="files6"  name='n_admissioncommittee' hidden class="form-control">
+                                   
+                                         
+ 
+
+    </td>
+
+
+
+                                  </tr>
+
+                                  <tr class="row2 collapse " id="row2">
+
+                                    <td scope="row" class=" text-dark">
+                                      <input type="text" name="c8" class="form-control" value="Others" >
+                                    </td>
+                                    <td><input type="text" name="c8_reg_no" class="form-control"></td>
+                                    <td><input type="Date" name="c8_date" class="form-control"></td>
+                                    <td><input type="text" name="c8_issue" class="form-control"></td>
+                                    <td><input type="text" name="c8_place" class="form-control"></td>
+                                    <td id="td">
+
+                                      <label for="files7"style="height:0px"> <span id="selImg" class=" btn text-info mt-3"></span><i class="fa fa-upload mt-4 mr-2 text-info"></i></span></label>
+                                      <input class="file-name7 text-info" type="text" placeholder="" style="border-bottom: none!important;" readonly="">
+                                      
+                                      <input type="file" id="files7"  name='n_others' hidden class="form-control">
+                                   
+                                         
+ 
+
+    </td>
+                                  
+
+
+
+
+                                  </tr>
                                  
-                               
-                                  <button class="btn-sm btn-danger remove ml-3 " id="close"><i class="fa fa-times" aria-hidden="true"></i></button>                       
-  </td>                              </tr>
-  <tr class="row2 collapse show" id="row2" >
-    <td>
-                                    <input type="text" name="c3" value="Conduct Certificate" placeholder="Conduct Certificate" class="form-control" readonly="">
-                                  </td>
-                                  <td><input type="text" name="c3_reg_no" class="form-control"></td>
-                                  <td><input type="Date" name="c3_date" class="form-control"></td>
-                                  <td><input type="text" name="c3_issue" class="form-control"></td>
-                                  <td><input type="text" name="c3_place" class="form-control"></td>
-  
-  
-                                  <td id="td">
-                                    <label for="files1" style="height:0px"> <span id="selImg" class=" btn text-info mt-3"><i class="fa fa-upload "></i><p id="ii1"></p></span></label>
-  
-                                    <input type="file" id="files1" name="myimage12" style="visibility: hidden; position: absolute;" class="form-control">
-                                 
-                               
-                                  <button class="btn-sm btn-danger remove ml-3 " id="close"><i class="fa fa-times" aria-hidden="true"></i></button>                       
-  </td>                                             
-                                </tr>
-                                <tr class="row2 collapse show" id="row2" >
-                                  <td>
-                                    <input type="text" name="c4" value="Eligiblity Certificate" placeholder="Eligiblity Certificate" class="form-control" readonly="">
-                                  </td>
-                                  <td><input type="text" name="c4_reg_no" class="form-control"></td>
-                                  <td><input type="Date" name="c4_date" class="form-control"></td>
-                                  <td><input type="text" name="c4_issue" class="form-control"></td>
-                                  <td><input type="text" name="c4_place" class="form-control"></td>
-  
-  
-                                  <td id="td">
-                                    <label for="files3" style="height:0px"> <span id="selImg" class=" btn text-info mt-3"><i class="fa fa-upload "></i><p id="ii3"></p></span></label>
-  
-                                    <input type="file" id="files3" name="myimage13" style="visibility: hidden; position: absolute;" class="form-control">
-                                 
-                               
-                                  <button class="btn-sm btn-danger remove ml-3 " id="close"><i class="fa fa-times" aria-hidden="true"></i></button>                       
-  </td>                                       </tr>
-  <tr class="row2 collapse show" id="row2">
-    <td>
-                                    <input type="text" name="c5" value="Migration Certificate" placeholder="Migration Certificate" class="form-control" readonly="">
-                                  </td>
-                                  <td><input type="text" name="c5_reg_no" class="form-control"></td>
-                                  <td><input type="Date" name="c5_date" class="form-control"></td>
-                                  <td><input type="text" name="c5_issue" class="form-control"></td>
-                                  <td><input type="text" name="c5_place" class="form-control"></td>
-  
-                                  <td id="td">
-                                    <label for="files4" style="height:0px"> <span id="selImg" class=" btn text-info mt-3"><i class="fa fa-upload "></i><p id="ii4"></p></span></label>
-  
-                                    <input type="file" id="files4" name="myimage14" style="visibility: hidden; position: absolute;" class="form-control">
-                                 
-                               
-                                  <button class="btn-sm btn-danger remove ml-3 " id="close"><i class="fa fa-times" aria-hidden="true"></i></button>                       
-  </td>                                   
-                                </tr>
-                                <tr class="row2 collapse show" id="row2" >
-                                  <td>
-                                    <input type="text" name="c6" value="Admission Certificate" placeholder="Admission Certificate" class="form-control" readonly="">
-                                  </td>
-                                  <td><input type="text" name="c6_reg_no" class="form-control"></td>
-                                  <td><input type="Date" name="c6_date" class="form-control"></td>
-                                  <td><input type="text" name="c6_issue" class="form-control"></td>
-                                  <td><input type="text" name="c6_place" class="form-control"></td>
-  
-  
-                                  <td id="td">
-                                    <label for="files5" style="height:0px"> <span id="selImg" class=" btn text-info mt-3"><i class="fa fa-upload "></i><p id="ii5"></p></span></label>
-  
-                                    <input type="file" id="files5" name="myimage15" style="visibility: hidden; position: absolute;" class="form-control">
-                                 
-                               
-                                  <button class="btn-sm btn-danger remove ml-3 " id="close"><i class="fa fa-times" aria-hidden="true"></i></button>                       
-  </td>                                   </tr>
-  <tr class="row2 collapse show" id="row2" >
-                          
-    <td scope="row" class=" text-dark"> 
-      <input type="text" name="c7" class="form-control" value="Admission Commitee Form" readonly="">
-      </td>
-    <td><input type="text" name="c7_reg_no" class="form-control"></td>
-    <td><input type="Date" name="c7_date" class="form-control"></td>
-          <td><input type="text" name="c7_issue" class="form-control"></td>
-    <td><input type="text" name="c7_place" class="form-control"></td>
-    <td id="td">
-      <label for="files6" style="height:0px"> <span id="selImg" class=" btn text-info mt-3"><i class="fa fa-upload "></i><p id="ii6"></p></span></label>
-  
-      <input type="file" id="files6" name="myimage16" style="visibility: hidden; position: absolute;" class="form-control">
-   
-  
-    <button class="btn-sm btn-danger remove ml-3 " id="close"><i class="fa fa-times" aria-hidden="true"></i></button>                       
-  </td>           
-  
-  
-  
-  </tr>
-  
-  <tr class="row2 collapse show" id="row2" >
-                          
-    <td scope="row" class=" text-dark"> 
-      <input type="text" name="c8" class="form-control" value="Others" readonly="">
-      </td>
-    <td><input type="text" name="c8_reg_no" class="form-control"></td>
-    <td><input type="Date" name="c8_date" class="form-control"></td>
-          <td><input type="text" name="c8_issue" class="form-control"></td>
-    <td><input type="text" name="c8_place" class="form-control"></td>
-    <td id="td">
-      <label for="files7" style="height:0px"> <span id="selImg" class=" btn text-info mt-3"><i class="fa fa-upload "></i><p id="ii7"></p></span></label>
-  
-      <input type="file" id="files7" name="myimage17" style="visibility: hidden; position: absolute;" class="form-control">
-   
-  
-    <button class="btn-sm btn-danger remove ml-3 " id="close"><i class="fa fa-times" aria-hidden="true"></i></button>                       
-  </td>           
-  
-  
-  
-  
-  </tr>
-                              </tbody>
-                              <tfoot>
-                                <tr>
-                                <td>
-                                  <!-- <img src="assets/design/img/more.png" alt="read more" class="clickable collapsed" data-toggle="collapse" aria-controls="row2" href="#row2" id="row2" role="button" aria-expanded="false" data-target=".row2">   -->
-                                  <p class="btn btn-primary btn-sm" data-toggle="collapse" aria-controls="row2" href="#row2" id="row2" aria-expanded="true" data-target=".row2">
-                                    More..
-                                  </p>
-                                </td>
-          
-                              </tr>
-                              </tfoot>
-                            </table>
+                                </tbody>
+                             
+                                <tfoot>
+                                  <tr>
+                                    <td>
+                                      <!-- <img src="assets/design/img/more.png" alt="read more" class="clickable collapsed" data-toggle="collapse" aria-controls="row2" href="#row2" id="row2" role="button" aria-expanded="false" data-target=".row2">   -->
+                                      <p class="btn btn-primary btn-sm" class="clickable collapsed"
+                                        data-toggle="collapse" aria-controls="row2" href="#row2" id="row2"
+                                        aria-expanded="false" data-target=".row2">
+                                        More..
+                                      </p>
+                                    </td>
+
+                                  </tr>
+                                </tfoot>
+                              </table>
+                             
+
                           </div>
-  
-  
-  
+
+
+
                         </div>
                       </section>
-                  
+
                     </div>
                   </div>
                 </div>
@@ -2249,6 +2334,7 @@ image.src = URL.createadmissionectURL(event.target.files[0]);
       
       <div class="modal-footer ">
         <button type="submit" class="btn btn-primary">Save </button>
+      </form>
         <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
 
         
@@ -2256,7 +2342,7 @@ image.src = URL.createadmissionectURL(event.target.files[0]);
     </div>
   </div>
 </div>
-</form>
+
       <!-- ------------------------table profile view modal   -------------->
         
      <!-- The Modal -->
@@ -2283,7 +2369,7 @@ image.src = URL.createadmissionectURL(event.target.files[0]);
             <div class="row">
 
             <div class="col-md-3 ">
-            <img class="card-img-top img-fluid" id="cand_photo" src="/" alt="Card image cap"style="width:120px;height: 128px;" ></div>
+            <img class="card-img-top img-fluid" id="cand_photo"  alt="Card image cap"style="width:120px;height: 128px;" ></div>
             <div class="col-md-9">
             <div class=""id="profilebody">
               <div class="row">
@@ -2382,7 +2468,7 @@ image.src = URL.createadmissionectURL(event.target.files[0]);
                <div class="col-md-6">
                       <div class="">
                     <label for="exampleFormControlTextarea1"> Type Of Allotment</label>
-                    <p id=""></p>                 
+                    <p id="cand_type_of_allotment"></p>                 
                   </div> 
                </div>
              </div> 
@@ -3073,7 +3159,7 @@ image.src = URL.createadmissionectURL(event.target.files[0]);
                         <td scope="row"class=" text-dark"> 
                           <input type="text" name=""class="form-control"value="Community Certificate"disabled>
                           <!-- <p id="admission_Commitee_Form_link" data-toggle="modal" class="btn btn-link" data-target="#cert_link"></p>   -->
-                          <div id="admission_Commitee_Form_link" data-toggle="modal" data-target="#cert_link" class="input-group-text  text-success" >
+                          <div id="cand_Community_Certificate"  class="input-group-text  text-success" >
                             <!-- <p id="admission_Commitee_Form_link" data-toggle="modal" class="btn btn-link" data-target="#cert_link"></p> -->
                           </div> 
                           </td>
@@ -3086,7 +3172,7 @@ image.src = URL.createadmissionectURL(event.target.files[0]);
                       <tr >
                         <td scope="row"class=" text-dark"> 
                           <input type="text" name=""class="form-control"value="Transfer Certificate"disabled>
-                          <div class="input-group-text  text-success">c2_file</div>  
+                          <div id="cand_Transfer_Certificate" class="input-group-text  text-success"> </div>  
                         </td>
   <td>
 <button type="button"class="btn-sm  btn-outline-info "><i class="fa fa-download" aria-hidden="true"></i></button>                       
@@ -3098,7 +3184,7 @@ image.src = URL.createadmissionectURL(event.target.files[0]);
                         
                           <td scope="row"class=" text-dark"> 
                             <input type="text" name=""class="form-control"value="Conduct Certificate"disabled>
-                            <div class="input-group-text  text-success">c3_file</div>  
+                            <div id="cand_Conduct_Certificate" class="input-group-text  text-success"> </div>  
                           </td>
   <td>
 <button type="button"class="btn-sm  btn-outline-info "><i class="fa fa-download" aria-hidden="true"></i></button>                       
@@ -3111,7 +3197,7 @@ image.src = URL.createadmissionectURL(event.target.files[0]);
                         
                         <td scope="row"class=" text-dark"> 
                           <input type="text" name=""class="form-control"value="Eligiblity Certificate"disabled>
-                          <div class="input-group-text  text-success">c4_file</div>  
+                          <div id="cand_Eligiblity_Certificate" class="input-group-text  text-success"></div>  
                         </td>
      <td>
 <button type="button"class="btn-sm  btn-outline-info "><i class="fa fa-download" aria-hidden="true"></i></button>                       
@@ -3127,7 +3213,7 @@ image.src = URL.createadmissionectURL(event.target.files[0]);
                         
                       <td scope="row"class=" text-dark"> 
                         <input type="text" name=""class="form-control"value="Migration Certificate"disabled>
-                        <div class="input-group-text  text-success">c5_file</div>  
+                        <div id="cand_Migration_Certificate" class="input-group-text  text-success"></div>  
                       </td>
       <td>
 <button type="button"class="btn-sm  btn-outline-info "><i class="fa fa-download" aria-hidden="true"></i></button>                       
@@ -3139,7 +3225,7 @@ image.src = URL.createadmissionectURL(event.target.files[0]);
                         
                     <td scope="row"class=" text-dark"> 
                       <input type="text" name=""class="form-control"value="Admission Commitee Form"disabled>
-                      <div class="input-group-text  text-success">c6_file</div>  
+                      <div id="cand_Admission_Certificate" class="input-group-text  text-success"></div>  
                     </td>
         <td>
 <button type="button"class="btn-sm  btn-outline-info "><i class="fa fa-download" aria-hidden="true"></i></button>                       
@@ -3152,7 +3238,7 @@ image.src = URL.createadmissionectURL(event.target.files[0]);
                         
                   <td scope="row"class=" text-dark"> 
                     <input type="text" name=""class="form-control"value="Others"disabled>
-                    <div class="input-group-text  text-success">c7_file</div>  
+                    <div id="cand_Others" class="input-group-text  text-success"></div>  
                   </td>
     <td>
 <button type="button"class="btn-sm  btn-outline-info "><i class="fa fa-download" aria-hidden="true"></i></button>                       
@@ -3165,7 +3251,7 @@ image.src = URL.createadmissionectURL(event.target.files[0]);
                         
                       <td scope="row"class=" text-dark"> 
                         <input type="text" name=""class="form-control"value="Degree Certificate (MBBS)"disabled>
-                        <div class="input-group-text  text-success">c8_file</div>
+                        <div id="cand_Admission_Commitee_Form" class="input-group-text  text-success"></div>
                       </td>
   <td>
 <button type="button"class="btn-sm  btn-outline-info "><i class="fa fa-download" aria-hidden="true"></i></button>                       
@@ -3321,7 +3407,9 @@ image.src = URL.createadmissionectURL(event.target.files[0]);
 
 
 <!-- Modal -->
-<form class="form-horizontal"   role="form" method="post" action="/update_mdms">
+<!-- <form class="form-horizontal"   role="form" method="post" action="/update_mdms"> -->
+  <form class="form-horizontal" role="form" method="post" action="/update_mdms" onClick="return empty()"
+  enctype="multipart/form-data">  
 
   <input type='text' id="edit_cand_id" name='cand_id' hidden value='' />
 
@@ -3394,12 +3482,12 @@ image.src = URL.createadmissionectURL(event.target.files[0]);
                     <label for="exampleFormControlTextarea1"> Type Of Allotment</label>
                     <i class="fa fa-caret-down " id="drop"></i>
                 
-                    <select class="form-control" id="" >
+                    <select class="form-control" id="edit_type_of_allotment" name="type_of_allotment">
                       <option hidden="" selected="">&nbsp;</option>
                       
-                     <option value="volvo">Service</option>
-                     <option value="saab">B+</option>
-                     <option value="saab">A+</option>
+                     <option value="Service">Service</option>
+                     <option value="B+">B+</option>
+                     <option value="A+">A+</option>
                     
                     </select>                 
                   </div> 
@@ -3431,35 +3519,43 @@ image.src = URL.createadmissionectURL(event.target.files[0]);
        </div>
               <div class="col-md-4">
           <div class="form-group  p-1">
-                 <label for="edit_gender" class="text-danger">Gender *</label>
-                 <div class="d-flex ">
-               <div class="form-check form-check-inline ">
-              
-               <label class="form-check-label" for="inlineRadio1">Male </label>
-             </div>
-            <!--  <div class="form-check form-check-inline  ">
-               <input class="form-check-input"disabled type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
-               <label class="form-check-label" for="inlineRadio2">Female</label>
-             </div> -->
-             </div>
+                 <label for="" class="text-danger">Gender *</label>
+
+                 <div class="form-group  p-1"  >
+                  <!-- <form name="gendersForm"> -->
+                 <div class="form-check form-check-inline ">
+                <input class="form-check-input" type="radio"  name="gender" id="radiobtn1"  value="Male">
+                <label class="form-check-label" for="inlineRadio1">Male </label>
+              </div>
+              <div class="form-check form-check-inline  ">
+                <input class="form-check-input" type="radio" name="gender" id="radiobtn2" value="Female">
+                <label class="form-check-label" for="inlineRadio2">Female</label>
+              </div>
+              <div class="form-check form-check-inline  ">
+                <input class="form-check-input" type="radio" name="gender" id="radiobtn3" value="Third Gender">
+                <label class="form-check-label" for="inlineRadio2">Third Gender</label>
+              </div> 
+              <!-- <input type="radio" name="gender" value="Male" /> Male
+              <input type="radio" name="gender" value="Female" /> Female
+              <input type="radio" name="gender" value="Third Gender"/>Third Gender 
+              </form> -->
+                </div>
                </div> 
                <div class="form-group">
                 <label for="edit_blood_group" class="text-danger">Blood Group * </label>
                 <i class="fa fa-caret-down " id="drop"></i>
             
                 <select class="form-control" id="edit_blood_group" name="blood_group">
-                  <option hidden="" selected="">&nbsp;</option>
-                  <option value=""></option>
-                 <option value="volvo">O+</option>
-                 <option value="saab">B+</option>
-                 <option value="saab">A+</option>
+                
+                 <option value="O+">O+</option>
+                 <option value="B+">B+</option>
+                 <option value="A+">A+</option>
 
-                 <option value="saab">AB+</option>
-                 <option value="saab">A-</option>
-                 <option value="saab">B-</option>
-                 <option value="saab">O-</option>
-                 <option value="saab">O-</option>
-                 <option value="saab">AB-</option>
+                 <option value="AB+">AB+</option>
+                 <option value="A-">A-</option>
+                 <option value="B-">B-</option>
+                 <option value="O-">O-</option>
+                  <option value="AB-">AB-</option>
 
                 </select>                 
               </div> 
@@ -3470,13 +3566,12 @@ image.src = URL.createadmissionectURL(event.target.files[0]);
               </div>
               <div class="col-md-4">
                <div class="form-group">
-                 <label for="community" class="text-danger">Nationality *</label>
+                 <label for="edit_nationality" class="text-danger">Nationality *</label>
                  <i class="fa fa-caret-down " id="drop"></i>
              
-  <select class="form-control" >  
-              <option value="volvo">Indian</option>
-              
-             
+  <select class="form-control" id="edit_nationality" name="nationality">  
+              <option value="Indian">Indian</option>
+              <option value="srilankan">Srilankan</option>
              
              </select> 
               </div>
@@ -3491,9 +3586,9 @@ image.src = URL.createadmissionectURL(event.target.files[0]);
           <i class="fa fa-caret-down " id="drop"></i>
           
           <select class="form-control" id="edit_willing_to_donate_blood" name="willing_to_donate_blood" >  
-            <option value=""></option>
-           <option value="volvo">Yes</option>
-            <option value="saab">No</option>
+                       
+           <option value="Yes">Yes</option>
+            <option value="No">No</option>
            
            
           </select> 
@@ -3508,11 +3603,10 @@ image.src = URL.createadmissionectURL(event.target.files[0]);
              <i class="fa fa-caret-down " id="drop"></i>
              
               <select class="form-control" id="edit_religion" name="religion" >        
-               <option selected="" hidden="">&nbsp;</option>
-                <option value=""></option>
-               <option value="volvo">Hindu</option>
-              <option value="saab">Christian</option>
-              <option value="mercedes">Islam</option>
+                          
+               <option value="Hindu">Hindu</option>
+              <option value="Christian">Christian</option>
+              <option value="Islam">Islam</option>
              
              </select> 
              
@@ -3527,12 +3621,11 @@ image.src = URL.createadmissionectURL(event.target.files[0]);
          <i class="fa fa-caret-down " id="drop"></i>
          
          <select class="form-control"  id="edit_community" name="community">  
-                      <option selected="" hidden="">&nbsp;</option>
-            <option value=""></option>
-           <option value="volvo">OC</option>
-            <option value="saab">BC</option>
-            <option value="mercedes">SC</option>
-            <option value="audi">MBC</option>
+                             
+           <option value="OC">OC</option>
+            <option value="BC">BC</option>
+            <option value="SC">SC</option>
+            <option value="MBC">MBC</option>
           </select> 
             </div>
              </div>
@@ -3543,7 +3636,7 @@ image.src = URL.createadmissionectURL(event.target.files[0]);
               
               </div>
               
-              </section>
+      </section>
 
       <!-------------------------- adimission---------------------------------------------->
       <section id="admission" class="">
@@ -3573,12 +3666,11 @@ image.src = URL.createadmissionectURL(event.target.files[0]);
   <i class="fa fa-caret-down " id="drop"></i>
 
    <select class="form-control" name="selected_category" id="edit_selected_category">    
-    <option hidden="" selected="">&nbsp;</option>
-    <option value=""></option>
-    <option value="volvo">OC</option>
-          <option value="saab">BC</option>
-          <option value="mercedes">SC</option>
-          <option value="audi">MBC</option>
+      
+    <option value="OC">OC</option>
+          <option value="BC">BC</option>
+          <option value="SC">SC</option>
+          <option value="MBC">MBC</option>
           </select>   </div>
           <div class="form-group">
             <label for="edit_reg_no">Registration Number</label>
@@ -3608,12 +3700,11 @@ image.src = URL.createadmissionectURL(event.target.files[0]);
   <i class="fa fa-caret-down " id="drop"></i>
 
    <select class="form-control" id="edit_admission_type" name="admission_type">    
-    <option hidden="" selected="">&nbsp;</option>
-    <option value=""></option>
-    <option value="volvo">Regular Admission</option>
-          <option value="saab">BC</option>
-          <option value="mercedes">SC</option>
-          <option value="audi">MBC</option>
+        
+    <option value="Regular Admission">Regular Admission</option>
+          <option value="BC">BC</option>
+          <option value="SC">SC</option>
+          <option value="MBC">MBC</option>
           </select>  
          </div>  
          <div class="form-group">
@@ -3621,11 +3712,9 @@ image.src = URL.createadmissionectURL(event.target.files[0]);
   <i class="fa fa-caret-down " id="drop"></i>
 
    <select class="form-control" id="edit_admission_quota" name="admission_quota">    
-    <option hidden="" selected="">&nbsp;</option>
-    <option value=""></option>
-    <option value="volvo">State Quota</option>
-          <option value="saab">CBSE Quota</option>
-          <option value="mercedes">ALL INDIA Quota</option>
+        <option value="State Quota">State Quota</option>
+          <option value="CBSE Quota">CBSE Quota</option>
+          <option value="All INDIA Quota">ALL INDIA Quota</option>
           </select>  
          </div>  
         <!-- </form> -->
@@ -3651,7 +3740,7 @@ image.src = URL.createadmissionectURL(event.target.files[0]);
                 <i class="fa fa-caret-down " id="drop"></i>
 
                 <select name="course" id="edit_course" class="form-control">
-                  <option value=""></option>               
+                                 
                    <option value="MDMS">MS GENERAL SURGERY  </option>
                    <option value="MDMS">MD GENERAL MEDICINE </option>
                     <option value="MDMS">MD ANAESTHESIOLOGY </option>
@@ -3682,10 +3771,9 @@ image.src = URL.createadmissionectURL(event.target.files[0]);
     <i class="fa fa-caret-down " id="drop"></i>
 
      <select class="form-control" id="edit_willing_for_counciling" name="willing_for_counciling">    
-      <option hidden="" selected="">&nbsp;</option>
-      <option value=""></option>
-      <option value="volvo">Yes</option>
-            <option value="saab">No</option>
+         
+      <option value="Yes">Yes</option>
+            <option value="No">No</option>
       
             </select>  
            </div>  
@@ -3758,7 +3846,7 @@ image.src = URL.createadmissionectURL(event.target.files[0]);
     </div>  
      <div class="form-group">
       <label for="edit_ps_district">District</label>
-  <input type="text" id="edit_ps_district"placeholder=""name="ps_address" class="form-control" > 
+  <input type="text" id="edit_ps_district"placeholder=""name="ps_district" class="form-control" > 
     </div>  
        
     <!-- </form> -->
@@ -3870,7 +3958,7 @@ image.src = URL.createadmissionectURL(event.target.files[0]);
 <div class="col-md-12 mb-5">
   <h5>Biometric Details</h5>
  <div class="row">
-   <div class="col-md-3">
+   <!-- <div class="col-md-3">
   <div class="custom-file my-2">
     <input type="file" accept="image/" name="image" id="fileo" style="display: none !important;" onchange="loadFile(event)"  >
   <label for="fileo" style="cursor: pointer;" class="p-2"> Photo</label>
@@ -3884,10 +3972,16 @@ image.src = URL.createadmissionectURL(event.target.files[0]);
   </div>
   <img id="output" style="margin-left: 28px;" src="https://www.seekpng.com/png/detail/46-462959_unknown-person-icon-png-download-single-people-logo.png" class="img-fluid mt-1" width="100">
 
+  </div> -->
+  
+  <div class='col-md-3'>
+    <p id="edit_photo_link" data-toggle="modal" class="btn btn-link" data-target="#photo_link"></p>
+    <input name='n_cand_photo' class="form-control" type="file" hidden id="file01"onchange="document.getElementById('frame01').src = window.URL.createObjectURL(this.files[0])">
+    <label for="file01" style="cursor: pointer;" class="p-2">Upload photo</label>
+
+    <img id="frame01" src="https://www.seekpng.com/png/detail/46-462959_unknown-person-icon-png-download-single-people-logo.png" width="100px" />
   </div>
-  
-  
-   
+<!--    
       <div class="col-md-3">
     <div class="custom-file my-2">
       <input type="file" accept="image/" name="image" id="fileo" style="display: none!important;" onchange="loadFile(event)" >
@@ -3902,9 +3996,9 @@ image.src = URL.createadmissionectURL(event.target.files[0]);
     </div>
     <img id="scan" style="margin-left: 28px;" src="https://i.pinimg.com/originals/89/60/53/89605396d7eabcdf01ab78ce48aa0c6d.png" alt="scan" class="img-fluid mt-1" width="80">
 
-    </div>
-         
-     <div class="col-md-3">
+    </div> -->
+        
+     <!-- <div class="col-md-3">
       <div class="custom-file my-2">
         <input type="file" accept="image/" name="image" id="fileo" style="display:none!important" onchange="loadFile(event)" >
       <label for="fileo" style="cursor :pointer;" class="p-2">Signature</label>
@@ -3918,9 +4012,23 @@ image.src = URL.createadmissionectURL(event.target.files[0]);
                   <img id="sign" style="margin-left: 28px;" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS1YpRbqBJDnQHbdXxHvzrakMNXhgP-z9jpfw&amp;usqp=CAU" alt="scan" class="img-fluid mt-1" width="100">
 
       </div>
+        </div> -->
+        <div class='col-md-3'style="display: grid;">
+          <p id="edit_thumb_link" data-toggle="modal" class="btn btn-link" data-target="#thumb_link"></p>
+          <input name='n_cand_thumb' class="form-control" type="file"hidden id="file03" onchange="document.getElementById('frame03').src = window.URL.createObjectURL(this.files[0])">
+          <label for="file03"style="cursor: pointer;" class="p-2">Upload thumb </label>
+  
+          <img id="frame03" src="https://i.pinimg.com/originals/89/60/53/89605396d7eabcdf01ab78ce48aa0c6d.png" width="80" />
+        </div>   
+        <div class='col-md-3'>
+          <p id="edit_sign_link" data-toggle="modal" class="btn btn-link" data-target="#sign_link"></p>
+          <input name='n_cand_sign'  class="form-control" type="file" hidden id="file02" onchange="document.getElementById('frame02').src = window.URL.createObjectURL(this.files[0])">
+          <label for="file02" style="cursor: pointer;" class="p-2"> Upload Signature</label>
+    
+          <img id="frame02" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS1YpRbqBJDnQHbdXxHvzrakMNXhgP-z9jpfw&usqp=CAU" width="100px"/>
+    
+    
         </div>
-        
-      
 
    
 <div class="col-md-3">
@@ -3992,7 +4100,7 @@ image.src = URL.createObjectURL(event.target.files[0]);
 
                 <select class="form-control" id="edit_period" name="period_of_agreement">
                   <option hidden="" selected="">&nbsp;</option>
-                  <option value=""></option>
+                  
                   <option>2 Years</option>
                   <option>5 Years</option>
                   <option>10 Years</option>
@@ -4065,7 +4173,7 @@ image.src = URL.createObjectURL(event.target.files[0]);
 
   <select name="mbbs_state" id="edit_mbbs_state" class="form-control" >
                           <option hidden="" selected="">&nbsp;</option>
-    <option value=""></option>
+    
   <option value="Andhra Pradesh">Andhra Pradesh</option>
   <option value="Andaman and Nicobar Islands">Andaman and Nicobar Islands</option>
   <option value="Arunachal Pradesh">Arunachal Pradesh</option>
@@ -4110,7 +4218,7 @@ image.src = URL.createObjectURL(event.target.files[0]);
 
   <select name="pg_diplamo_state" id="edit_pg_diplamo_state" class="form-control" >
                           <option hidden="" selected="">&nbsp;</option>
-    <option value=""></option>
+    
   <option value="Andhra Pradesh">Andhra Pradesh</option>
   <option value="Andaman and Nicobar Islands">Andaman and Nicobar Islands</option>
   <option value="Arunachal Pradesh">Arunachal Pradesh</option>
@@ -4156,7 +4264,7 @@ image.src = URL.createObjectURL(event.target.files[0]);
 
   <select name="mdms_state" id="edit_mdms_state" class="form-control" >
                           <option hidden="" selected="">&nbsp;</option>
-    <option value=""></option>
+   
   <option value="Andhra Pradesh">Andhra Pradesh</option>
   <option value="Andaman and Nicobar Islands">Andaman and Nicobar Islands</option>
   <option value="Arunachal Pradesh">Arunachal Pradesh</option>
@@ -4219,11 +4327,19 @@ image.src = URL.createObjectURL(event.target.files[0]);
                 
                     <select class="form-control" name="mbbs_passing_month" id="edit_mbbs_passing_month">
                       <option hidden="" selected="">&nbsp;</option>
-                      <option value=""></option>
-                     <option value="volvo">2019</option>
-                     <option value="saab">2020</option>
-                     <option value="saab">2021</option>
-
+                     
+                      <option value='1'>January</option>
+                      <option value='2'>February </option>
+                      <option value='3'>March</option>
+                      <option value='4'>April </option>
+                      <option value='5'>May</option>
+                      <option value='5'>June </option>
+                      <option value='5'>July  </option>
+                      <option value='5'>August   </option>
+                      <option value='5'>September    </option>
+                      <option value='5'>October     </option>
+                      <option value='5'>November    </option>
+                      <option value='5'>December    </option>
                      
 
 
@@ -4241,10 +4357,19 @@ image.src = URL.createObjectURL(event.target.files[0]);
                 
                     <select class="form-control" name="pg_diplamo_passing_month" id="edit_pg_diplamo_passing_month">
                       <option hidden="" selected="">&nbsp;</option>
-                      <option value=""></option>
-                     <option value="volvo">2019</option>
-                     <option value="saab">2020</option>
-                     <option value="saab">2021</option>
+                     
+                      <option value='1'>January</option>
+                      <option value='2'>February </option>
+                      <option value='3'>March</option>
+                      <option value='4'>April </option>
+                      <option value='5'>May</option>
+                      <option value='5'>June </option>
+                      <option value='5'>July  </option>
+                      <option value='5'>August   </option>
+                      <option value='5'>September    </option>
+                      <option value='5'>October     </option>
+                      <option value='5'>November    </option>
+                      <option value='5'>December    </option>
 
                      
 
@@ -4258,26 +4383,30 @@ image.src = URL.createObjectURL(event.target.files[0]);
                   </div> 
        </td>
            <td>
-                  <div class="form-group">
-                    <i class="fa fa-caret-down " id="drop"></i>
-                
-                    <select class="form-control" id="edit_mdms_passing_month" name="mdms_passing_month">
-                      <option hidden="" selected="">&nbsp;</option>
-                      <option value=""></option>
-                     <option value="volvo">2019</option>
-                     <option value="saab">2020</option>
-                     <option value="saab">2021</option>
+            <select class="form-control" name="mdms_passing_month" id="edit_mdms_passing_month">
+              <option hidden="" selected="">&nbsp;</option>
+             
+              <option value='1'>January</option>
+              <option value='2'>February </option>
+              <option value='3'>March</option>
+              <option value='4'>April </option>
+              <option value='5'>May</option>
+              <option value='5'>June </option>
+              <option value='5'>July  </option>
+              <option value='5'>August   </option>
+              <option value='5'>September    </option>
+              <option value='5'>October     </option>
+              <option value='5'>November    </option>
+              <option value='5'>December    </option>
+             
 
-                     
 
 
 
 
-
-                    
-                    
-                    </select>                 
-                  </div> 
+            
+            
+            </select>
        </td>
          
 
@@ -4477,9 +4606,9 @@ image.src = URL.createObjectURL(event.target.files[0]);
     <!-------------------------- certificate Details---------------------------------------------->
 
   <div class="tab-pane fade" id="contact1" role="tabpanel" aria-labelledby="contact1-tab">
-    <section id="certificate">
+    <!-- <section id="certificate">
       <div class="container">
-      <!-- <form> -->
+     
             <div class="table-responsive">
           <table class="table ">
             <thead class=" text-dark"style="text-transform uppercase;">
@@ -4666,10 +4795,243 @@ image.src = URL.createObjectURL(event.target.files[0]);
 </div>
 
 
-      <!-- </form> -->
+    
        </div>
-    </section>
+    </section> -->
+    <section id="certificate">
+      <div class="container">
 
+        <div class="table-responsive">
+            <table class="table ">
+              <thead class=" text-dark">
+                <tr>
+                  <th>Certificate Details</th>
+                  <th scope="col">Registration/Certificate No</th>
+                  <th scope="col" style="width: 200px;">Date</th>
+
+                  <th width="200px" scope="col">Issue Authority</th>
+
+                  <th scope="col">Place/Taluk</th>
+
+                  <th scope="col">Upload</th>
+                </tr>
+              </thead>
+
+              <tbody id="TextBoxContainer">
+
+                <tr>
+
+                  <td>
+                    <input style="    width: 200px " type="text" name="c1"
+                      value='Community Certificate' readonly placeholder="Community Certificate"
+                      class="form-control">
+                  </td>
+                  <td><input type="text" id="edit_c1_reg_no" name="c1_reg_no" class="form-control"></td>
+                  <td><input type="Date" id="edit_c1_date" name="c1_date" class="form-control"></td>
+                  <td><input type="text" id="edit_c1_issue" name="c1_issue" class="form-control"></td>
+                  <td><input type="text" id="edit_c1_place" name="c1_place" class="form-control"></td>
+                
+                    <td id="td">
+
+                      <label for="files71"style="height:0px"> <span id="selImg" class=" btn text-info mt-3"></span><i class="fa fa-upload mt-4 mr-2 text-info"></i></span></label>
+                      <input class="file-name71 text-info" id="edit_community_cert" type="text" placeholder="" style="border-bottom: none!important;" readonly="">
+                      
+                      <input type="file" id="files71" name='n_community' hidden class="form-control">
+                   
+</td>
+</tr>
+              
+                <tr>
+                  <td>
+                    <input type="text" name="c2" value='Transfer Certificate'
+                      placeholder="Transfer Certificate" class="form-control" readonly>
+                  </td>
+                  <td><input type="text" id="edit_c2_reg_no" name="c2_reg_no" class="form-control"></td>
+                  <td><input type="Date" id="edit_c2_date" name="c2_date" class="form-control"></td>
+                  <td><input type="text" id="edit_c2_issue" name="c2_issue" class="form-control"></td>
+                  <td><input type="text" id="edit_c2_place" name="c2_place" class="form-control"></td>
+                  <td id="td">
+
+                    <label for="files72"style="height:0px"> <span id="selImg" class=" btn text-info mt-3"></span><i class="fa fa-upload mt-4 mr-2 text-info"></i></span></label>
+                    <input class="file-name72 text-info" id="edit_transfer" type="text" placeholder="" style="border-bottom: none!important;" >
+                    
+                    <input type="file" id="files72" name='n_transfer' hidden class="form-control">
+                 
+                       
+
+
+</td>
+                
+                </tr>
+                <tr class="collapse row2" id="row2">
+                  <td>
+                    <input type="text" name="c3" value='Conduct Certificate'
+                      placeholder="Conduct Certificate" class="form-control" readonly>
+                  </td>
+                  <td><input type="text" id="edit_c3_reg_no" name="c3_reg_no" class="form-control"></td>
+                  <td><input type="Date" id="edit_c3_date" name="c3_date" class="form-control"></td>
+                  <td><input type="text" id="edit_c3_issue" name="c3_issue" class="form-control"></td>
+                  <td><input type="text" id="edit_c3_place" name="c3_place" class="form-control"></td>
+                  <td id="td">
+
+                    <label for="files73"style="height:0px"> <span id="selImg" class=" btn text-info mt-3"></span><i class="fa fa-upload mt-4 mr-2 text-info"></i></span></label>
+                    <input class="file-name73 text-info" id="edit_conduct" type="text" placeholder="" style="border-bottom: none!important;" readonly="">
+                    
+                    <input type="file" id="files73" name='n_conduct' hidden class="form-control">
+                 
+                       
+
+
+</td>
+
+                
+                </tr>
+                <tr class="collapse row2" id="row2">
+                  <td>
+                    <input type="text" name="c4" value='Eligiblity Certificate'
+                      placeholder="Eligiblity Certificate" class="form-control" readonly>
+                  </td>
+                  <td><input type="text" id="edit_c4_reg_no" name="c4_reg_no" class="form-control"></td>
+                  <td><input type="Date" id="edit_c4_date" name="c4_date" class="form-control"></td>
+                  <td><input type="text" id="edit_c4_issue" name="c4_issue" class="form-control"></td>
+                  <td><input type="text" id="edit_c4_place" name="c4_place" class="form-control"></td>
+                  <td id="td">
+
+                    <label for="files74"style="height:0px"> <span id="selImg" class=" btn text-info mt-3"></span><i class="fa fa-upload mt-4 mr-2 text-info"></i></span></label>
+                    <input class="file-name74 text-info" id="edit_eligiblity" type="text" placeholder="" style="border-bottom: none!important;" readonly="">
+                    
+                    <input type="file" id="files74" name='n_eligiblity' hidden class="form-control">
+                 
+                       
+
+
+</td>
+
+                
+                </tr>
+                <tr class="collapse row2" id="row2">
+                  <td>
+                    <input type="text" name="c5" value='Migration Certificate'
+                      placeholder="Migration Certificate" class="form-control" readonly>
+                  </td>
+                  <td><input type="text" id="edit_c5_reg_no" name="c5_reg_no" class="form-control"></td>
+                  <td><input type="Date" id="edit_c5_date" name="c5_date" class="form-control"></td>
+                  <td><input type="text" id="edit_c5_issue" name="c5_issue" class="form-control"></td>
+                  <td><input type="text" id="edit_c5_place" name="c5_place" class="form-control"></td>
+                  <td id="td">
+
+                    <label for="files75"style="height:0px"> <span id="selImg" class=" btn text-info mt-3"></span><i class="fa fa-upload mt-4 mr-2 text-info"></i></span></label>
+                    <input class="file-name75 text-info" id="edit_migration" type="text" placeholder="" style="border-bottom: none!important;" readonly="">
+                    
+                    <input type="file" id="files75"  name='n_migration' hidden class="form-control">
+                 
+                       
+
+
+</td>
+                
+                </tr>
+                <tr class="collapse row2" id="row2">
+                  <td>
+                    <input type="text" name="c6" value='Admission Certificate'
+                      placeholder="Admission Certificate" class="form-control" readonly>
+                  </td>
+                  <td><input type="text" id="edit_c6_reg_no" name="c6_reg_no" class="form-control"></td>
+                  <td><input type="Date" id="edit_c6_date" name="c6_date" class="form-control"></td>
+                  <td><input type="text" id="edit_c6_issue" name="c6_issue" class="form-control"></td>
+                  <td><input type="text" id="edit_c6_place" name="c6_place" class="form-control"></td>
+                  <td id="td">
+
+                    <label for="files76"style="height:0px"> <span id="selImg" class=" btn text-info mt-3"></span><i class="fa fa-upload mt-4 mr-2 text-info"></i></span></label>
+                    <input class="file-name76 text-info" id="edit_admission" type="text" placeholder="" style="border-bottom: none!important;" readonly="">
+                    
+                    <input type="file" id="files76"   name='n_admissioncertificate' hidden class="form-control">
+                 
+                       
+
+
+</td>
+
+
+                 
+                </tr>
+                <tr class="row2 collapse " id="row2">
+
+                  <td scope="row" class=" text-dark">
+                    <input type="text" name="c7" class="form-control" value="Admission Commitee Form"
+                      readonly>
+                  </td>
+                  <td><input type="text" id="edit_c7_reg_no" name="c7_reg_no" class="form-control"></td>
+                  <td><input type="Date" id="edit_c7_date" name="c7_date" class="form-control"></td>
+                  <td><input type="text" id="edit_c7_issue" name="c7_issue" class="form-control"></td>
+                  <td><input type="text" id="edit_c7_place" name="c7_place" class="form-control"></td>
+                  <td id="td">
+
+                    <label for="files77"style="height:0px"> <span id="selImg" class=" btn text-info mt-3"></span><i class="fa fa-upload mt-4 mr-2 text-info"></i></span></label>
+                    <input class="file-name77 text-info" id="edit_others" type="text" placeholder="" style="border-bottom: none!important;" readonly="">
+                    
+                    <input type="file" id="files77"  name='n_admissioncommittee' hidden class="form-control">
+                 
+                       
+
+
+</td>
+
+
+
+                </tr>
+
+                <tr class="row2 collapse " id="row2">
+
+                  <td scope="row" class=" text-dark">
+                    <input type="text" name="c8" class="form-control" value="Others" readonly>
+                  </td>
+                  <td><input type="text" id="edit_c8_reg_no" name="c8_reg_no" class="form-control"></td>
+                  <td><input type="Date" id="edit_c8_date" name="c8_date" class="form-control"></td>
+                  <td><input type="text" id="edit_c8_issue" name="c8_issue" class="form-control"></td>
+                  <td><input type="text" id="edit_c8_place" name="c8_place" class="form-control"></td>
+                  <td id="td">
+
+                    <label for="files78"style="height:0px"> <span id="selImg" class=" btn text-info mt-3"></span><i class="fa fa-upload mt-4 mr-2 text-info"></i></span></label>
+                    <input class="file-name78 text-info" id="edit_admission_commitee" type="text" placeholder="" style="border-bottom: none!important;" readonly="">
+                    
+                    <input type="file" id="files78"  name='n_others' hidden class="form-control">
+                 
+                       
+
+
+</td>
+                
+
+
+
+
+                </tr>
+               
+              </tbody>
+           
+              <tfoot>
+                <tr>
+                  <td>
+                    <!-- <img src="assets/design/img/more.png" alt="read more" class="clickable collapsed" data-toggle="collapse" aria-controls="row2" href="#row2" id="row2" role="button" aria-expanded="false" data-target=".row2">   -->
+                    <p class="btn btn-primary btn-sm" class="clickable collapsed"
+                      data-toggle="collapse" aria-controls="row2" href="#row2" id="row2"
+                      aria-expanded="false" data-target=".row2">
+                      More..
+                    </p>
+                  </td>
+
+                </tr>
+              </tfoot>
+            </table>
+           
+
+        </div>
+
+
+
+      </div>
+    </section>
 
 
   </div>
@@ -4684,7 +5046,7 @@ image.src = URL.createObjectURL(event.target.files[0]);
   <div class="form-group">
     <label for="edit_relieved">Relieved </label>
     <select class="form-control" id="edit_relieved"name="relieved">
-      <option value=""></option>
+    
       <option value="Yes">Yes</option>
       <option value="No">No</option>
      
@@ -4692,26 +5054,31 @@ image.src = URL.createObjectURL(event.target.files[0]);
   </div>
    <div class="form-group">
     <label for="edit_date_of_reallotment">Date Of Reallotment</label>
-    <input type="Date" class="form-control" placeholder="" id="edit_date_of_reallotment"  name="date_of_reallotment">
+    <!-- <input type="Date" class="form-control" placeholder="" id="edit_date_of_reallotment"  name="date_of_reallotment"> -->
+    <input type="Date" class="form-control" id="edit_date_of_reallotment" placeholder="" name="date_of_reallotment">
   </div>
 <!-- </form> -->
     </div>
     <div class="col-md-3">
          <div class="form-group">
     <label for="edit_college_name">College Name</label>
+    <!-- <input type="text" class="form-control" id="edit_college_name"  name="college_name"> -->
     <input type="text" class="form-control" id="edit_college_name" placeholder="" name="college_name">
   </div>
     </div>
      <div class="col-md-3">
          <div class="form-group">
     <label for="edit_amount_refunded">Amount Refunded</label>
+    <!-- <input type="number" class="form-control" id="edit_amount_refunded" placeholder="" name="amount_refunded"> -->
     <input type="number" class="form-control" id="edit_amount_refunded" placeholder="" name="amount_refunded">
   </div>
     </div>
      <div class="col-md-3">
          <div class="form-group">
     <label for="edit_date_of_relieving">Date Of Relieving</label>
-    <input type="Date" class="form-control" id="edit_date_of_relieving" placeholder="" name="date_of_relieving" >
+    <!-- <input type="Date" class="form-control" id="edit_date_of_relieving" placeholder="" name="date_of_relieving" > -->
+    <input type="Date" id="edit_date_of_relieving" class="form-control" name="date_of_relieving" placeholder=""> 
+             
   </div>
     </div>
   
@@ -4932,8 +5299,8 @@ image.src = URL.createObjectURL(event.target.files[0]);
         </button>
       </div>
       <div class="modal-body">
-        <img id="cand_photo_1" src="/" width='100' height="100"/>
-        <h4 id="cand_photo_link1"></h4>
+        <img id="cand_photo_1"  width='100' height="100"/>
+        
       </div>
       <!-- <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -4954,7 +5321,7 @@ image.src = URL.createObjectURL(event.target.files[0]);
         </button>
       </div>
       <div class="modal-body">
-        <img  id="cand_thumb"src="/" width='100' height="100"/>
+        <img  id="cand_thumb" width='100' height="100"/>
       </div>
       <!-- <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -4975,7 +5342,7 @@ image.src = URL.createObjectURL(event.target.files[0]);
         </button>
       </div>
       <div class="modal-body">
-        <img  id="cand_sign" src="/" width='100' height="100"/>
+        <img  id="cand_sign"  width='100' height="100"/>
       </div>
       <!-- <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -4986,19 +5353,19 @@ image.src = URL.createObjectURL(event.target.files[0]);
 </div>
 
 
-<!-- certificate popup -->
-<!-- <div class="modal fade" id="cert_link" tabindex="-1" role="dialog" aria-labelledby="cert_link" aria-hidden="true">
+<!-- edit bio popup -->
+<div class="modal fade" id="photo_link" tabindex="-1" role="dialog" aria-labelledby="photo_link" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="link">Admission
+        <h5 class="modal-title" id="link">Photo
         </h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <div class="modal-body">
-        <img  id="admission_Commitee_Form" src="/" width='100' height="100"/>
+        <img  id="edit_photo" src="" width='100' height="100"/>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -5006,7 +5373,47 @@ image.src = URL.createObjectURL(event.target.files[0]);
       </div>
     </div>
   </div>
-</div>  -->
+</div>
+<div class="modal fade" id="sign_link" tabindex="-1" role="dialog" aria-labelledby="sign_link" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="link">Signature
+        </h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <img  id="edit_sign" src="" width='100' height="100"/>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        
+      </div>
+    </div>
+  </div>
+</div>
+<div class="modal fade" id="thumb_link" tabindex="-1" role="dialog" aria-labelledby="thumb_link" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="link">Finger Print
+        </h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <img  id="edit_thumb" src="" width='100' height="100"/>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        
+      </div>
+    </div>
+  </div>
+</div> 
   <footer class="main-footer">
     <div class="float-right d-none d-sm-block">
       <b>All rights reserved.</b>

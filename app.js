@@ -2578,10 +2578,10 @@ app.get('/mbbs_board', user.mbbs_board);
 //mdms
 app.get('/mdms_board', user.mdms_board);
 app.post('/mdms_board', user.mdms_board);
-app.get('/update_mdms', user.edit_mdmscand);
-app.post('/update_mdms', user.edit_mdmscand);
+app.get('/update_mdms', upload.any(),user.edit_mdmscand);
+app.post('/update_mdms', upload.any(), user.edit_mdmscand);
 //app.get('/add_students',user.insert_mdms);
-app.post('/add_students',user.insert_mdms);
+app.post('/add_students',upload.any(),user.insert_mdms);
 
 
 
@@ -2594,6 +2594,7 @@ app.post('/reli_check', user.reli_check);
 app.get('/home/logout', user.logout);
 
 //Middleware
-server.listen(8080,()=>{
-  console.log('http://localhost:8080')
+server.listen(80,()=>{
+  console.log('http://localhost:80')
 });
+
