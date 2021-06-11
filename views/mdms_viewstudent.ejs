@@ -26,19 +26,25 @@
   
    var admission_detail = <%-JSON.stringify(userData)%>;
    var profile_detail = <%-JSON.stringify(userData1)%>;
-   var address_detail = <%-JSON.stringify(userData2)%>;
-   var photos = <%-JSON.stringify(userData3)%>;   
-   var bank_detail = <%-JSON.stringify(userData7)%>;
-   var contact_detail =<%-JSON.stringify(userData8)%>;
-   var cert_detail = <%-JSON.stringify(userData9)%>;
-   var relieving_detail = <%-JSON.stringify(userData11)%>;
-   var surety_detail = <%-JSON.stringify(userData12)%>;
-   var neet_mark_mdms =<%-JSON.stringify(userData14)%>;
-   var academic_detail_mdms = <%-JSON.stringify(userData15)%>;
-   var academic_detail_mdms_1 = <%-JSON.stringify(userData16)%>;
-   var academic_detail_mdms_2 = <%-JSON.stringify(userData17)%>;
-   var institute_detail_mdms = <%-JSON.stringify(userData18)%>;
+   var address_detail = <%-JSON.stringify(userData11)%>;
+   var photos = <%-JSON.stringify(userData12)%>;   
+   var bank_detail = <%-JSON.stringify(userData13)%>;
+   var contact_detail =<%-JSON.stringify(userData14)%>;
+   var cert_detail = <%-JSON.stringify(userData15)%>;
+   var relieving_detail = <%-JSON.stringify(userData16)%>;
+   var surety_detail = <%-JSON.stringify(userData20)%>;
+   var neet_mark_mdms =<%-JSON.stringify(userData21)%>;
+   var academic_detail_mdms = <%-JSON.stringify(userData22)%>;
+   var academic_detail_mdms_1 = <%-JSON.stringify(userData23)%>;
+   var academic_detail_mdms_2 = <%-JSON.stringify(userData24)%>;
+   var institute_detail_mdms = <%-JSON.stringify(userData25)%>;
   
+
+  function get_course(){
+    // alert(course[0].course);
+  document.getElementById("c").value =admission_detail[0].course;
+  }  
+
   function reply_click(clicked_id)
   {
      bio(clicked_id);
@@ -696,9 +702,28 @@ edit=(clicked_id)=>{
                     <input class="form-control "id="myInput" type="search" placeholder="Find Student" aria-label="Search">
                     <div class="btn btn-sm bg-white text-primary d-flex my-0 my-sm-0 mr-0" type="submit"style="position: absolute;top: -5px;  left: 158px;"><i class="fa fa-search "></i></div>
                   </form>
-                  <p style="font-style: italic;">33 Records Found !</p>
+                  <!-- <p style="font-style: italic;">33 Records Found !</p> -->
                 </div>
-                  <div class="">
+
+                <div class="col-md-3">
+                  <form class="form-inline my-2 my-lg-0"style="position:relative;top:-8px"role="form" method="post" action="/reli_check">
+                    
+                    <input type='text' id="c" class="form-control" hidden name="reli_course">
+                  
+                    <select name="reli_info" id="relived" class="form-control col-md-8" onclick="get_course()"  style="font-size: 13px;-webkit-appearance: auto;">
+                     <option  value='All'>Select Student Type</option>
+                     <option  value='All'>All Students</option>
+                     <option  value='Yes'>Relieved Students</option>
+                     <option  value='No'>Existing Students</option>
+                   </select> 
+               
+                   &nbsp;&nbsp;
+                   <button id="btn-signup" type="submit" class="btn btn-primary "style="font-size:13px; position: relative;
+                   top: -6px;">Change </button>
+                  </form>
+                  <!-- <p style="font-style: italic;">33 Records Found !</p> -->
+                </div>
+                  <div class="col-md-"style="margin-top:-15px">
                     <!-- Button trigger modal -->
 <button type="button" class="btn btn-primary mb-2" data-toggle="modal" data-target="#exampleModalLong" data-backdrop="static" data-keyboard="false">
 Add New Student
@@ -2377,7 +2402,7 @@ Image Capture
               
                      
                  
-              <h5  id="cand_name"> </h5>
+              <h5  id="cand_name"class="card-title"><strong></strong> </h5>
              
               <p class="card-text" id="cand_course"></p>
               </div>
@@ -3160,7 +3185,7 @@ image.src = URL.createadmissionectURL(event.target.files[0]);
                           <input type="text" name=""class="form-control"value="Community Certificate"disabled>
                           <!-- <p id="admission_Commitee_Form_link" data-toggle="modal" class="btn btn-link" data-target="#cert_link"></p>   -->
                           <div id="cand_Community_Certificate"  class="input-group-text  text-success" >
-                            <!-- <p id="admission_Commitee_Form_link" data-toggle="modal" class="btn btn-link" data-target="#cert_link"></p> -->
+                            
                           </div> 
                           </td>
   <td>

@@ -12,7 +12,7 @@ function convertCryptKey(strKey) {
 
 
 //---------------------------------------------signup page call------------------------------------------------------
-exports.icsignup = function (req, res) {
+/*exports.icsignup = function (req, res) {
    message = '';
    if (req.method == "POST") {
       let x = Math.floor((Math.random() * 100) + 11);
@@ -41,7 +41,7 @@ exports.icsignup = function (req, res) {
       res.render('signup');
    }
 };
-
+*/
 
 //---------------------------------------------signup page call------------------------------------------------------
 exports.collect_fees = function (req, res) {
@@ -524,65 +524,206 @@ exports.view_report = function (req, res, next) {
 exports.reli_check = function (req, res, next) {
    var post = req.body;
    var message = "";
+   console.log(post);
+   var course = post.reli_course;
    var reli_info=post.reli_info;
    console.log('Relieving info: '+reli_info);
    if(reli_info=='All')
    {
-      var sql = "SELECT * FROM `ems`.`admiss_type`;"
-       db.query(sql, function (err, data8) {   
-       var sql = "SELECT * FROM `ems`.`admiss_quota`;"
-        db.query(sql, function (err, data7) {   
-        var sql = "SELECT * FROM `ems`.`community_details`;"
-          db.query(sql, function (err, data6) {   
-            var sql = "SELECT * FROM `ems`.`nation_details`;"
-      db.query(sql, function (err, data5) {
-      var sql = "SELECT * FROM `ems`.`religion_details`;"
-      db.query(sql, function (err, data4) {
-      var sql = "SELECT * FROM `ems`.`no_delete`;"
-      db.query(sql, function (err, data3) {
-      var sql = "SELECT * FROM `ems`.`cand_profile_details`;"
-      db.query(sql, function (err, data1) {
-         var sql = "SELECT * FROM `ems`.`cand_admission_details`;"
-         db.query(sql, function (err, data) {
-            res.render('reli_page.ejs', { userData: data, userData1: data1, userData3: data3, userData4: data4, userData5: data5,userData6: data6, userData7: data7,userData8: data8,message: message });
-         });
-      });
-   });
-});
-      });
-      });
-   });
-});
+//       var sql = "SELECT * FROM `ems`.`admiss_type`;"
+//        db.query(sql, function (err, data8) {   
+//        var sql = "SELECT * FROM `ems`.`admiss_quota`;"
+//         db.query(sql, function (err, data7) {   
+//         var sql = "SELECT * FROM `ems`.`community_details`;"
+//           db.query(sql, function (err, data6) {   
+//             var sql = "SELECT * FROM `ems`.`nation_details`;"
+//       db.query(sql, function (err, data5) {
+//       var sql = "SELECT * FROM `ems`.`religion_details`;"
+//       db.query(sql, function (err, data4) {
+//       var sql = "SELECT * FROM `ems`.`no_delete`;"
+//       db.query(sql, function (err, data3) {
+//       var sql = "SELECT * FROM `ems`.`cand_profile_details`;"
+//       db.query(sql, function (err, data1) {
+//          var sql = "SELECT * FROM `ems`.`cand_admission_details`;"
+//          db.query(sql, function (err, data) {
+//             res.render('reli_page.ejs', { userData: data, userData1: data1, userData3: data3, userData4: data4, userData5: data5,userData6: data6, userData7: data7,userData8: data8,message: message });
+//          });
+//       });
+//    });
+// });
+//       });
+//       });
+//    });
+// });
+   
+   var sql18 = `SELECT * FROM ems.cand_institute_details_mdms where cand_id in ((select cand_id from ems.cand_relieving_details where cand_id in  (select cand_id from ems.cand_admission_details where course = '${course}') and relieved = '${reli_info}'))`;
+   db.query(sql18, function (err, data25) { 
+   var sql17 = `SELECT * FROM ems.cand_academic_mdms_2 where cand_id in ((select cand_id from ems.cand_relieving_details where cand_id in  (select cand_id from ems.cand_admission_details where course = '${course}') and relieved = '${reli_info}'))`;
+   db.query(sql17, function (err, data24) { 
+   var sql16 = `SELECT * FROM ems.cand_academic_mdms_1 where cand_id in ((select cand_id from ems.cand_relieving_details where cand_id in  (select cand_id from ems.cand_admission_details where course = '${course}') and relieved = '${reli_info}'))`;
+   db.query(sql16, function (err, data23) { 
+   var sql15 = `SELECT * FROM ems.cand_academic_mdms where cand_id in ((select cand_id from ems.cand_relieving_details where cand_id in  (select cand_id from ems.cand_admission_details where course = '${course}') and relieved = '${reli_info}'))`;
+   db.query(sql15, function (err, data22) { 
+   var sql14 = `SELECT * FROM ems.cand_neet_marks_mdms where cand_id in ((select cand_id from ems.cand_relieving_details where cand_id in  (select cand_id from ems.cand_admission_details where course = '${course}') and relieved = '${reli_info}'))`;
+   db.query(sql14, function (err, data21) { 
+   var sql12 = `SELECT * FROM ems.cand_surety_details where cand_id in ((select cand_id from ems.cand_relieving_details where cand_id in  (select cand_id from ems.cand_admission_details where course = '${course}') and relieved = '${reli_info}'))`;
+   db.query(sql12, function (err, data20) {
+
+   var sql15 = `SELECT * FROM ems.cand_neet_mark_details where cand_id in (select cand_id from cand_admission_details where course ='${course}')`;
+   db.query(sql15, function (err, data19) {
+   var sql14 = `SELECT * FROM ems.cand_marks_details where cand_id in (select cand_id from cand_admission_details where course ='${course}')`;
+   db.query(sql14, function (err, data18) {
+   var sql13 = `SELECT * FROM ems.cand_institute_details where cand_id in (select cand_id from cand_admission_details where course ='${course}')`; 
+   db.query(sql13, function (err, data17) {
+   var sql19 = `select * from ems.cand_relieving_details where cand_id in (select cand_id from cand_admission_details where course ='${course}')`;
+   db.query(sql19, function (err, data16) {
+   var sql18 = `SELECT * FROM ems.certificate_details where cand_id in (select cand_id from cand_admission_details where course ='${course}') AND active_flag ='Y' `;
+   db.query(sql18, function (err, data15) {
+   var sql17 = `SELECT * FROM ems.cand_contact_details where cand_id in (select cand_id from cand_admission_details where course ='${course}')`;
+   db.query(sql17, function (err, data14) {
+   var sql16 = `SELECT * FROM ems.cand_bank_details where cand_id in (select cand_id from cand_admission_details where course ='${course}')`;
+   db.query(sql16, function (err, data13) {
+   var sql12 = `SELECT * FROM ems.biometric_details where cand_id in (select cand_id from cand_admission_details where course ='${course}') AND active_flag ='Y'`;
+   db.query(sql12, function (err, data12) {
+   var sql11 = `SELECT * FROM ems.cand_address_details where cand_id in (select cand_id from cand_admission_details where course ='${course}')`;
+   db.query(sql11, function (err, data11) {
+
+   var sql = "SELECT * FROM `ems`.`state_details`;"
+   db.query(sql, function (err, data10) { 
+   var sql = "SELECT * FROM `ems`.`admiss_type`;"
+   db.query(sql, function (err, data8) {   
+   var sql = "SELECT * FROM `ems`.`admiss_quota`;"
+   db.query(sql, function (err, data7) {  
+   var sql = "SELECT * FROM `ems`.`community_details`;"
+   db.query(sql, function (err, data6) { 
+   var sql = "SELECT * FROM `ems`.`nation_details`;"
+   db.query(sql, function (err, data5) {
+   var sql = "SELECT * FROM `ems`.`religion_details`;"
+   db.query(sql, function (err, data4) {
+   var sql = "SELECT * FROM `ems`.`no_delete`;"
+   db.query(sql, function (err, data3) {
+   var sql = `SELECT * FROM ems.cand_profile_details where cand_id in (select cand_id from cand_admission_details where course ='${course}')`;
+   db.query(sql, function (err, data1) {
+   var sql = `SELECT * FROM ems.cand_admission_details where course = '${course}'`;
+   db.query(sql, function (err, data) {
+
+         if(course == 'MBBS'){
+         res.render('mbbs_viewstudent.ejs', { message: message,userData: data, userData1: data1, userData3: data3, userData4: data4, userData5: data5,
+                                              userData6: data6,userData7: data7,userData8: data8,userData10: data10,
+                                              userData11:data11,userData12:data12,userData13:data13,userData14:data14,userData15:data15,
+                                              userData16:data16,userData17:data17,userData18:data18,userData19:data19});
+         }
+         if(course == 'MDMS'){
+         res.render('mdms_viewstudent.ejs', {message: message, userData: data, userData1: data1,userData3: data3, userData4: data4, userData5: data5, userData6: data6,
+                                             userData7:data7, userData8: data8, userData10: data10, userData11: data11,userData12:data12,userData13:data13,userData14:data14,
+                                             userData15:data15,userData16:data16,userData20:data20,userData21:data21,userData22:data22,userData23:data23,userData24:data24,userData25:data25});
+
+                                       
+         }
+         });});});});});});});});});});});});
+         });});});});});});});});});});});});
+
    }
    else
-   {         var sql = "SELECT * FROM `ems`.`state_details`;"
-   db.query(sql, function (err, data10) {  
-      var sql = "SELECT * FROM `ems`.`admiss_type`;"
-      db.query(sql, function (err, data8) {   
-      var sql = "SELECT * FROM `ems`.`admiss_quota`;"
-       db.query(sql, function (err, data7) {   
-       var sql = "SELECT * FROM `ems`.`community_details`;"
-         db.query(sql, function (err, data6) { 
-      var sql = "SELECT * FROM `ems`.`nation_details`;"
-      db.query(sql, function (err, data5) {
-      var sql = "SELECT * FROM `ems`.`religion_details`;"
-      db.query(sql, function (err, data4) {
-      var sql = "SELECT * FROM `ems`.`no_delete`;"
-         db.query(sql, function (err, data3) {
-         var sql = "SELECT * FROM `ems`.`cand_profile_details`;"
-         db.query(sql, function (err, data1) {
-            var sql = "SELECT * FROM `ems`.`cand_admission_details` INNER JOIN `ems`.`cand_relieving_details` on `cand_admission_details`.`cand_id` =`cand_relieving_details`.`cand_id`  where `cand_relieving_details`.`relieved` = '" + reli_info + "'";
-             db.query(sql, function (err, data) {
-            res.render('reli_page.ejs', { userData: data, userData1: data1, userData3: data3,userData4: data4, userData5: data5,userData6: data6, userData7: data7, userData8: data8,userData10: data1,  message: message });
-         });
-      });
-      });
-   });
-});
-});
-});
-});
-});
+   {
+   
+   var sql18 = `SELECT * FROM ems.cand_institute_details_mdms where cand_id in ((select cand_id from ems.cand_relieving_details where cand_id in  (select cand_id from ems.cand_admission_details where course = '${course}') and relieved = '${reli_info}'))`;
+   db.query(sql18, function (err, data25) { 
+   var sql17 = `SELECT * FROM ems.cand_academic_mdms_2 where cand_id in ((select cand_id from ems.cand_relieving_details where cand_id in  (select cand_id from ems.cand_admission_details where course = '${course}') and relieved = '${reli_info}'))`;
+   db.query(sql17, function (err, data24) { 
+   var sql16 = `SELECT * FROM ems.cand_academic_mdms_1 where cand_id in ((select cand_id from ems.cand_relieving_details where cand_id in  (select cand_id from ems.cand_admission_details where course = '${course}') and relieved = '${reli_info}'))`;
+   db.query(sql16, function (err, data23) { 
+   var sql15 = `SELECT * FROM ems.cand_academic_mdms where cand_id in ((select cand_id from ems.cand_relieving_details where cand_id in  (select cand_id from ems.cand_admission_details where course = '${course}') and relieved = '${reli_info}'))`;
+   db.query(sql15, function (err, data22) { 
+   var sql14 = `SELECT * FROM ems.cand_neet_marks_mdms where cand_id in ((select cand_id from ems.cand_relieving_details where cand_id in  (select cand_id from ems.cand_admission_details where course = '${course}') and relieved = '${reli_info}'))`;
+   db.query(sql14, function (err, data21) { 
+   var sql12 = `SELECT * FROM ems.cand_surety_details where cand_id in ((select cand_id from ems.cand_relieving_details where cand_id in  (select cand_id from ems.cand_admission_details where course = '${course}') and relieved = '${reli_info}'))`;
+   db.query(sql12, function (err, data20) {
+
+   var sql15 = `SELECT * FROM ems.cand_neet_mark_details where cand_id in ((select cand_id from ems.cand_relieving_details where cand_id in  (select cand_id from ems.cand_admission_details where course = '${course}') and relieved = '${reli_info}'))`;
+   db.query(sql15, function (err, data19) {
+   var sql14 = `SELECT * FROM ems.cand_marks_details where cand_id in ((select cand_id from ems.cand_relieving_details where cand_id in  (select cand_id from ems.cand_admission_details where course = '${course}') and relieved = '${reli_info}'))` ;
+   db.query(sql14, function (err, data18) {
+   var sql13 = `SELECT * FROM  ems.cand_institute_details where cand_id in ((select cand_id from ems.cand_relieving_details where cand_id in  (select cand_id from ems.cand_admission_details where course = '${course}') and relieved = '${reli_info}'))`;
+   db.query(sql13, function (err, data17) {
+   var sql19 = `select * from ems.cand_relieving_details where cand_id in ((select cand_id from ems.cand_relieving_details where cand_id in  (select cand_id from ems.cand_admission_details where course = '${course}') and relieved = '${reli_info}'))`;
+   db.query(sql19, function (err, data16) {
+   var sql18 = `SELECT * FROM ems.certificate_details where cand_id in (select cand_id from cand_admission_details where course ='${course}') AND active_flag ='Y' `;
+   db.query(sql18, function (err, data15) {
+   var sql17 = `SELECT * FROM ems.cand_contact_details where cand_id in ((select cand_id from ems.cand_relieving_details where cand_id in  (select cand_id from ems.cand_admission_details where course = '${course}') and relieved = '${reli_info}'))` ;
+   db.query(sql17, function (err, data14) {
+   var sql16 = `SELECT * FROM ems.cand_bank_details where cand_id in ((select cand_id from ems.cand_relieving_details where cand_id in  (select cand_id from ems.cand_admission_details where course = '${course}') and relieved = '${reli_info}') )` ;
+   db.query(sql16, function (err, data13) {
+   var sql12 = `SELECT * FROM ems.biometric_details where cand_id in ((select cand_id from ems.cand_relieving_details where cand_id in  (select cand_id from ems.cand_admission_details where course = '${course}') and relieved = '${reli_info}') )` ;
+   db.query(sql12, function (err, data12) {
+   var sql11 = `SELECT * FROM ems.cand_address_details where cand_id in ((select cand_id from ems.cand_relieving_details where cand_id in  (select cand_id from ems.cand_admission_details where course = '${course}') and relieved = '${reli_info}') )` ;
+   db.query(sql11, function (err, data11) {
+
+   var sql = "SELECT * FROM `ems`.`state_details`;"
+   db.query(sql, function (err, data10) { 
+   var sql = "SELECT * FROM `ems`.`admiss_type`;"
+   db.query(sql, function (err, data8) {   
+   var sql = "SELECT * FROM `ems`.`admiss_quota`;"
+   db.query(sql, function (err, data7) {  
+   var sql = "SELECT * FROM `ems`.`community_details`;"
+   db.query(sql, function (err, data6) { 
+   var sql = "SELECT * FROM `ems`.`nation_details`;"
+   db.query(sql, function (err, data5) {
+   var sql = "SELECT * FROM `ems`.`religion_details`;"
+   db.query(sql, function (err, data4) {
+   var sql = "SELECT * FROM `ems`.`no_delete`;"
+   db.query(sql, function (err, data3) {
+   var sql = `SELECT * FROM ems.cand_profile_details where cand_id in ((select cand_id from ems.cand_relieving_details where cand_id in  (select cand_id from ems.cand_admission_details where course = '${course}') and relieved = '${reli_info}') )`;
+   db.query(sql, function (err, data1) {
+   var sql = `SELECT * FROM ems.cand_admission_details INNER JOIN ems.cand_relieving_details on cand_admission_details.cand_id =cand_relieving_details.cand_id  where cand_relieving_details.relieved = '${reli_info}' AND cand_admission_details.course = '${course}'`;
+   db.query(sql, function (err, data) {
+
+      if(course == 'MBBS'){
+         res.render('mbbs_viewstudent.ejs', { message: message,userData: data, userData1: data1, userData3: data3, userData4: data4, userData5: data5,
+                                              userData6: data6,userData7: data7,userData8: data8,userData10: data10,
+                                              userData11:data11,userData12:data12,userData13:data13,userData14:data14,userData15:data15,
+                                              userData16:data16,userData17:data17,userData18:data18,userData19:data19});
+      }
+      if(course == 'MDMS'){
+         res.render('mdms_viewstudent.ejs', {message: message, userData: data, userData1: data1,userData3: data3, userData4: data4, userData5: data5, userData6: data6,
+                                             userData7:data7, userData8: data8, userData10: data10, userData11: data11,userData12:data12,userData13:data13,userData14:data14,
+                                             userData15:data15,userData16:data16,userData20:data20,userData21:data21,userData22:data22,userData23:data23,userData24:data24,userData25:data25});
+
+
+      }
+
+      });});});});});});});});});});});});
+      });});});});});});});});});});});});
+  
+     // SELECT * FROM ems.cand_marks_details where cand_id in ((select cand_id from ems.cand_relieving_details where cand_id in  (select cand_id from ems.cand_admission_details where course = 'MBBS') and relieved = 'Yes') );      
+//       var sql = "SELECT * FROM `ems`.`state_details`;"
+//    db.query(sql, function (err, data10) {  
+//       var sql = "SELECT * FROM `ems`.`admiss_type`;"
+//       db.query(sql, function (err, data8) {   
+//       var sql = "SELECT * FROM `ems`.`admiss_quota`;"
+//        db.query(sql, function (err, data7) {   
+//        var sql = "SELECT * FROM `ems`.`community_details`;"
+//          db.query(sql, function (err, data6) { 
+//       var sql = "SELECT * FROM `ems`.`nation_details`;"
+//       db.query(sql, function (err, data5) {
+//       var sql = "SELECT * FROM `ems`.`religion_details`;"
+//       db.query(sql, function (err, data4) {
+//       var sql = "SELECT * FROM `ems`.`no_delete`;"
+//          db.query(sql, function (err, data3) {
+//          var sql = "SELECT * FROM `ems`.`cand_profile_details`;"
+//          db.query(sql, function (err, data1) {
+//             var sql = `SELECT * FROM ems.cand_admission_details INNER JOIN ems.cand_relieving_details on cand_admission_details.cand_id =cand_relieving_details.cand_id  where cand_relieving_details.relieved = '${reli_info}' AND cand_admission_details.course = 'MBBS'`;
+//              db.query(sql, function (err, data) {
+//             res.render('reli_page.ejs', { userData: data, userData1: data1, userData3: data3,userData4: data4, userData5: data5,userData6: data6, userData7: data7, userData8: data8,userData10: data1,  message: message });
+//          });
+//       });
+//       });
+//    });
+// });
+// });
+// });
+// });
+// });
  
    }
       
@@ -1024,111 +1165,108 @@ exports.report10 = function (req, res, next) {
 exports.mbbs_board = function (req, res, next) {
    var message = '';
    var userId = req.session.userId;
-   var sql = "SELECT * FROM `ems`.`state_details`;"
-   db.query(sql, function (err, data10) { 
-   var sql = "SELECT * FROM `ems`.`community_details`;"
-   db.query(sql, function (err, data6) {
-      var sql = "SELECT * FROM `ems`.`admiss_type`;"
-      db.query(sql, function (err, data8) {   
-      var sql = "SELECT * FROM `ems`.`admiss_quota`;"
-      db.query(sql, function (err, data7) {   
-   var sql9 = "SELECT * FROM `ems`.`cand_certificate_details` ";
-   db.query(sql9, function (err, data9) {
-   var sql = "SELECT * FROM `ems`.`nation_details`;"
-   db.query(sql, function (err, data5) {
-   var sql = "SELECT * FROM `ems`.`religion_details`;"
-   db.query(sql, function (err, data4) {
-   var sql = "SELECT * FROM `ems`.`no_delete`;"
-   db.query(sql, function (err, data3) {
-   var sql = "SELECT * FROM `ems`.`cand_profile_details`;"
-   db.query(sql, function (err, data1) {
-      var sql = "SELECT * FROM `ems`.`cand_admission_details` where course = 'MBBS' ;"
-      db.query(sql, function (err, data) {
-         res.render('mbbs_viewstudent.ejs', { userData: data, userData1: data1, userData3: data3, userData4: data4, userData5: data5, userData6: data6,userData7: data7,userData8: data8,userData9: data9,userData10: data10,message: message });
-      });
-   });
-});
-});
-});
-});
-   });
-});
-   });
-   });
    
-};
-//UPDATE new_one.new_table SET images=LOAD_FILE('D:/Training/medical_1.1/public/Uploads/account.png') where idnew_table='1';
+   var sql15 = `SELECT * FROM ems.cand_neet_mark_details where cand_id in (select cand_id from cand_admission_details where course ='MBBS')`;
+   db.query(sql15, function (err, data19) {
+   var sql14 = `SELECT * FROM ems.cand_marks_details where cand_id in (select cand_id from cand_admission_details where course ='MBBS')`;
+   db.query(sql14, function (err, data18) {
+   var sql13 = `SELECT * FROM ems.cand_institute_details where cand_id in (select cand_id from cand_admission_details where course ='MBBS')`;
+   db.query(sql13, function (err, data17) {
+   var sql11 = `select * from ems.cand_relieving_details where cand_id in (select cand_id from cand_admission_details where course ='MBBS')`;
+   db.query(sql11, function (err, data16) {
+   var sql9 = `SELECT * FROM ems.certificate_details where cand_id in (select cand_id from cand_admission_details where course ='MBBS')  AND active_flag ='Y'`;
+   db.query(sql9, function (err, data15) {
+   var sql8 = `SELECT * FROM ems.cand_contact_details where cand_id in (select cand_id from cand_admission_details where course ='MBBS')`;
+   db.query(sql8, function (err, data14) {
+   var sql7 = `SELECT * FROM ems.cand_bank_details where cand_id in (select cand_id from cand_admission_details where course ='MBBS')`;
+   db.query(sql7, function (err, data13) {
+   var sql3 = `SELECT * FROM ems.biometric_details where cand_id in (select cand_id from cand_admission_details where course ='MBBS') AND active_flag ='Y'`;
+   db.query(sql3, function (err, data12) {
+   var sql2 = `SELECT * FROM ems.cand_address_details where cand_id in (select cand_id from cand_admission_details where course ='MBBS')`;
+   db.query(sql2, function (err, data11) {
 
-exports.mdms_board = function (req, res) {
+   var sql = `SELECT * FROM ems.state_details`;
+   db.query(sql, function (err, data10) { 
+   var sql = `SELECT * FROM ems.admiss_type`;
+   db.query(sql, function (err, data8) {   
+   var sql = `SELECT * FROM ems.admiss_quota`;
+   db.query(sql, function (err, data7) {  
+   var sql = `SELECT * FROM ems.community_details`;
+   db.query(sql, function (err, data6) { 
+   var sql = `SELECT * FROM ems.nation_details`;
+   db.query(sql, function (err, data5) {
+   var sql = `SELECT * FROM ems.religion_details`;
+   db.query(sql, function (err, data4) {
+   var sql = `SELECT * FROM ems.no_delete`;
+   db.query(sql, function (err, data3) {
+   var sql = `SELECT * FROM ems.cand_profile_details where cand_id in (select cand_id from cand_admission_details where course ='MBBS')`;
+   db.query(sql, function (err, data1) {
+   var sql = `SELECT * FROM ems.cand_admission_details where course = 'MBBS'`;
+   db.query(sql, function (err, data) {   
+         res.render('mbbs_viewstudent.ejs', { message: message,userData: data, userData1: data1, userData3: data3, userData4: data4, userData5: data5,
+                                              userData6: data6,userData7: data7,userData8: data8,userData10: data10,
+                                              userData11:data11,userData12:data12,userData13:data13,userData14:data14,userData15:data15,
+                                              userData16:data16,userData17:data17,userData18:data18,userData19:data19});
+      });});});});});});});});});});});});});});});});});});
+};
+
+
+exports.mdms_board = function open(req, res) {
    var message = '';
- 
+ console.log('course',res);
    var userId = req.session.userId;
    var post = req.body;
    var cand_id = post.cand_id;
-   
-   var sql18 = "SELECT * FROM `ems`.`cand_institute_details_mdms`where cand_id in (select cand_id from cand_admission_details where course ='MDMS') ;"
-   db.query(sql18, function (err, data18) { 
-      var sql17 = "SELECT * FROM `ems`.`cand_academic_mdms_2` where cand_id in (select cand_id from cand_admission_details where course ='MDMS') ;"
-      db.query(sql17, function (err, data17) { 
-         var sql16 = "SELECT * FROM `ems`.`cand_academic_mdms_1` where cand_id in (select cand_id from cand_admission_details where course ='MDMS') ;"
-         db.query(sql16, function (err, data16) { 
-            var sql15 = "SELECT * FROM `ems`.`cand_academic_mdms`where cand_id in (select cand_id from cand_admission_details where course ='MDMS') ;"
-            db.query(sql15, function (err, data15) { 
-               var sql14 = "SELECT * FROM `ems`.`cand_neet_marks_mdms`where cand_id in (select cand_id from cand_admission_details where course ='MDMS') ;"
-               db.query(sql14, function (err, data14) { 
-                  var sql12 = "SELECT * FROM `ems`.`cand_surety_details` where cand_id in (select cand_id from cand_admission_details where course ='MDMS');"
-                  db.query(sql12, function (err, data12) {
-                     var sql11 = "select * from `ems`.`cand_relieving_details` where cand_id in (select cand_id from cand_admission_details where course ='MDMS');"
-                     db.query(sql11, function (err, data11) {
-                        var sql10 = "SELECT * FROM `ems`.`cand_certificate2_details` ;"
-                        db.query(sql10, function (err, data10) {
-                           var sql9 = "SELECT * FROM `ems`.`certificate_details` where cand_id in (select cand_id from cand_admission_details where course ='MDMS') AND active_flag ='Y' ;"
-                           db.query(sql9, function (err, data9) {
-                              var sql8 = "SELECT * FROM `ems`.`cand_contact_details`where cand_id in (select cand_id from cand_admission_details where course ='MDMS') ;"
-                              db.query(sql8, function (err, data8) {
-                                 var sql7 = "SELECT * FROM `ems`.`cand_bank_details`where cand_id in (select cand_id from cand_admission_details where course ='MDMS') ;"
-                                 db.query(sql7, function (err, data7) {
-                                    var sql6 = "SELECT * FROM `ems`.`cand_neet_mark_details` ;"
-                                    db.query(sql6, function (err, data6) {
-                                       var sql5 = "SELECT * FROM `ems`.`cand_marks_details` ;"
-                                       db.query(sql5, function (err, data5) {
-                                          var sql4 = "SELECT * FROM `ems`.`cand_institute_details`;"
-                                          db.query(sql4, function (err, data4) {
-                                             var sql3 = "SELECT * FROM `ems`.`biometric_details` where cand_id in (select cand_id from cand_admission_details where course ='MDMS') ;"
-                                             db.query(sql3, function (err, data3) {
-                                                var sql2 = "SELECT * FROM `ems`.`cand_address_details` where cand_id in (select cand_id from cand_admission_details where course ='MDMS') ;"
-                                                db.query(sql2, function (err, data2) {
-                                                   var sql1 = "SELECT * FROM `ems`.`cand_profile_details` where cand_id in (select cand_id from cand_admission_details where course ='MDMS');"
-                                                   db.query(sql1, function (err, data1) {
-                                                      var sql = "SELECT * FROM  `ems`.`cand_admission_details` where course = 'MDMS';"
-                                                      db.query(sql, function (err, data) {
 
-                                                      // select * from ems.cand_profile_details where cand_id in (select cand_id from cand_admission_details where couse ='MDMS');
+   var sql18 = `SELECT * FROM ems.cand_institute_details_mdms where cand_id in (select cand_id from cand_admission_details where course ='MDMS')`;
+   db.query(sql18, function (err, data25) { 
+   var sql17 = `SELECT * FROM ems.cand_academic_mdms_2 where cand_id in (select cand_id from cand_admission_details where course ='MDMS')`;
+   db.query(sql17, function (err, data24) { 
+   var sql16 = `SELECT * FROM ems.cand_academic_mdms_1 where cand_id in (select cand_id from cand_admission_details where course ='MDMS')`;
+   db.query(sql16, function (err, data23) { 
+   var sql15 = `SELECT * FROM ems.cand_academic_mdms where cand_id in (select cand_id from cand_admission_details where course ='MDMS')`;
+   db.query(sql15, function (err, data22) { 
+   var sql14 = `SELECT * FROM ems.cand_neet_marks_mdms where cand_id in (select cand_id from cand_admission_details where course ='MDMS')`;
+   db.query(sql14, function (err, data21) { 
+   var sql12 = `SELECT * FROM ems.cand_surety_details where cand_id in (select cand_id from cand_admission_details where course ='MDMS')`;
+   db.query(sql12, function (err, data20) {
+      
+   var sql11 = `select * from ems.cand_relieving_details where cand_id in (select cand_id from cand_admission_details where course ='MDMS')`;
+   db.query(sql11, function (err, data16) {
+   var sql9 = `SELECT * FROM ems.certificate_details where cand_id in (select cand_id from cand_admission_details where course ='MDMS')  AND active_flag ='Y'`;
+   db.query(sql9, function (err, data15) {
+   var sql8 = `SELECT * FROM ems.cand_contact_details where cand_id in (select cand_id from cand_admission_details where course ='MDMS')`;
+   db.query(sql8, function (err, data14) {
+   var sql7 = `SELECT * FROM ems.cand_bank_details where cand_id in (select cand_id from cand_admission_details where course ='MDMS')`;
+   db.query(sql7, function (err, data13) {
+   var sql3 = `SELECT * FROM ems.biometric_details where cand_id in (select cand_id from cand_admission_details where course ='MDMS') AND active_flag ='Y'`;
+   db.query(sql3, function (err, data12) {
+   var sql2 = `SELECT * FROM ems.cand_address_details where cand_id in (select cand_id from cand_admission_details where course ='MDMS')`;
+   db.query(sql2, function (err, data11) {
 
-                                                         res.render('mdms_viewstudent.ejs', {message: message, userData: data, userData1: data1,
-                                                                                             userData2:data2, userData3: data3, userData4: data4, userData5: data5, userData6: data6,
-                                                                                             userData7:data7, userData8: data8, userData9: data9, userData10: data10, userData11: data11, 
-                                                                                             userData12:data12,userData14:data14, userData15:data15,userData16:data16,userData17:data17,
-                                                                                             userData18:data18});
-                     
-                                                                  });
-                                                               });
-                                                            });
-                                                         });
-                                                      });
-                                                   });
-                                                });
-                                             });
-                                          });
-                                       });
-                                    });
-                                 });
-                              });
-                           });
-                        });
-                     });
-                  });
-               });
+   var sql = `SELECT * FROM ems.state_details`;
+   db.query(sql, function (err, data10) { 
+   var sql = `SELECT * FROM ems.admiss_type`;
+   db.query(sql, function (err, data8) {   
+   var sql = `SELECT * FROM ems.admiss_quota`;
+   db.query(sql, function (err, data7) {  
+   var sql = `SELECT * FROM ems.community_details`;
+   db.query(sql, function (err, data6) { 
+   var sql = `SELECT * FROM ems.nation_details`;
+   db.query(sql, function (err, data5) {
+   var sql = `SELECT * FROM ems.religion_details`;
+   db.query(sql, function (err, data4) {
+   var sql = `SELECT * FROM ems.no_delete`;
+   db.query(sql, function (err, data3) {
+   var sql = `SELECT * FROM ems.cand_profile_details where cand_id in (select cand_id from cand_admission_details where course ='MDMS')`;
+   db.query(sql, function (err, data1) {
+   var sql = `SELECT * FROM ems.cand_admission_details where course = 'MDMS'`;
+   db.query(sql, function (err, data) {
+                                                      
+      res.render('mdms_viewstudent.ejs', {message: message, userData: data, userData1: data1,userData3: data3, userData4: data4, userData5: data5, userData6: data6,
+                                          userData7:data7, userData8: data8, userData10: data10, userData11: data11,userData12:data12,userData13:data13,userData14:data14,
+                                          userData15:data15,userData16:data16,userData20:data20,userData21:data21,userData22:data22,userData23:data23,userData24:data24,userData25:data25});
+                                       });});});});});});});});});});});});});});});});});});});});});
             };
 
 exports.insert_mdms = function (req, res) {
@@ -1204,13 +1342,87 @@ exports.insert_mdms = function (req, res) {
    var voter_id = post.voter_id;
    var remarks = post.remarks;
 
-   //institute details
+   // for institute mbbs
+   var institute_name = post.institute_name;
+   var place = post.place;
+   var register_no = post.register_no;
+   var exam_passed = post.exam_passed;
+   var relieving_date = post.relieving_date;
+   var district = post.district;
+   var board = post.board;
+   var month_of_passing = post.month_of_passing;
+   var state = post.state;
+   var year_of_passing = post.year_of_passing;
+   var duration = post.duration;
+
+
+   //for mark details mbbs
+   var lang_theory = post.lang_theory;
+   var lang_practical = post.lang_practical;
+   var lang_internal = post.lang_internal;
+   var lang_total = post.lang_total;
+   var lang_max = post.lang_max;
+   var eng_theory = post.eng_theory;
+   var eng_practical = post.eng_practical;
+   var eng_internal = post.eng_internal;
+   var eng_total = post.eng_total;
+   var eng_max = post.eng_max;
+   var mat_theory = post.mat_theory;
+   var mat_practical = post.mat_practical;
+   var mat_internal = post.mat_internal;
+   var mat_total = post.mat_total;
+   var mat_max = post.mat_max;
+   var phy_theory = post.phy_theory;
+   var phy_practical = post.phy_practical;
+   var phy_internal = post.phy_internal;
+   var phy_total = post.phy_total;
+   var phy_max = post.phy_max;
+
+   var chem_theory = post.chem_theory;
+   var chem_practical = post.chem_practical;
+   var chem_internal = post.chem_internal;
+   var chem_total = post.chem_total;
+   var chem_max = post.chem_max;
+   var bio_theory = post.bio_theory;
+   var bio_practical = post.bio_practical;
+   var bio_internal = post.bio_internal;
+   var bio_total = post.bio_total;
+   var bio_max = post.bio_max;
+   var bot_theory = post.bot_theory;
+   var bot_practical = post.bot_practical;
+   var bot_internal = post.bot_internal;
+   var bot_total = post.bot_total;
+   var bot_max = post.bot_max;
+
+   var zoo_theory = post.zoo_theory;
+   var zoo_practical = post.zoo_practical;
+   var zoo_internal = post.zoo_internal;
+   var zoo_total = post.zoo_total;
+   var zoo_max = post.zoo_max;
+   var lang_paper = post.lang_paper;
+
+   var subj_code = post.subj_code;
+   var total_mark_m = post.total_mark_m;
+   var max_mark = post.max_mark;
+
+
+   // for neet details mbbs
+   var phy_neet_mark = post.phy_neet_mark;
+   var chem_neet_mark = post.chem_neet_mark;
+   var bio_neet_mark = post.bio_neet_mark;
+   var agg_neet_mark = post.agg_neet_mark;
+   var phy_neet_max = post.phy_neet_max;
+   var chem_neet_max = post.chem_neet_max;
+   var bio_neet_max = post.bio_neet_max;
+   var agg_neet_max = post.agg_neet_max;
+
+   //institute details mdms
    var institute_name = post.institute_name;
    var college_post = post.college_post;
    var amount_of_agreement= post.amount_of_agreement;
    var period_of_agreement = post.period_of_agreement;
 
-   //academic details
+   //academic details mdms
    var mbbs_name= post.mbbs_name;
    var mbbs_place= post.mbbs_place;
    var mbbs_district = post.mbbs_district;
@@ -1242,7 +1454,7 @@ exports.insert_mdms = function (req, res) {
    var mdms_speciality =post.mdms_speciality;
 
 
-   //neet_marks
+   //neet_marks mdms
    var mbbs_marks =post.mbbs_marks;
    var pg_diplamo_marks = post.pg_diplamo_marks;
    var mdms_marks = post.mdms_marks;
@@ -1510,87 +1722,81 @@ exports.insert_mdms = function (req, res) {
    db.query(sql,function(err,data){
    var sql = `INSERT INTO ems.cand_relieving_details  (cand_id, relieved, last_modified_time) values('${cand_id}', '${relieved}','${last_modified_time}')`;
    db.query(sql,function(err,data){
-  
+   var sql = `INSERT INTO ems.cand_institute_details(cand_id,institute_name,place,district,state,relieving_date,duration,exam_passed,register_no,month_of_passing,year_of_passing,board,last_modified_time) VALUES ('${cand_id}','${institute_name}','${place}','${district}','${state}','${relieving_date}','${duration}','${exam_passed}','${register_no}','${month_of_passing}','${year_of_passing}','${board}','${last_modified_time}')`;
+   db.query(sql, function (err, data) {
+   var sql = `INSERT INTO ems.cand_marks_details(cand_id,lang_theory,lang_practical,lang_internal,lang_total,lang_max,eng_theory,eng_practical,eng_internal,eng_total,eng_max,mat_theory,mat_practical,mat_internal,mat_total,mat_max,phy_theory,phy_practical,phy_internal,phy_total,phy_max,chem_theory,chem_practical,chem_internal,chem_total,chem_max,bio_theory,bio_practical,bio_internal,bio_total,bio_max,bot_theory,bot_practical,bot_internal,bot_total,bot_max,zoo_theory,zoo_practical,zoo_internal,zoo_total,zoo_max,lang_paper,subj_code,total_mark,max_mark) VALUES ('${cand_id}','${lang_theory}','${lang_practical}','${lang_internal}','${lang_total}','${lang_max}','${eng_theory}','${eng_practical}','${eng_internal}','${eng_total}','${eng_max}','${mat_theory}','${mat_practical}','${mat_internal}','${mat_total}','${mat_max}','${phy_theory}','${phy_practical}','${phy_internal}','${phy_total}','${phy_max}','${chem_theory}','${chem_practical}','${chem_internal}','${chem_total}','${chem_max}','${bio_theory}','${bio_practical}','${bio_internal}','${bio_total}','${bio_max}','${bot_theory}','${bot_practical}','${bot_internal}','${bot_total}','${bot_max}','${zoo_theory}','${zoo_practical}','${zoo_internal}','${zoo_total}','${zoo_max}','${lang_paper}','${subj_code}','${total_mark_m}','${max_mark}')`;
+   db.query(sql, function (err, data) {
+   var sql = `INSERT INTO ems.cand_neet_mark_details(cand_id,phy_mark,phy_max_mark,chem_mark,chem_max_mark,bio_mark,bio_max_mark,agg_mark,agg_max_mark,last_modified_time) VALUES ('${cand_id}','${phy_neet_mark}','${phy_neet_max}','${chem_neet_mark}','${chem_neet_max}','${bio_neet_mark}','${bio_neet_max}','${agg_neet_mark}','${agg_neet_max}','${last_modified_time}')`;
+   db.query(sql, function (err, data) {
 
-   var sql18 = "SELECT * FROM `ems`.`cand_institute_details_mdms`where cand_id in (select cand_id from cand_admission_details where course ='MDMS') ;"
-   db.query(sql18, function (err, data18) { 
-   var sql17 = "SELECT * FROM `ems`.`cand_academic_mdms_2` where cand_id in (select cand_id from cand_admission_details where course ='MDMS') ;"
-   db.query(sql17, function (err, data17) { 
-   var sql16 = "SELECT * FROM `ems`.`cand_academic_mdms_1` where cand_id in (select cand_id from cand_admission_details where course ='MDMS') ;"
-   db.query(sql16, function (err, data16) { 
-   var sql15 = "SELECT * FROM `ems`.`cand_academic_mdms`where cand_id in (select cand_id from cand_admission_details where course ='MDMS') ;"
-   db.query(sql15, function (err, data15) { 
-   var sql14 = "SELECT * FROM `ems`.`cand_neet_marks_mdms`where cand_id in (select cand_id from cand_admission_details where course ='MDMS') ;"
-   db.query(sql14, function (err, data14) { 
-      var sql12 = "SELECT * FROM `ems`.`cand_surety_details` where cand_id in (select cand_id from cand_admission_details where course ='MDMS');"
-      db.query(sql12, function (err, data12) {
-         var sql11 = "select * from `ems`.`cand_relieving_details` where cand_id in (select cand_id from cand_admission_details where course ='MDMS');"
-         db.query(sql11, function (err, data11) {
-            var sql10 = "SELECT * FROM `ems`.`cand_certificate2_details` ;"
-            db.query(sql10, function (err, data10) {
-               var sql9 = "SELECT * FROM `ems`.`certificate_details` where cand_id in (select cand_id from cand_admission_details where course ='MDMS')  AND active_flag ='Y';"
-               db.query(sql9, function (err, data9) {
-                  var sql8 = "SELECT * FROM `ems`.`cand_contact_details`where cand_id in (select cand_id from cand_admission_details where course ='MDMS') ;"
-                  db.query(sql8, function (err, data8) {
-                     var sql7 = "SELECT * FROM `ems`.`cand_bank_details`where cand_id in (select cand_id from cand_admission_details where course ='MDMS') ;"
-                     db.query(sql7, function (err, data7) {
-                        var sql6 = "SELECT * FROM `ems`.`cand_neet_mark_details` ;"
-                        db.query(sql6, function (err, data6) {
-                           var sql5 = "SELECT * FROM `ems`.`cand_marks_details` ;"
-                           db.query(sql5, function (err, data5) {
-                              var sql4 = "SELECT * FROM `ems`.`cand_institute_details`;"
-                              db.query(sql4, function (err, data4) {
-                                 var sql3 = "SELECT * FROM `ems`.`biometric_details` where cand_id in (select cand_id from cand_admission_details where course ='MDMS') ;"
-                                 db.query(sql3, function (err, data3) {
-                                    var sql2 = "SELECT * FROM `ems`.`cand_address_details` where cand_id in (select cand_id from cand_admission_details where course ='MDMS') ;"
-                                    db.query(sql2, function (err, data2) {
-                                       var sql1 = "SELECT * FROM `ems`.`cand_profile_details` where cand_id in (select cand_id from cand_admission_details where course ='MDMS');"
-                                       db.query(sql1, function (err, data1) {
-                                          var sql = "SELECT * FROM  `ems`.`cand_admission_details` where course='MDMS';"
-                                          db.query(sql, function (err, data) {
+   var sql18 = `SELECT * FROM ems.cand_institute_details_mdms where cand_id in (select cand_id from cand_admission_details where course ='MDMS')`;
+   db.query(sql18, function (err, data25) { 
+   var sql17 = `SELECT * FROM ems.cand_academic_mdms_2 where cand_id in (select cand_id from cand_admission_details where course ='MDMS')`;
+   db.query(sql17, function (err, data24) { 
+   var sql16 = `SELECT * FROM ems.cand_academic_mdms_1 where cand_id in (select cand_id from cand_admission_details where course ='MDMS')`;
+   db.query(sql16, function (err, data23) { 
+   var sql15 = `SELECT * FROM ems.cand_academic_mdms where cand_id in (select cand_id from cand_admission_details where course ='MDMS')`;
+   db.query(sql15, function (err, data22) { 
+   var sql14 = `SELECT * FROM ems.cand_neet_marks_mdms where cand_id in (select cand_id from cand_admission_details where course ='MDMS')`;
+   db.query(sql14, function (err, data21) { 
+   var sql12 = `SELECT * FROM ems.cand_surety_details where cand_id in (select cand_id from cand_admission_details where course ='MDMS')`;
+   db.query(sql12, function (err, data20) {
+      
+   var sql15 = `SELECT * FROM ems.cand_neet_mark_details where cand_id in (select cand_id from cand_admission_details where course ='MBBS')`;
+   db.query(sql15, function (err, data19) {
+   var sql14 = `SELECT * FROM ems.cand_marks_details where cand_id in (select cand_id from cand_admission_details where course ='MBBS')`;
+   db.query(sql14, function (err, data18) {
+   var sql13 = `SELECT * FROM ems.cand_institute_details where cand_id in (select cand_id from cand_admission_details where course ='MBBS')`;
+   db.query(sql13, function (err, data17) {
+   var sql11 = `select * from ems.cand_relieving_details where cand_id in (select cand_id from cand_admission_details where course ='${course}')`;
+   db.query(sql11, function (err, data16) {
+   var sql9 = `SELECT * FROM ems.certificate_details where cand_id in (select cand_id from cand_admission_details where course ='${course}')  AND active_flag ='Y'`;
+   db.query(sql9, function (err, data15) {
+   var sql8 = `SELECT * FROM ems.cand_contact_details where cand_id in (select cand_id from cand_admission_details where course ='${course}')`;
+   db.query(sql8, function (err, data14) {
+   var sql7 = `SELECT * FROM ems.cand_bank_details where cand_id in (select cand_id from cand_admission_details where course ='${course}')`;
+   db.query(sql7, function (err, data13) {
+   var sql3 = `SELECT * FROM ems.biometric_details where cand_id in (select cand_id from cand_admission_details where course ='${course}') AND active_flag ='Y'`;
+   db.query(sql3, function (err, data12) {
+   var sql2 = `SELECT * FROM ems.cand_address_details where cand_id in (select cand_id from cand_admission_details where course ='${course}')`;
+   db.query(sql2, function (err, data11) {
 
+   var sql = `SELECT * FROM ems.state_details`;
+   db.query(sql, function (err, data10) { 
+   var sql = `SELECT * FROM ems.admiss_type`;
+   db.query(sql, function (err, data8) {   
+   var sql = `SELECT * FROM ems.admiss_quota`;
+   db.query(sql, function (err, data7) {  
+   var sql = `SELECT * FROM ems.community_details`;
+   db.query(sql, function (err, data6) { 
+   var sql = `SELECT * FROM ems.nation_details`;
+   db.query(sql, function (err, data5) {
+   var sql = `SELECT * FROM ems.religion_details`;
+   db.query(sql, function (err, data4) {
+   var sql = `SELECT * FROM ems.no_delete`;
+   db.query(sql, function (err, data3) {
+   var sql = `SELECT * FROM ems.cand_profile_details where cand_id in (select cand_id from cand_admission_details where course ='${course}')`;
+   db.query(sql, function (err, data1) {
+   var sql = `SELECT * FROM ems.cand_admission_details where course = '${course}'`;
+   db.query(sql, function (err, data) {   
                                           // select * from ems.cand_profile_details where cand_id in (select cand_id from cand_admission_details where couse ='MDMS');
-
-                                             res.render('mdms_viewstudent.ejs', {message: message, userData: data, userData1: data1,
-                                                                                 userData2:data2, userData3: data3, userData4: data4, userData5: data5, userData6: data6,
-                                                                                 userData7:data7, userData8: data8, userData9: data9, userData10: data10, userData11: data11, 
-                                                                                 userData12:data12,userData14:data14, userData15:data15,userData16:data16,userData17:data17,
-                                                                                 userData18:data18});
-         
-                                                      });
-                                                   });
-                                                });
-                                             });
-                                          });
-                                       });
-                                    });
-                                 });
-                              });
-                           });
-                        });
-                     });
-                  });
-               });
-            });
-         });
-      });
-   
-   });
-});
-   });
-});
-   });
-});
-   });
-});
-   });
-   });
-});
-   });
-});
-
-
-};
+      if(course == 'MBBS'){
+      res.render('mbbs_viewstudent.ejs', { message: message,userData: data, userData1: data1, userData3: data3, userData4: data4, 
+                                             userData5: data5,userData6: data6,userData7: data7,userData8: data8,
+                                             userData10: data10,userData11:data11,userData12:data12,userData13:data13,userData14:data14,
+                                             userData15:data15,userData16:data16,userData17:data17,userData18:data18,userData19:data19});}
+      if(course == 'MDMS'){
+      res.render('mdms_viewstudent.ejs', {message: message, userData: data, userData1: data1,
+                                           userData3: data3, userData4: data4, userData5: data5, userData6: data6,
+                                          userData7:data7, userData8: data8,  userData10: data10, userData11: data11, 
+                                          userData12:data12,userData14:data14, userData15:data15,userData16:data16,userData17:data17,
+                                          userData18:data18});}
+                                          });});});});});});});});
+                                          });});});});});});});});
+                                          });});});});});});});});
+                                          });});});});});});});});
+                                          });});});});});});});
+                                       };
 
 
 
@@ -1651,8 +1857,9 @@ exports.edit_mdmscand = function (req, res) {
   var pm_pincode = post.pm_pincode;
   var pm_state = post.pm_state;
   var pm_district = post.pm_district;
-  var address_type = post.address_type;
-
+  var address_type = '';
+  (ps_address == pm_address)?address_type = '1':address_type = '0';
+   
    //contact tab
    var tel_phone = post.tel_phone;
    var mobile_phone = post.mobile_phone;
@@ -1661,13 +1868,87 @@ exports.edit_mdmscand = function (req, res) {
    var voter_id = post.voter_id;
    var remarks = post.remarks;
 
-   //institute details
+      // for institute mbbs
+      var institute_name = post.institute_name;
+      var place = post.place;
+      var register_no = post.register_no;
+      var exam_passed = post.exam_passed;
+      var relieving_date = post.relieving_date;
+      var district = post.district;
+      var board = post.board;
+      var month_of_passing = post.month_of_passing;
+      var state = post.state;
+      var year_of_passing = post.year_of_passing;
+      var duration = post.duration;
+   
+   
+      //for mark details mbbs
+      var lang_theory = post.lang_theory;
+      var lang_practical = post.lang_practical;
+      var lang_internal = post.lang_internal;
+      var lang_total = post.lang_total;
+      var lang_max = post.lang_max;
+      var eng_theory = post.eng_theory;
+      var eng_practical = post.eng_practical;
+      var eng_internal = post.eng_internal;
+      var eng_total = post.eng_total;
+      var eng_max = post.eng_max;
+      var mat_theory = post.mat_theory;
+      var mat_practical = post.mat_practical;
+      var mat_internal = post.mat_internal;
+      var mat_total = post.mat_total;
+      var mat_max = post.mat_max;
+      var phy_theory = post.phy_theory;
+      var phy_practical = post.phy_practical;
+      var phy_internal = post.phy_internal;
+      var phy_total = post.phy_total;
+      var phy_max = post.phy_max;
+   
+      var chem_theory = post.chem_theory;
+      var chem_practical = post.chem_practical;
+      var chem_internal = post.chem_internal;
+      var chem_total = post.chem_total;
+      var chem_max = post.chem_max;
+      var bio_theory = post.bio_theory;
+      var bio_practical = post.bio_practical;
+      var bio_internal = post.bio_internal;
+      var bio_total = post.bio_total;
+      var bio_max = post.bio_max;
+      var bot_theory = post.bot_theory;
+      var bot_practical = post.bot_practical;
+      var bot_internal = post.bot_internal;
+      var bot_total = post.bot_total;
+      var bot_max = post.bot_max;
+   
+      var zoo_theory = post.zoo_theory;
+      var zoo_practical = post.zoo_practical;
+      var zoo_internal = post.zoo_internal;
+      var zoo_total = post.zoo_total;
+      var zoo_max = post.zoo_max;
+      var lang_paper = post.lang_paper;
+   
+      var subj_code = post.subj_code;
+      var total_mark_m = post.total_mark_m;
+      var max_mark = post.max_mark;
+   
+   
+      // for neet details mbbs
+      var phy_neet_mark = post.phy_neet_mark;
+      var chem_neet_mark = post.chem_neet_mark;
+      var bio_neet_mark = post.bio_neet_mark;
+      var agg_neet_mark = post.agg_neet_mark;
+      var phy_neet_max = post.phy_neet_max;
+      var chem_neet_max = post.chem_neet_max;
+      var bio_neet_max = post.bio_neet_max;
+      var agg_neet_max = post.agg_neet_max;
+   
+   //institute details mdms
    var institute_name = post.institute_name;
    var college_post = post.college_post;
    var amount_of_agreement= post.amount_of_agreement;
    var period_of_agreement = post.period_of_agreement;
    
-   //academic details
+   //academic details mdms
    var mbbs_name= post.mbbs_name;
    var mbbs_place= post.mbbs_place;
    var mbbs_district = post.mbbs_district;
@@ -1699,7 +1980,7 @@ exports.edit_mdmscand = function (req, res) {
    var mdms_speciality =post.mdms_speciality;
 
 
-   //neet_marks
+   //neet_marks mdms
    var mbbs_marks =post.mbbs_marks;
    var pg_diplamo_marks = post.pg_diplamo_marks;
    var mdms_marks = post.mdms_marks;
@@ -1899,45 +2180,59 @@ thumbarr.forEach(element => {
  // });
 (certificate.length !=0)? 
 certificate.forEach(element => {
-    db.query(`UPDATE ems.certificate_details SET active_flag = 'N', last_modified_time ='${last_modified_time}' WHERE (cand_id = '${cand_id}' AND all_certificate = '${certificate1}')`,function(){
+   db.query(`UPDATE ems.certificate_details SET active_flag = 'N', last_modified_time ='${last_modified_time}' WHERE (cand_id = '${cand_id}' AND all_certificate = '${certificate1}')`,function(){
    db.query("INSERT INTO ems.certificate_details(cand_id,cand_name,all_certificate,reg_no,date,issue,place,Filename,active_flag,last_modified_time) VALUES ('"+ cand_id +"','"+ name +"','"+ certificate1 +"','"+ c1_reg_no +"','"+ c1_date +"','"+ c1_issue +"','"+ c1_place +"','"+ element.filename+"','"+active_flag+"','"+last_modified_time+"')");
-   });//c1_reg_no +"','"+ c1_date +"','"+ c1_issue +"','"+ c1_place
- }):db.query(`UPDATE ems.certificate_details SET reg_no ='${c1_reg_no}',date='${c1_date}',issue='${c1_issue}',place='${c1_place}' WHERE (cand_id = '${cand_id}' AND all_certificate = '${certificate1}' `)
-certificates1.forEach(element => {
+   });
+ }):db.query(`UPDATE ems.certificate_details SET reg_no ='${c1_reg_no}',date='${c1_date}',issue='${c1_issue}',place='${c1_place}' WHERE (cand_id = '${cand_id}' AND all_certificate = '${certificate1}' AND active_flag ='${active_flag}')`);
+
+ (certificates1.length !=0)?
+ certificates1.forEach(element => {
       db.query(`UPDATE ems.certificate_details SET active_flag = 'N', last_modified_time ='${last_modified_time}'WHERE (cand_id = '${cand_id}' AND all_certificate = '${certificate2}')`,function(){
      db.query("INSERT INTO ems.certificate_details(cand_id,cand_name,all_certificate,reg_no,date,issue,place,Filename,active_flag,last_modified_time) VALUES ('"+ cand_id +"','"+ name +"','"+ certificate2 +"','"+ c2_reg_no +"','"+ c2_date +"','"+ c2_issue +"','"+ c2_place +"','"+ element.filename+"','"+active_flag+"','"+last_modified_time+"')");
    });
- });
+ }):db.query(`UPDATE ems.certificate_details SET reg_no ='${c2_reg_no}',date='${c2_date}',issue='${c2_issue}',place='${c2_place}' WHERE (cand_id = '${cand_id}' AND all_certificate = '${certificate2}' AND active_flag ='${active_flag}')`);
+
+(certificates2.length !=0)?
 certificates2.forEach(element => {
    db.query(`UPDATE ems.certificate_details SET active_flag = 'N',last_modified_time ='${last_modified_time}' WHERE (cand_id = '${cand_id}' AND all_certificate = '${certificate3}')`,function(){
    db.query("INSERT INTO ems.certificate_details(cand_id,cand_name,all_certificate,reg_no,date,issue,place,Filename,active_flag,last_modified_time) VALUES ('"+ cand_id +"','"+ name +"','"+ certificate3 +"','"+ c3_reg_no +"','"+ c3_date +"','"+ c3_issue +"','"+ c3_place +"','"+ element.filename+"','"+active_flag+"','"+last_modified_time+"')");
    });
- });
+ }):db.query(`UPDATE ems.certificate_details SET reg_no ='${c3_reg_no}',date='${c3_date}',issue='${c3_issue}',place='${c3_place}' WHERE (cand_id = '${cand_id}' AND all_certificate = '${certificate3}' AND active_flag ='${active_flag}')`);
+
+(certificates3.length !=0)? 
 certificates3.forEach(element => {
    db.query(`UPDATE ems.certificate_details SET active_flag = 'N',last_modified_time ='${last_modified_time}' WHERE (cand_id = '${cand_id}' AND all_certificate = '${certificate4}')`,function(){
    db.query("INSERT INTO ems.certificate_details(cand_id,cand_name,all_certificate,reg_no,date,issue,place,Filename,active_flag,last_modified_time) VALUES ('"+ cand_id +"','"+ name +"','"+ certificate4 +"','"+ c4_reg_no +"','"+ c4_date +"','"+ c4_issue +"','"+ c4_place +"','"+ element.filename+"','"+active_flag+"','"+last_modified_time+"')");
 });
- });
+}):db.query(`UPDATE ems.certificate_details SET reg_no ='${c4_reg_no}',date='${c4_date}',issue='${c4_issue}',place='${c4_place}' WHERE (cand_id = '${cand_id}' AND all_certificate = '${certificate4}' AND active_flag ='${active_flag}')`);
+
+(certificates4.length !=0)?
 certificates4.forEach(element => {
    db.query(`UPDATE ems.certificate_details SET active_flag = 'N',last_modified_time ='${last_modified_time}' WHERE (cand_id = '${cand_id}' AND all_certificate = '${certificate5}')`,function(){
    db.query("INSERT INTO ems.certificate_details(cand_id,cand_name,all_certificate,reg_no,date,issue,place,Filename,active_flag,last_modified_time ) VALUES ('"+ cand_id +"','"+ name +"','"+ certificate5 +"','"+ c5_reg_no +"','"+ c5_date +"','"+ c5_issue +"','"+ c5_place +"','"+ element.filename+"','"+active_flag+"','"+last_modified_time+"')");
    });
- });
+ }):db.query(`UPDATE ems.certificate_details SET reg_no ='${c5_reg_no}',date='${c5_date}',issue='${c5_issue}',place='${c5_place}' WHERE (cand_id = '${cand_id}' AND all_certificate = '${certificate5}' AND active_flag ='${active_flag}')`);
+
+(certificates5.length !=0)? 
 certificates5.forEach(element => {
    db.query(`UPDATE ems.certificate_details SET active_flag = 'N',last_modified_time ='${last_modified_time}' WHERE (cand_id = '${cand_id}' AND all_certificate = '${certificate6}')`,function(){
    db.query("INSERT INTO ems.certificate_details(cand_id,cand_name,all_certificate,reg_no,date,issue,place,Filename,active_flag,last_modified_time) VALUES ('"+ cand_id +"','"+ name +"','"+ certificate6 +"','"+ c6_reg_no +"','"+ c6_date +"','"+ c6_issue +"','"+ c6_place +"','"+ element.filename+"','"+active_flag+"','"+last_modified_time+"')");
    });
- });
+ }):db.query(`UPDATE ems.certificate_details SET reg_no ='${c6_reg_no}',date='${c6_date}',issue='${c6_issue}',place='${c6_place}' WHERE (cand_id = '${cand_id}' AND all_certificate = '${certificate6}' AND active_flag ='${active_flag}')`);
+
+(certificates6.length !=0)? 
 certificates6.forEach(element => {
    db.query(`UPDATE ems.certificate_details SET active_flag = 'N',last_modified_time ='${last_modified_time}' WHERE (cand_id = '${cand_id}' AND all_certificate = '${certificate7}')`,function(){
    db.query("INSERT INTO ems.certificate_details(cand_id,cand_name,all_certificate,reg_no,date,issue,place,Filename,active_flag,last_modified_time) VALUES ('"+ cand_id +"','"+ name +"','"+ certificate7 +"','"+ c7_reg_no +"','"+ c7_date +"','"+ c7_issue +"','"+ c7_place +"','"+ element.filename+"','"+active_flag+"','"+last_modified_time+"')");
    });
- });
+ }):db.query(`UPDATE ems.certificate_details SET reg_no ='${c7_reg_no}',date='${c7_date}',issue='${c7_issue}',place='${c7_place}' WHERE (cand_id = '${cand_id}' AND all_certificate = '${certificate7}' AND active_flag ='${active_flag}')`);
+
+(certificates7.length !=0)? 
 certificates7.forEach(element => {
    db.query(`UPDATE ems.certificate_details SET active_flag = 'N',last_modified_time ='${last_modified_time}' WHERE (cand_id = '${cand_id}' AND all_certificate = '${certificate8}')`,function(){
    db.query("INSERT INTO ems.certificate_details(cand_id,cand_name,all_certificate,reg_no,date,issue,place,Filename,active_flag,last_modified_time) VALUES ('"+ cand_id +"','"+ name +"','"+ certificate8 +"','"+ c8_reg_no +"','"+ c8_date +"','"+ c8_issue +"','"+ c8_place +"','"+ element.filename+"','"+active_flag+"','"+last_modified_time+"')");
    });
-});
+}):db.query(`UPDATE ems.certificate_details SET reg_no ='${c8_reg_no}',date='${c8_date}',issue='${c8_issue}',place='${c8_place}' WHERE (cand_id = '${cand_id}' AND all_certificate = '${certificate8}' AND active_flag ='${active_flag}')`);
 
    
    var sql = `UPDATE ems.cand_profile_details SET name = '${name}', initial='${initial}', initial_expansion='${initial_expansion}',type_of_allotment='${type_of_allotment}', father_name='${father_name}', mother_name='${mother_name}', date_of_birth='${date_of_birth}', gender='${gender}', blood_group='${blood_group}', religion='${religion}', community='${community}', caste='${caste}', nationality='${nationality}', willing_to_donate_blood='${willing_to_donate_blood}', academic_year='${academic_year}', student_code='${student_code}', registered_time='${registered_time}', last_modified_time='${last_modified_time}' WHERE (cand_id = '${cand_id}')`;
@@ -1964,84 +2259,83 @@ certificates7.forEach(element => {
    db.query(sql,function(){
    var sql = `UPDATE ems.cand_surety_details SET  surety_one_name = '${surety_one_name}', surety_one_aadhaar = '${surety_one_aadhaar}', surety_one_pan = '${surety_one_pan}', surety_one_address = '${surety_one_address}', surety_two_name = '${surety_two_name}', surety_two_aadhaar = '${surety_two_aadhaar}', surety_two_pan = '${surety_two_pan}', surety_two_address = '${surety_two_address}', surety_three_name = '${surety_three_name}', surety_three_aadhaar ='${surety_three_aadhaar}', surety_three_pan ='${surety_three_pan}', surety_three_address ='${surety_three_address}',last_modified_time='${last_modified_time}' WHERE (cand_id = '${cand_id}')`;
    db.query(sql,function(){
-      var sql = `UPDATE ems.cand_relieving_details SET relieved = '${relieved}',amount_refunded = '${amount_refunded}',date_of_relieving = '${date_of_relieving}',date_of_reallotment = '${date_of_reallotment}',college_name = '${college_name}',last_modified_time='${last_modified_time}' WHERE (cand_id = '${cand_id}')`;
-            db.query(sql, function (){
-   
+   var sql = `UPDATE ems.cand_relieving_details SET relieved = '${relieved}',amount_refunded = '${amount_refunded}',date_of_relieving = '${date_of_relieving}',date_of_reallotment = '${date_of_reallotment}',college_name = '${college_name}',last_modified_time='${last_modified_time}' WHERE (cand_id = '${cand_id}')`;
+   db.query(sql, function (){
 
-               var sql18 = "SELECT * FROM `ems`.`cand_institute_details_mdms`where cand_id in (select cand_id from cand_admission_details where course ='MDMS') ;"
-               db.query(sql18, function (err, data18) { 
-                  var sql17 = "SELECT * FROM `ems`.`cand_academic_mdms_2` where cand_id in (select cand_id from cand_admission_details where course ='MDMS') ;"
-                  db.query(sql17, function (err, data17) { 
-                     var sql16 = "SELECT * FROM `ems`.`cand_academic_mdms_1` where cand_id in (select cand_id from cand_admission_details where course ='MDMS') ;"
-                     db.query(sql16, function (err, data16) { 
-                        var sql15 = "SELECT * FROM `ems`.`cand_academic_mdms`where cand_id in (select cand_id from cand_admission_details where course ='MDMS') ;"
-                        db.query(sql15, function (err, data15) { 
-                           var sql14 = "SELECT * FROM `ems`.`cand_neet_marks_mdms`where cand_id in (select cand_id from cand_admission_details where course ='MDMS') ;"
-                           db.query(sql14, function (err, data14) { 
-                              var sql12 = "SELECT * FROM `ems`.`cand_surety_details` where cand_id in (select cand_id from cand_admission_details where course ='MDMS');"
-                              db.query(sql12, function (err, data12) {
-                                 var sql11 = "select * from `ems`.`cand_relieving_details` where cand_id in (select cand_id from cand_admission_details where course ='MDMS');"
-                                 db.query(sql11, function (err, data11) {
-                                    var sql10 = "SELECT * FROM `ems`.`cand_certificate2_details` ;"
-                                    db.query(sql10, function (err, data10) {
-                                       var sql9 = "SELECT * FROM `ems`.`certificate_details` where cand_id in (select cand_id from cand_admission_details where course ='MDMS') AND active_flag = 'Y' ;"
-                                       db.query(sql9, function (err, data9) {
-                                          var sql8 = "SELECT * FROM `ems`.`cand_contact_details`where cand_id in (select cand_id from cand_admission_details where course ='MDMS') ;"
-                                          db.query(sql8, function (err, data8) {
-                                             var sql7 = "SELECT * FROM `ems`.`cand_bank_details`where cand_id in (select cand_id from cand_admission_details where course ='MDMS') ;"
-                                             db.query(sql7, function (err, data7) {
-                                                var sql6 = "SELECT * FROM `ems`.`cand_neet_mark_details` ;"
-                                                db.query(sql6, function (err, data6) {
-                                                   var sql5 = "SELECT * FROM `ems`.`cand_marks_details` ;"
-                                                   db.query(sql5, function (err, data5) {
-                                                      var sql4 = "SELECT * FROM `ems`.`cand_institute_details`;"
-                                                      db.query(sql4, function (err, data4) {
-                                                         var sql3 = "SELECT * FROM `ems`.`biometric_details` where cand_id in (select cand_id from cand_admission_details where course ='MDMS') ;"
-                                                         db.query(sql3, function (err, data3) {
-                                                            var sql2 = "SELECT * FROM `ems`.`cand_address_details` where cand_id in (select cand_id from cand_admission_details where course ='MDMS') ;"
-                                                            db.query(sql2, function (err, data2) {
-                                                               var sql1 = "SELECT * FROM `ems`.`cand_profile_details` where cand_id in (select cand_id from cand_admission_details where course ='MDMS');"
-                                                               db.query(sql1, function (err, data1) {
-                                                                  var sql = "SELECT * FROM  `ems`.`cand_admission_details` where course = 'MDMS';"
-                                                                  db.query(sql, function (err, data) {
-            
-                                                                  // select * from ems.cand_profile_details where cand_id in (select cand_id from cand_admission_details where couse ='MDMS');
-            
-                                                                     res.render('mdms_viewstudent.ejs', {message: message, userData: data, userData1: data1,
-                                                                                                         userData2:data2, userData3: data3, userData4: data4, userData5: data5, userData6: data6,
-                                                                                                         userData7:data7, userData8: data8, userData9: data9, userData10: data10, userData11: data11, 
-                                                                                                         userData12:data12,userData14:data14, userData15:data15,userData16:data16,userData17:data17,
-                                                                                                         userData18:data18});
-                                                                     });
-                                                                              });
-                                                                           });
-                                                                        });
-                                                                     });
-                                                                  });
-                                                               });
-                                                            });
-                                                         });
-                                                      });
-                                                   });
-                                                });
-                                             });
-                                          });
-                                       });
-                                    });
-                                 });
-                              });
-                           });
-                        });
-                     });
-                  });
-   }); 
-});
-   });
-});
-   });
-});
-   });
-});
+   var sql = `UPDATE ems.cand_institute_details SET institute_name ='${institute_name}', place ='${place}', district='${district}, state='${state}', relieving_date='${relieving_date}', duration='${duration}', exam_passed='${exam_passed}', register_no='${register_no}', month_of_passing='${month_of_passing}', year_of_passing='${year_of_passing}', board='${board}', last_modified_time='${last_modified_time}' WHERE (cand_id='${cand_id}')`;   
+   db.query(sql,function(){
+   var sql =`UPDATE ems.cand_neet_mark_details SET phy_mark='${phy_neet_mark}', phy_max_mark='${phy_neet_max}', chem_mark='${chem_neet_mark}', chem_max_mark='${chem_neet_max}', bio_mark='${bio_neet_mark}', bio_max_mark='${bio_neet_max}', agg_mark='${agg_neet_mark}', agg_max_mark='${agg_neet_max}', last_modified_time='${last_modified_time}' WHERE (cand_id = '${cand_id}')`;
+   db.query(sql,function(){
+   var sql = `UPDATE ems.cand_marks_details SET lang_theory='${lang_theory}', lang_practical='${lang_practical}', lang_internal='${lang_internal}', lang_total='${lang_total}', lang_max='${lang_max}', eng_theory='${eng_theory}', eng_practical='${eng_practical}', eng_internal='${eng_internal}', eng_total-'${eng_total}', eng_max='${eng_max}', mat_theory='${mat_theory}', mat_practical='${mat_practical}', mat_internal='${mat_internal}', mat_total='${mat_total}', mat_max='${mat_max}', phy_theory='${phy_theory}', phy_practical='${phy_practical}', phy_internal='${phy_internal}', phy_total='${phy_total}', phy_max='${phy_max}', chem_theory='${chem_theory}', chem_practical='${chem_practical}', chem_internal='${chem_internal}', chem_total='${chem_total}', chem_max='${chem_max}', bio_theory='${bio_theory}', bio_practical='${bio_practical}', bio_internal='${bio_internal}', bio_total='${bio_total}', bio_max='${bio_max}', bot_theory='${bot_theory}', bot_practical='${bot_practical}', bot_internal='${bot_internal}', bot_total='${bot_total}',bot_max='${bot_max}', zoo_theory='${zoo_theory}', zoo_practical='${zoo_practical}', zoo_internal='${zoo_internal}', zoo_total='${zoo_total}', zoo_max='${zoo_max}', lang_paper='${lang_paper}', subj_code='${subj_code}', total_mark='${total_mark}', max_mark='${max_mark}' WHERE (cand_id = '${cand_id}')`;
+   db.query(sql,function(){
+
+
+      var sql18 = `SELECT * FROM ems.cand_institute_details_mdms where cand_id in (select cand_id from cand_admission_details where course ='MDMS')`;
+      db.query(sql18, function (err, data25) { 
+      var sql17 = `SELECT * FROM ems.cand_academic_mdms_2 where cand_id in (select cand_id from cand_admission_details where course ='MDMS')`;
+      db.query(sql17, function (err, data24) { 
+      var sql16 = `SELECT * FROM ems.cand_academic_mdms_1 where cand_id in (select cand_id from cand_admission_details where course ='MDMS')`;
+      db.query(sql16, function (err, data23) { 
+      var sql15 = `SELECT * FROM ems.cand_academic_mdms where cand_id in (select cand_id from cand_admission_details where course ='MDMS')`;
+      db.query(sql15, function (err, data22) { 
+      var sql14 = `SELECT * FROM ems.cand_neet_marks_mdms where cand_id in (select cand_id from cand_admission_details where course ='MDMS')`;
+      db.query(sql14, function (err, data21) { 
+      var sql12 = `SELECT * FROM ems.cand_surety_details where cand_id in (select cand_id from cand_admission_details where course ='MDMS')`;
+      db.query(sql12, function (err, data20) {
+         
+      var sql15 = `SELECT * FROM ems.cand_neet_mark_details where cand_id in (select cand_id from cand_admission_details where course ='MBBS')`;
+      db.query(sql15, function (err, data19) {
+      var sql14 = `SELECT * FROM ems.cand_marks_details where cand_id in (select cand_id from cand_admission_details where course ='MBBS')`;
+      db.query(sql14, function (err, data18) {
+      var sql13 = `SELECT * FROM ems.cand_institute_details where cand_id in (select cand_id from cand_admission_details where course ='MBBS')`;
+      db.query(sql13, function (err, data17) {
+      var sql11 = `select * from ems.cand_relieving_details where cand_id in (select cand_id from cand_admission_details where course ='${course}')`;
+      db.query(sql11, function (err, data16) {
+      var sql9 = `SELECT * FROM ems.certificate_details where cand_id in (select cand_id from cand_admission_details where course ='${course}') AND active_flag ='Y'`;
+      db.query(sql9, function (err, data15) {
+      var sql8 = `SELECT * FROM ems.cand_contact_details where cand_id in (select cand_id from cand_admission_details where course ='${course}')`;
+      db.query(sql8, function (err, data14) {
+      var sql7 = `SELECT * FROM ems.cand_bank_details where cand_id in (select cand_id from cand_admission_details where course ='${course}')`;
+      db.query(sql7, function (err, data13) {
+      var sql3 = `SELECT * FROM ems.biometric_details where cand_id in (select cand_id from cand_admission_details where course ='${course}')AND active_flag ='Y'`;
+      db.query(sql3, function (err, data12) {
+      var sql2 = `SELECT * FROM ems.cand_address_details where cand_id in (select cand_id from cand_admission_details where course ='${course}')`;
+      db.query(sql2, function (err, data11) {
+   
+      var sql = `SELECT * FROM ems.state_details`;
+      db.query(sql, function (err, data10) { 
+      var sql = `SELECT * FROM ems.admiss_type`;
+      db.query(sql, function (err, data8) {   
+      var sql = `SELECT * FROM ems.admiss_quota`;
+      db.query(sql, function (err, data7) {  
+      var sql = `SELECT * FROM ems.community_details`;
+      db.query(sql, function (err, data6) { 
+      var sql = `SELECT * FROM ems.nation_details`;
+      db.query(sql, function (err, data5) {
+      var sql = `SELECT * FROM ems.religion_details`;
+      db.query(sql, function (err, data4) {
+      var sql = `SELECT * FROM ems.no_delete`;
+      db.query(sql, function (err, data3) {
+      var sql = `SELECT * FROM ems.cand_profile_details where cand_id in (select cand_id from cand_admission_details where course ='${course}')`;
+      db.query(sql, function (err, data1) {
+      var sql = `SELECT * FROM ems.cand_admission_details where course = '${course}'`;
+      db.query(sql, function (err, data) {   
+                                             // select * from ems.cand_profile_details where cand_id in (select cand_id from cand_admission_details where couse ='MDMS');
+         if(course == 'MBBS'){
+         res.render('mbbs_viewstudent.ejs', { message: message,userData: data, userData1: data1, userData3: data3, userData4: data4, 
+                                                userData5: data5,userData6: data6,userData7: data7,userData8: data8,
+                                                userData10: data10,userData11:data11,userData12:data12,userData13:data13,userData14:data14,
+                                                userData15:data15,userData16:data16,userData17:data17,userData18:data18,userData19:data19});}
+         if(course == 'MDMS'){
+         res.render('mdms_viewstudent.ejs', {message: message, userData: data, userData1: data1,
+                                              userData3: data3, userData4: data4, userData5: data5, userData6: data6,
+                                             userData7:data7, userData8: data8,  userData10: data10, userData11: data11, 
+                                             userData12:data12,userData14:data14, userData15:data15,userData16:data16,userData17:data17,
+                                             userData18:data18});}
+      
+                                             });});});});});});});});});});});});});
+                                             });});});});});});});});});});});});});
+                                             });});});});});});});});});});});});});
 
                };
             
@@ -2226,19 +2520,19 @@ exports.pwdupdate = function (req, res) {
 
 
 //--------------------------------render user details after login--------------------------------
-exports.mbbs_viewstudent = function (req, res) {
-   var message = '';
-   var userId = req.session.userId;
-   var sql = "SELECT * FROM `ems`.`cand_profile_details`;"
-   db.query(sql, function (err, data1) {
-      var sql = "SELECT * FROM `ems`.`cand_admission_details`;"
-      db.query(sql, function (err, data) {
-         res.render('mbbs_viewstudent.ejs', { userData: data, userData1: data1, message: message });
-      });
-   });
-};
+// exports.mbbs_viewstudent = function (req, res) {
+//    var message = '';
+//    var userId = req.session.userId;
+//    var sql = "SELECT * FROM `ems`.`cand_profile_details`;"
+//    db.query(sql, function (err, data1) {
+//       var sql = "SELECT * FROM `ems`.`cand_admission_details`;"
+//       db.query(sql, function (err, data) {
+//          res.render('mbbs_viewstudent.ejs', { userData: data, userData1: data1, message: message });
+//       });
+//    });
+// };
 //--------------------------------render user details after login--------------------------------
-exports.update_profile = function (req, res) {
+/* exports.update_profile = function (req, res) {
    var message = '';
    var post = req.body;
    var cand_id = post.cand_id;
@@ -2516,102 +2810,102 @@ exports.update_profile = function (req, res) {
       });
    });
    // });
-};
+};*/
 
 
 //--------------------------------render user details after login--------------------------------
-exports.mbbs_viewcand = function (req, res) {
-   var message = '';
-   var userId = req.session.userId;
-   var post = req.body;
-   var cand_id = post.cand_id;
+// exports.mbbs_viewcand = function (req, res) {
+//    var message = '';
+//    var userId = req.session.userId;
+//    var post = req.body;
+//    var cand_id = post.cand_id;
 
-   var sql11 = "SELECT * FROM `ems`.`cand_relieving_details` WHERE `cand_id`='" + cand_id + "'";
-   db.query(sql11, function (err, data11) {
-   var sql10 = "SELECT * FROM `ems`.`cand_certificate2_details` WHERE `cand_id`='" + cand_id + "'";
-   db.query(sql10, function (err, data10) {
-      var sql9 = "SELECT * FROM `ems`.`cand_certificate_details` WHERE `cand_id`='" + cand_id + "'";
-      db.query(sql9, function (err, data9) {
-         var sql8 = "SELECT * FROM `ems`.`cand_contact_details` WHERE `cand_id`='" + cand_id + "'";
-         db.query(sql8, function (err, data8) {
-            var sql7 = "SELECT * FROM `ems`.`cand_bank_details` WHERE `cand_id`='" + cand_id + "'";
-            db.query(sql7, function (err, data7) {
-               var sql6 = "SELECT * FROM `ems`.`cand_neet_mark_details` WHERE `cand_id`='" + cand_id + "'";
-               db.query(sql6, function (err, data6) {
-                  var sql5 = "SELECT * FROM `ems`.`cand_marks_details` WHERE `cand_id`='" + cand_id + "'";
-                  db.query(sql5, function (err, data5) {
-                     var sql4 = "SELECT * FROM `ems`.`cand_institute_details` WHERE `cand_id`='" + cand_id + "'";
-                     db.query(sql4, function (err, data4) {
-                        var sql3 = "SELECT * FROM `ems`.`cand_photo_details` WHERE `cand_id`='" + cand_id + "'";
-                        db.query(sql3, function (err, data3) {
-                           var sql2 = "SELECT * FROM `ems`.`cand_address_details` WHERE `cand_id`='" + cand_id + "'";
-                           db.query(sql2, function (err, data2) {
-                              var sql1 = "SELECT * FROM `ems`.`cand_admission_details` WHERE `cand_id`='" + cand_id + "'";
-                              db.query(sql1, function (err, data1) {
-                                 var sql = "SELECT * FROM `ems`.`cand_profile_details` WHERE `cand_id`='" + cand_id + "'";
-                                 db.query(sql, function (err, data) {
-                                    res.render('mbbs_viewcand.ejs', { message: message, userData: data, userData1: data1, userData2: data2, userData3: data3, userData4: data4, userData5: data5, userData6: data6, userData7: data7, userData8: data8, userData9: data9, userData10: data10, userData11: data11 });
-                                 });
-                              });
-                              });
-                           });
-                        });
-                     });
-                  });
-               });
-            });
-         });
-      });
-   });
-};
+//    var sql11 = "SELECT * FROM `ems`.`cand_relieving_details` WHERE `cand_id`='" + cand_id + "'";
+//    db.query(sql11, function (err, data11) {
+//    var sql10 = "SELECT * FROM `ems`.`cand_certificate2_details` WHERE `cand_id`='" + cand_id + "'";
+//    db.query(sql10, function (err, data10) {
+//       var sql9 = "SELECT * FROM `ems`.`cand_certificate_details` WHERE `cand_id`='" + cand_id + "'";
+//       db.query(sql9, function (err, data9) {
+//          var sql8 = "SELECT * FROM `ems`.`cand_contact_details` WHERE `cand_id`='" + cand_id + "'";
+//          db.query(sql8, function (err, data8) {
+//             var sql7 = "SELECT * FROM `ems`.`cand_bank_details` WHERE `cand_id`='" + cand_id + "'";
+//             db.query(sql7, function (err, data7) {
+//                var sql6 = "SELECT * FROM `ems`.`cand_neet_mark_details` WHERE `cand_id`='" + cand_id + "'";
+//                db.query(sql6, function (err, data6) {
+//                   var sql5 = "SELECT * FROM `ems`.`cand_marks_details` WHERE `cand_id`='" + cand_id + "'";
+//                   db.query(sql5, function (err, data5) {
+//                      var sql4 = "SELECT * FROM `ems`.`cand_institute_details` WHERE `cand_id`='" + cand_id + "'";
+//                      db.query(sql4, function (err, data4) {
+//                         var sql3 = "SELECT * FROM `ems`.`cand_photo_details` WHERE `cand_id`='" + cand_id + "'";
+//                         db.query(sql3, function (err, data3) {
+//                            var sql2 = "SELECT * FROM `ems`.`cand_address_details` WHERE `cand_id`='" + cand_id + "'";
+//                            db.query(sql2, function (err, data2) {
+//                               var sql1 = "SELECT * FROM `ems`.`cand_admission_details` WHERE `cand_id`='" + cand_id + "'";
+//                               db.query(sql1, function (err, data1) {
+//                                  var sql = "SELECT * FROM `ems`.`cand_profile_details` WHERE `cand_id`='" + cand_id + "'";
+//                                  db.query(sql, function (err, data) {
+//                                     res.render('mbbs_viewcand.ejs', { message: message, userData: data, userData1: data1, userData2: data2, userData3: data3, userData4: data4, userData5: data5, userData6: data6, userData7: data7, userData8: data8, userData9: data9, userData10: data10, userData11: data11 });
+//                                  });
+//                               });
+//                               });
+//                            });
+//                         });
+//                      });
+//                   });
+//                });
+//             });
+//          });
+//       });
+//    });
+// };
 
 //--------------------------------render user details after login--------------------------------
-exports.mbbs_editcand = function (req, res) {
-   var userId = req.session.userId;
-   var post = req.body;
-   var cand_id = post.cand_id;
-   var message = '';
+// exports.mbbs_editcand = function (req, res) {
+//    var userId = req.session.userId;
+//    var post = req.body;
+//    var cand_id = post.cand_id;
+//    var message = '';
 
   
-   var sql11 = "SELECT * FROM `ems`.`cand_relieving_details` WHERE `cand_id`='" + cand_id + "'";
-   db.query(sql11, function (err, data11) {
-   var sql10 = "SELECT * FROM `ems`.`cand_certificate2_details` WHERE `cand_id`='" + cand_id + "'";
-   db.query(sql10, function (err, data10) {
-      var sql9 = "SELECT * FROM `ems`.`cand_certificate_details` WHERE `cand_id`='" + cand_id + "'";
-      db.query(sql9, function (err, data9) {
-         var sql8 = "SELECT * FROM `ems`.`cand_contact_details` WHERE `cand_id`='" + cand_id + "'";
-         db.query(sql8, function (err, data8) {
-            var sql7 = "SELECT * FROM `ems`.`cand_bank_details` WHERE `cand_id`='" + cand_id + "'";
-            db.query(sql7, function (err, data7) {
-               var sql6 = "SELECT * FROM `ems`.`cand_neet_mark_details` WHERE `cand_id`='" + cand_id + "'";
-               db.query(sql6, function (err, data6) {
-                  var sql5 = "SELECT * FROM `ems`.`cand_marks_details` WHERE `cand_id`='" + cand_id + "'";
-                  db.query(sql5, function (err, data5) {
-                     var sql4 = "SELECT * FROM `ems`.`cand_institute_details` WHERE `cand_id`='" + cand_id + "'";
-                     db.query(sql4, function (err, data4) {
-                        var sql3 = "SELECT * FROM `ems`.`cand_photo_details` WHERE `cand_id`='" + cand_id + "'";
-                        db.query(sql3, function (err, data3) {
-                           var sql2 = "SELECT * FROM `ems`.`cand_address_details` WHERE `cand_id`='" + cand_id + "'";
-                           db.query(sql2, function (err, data2) {
-                              var sql1 = "SELECT * FROM `ems`.`cand_admission_details` WHERE `cand_id`='" + cand_id + "'";
-                              db.query(sql1, function (err, data1) {
-                                 var sql = "SELECT * FROM `ems`.`cand_profile_details` WHERE `cand_id`='" + cand_id + "'";
-                                 db.query(sql, function (err, data) {
-                                    res.render('mbbs_editcand.ejs', { userData: data, userData1: data1, userData2: data2, userData3: data3, userData4: data4, userData5: data5, userData6: data6, userData7: data7, userData8: data8, userData9: data9, userData10: data10, userData11: data11, message: message });
-                                 });
-                              });
-                           });
-                        });
+//    var sql11 = "SELECT * FROM `ems`.`cand_relieving_details` WHERE `cand_id`='" + cand_id + "'";
+//    db.query(sql11, function (err, data11) {
+//    var sql10 = "SELECT * FROM `ems`.`cand_certificate2_details` WHERE `cand_id`='" + cand_id + "'";
+//    db.query(sql10, function (err, data10) {
+//       var sql9 = "SELECT * FROM `ems`.`cand_certificate_details` WHERE `cand_id`='" + cand_id + "'";
+//       db.query(sql9, function (err, data9) {
+//          var sql8 = "SELECT * FROM `ems`.`cand_contact_details` WHERE `cand_id`='" + cand_id + "'";
+//          db.query(sql8, function (err, data8) {
+//             var sql7 = "SELECT * FROM `ems`.`cand_bank_details` WHERE `cand_id`='" + cand_id + "'";
+//             db.query(sql7, function (err, data7) {
+//                var sql6 = "SELECT * FROM `ems`.`cand_neet_mark_details` WHERE `cand_id`='" + cand_id + "'";
+//                db.query(sql6, function (err, data6) {
+//                   var sql5 = "SELECT * FROM `ems`.`cand_marks_details` WHERE `cand_id`='" + cand_id + "'";
+//                   db.query(sql5, function (err, data5) {
+//                      var sql4 = "SELECT * FROM `ems`.`cand_institute_details` WHERE `cand_id`='" + cand_id + "'";
+//                      db.query(sql4, function (err, data4) {
+//                         var sql3 = "SELECT * FROM `ems`.`cand_photo_details` WHERE `cand_id`='" + cand_id + "'";
+//                         db.query(sql3, function (err, data3) {
+//                            var sql2 = "SELECT * FROM `ems`.`cand_address_details` WHERE `cand_id`='" + cand_id + "'";
+//                            db.query(sql2, function (err, data2) {
+//                               var sql1 = "SELECT * FROM `ems`.`cand_admission_details` WHERE `cand_id`='" + cand_id + "'";
+//                               db.query(sql1, function (err, data1) {
+//                                  var sql = "SELECT * FROM `ems`.`cand_profile_details` WHERE `cand_id`='" + cand_id + "'";
+//                                  db.query(sql, function (err, data) {
+//                                     res.render('mbbs_editcand.ejs', { userData: data, userData1: data1, userData2: data2, userData3: data3, userData4: data4, userData5: data5, userData6: data6, userData7: data7, userData8: data8, userData9: data9, userData10: data10, userData11: data11, message: message });
+//                                  });
+//                               });
+//                            });
+//                         });
                            
-                        });
-                     });
-                  });
-               });
-            });
-         });
-      });
-   });
-};
+//                         });
+//                      });
+//                   });
+//                });
+//             });
+//          });
+//       });
+//    });
+// };
 
 
 

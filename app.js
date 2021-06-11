@@ -251,6 +251,7 @@ var upload = multer({ storage: storage });
 
 
 //add_candidate
+/*
 app.post('/add_candidate', upload.any(), function (req, res, next) {
  
   console.log('files'+req.files);
@@ -858,9 +859,10 @@ certificates7.forEach(element => {
       });
     });
   });
-});
+});*/
 
 //update profile
+/*
 app.post('/update_profile', upload.any(), function (req, res, next) {
   console.log(req.files);
   var certificate;
@@ -2503,7 +2505,7 @@ var sql = "UPDATE `ems`.`cand_certificate_details` SET `certificate1` = '" + cer
       });
     });
   });
-});
+});*/
 
 //download process
 app.post('/biometric_dwd', function (req, res) {
@@ -2523,12 +2525,12 @@ app.post('/notesdownload', function (req, res) {
 
 app.get('/', routes.index);
 app.get('/icboard', user.icboard);
-app.get('/mbbs_viewcand', user.mbbs_viewcand);
-app.post('/mbbs_viewcand', user.mbbs_viewcand);
-app.get('/update_profile', user.update_profile);
-app.post('/update_profile', user.update_profile);
-app.get('/mbbs_editcand', user.mbbs_editcand);
-app.post('/mbbs_editcand', user.mbbs_editcand);
+// app.get('/mbbs_viewcand', user.mbbs_viewcand);
+// app.post('/mbbs_viewcand', user.mbbs_viewcand);
+// app.get('/update_profile', user.update_profile);
+// app.post('/update_profile', user.update_profile);
+// app.get('/mbbs_editcand', user.mbbs_editcand);
+// app.post('/mbbs_editcand', user.mbbs_editcand);
 app.get('/add_user', user.add_user);
 app.get('/report1', user.report1);
 app.post('/report1', user.report1);
@@ -2555,7 +2557,7 @@ app.post('/view_report', user.view_report);
 app.post('/add_user', user.add_user);
 app.get('/collect_fees', user.collect_fees);
 app.post('/collect_fees', user.collect_fees);
-app.get('/mbbs_viewstudent', user.mbbs_viewstudent);
+// app.get('/mbbs_viewstudent', user.mbbs_viewstudent);
 
 
 app.get('/pwdrecovery', user.pwdrecovery);
@@ -2565,8 +2567,8 @@ app.post('/pwdupdate', user.pwdupdate);
 
 app.get('/forgotpwd', user.forgotpwd);
 
-app.get('/icsignup', user.icsignup);
-app.post('/icsignup', user.icsignup);
+// app.get('/icsignup', user.icsignup);
+// app.post('/icsignup', user.icsignup);
 
 app.get('/login', routes.index);
 app.get('/logout', user.logout);
@@ -2577,7 +2579,7 @@ app.get('/mbbs_board', user.mbbs_board);
 
 //mdms
 app.get('/mdms_board', user.mdms_board);
-app.post('/mdms_board', user.mdms_board);
+app.post('/mdms_board',user.mdms_board);
 app.get('/update_mdms', upload.any(),user.edit_mdmscand);
 app.post('/update_mdms', upload.any(), user.edit_mdmscand);
 //app.get('/add_students',user.insert_mdms);
@@ -2586,8 +2588,8 @@ app.post('/add_students',upload.any(),user.insert_mdms);
 
 
 
-app.get('/add_candidate', user.add_candidate);
-app.post('/add_candidate', user.add_candidate);
+// app.get('/add_candidate', user.add_candidate);
+// app.post('/add_candidate', user.add_candidate);
 app.get('/reli_check', user.reli_check);
 app.post('/reli_check', user.reli_check);
 

@@ -101,7 +101,7 @@ $(this).parent().find('.form-control').val($(this).val().replace(/C:\\fakepath\\
 $('.clickable').click(function(){
 if($(this).hasClass('collapsed'))  {
 $(this).text('Less');
-alert('Add more certificate');
+
 } 
 });
 

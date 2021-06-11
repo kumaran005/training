@@ -111,22 +111,33 @@
                   <i class="nav-icon fa fa-chalkboard-teacher"></i>
                   <span id="dash">Dashboard</span>
                               </button>
-                           
+                <script>
+                  function reply(course){
+                    document.getElementById('click_course').value = course;
+                    
+                  }
+                </script>           
+                
+                  
                 <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
                   <li><a class="dropdown-item" href="/stipend">Stipend Register</a></li>
-
+    
                   <li class="dropdown-submenu"><a class="dropdown-item dropdown-toggle" href="#">Courses</a>
                     <ul class="dropdown-menu">
                       <li><a class="dropdown-item" href="/aissc_board">AISSC</a></li>
                       <li><a class="dropdown-item" href="/bsc_board">B.Sc.</a></li>
                       <li><a class="dropdown-item" href="/mbbs_board">MBBS</a></li>
-                      <li><a class="dropdown-item" href="/mdms_board">MDMS</a></li>
+                     
+                      <input type='submit' id="click_course" name='course' hidden value='' />
+                      <li onclick="reply('MDMS')"><a class="dropdown-item" href="/mdms_board" >MDMS</a></li>
+                     
                       <li><a class="dropdown-item" href="/nursing">Nursing Diploma</a></li>
                       <li><a class="dropdown-item" href="/para_diploma">Paramedical Diploma</a></li>
                       <li><a class="dropdown-item" href="/para_certificate">Paramedical Certificate</a></li>
             
                     </ul>
                   </li>
+    
                 </ul>
               </div>
             
