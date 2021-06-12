@@ -1786,11 +1786,10 @@ exports.insert_mdms = function (req, res) {
                                              userData10: data10,userData11:data11,userData12:data12,userData13:data13,userData14:data14,
                                              userData15:data15,userData16:data16,userData17:data17,userData18:data18,userData19:data19});}
       if(course == 'MDMS'){
-      res.render('mdms_viewstudent.ejs', {message: message, userData: data, userData1: data1,
-                                           userData3: data3, userData4: data4, userData5: data5, userData6: data6,
-                                          userData7:data7, userData8: data8,  userData10: data10, userData11: data11, 
-                                          userData12:data12,userData14:data14, userData15:data15,userData16:data16,userData17:data17,
-                                          userData18:data18});}
+         res.render('mdms_viewstudent.ejs', {message: message, userData: data, userData1: data1,userData3: data3, userData4: data4, userData5: data5, userData6: data6,
+                                             userData7:data7, userData8: data8, userData10: data10, userData11: data11,userData12:data12,userData13:data13,userData14:data14,
+                                             userData15:data15,userData16:data16,userData20:data20,userData21:data21,userData22:data22,userData23:data23,userData24:data24,userData25:data25});}
+
                                           });});});});});});});});
                                           });});});});});});});});
                                           });});});});});});});});
@@ -2327,11 +2326,9 @@ certificates7.forEach(element => {
                                                 userData10: data10,userData11:data11,userData12:data12,userData13:data13,userData14:data14,
                                                 userData15:data15,userData16:data16,userData17:data17,userData18:data18,userData19:data19});}
          if(course == 'MDMS'){
-         res.render('mdms_viewstudent.ejs', {message: message, userData: data, userData1: data1,
-                                              userData3: data3, userData4: data4, userData5: data5, userData6: data6,
-                                             userData7:data7, userData8: data8,  userData10: data10, userData11: data11, 
-                                             userData12:data12,userData14:data14, userData15:data15,userData16:data16,userData17:data17,
-                                             userData18:data18});}
+            res.render('mdms_viewstudent.ejs', {message: message, userData: data, userData1: data1,userData3: data3, userData4: data4, userData5: data5, userData6: data6,
+                                                userData7:data7, userData8: data8, userData10: data10, userData11: data11,userData12:data12,userData13:data13,userData14:data14,
+                                                userData15:data15,userData16:data16,userData20:data20,userData21:data21,userData22:data22,userData23:data23,userData24:data24,userData25:data25});}
       
                                              });});});});});});});});});});});});});
                                              });});});});});});});});});});});});});

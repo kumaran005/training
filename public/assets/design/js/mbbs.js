@@ -52,36 +52,36 @@ $(this).hide();
 });
 
 
-$(document).on('click', '.delete', function() {
-$(this).parents('tr').remove();
-});
-  let tBody = document.getElementById('myTable');
-let modal = document.getElementById('myModal');
-let tr = tBody.getElementsByTagName('TR');
-let span = document.getElementsByClassName("close")[1];
+// $(document).on('click', '.delete', function() {
+// $(this).parents('tr').remove();
+// });
+//   let tBody = document.getElementById('myTable');
+// let modal = document.getElementById('myModal');
+// let tr = tBody.getElementsByTagName('TR');
+// let span = document.getElementsByClassName("close")[1];
 
 
-// When the user clicks on the button, open the modal 
-for (let i = 0; i < tr.length; i++) {
-tr[i]. onclick = function() {
-modal.style.display = "block";
-modal.style.overflow = "auto";
-modal.style.overflowX= "auto";
+// // When the user clicks on the button, open the modal 
+// for (let i = 0; i < tr.length; i++) {
+// tr[i]. onclick = function() {
+// modal.style.display = "block";
+// modal.style.overflow = "auto";
+// modal.style.overflowX= "auto";
 
 
-console.log(this.firstElementChild.innerHTML + ' Selected'); 
-};
-}
-// When the user clicks on <span> (x), close the modal
-span.onclick = function() {
-modal.style.display = "none";
-}
-// When the user clicks anywhere outside of the modal, close it
-window.onclick = function(event) {
-if (event.target == modal) {
-  modal.style.display = "none";
-}
-}
+// console.log(this.firstElementChild.innerHTML + ' Selected'); 
+// };
+// }
+// // When the user clicks on <span> (x), close the modal
+// span.onclick = function() {
+// modal.style.display = "none";
+// }
+// // When the user clicks anywhere outside of the modal, close it
+// window.onclick = function(event) {
+// if (event.target == modal) {
+//   modal.style.display = "none";
+// }
+// }
 
 
 

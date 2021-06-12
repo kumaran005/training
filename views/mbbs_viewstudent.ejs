@@ -51,8 +51,43 @@
                           // var e = relived.value;
                           // console.log('value:'+e);
                           // alert('value:'+e);}
+
+
+  
+/* $(document).ready(function(){
+$(document).on('click', '.delete', function() {
+$(this).parents('tr').remove();
+});
+        let tBody = document.getElementById('myTable');
+let modal = document.getElementById('myModal');
+let tr = tBody.getElementsByTagName('TR');
+let span = document.getElementsByClassName("close")[1];
+
+
+// When the user clicks on the button, open the modal
+for (let i = 0; i < tr.length; i++) {
+  tr[i]. onclick = function() {
+    modal.style.display = "block";
+    modal.style.overflow = "auto";
+    modal.style.overflowX= "auto";
+
+
+    console.log(this.firstElementChild.innerHTML + ' Selected');
+  };
+}
+span.onclick = function() {
+      modal.style.display = "none";
+  }
+  // When the user clicks anywhere outside of the modal, close it
+  window.onclick = function(event) {
+      if (event.target == modal) {
+          modal.style.display = "none";
+      }
+  }
+ 
+
+  });  */                      
   function get_course(){
-    // alert(course[0].course);
   document.getElementById("c").value =admission_detail[0].course;
   }
   
@@ -63,10 +98,7 @@
     edit(clicked_id);
     cert(clicked_id); 
   }
-  
-  function relive(status){
-    alert('status:'+status);
-  }
+ 
   
 
 bio=(clicked_id) =>{
@@ -802,19 +834,26 @@ edit=(clicked_id)=>{
 
                   </tr>
                 </thead>
-                <tbody id="myTable">
-                  <% if(userData.length!=0){ var i=1; userData.forEach(function(classdata){ %>
-                    <tr>
-                      <td>
-                  
-                          <input type='text' name='cand_id' hidden value='<%=classdata.cand_id %>' />
-                          <!-- <button id="btn-signup" type="submit" class="btn btn-outline-info  btn-sm">View</button> -->
-                          <button id="btn-signup" onClick="reply_click(this.name)" class="btn btn-outline-info btn-sm" type="button" data-toggle="modal" name= "<%=classdata.cand_id %>"   data-target="#myModal">View </button>
+               
+            <script>
+               function reply_table(e){
+                 value = JSON.stringify(e.innerHTML);
+                 value1 = (JSON.parse(value));
+                 console.log(value1);
+                 
 
-                        
+               
+               }
+               
+               
+            </script>
+                <tbody id="myTable" >
+                  <% if(userData.length!=0){ var i=1; userData.forEach(function(classdata){ %>
+                    <tr   onclick="reply_table(this)" id="cand_table"  name='<%=classdata.cand_id %>'>
+                      <td>            
+                          <button id="btn-signup" data-target="#myModal" data-toggle="modal" onClick="reply_click(this.name)" name='<%=classdata.cand_id %>' class="btn btn-outline-info btn-sm" type="button" >View </button>
                       </td>
                       <td id="id">
-
                         <%=classdata.cand_id %>
                       </td>
                       <td>
