@@ -38,7 +38,7 @@ CREATE TABLE `cand_institute_details` (
   `board` varchar(450) DEFAULT NULL,
   `last_modified_time` varchar(900) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=317 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=337 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -47,7 +47,7 @@ CREATE TABLE `cand_institute_details` (
 
 LOCK TABLES `cand_institute_details` WRITE;
 /*!40000 ALTER TABLE `cand_institute_details` DISABLE KEYS */;
-INSERT INTO `cand_institute_details` VALUES (312,'Raja765206','chhhj','unknown','TN','TN','2020-03-23','346346','yes','34346','5','undefined','state','06/02/2021 16:16:57'),(313,'msms331712','','','','','','','','',' ','undefined','','06/05/2021 18:18:13'),(314,'Raja89359','','','','','','','','',' ','undefined','','06/06/2021 14:52:33'),(315,'Raja622030','','','','','','','','',' ','undefined','','06/07/2021 10:12:01'),(316,'stev128826','','','','','','','','',' ','undefined','','06/08/2021 14:13:06');
+INSERT INTO `cand_institute_details` VALUES (327,'Raja125635','','','','','','','','',' ','undefined','','06/11/2021 22:42:38'),(328,'news90315','','','','','','','','',' ','undefined','','06/12/2021 09:32:14'),(329,'blac780865','','undefined','undefined','undefined','undefined','undefined','undefined','undefined','undefined','undefined','undefined','06/12/2021 12:19:55'),(330,'kuma240208','','undefined','undefined','undefined','undefined','undefined','undefined','undefined','undefined','undefined','undefined','06/12/2021 12:26:13'),(331,'kuma681905','','undefined','undefined','undefined','undefined','undefined','undefined','undefined','undefined','undefined','undefined','06/12/2021 12:26:53'),(332,'venk55947','','','','','','','','',' ','undefined','','06/13/2021 22:28:16'),(333,'Raja409544','','undefined','undefined','undefined','undefined','undefined','undefined','undefined','undefined','undefined','undefined','06/14/2021 16:45:36'),(334,'test629610','','undefined','undefined','undefined','undefined','undefined','undefined','undefined','undefined','undefined','undefined','06/14/2021 17:14:24'),(335,'Raja708158','','','','','','','','',' ','2011','','06/14/2021 18:33:09'),(336,'test135138','naemnama','unknown','TN','TN','2000-03-12','23123','Rajakumaran V','34346','5','2012','state','06/14/2021 19:48:22');
 /*!40000 ALTER TABLE `cand_institute_details` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -60,4 +60,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-06-08 22:22:18
+-- Dump completed on 2021-06-15 14:00:35

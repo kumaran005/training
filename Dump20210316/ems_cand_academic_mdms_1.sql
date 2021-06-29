@@ -36,7 +36,7 @@ CREATE TABLE `cand_academic_mdms_1` (
   `pg_diplamo_speciality` varchar(900) DEFAULT NULL,
   `last_modified_time` varchar(900) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=60 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=79 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -45,6 +45,7 @@ CREATE TABLE `cand_academic_mdms_1` (
 
 LOCK TABLES `cand_academic_mdms_1` WRITE;
 /*!40000 ALTER TABLE `cand_academic_mdms_1` DISABLE KEYS */;
+INSERT INTO `cand_academic_mdms_1` VALUES (69,'Raja125635','undefined','undefined','undefined','undefined','undefined','undefined','undefined','undefined','undefined','06/13/2021 20:39:02'),(70,'news90315','undefined','undefined','undefined','undefined','undefined','undefined','undefined','undefined','undefined','06/12/2021 09:32:55'),(71,'blac780865','','','',' ','','',' ','','','06/12/2021 12:19:55'),(72,'kuma240208','','','',' ','','',' ','','','06/12/2021 12:27:55'),(73,'kuma681905','','','',' ','','',' ','','','06/12/2021 12:26:53'),(74,'venk55947','undefined','undefined','undefined','undefined','undefined','undefined','undefined','undefined','undefined','06/14/2021 14:43:05'),(75,'Raja409544','','','',' ','','',' ','','','06/14/2021 16:45:36'),(76,'test629610','','','',' ','','',' ','','','06/14/2021 17:14:24'),(77,'Raja708158','undefined','undefined','undefined','undefined','undefined','undefined','undefined','undefined','undefined','06/14/2021 18:33:09'),(78,'test135138','undefined','undefined','undefined','undefined','undefined','undefined','undefined','undefined','undefined','06/14/2021 19:48:22');
 /*!40000 ALTER TABLE `cand_academic_mdms_1` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -57,4 +58,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-06-08 22:22:22
+-- Dump completed on 2021-06-15 14:00:38

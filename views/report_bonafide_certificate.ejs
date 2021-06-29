@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Ponmari_Sample</title>
+  <!-- Tell the browser to be responsive to screen width -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="/assets/dashboard/plugins/fontawesome-free/css/all.min.css">
+  <!-- Ionicons -->
+  <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+  <!-- bootsrtap -->
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <!-- Theme style -->
+  <link rel="stylesheet" href="/assets/dashboard/dist/css/mbbs.css">
+  
+  <!-- Google Font Source Sans Pro -->
+  <!-- <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro300,400,400i,700" rel="stylesheet"> -->
+<style>
+      @media print{
+  body{
+    transform:scale(1.3)!important;
+
+  }
+      }
+</style>
+</head>
+
+<body class="hold-transition sidebar-mini">
+
+
+
+  <div class="toolbar no-print">
+    <button class="btn btn-info" onclick="window.print()">
+      Print Certificate
+    </button>
+    <button id="cmd">generate PDF</button>
+
+  </div>
+
+  
+<section id="report"class="blue ">
+<div class="container d-flex justify-content-center">
+       <div id="reportcard"class=" ">
+  <div class="card m-4 p-3"id="bordert">
+
+<div class="row text-center"id="top">
+<div class="col-md-2 text-center"><img src="assets/img/r1.jpg"class="img-fluid"width="150"></div>
+<div class="col-md-7"id="topcenter"><h2 class="other-font ">Tirunelveli Medical College<br><span class="tvl">Tirunelveli,</span></h2>
+  <h5 class="blue margin"id="state"><span class="blue margin">STATE OF TAMILNADU, INDIA<BR>PINCODE:627011</span></h5>
+        <h5 class="text-center margin"id="addrep1"><strong class="blue margin"id="addrep">
+Tel: 91-462-2572733, 257273 Fax: 91-462-2572944</strong>
+</h5>
+<p id="newadd"class="margin">Under the Directorate of Medical Education, Government of Tamilnadu, Chennai-10
+Affliated with the Tamil Nadu Dr.M.G.R. Medical University, Guindy, Chennai-32
+Recognized by the Medical Council of India, New Delhi.
+</p>
+</div>
+<div class="col-md-3 text-right"><img src="assets/img/logo.gif"class="img-fluid"width="135"></div>
+</div>
+   
+        <hr class="margin">
+        <div id="border">
+        
+<br />
+
+      <ul class="text-left text-dark">
+  
+        <div class="row datetop"id="margint">
+          <div class="col-md-2">
+        <li><h5 style="font-size:23px"class="text-dark">REF.NO. </h5></li>
+    
+      </div>
+      <div class="col-md-5"id="ackadd2">
+        <li><h5 style="font-size:23px"class="text-dark"><%=bon_ref_no %></h5></li>
+     
+
+      </div>
+      <div class="col-md-2"id="left">
+        <li><h5 style="font-size:23px"class="text-dark pl-4">DATE: </h5></li>
+    
+      </div>
+      <div class="col-md-3"id="left1">
+        <li><h5 style="font-size:23px"class="text-dark"><%=today %></h5></li>
+    
+      </div>
+
+
+    <div class="col-md-9"></div>
+      <div class="col-md-3 mt-3"id="img">
+        <%
+        if(userData3.length!=0){
+        var i=1;
+        userData3.forEach(function(classdata12){
+        %>
+        <p style="border: 1px slid ;    width: 150px;
+        height: 180px;">
+          <img src="/uploads/<%=classdata12.Filename %>" width='150px'height= '180px' />
+
+          </p>
+          <%  i++; }) %>
+<% } else{ %>
+
+<% } %>
+
+      </div>
+     
+    </div>
+
+
+
+</li>
+<div class="row justify-content-center"id="bonofide">
+  <h2 class="mb-3">
+<b><u style="font-size: 39px;">BONAFIDE CERTIFICATE</u></b>
+
+
+</h2>
+<%
+if(userData.length!=0){
+var i=1;
+userData.forEach(function(classdata){
+%>
+<h4 id="bonafidecert">This is to certify that<b> <%=classdata.name %></b>
+<%  i++; }) %>
+<% } else{ %>
+
+<% } %> is a bonafide student of
+Tirunelveli Medical College, Tirunelveli - 11 
+<%
+if(userData1.length!=0){
+var i=1;
+userData1.forEach(function(classdata1){
+%>
+
+<b><%=bon_purse %>  <%=bon_stud_year%> <%=classdata1.course %></b>
+<%  i++; }) %>
+<% } else{ %>
+
+<% } %>
+during
+the academic year 
+
+
+<%=bon_acad_year %>
+
+</h4>
+<br>
+
+<h4 class="mt-5"id="bonafidecert1">This certificate is issued for the purpose of<b> Applying for 
+  <%=bon_purpose%>  
+</b></h4>
+<div class="col-md-8 "id="bd">
+  
+  <div class="row">
+    <div class="col-md-8">
+   
+<p style="font-size: 25px;font-weight: 100" class="">Date:  <%=today%></p>
+<p style="font-size: 25px;font-weight: 800"><b>Tirunelveli</b></p> 
+</div>
+<div class="col-md-4">
+  
+
+</div>
+</div>
+</div>
+<div class="col-md-4 text-center"id="bd">
+  <p style="font-size: 21px"><b>DEAN <br>Tirunelveli Medical College, Tirunelveli 11</b>
+</p>
+</div>
+
+</div>
+<li>
+<br><br>
+
+</li>
+      </ul>
+    </div>
+</div>
+</div>
+</div>
+</section>
+<!-- jQuery bootstrap -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.1.135/jspdf.min.js"></script>
+<script>
+UPLOADCARE_PUBLIC_KEY = 'demopublickey';
+</script>
+<script src="https://ucarecdn.com/libs/widget/3.x/uploadcare.full.min.js" charset="utf-8"></script>
+<!-- AdminLTE App -->
+<script src="js/adminlte.js"></script>
+<script src="js/mbbs.js"></script>
+
+<!-- AdminLTE for demo purposes -->
+<script src="js/demo.js"></script>
+<!-- page script -->
+
+<script type="text/javascript">
+	$(function () {
+
+    var specialElementHandlers = {
+        '#editor': function (element,renderer) {
+            return true;
+        }
+    };
+ $('#cmd').click(function () {
+        var doc = new jsPDF();
+        doc.fromHTML($('#report').html(), 15, 15, {
+            'width': 170,'elementHandlers': specialElementHandlers
+        });
+        doc.save('sample-file.pdf');
+    });  
+});
+</script>
+<script>
+  
+</script>
+</body>
+
+</html>

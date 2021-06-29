@@ -34,7 +34,12 @@
    var institute_details =<%-JSON.stringify(userData17)%>;
    var mark_details = <%-JSON.stringify(userData18)%>;
    var neet_details = <%-JSON.stringify(userData19)%>;  
-   
+   var fee_details = <%-JSON.stringify(userData26)%>;
+
+
+  //  var msg = <%=message%>;
+
+
   //  alert(admission_detail.length);
   //  alert(profile_detail.length);
   //  alert(address_detail.length);
@@ -54,42 +59,10 @@
 
 
   
-/* $(document).ready(function(){
-$(document).on('click', '.delete', function() {
-$(this).parents('tr').remove();
-});
-        let tBody = document.getElementById('myTable');
-let modal = document.getElementById('myModal');
-let tr = tBody.getElementsByTagName('TR');
-let span = document.getElementsByClassName("close")[1];
-
-
-// When the user clicks on the button, open the modal
-for (let i = 0; i < tr.length; i++) {
-  tr[i]. onclick = function() {
-    modal.style.display = "block";
-    modal.style.overflow = "auto";
-    modal.style.overflowX= "auto";
-
-
-    console.log(this.firstElementChild.innerHTML + ' Selected');
-  };
-}
-span.onclick = function() {
-      modal.style.display = "none";
-  }
-  // When the user clicks anywhere outside of the modal, close it
-  window.onclick = function(event) {
-      if (event.target == modal) {
-          modal.style.display = "none";
-      }
-  }
- 
-
-  });  */                      
-  function get_course(){
-  document.getElementById("c").value =admission_detail[0].course;
-  }
+                      
+  // function get_course(){
+  // document.getElementById("c").value =admission_detail[0].course;
+  // }
   
    function reply_click(clicked_id)
   {
@@ -241,6 +214,7 @@ for(i in admission_detail) {
   var neet = neet_details[i];
   var bank = bank_detail[i];
   var relieving = relieving_detail[i];
+  var fees = fee_details[i];
  
   
   if(clicked_id == admission.cand_id &&
@@ -251,7 +225,8 @@ for(i in admission_detail) {
      clicked_id == marks.cand_id &&
      clicked_id == neet.cand_id &&
      clicked_id == bank.cand_id &&
-     clicked_id == relieving.cand_id 
+     clicked_id == relieving.cand_id &&
+     clicked_id == fees.cand_id
     )
      {
     
@@ -367,7 +342,7 @@ for(i in admission_detail) {
     document.getElementById("cand_zoo_max").placeholder = marks['zoo_max'];
     document.getElementById("cand_lang_paper").placeholder = marks['lang_paper'];
     document.getElementById("cand_subj_code").placeholder = marks['subj_code'];
-    document.getElementById("cand_total_mark").placeholder = marks['total_mark'];
+    document.getElementById("cand_total_mark1").placeholder = marks['total_mark'];
     document.getElementById("cand_max_mark").placeholder = marks['max_mark'];
     
     //neet
@@ -395,7 +370,19 @@ for(i in admission_detail) {
     document.getElementById("cand_amount_refunded").placeholder = relieving['amount_refunded'];
     document.getElementById("cand_date_of_relieving").placeholder = relieving['date_of_relieving'];
     document.getElementById("cand_date_of_reallotment").placeholder = relieving['date_of_reallotment'];
-
+  
+    //fees_details
+    document.getElementById('cand_tution_fee').value  = fees['tution_fee'];
+    document.getElementById('cand_special_fee').value  = fees['special_fee'];
+    document.getElementById('cand_medical_fee').value  = fees['medical_fee'];
+    document.getElementById('cand_caution_fee').value  = fees['caution_fee'];
+    document.getElementById('cand_lib_fee').value  = fees['lib_fee'];
+    document.getElementById('cand_univ_fee').value  = fees['univ_fee'];
+    document.getElementById('cand_lic_fee').value  = fees['lic_fee'];
+    document.getElementById('cand_red_fee').value  = fees['red_fee'];
+    document.getElementById('cand_mis_fee').value  = fees['mis_fee'];
+    document.getElementById('cand_flag_fee').value  = fees['flag_fee'];
+    document.getElementById('cand_total_fee').value  = fees['total_fee'];
    break;
   }
 }
@@ -426,6 +413,8 @@ edit=(clicked_id)=>{
     )
      {
           document.getElementById("edit_cand_id").value =admission['cand_id'];
+          document.getElementById("fee_cand_id").value = admission['cand_id'];
+          document.getElementById("del_cand_id").value = admission['cand_id'];
           document.getElementById("edit_name").value = admission['cand_name'];
           document.getElementById("edit_rank").value = admission['rank'];
           document.getElementById("edit_rank_no").value = admission['rank_no'];
@@ -435,6 +424,8 @@ edit=(clicked_id)=>{
           document.getElementById("edit_reg_no").value = admission['reg_no'];
           document.getElementById("edit_neet_roll_no").value = admission['neet_roll_no'];
           document.getElementById("edit_course").value = admission['course'];
+          document.getElementById("fee_cand_course").value = admission['course'];
+          document.getElementById("del_cand_course").value = admission['course'];
           document.getElementById("edit_admission_type").value = admission['admission_type'];
           document.getElementById("edit_admission_quota").value = admission['admission_quota'];
           document.getElementById("edit_course_commencement").value = admission['course_commencement'];
@@ -537,7 +528,7 @@ edit=(clicked_id)=>{
           document.getElementById("edit_zoo_max").value = marks['zoo_max'];
           document.getElementById("edit_lang_paper").value = marks['lang_paper'];
           document.getElementById("edit_subj_code").value = marks['subj_code'];
-          document.getElementById("edit_total_mark").value = marks['total_mark'];
+          document.getElementById("edit_total_mark1").value = marks['total_mark'];
           document.getElementById("edit_max_mark").value = marks['max_mark'];
           
           // //neet
@@ -569,7 +560,8 @@ edit=(clicked_id)=>{
         
           (profile.gender=='Male')?document.getElementById('radiobtn1').checked = true
           :(profile.gender =='Female')?document.getElementById('radiobtn2').checked =true
-          :document.getElementById('radiobtn3').checked = true;
+          :(profile.gender =='Third Gender')?document.getElementById('radiobtn3').checked = true
+          :null
 
           break;  
         }
@@ -759,9 +751,9 @@ edit=(clicked_id)=>{
                     <div class="col-md-3">
                       <form class="form-inline my-2 my-lg-0"style="position:relative;top:-8px"role="form" method="post" action="/reli_check">
                         
-                        <input type='text' id="c" class="form-control" hidden name="reli_course">
+                        <input type='text' id="c" class="form-control" hidden name="reli_course" value="MBBS">
                       
-                        <select name="reli_info" id="relived" class="form-control col-md-8" onclick="get_course()"  style="font-size: 13px;-webkit-appearance: auto;">
+                        <select name="reli_info" id="relived" class="form-control col-md-8"   style="font-size: 13px;-webkit-appearance: auto;">
                          <option  value='All'>Select Student Type</option>
                          <option  value='All'>All Students</option>
                          <option  value='Yes'>Relieved Students</option>
@@ -773,31 +765,45 @@ edit=(clicked_id)=>{
                        top: -6px;">Change </button>
                       </form>
                       <!-- <p style="font-style: italic;">33 Records Found !</p> -->
+                      <script>
+                         function c(){
+                         
+                           for (i in admission_detail){
+
+                          (document.getElementById("cand_check"+i).checked == true)?(
+                           id = document.getElementById("cand_check"+i).value,
+                           document.getElementById('cand_eck').value=id,
+                          alert(id)):null
+                         }
+                        }
+                        
+
+                      </script>
                     </div>
                     <div class="col-md-3">
-                      <form class="form-inline my-2 my-lg-0"style="position:relative;top:-8px"role="form" method="post" action="/"
-                          onClick="return empty()">
-                       <select name='reli_info' class="form-control col-md-8" style="font-size: 13px;-webkit-appearance: auto;">
+                    <form class="form-inline my-2 my-lg-0"style="position:relative;top:-8px"role="form" method="post" action="/get_reports">
+                      <input type="text" name="check" id="cand_eck" hidden value="" >
+                       <select name='reports' id="sel_report" class="form-control col-md-8" style="font-size: 13px;-webkit-appearance: auto;">
                         <option value=''readonly>Select Document Type</option> 
-                        <option value=''>Admission Register/option>
-                         <option value=''>Admission Letter</option>
-                         <option value=''>Check Slip</option>
-                         <option value=''> Student Details</option>
-                         <option value=''> Education Details</option>
-                         <option value=''> Bond Form</option>
-                         <option value=''> Relieving Letter</option>
-                         <option value=''> Bonofide Certificate</option>
-                         <option value=''> Certificate Return Acknowledgment</option>
-                         <option value=''> University Form</option>
-                         <option value=''> Transfer Certificate</option>
-                         <option value=''> Conduct Certificate</option>
-                         <option value=''> Scholarship Register</option>
-                         <option value=''> Bonofide Register</option>
-                         <option value=''> Report</option>
+                        <option value='Admission Register'>Admission Register</option>
+                         <option value='Admission Letter'>Admission Letter</option>
+                         <option value='Check Slip'>Check Slip</option>
+                         <option value='Student Details'> Student Details</option>
+                         <option value='Education Details'> Education Details</option>
+                         <option value='Bond Form'> Bond Form</option>
+                         <option value='Relieving Letter'> Relieving Letter</option>
+                         <option value='Bonofide Certificate'> Bonofide Certificate</option>
+                         <option value='Certificate Return Acknowledgment'> Certificate Return Acknowledgment</option>
+                         <option value='University Form'> University Form</option>
+                         <option value='Transfer Certificate'> Transfer Certificate</option>
+                         <option value='Conduct Certificate'> Conduct Certificate</option>
+                         <option value='Scholarship Register'> Scholarship Register</option>
+                         <option value='Bonofide Register'> Bonofide Register</option>
+                         <option value='Report'> Report</option>
                        </select>
                    
                        &nbsp;&nbsp;
-                       <button id="btn-signup" type="submit" class="btn btn-primary "style="font-size:13px; position: relative;
+                       <button id="btn-signup" type="submit" onclick="c()" class="btn btn-primary "style="font-size:13px; position: relative;
                        top: -6px;">Print </button>
                       </form>
                       <!-- <p style="font-style: italic;">33 Records Found !</p> -->
@@ -835,24 +841,17 @@ edit=(clicked_id)=>{
                   </tr>
                 </thead>
                
-            <script>
-               function reply_table(e){
-                 value = JSON.stringify(e.innerHTML);
-                 value1 = (JSON.parse(value));
-                 console.log(value1);
-                 
-
-               
-               }
-               
-               
-            </script>
                 <tbody id="myTable" >
-                  <% if(userData.length!=0){ var i=1; userData.forEach(function(classdata){ %>
-                    <tr   onclick="reply_table(this)" id="cand_table"  name='<%=classdata.cand_id %>'>
-                      <td>            
-                          <button id="btn-signup" data-target="#myModal" data-toggle="modal" onClick="reply_click(this.name)" name='<%=classdata.cand_id %>' class="btn btn-outline-info btn-sm" type="button" >View </button>
-                      </td>
+                  <% if(userData.length!=0){ var i=0; userData.forEach(function(classdata){ %>
+                    <tr>
+                      
+                     <td>           
+                      <input type="checkbox" name="check" id="cand_check<%=i%>" value="<%=classdata.cand_id %>">
+                      
+                      <!-- <input type="text" name="check" id="cand_eck" hidden value="<%=classdata.cand_id %>"> -->
+                     </td>
+                    <tr  id="cand_table" onclick="reply_click('<%=classdata.cand_id %>')" data-target="#myModal" data-toggle="modal" >
+
                       <td id="id">
                         <%=classdata.cand_id %>
                       </td>
@@ -873,7 +872,7 @@ edit=(clicked_id)=>{
                         <%=classdata.date_of_admission %>
                       </td>
 
-                    </tr>
+                    </tr></tr>
                     <% i++; }) %>
                       <% } else{ %>
 
@@ -1403,8 +1402,7 @@ edit=(clicked_id)=>{
                                     </div>
                                     <div class="form-group">
                                       <label for="exampleFormControlInput120">Voter Id</label>
-                                      <input type="text" class="form-control" id="exampleFormControlInput120"
-                                        name='voter_id'>
+                                      <input type="text" class="form-control"  name='voter_id'>
                                     </div>
 
                                   </div>
@@ -1642,10 +1640,19 @@ edit=(clicked_id)=>{
                                       </div>
                                       <div class="form-group">
                                         <label for="exampleFormControlSelect4">Year Of Passing</label>
-                                        
+                                        <i class="fa fa-caret-down " id="drop"></i>
+  
+                                        <select class="form-control" name="year_of_passing" id="edit_year_of_passing">
+                                    
+                                          <option value="2010">2010</option>
+                                          <option value="2011">2011</option>
+                                          <option value="2012">2012</option>
+                                          <option value="2013">2013</option>
+                                          <option value="2014">2014</option>
+                                        </select>
 
                                         
-                                          <input type="number" class="form-control" id="exampleFormControlInput9">
+                                          
                                        
                                       </div>
                                     </div>
@@ -1800,7 +1807,7 @@ edit=(clicked_id)=>{
 
                                             <td><input type="number" name="subj_code" class="form-control"
                                                 placeholder=""></td>
-                                            <td><input type="number" name="total_mark" class="form-control"
+                                            <td><input type="number" name="total_mark1" class="form-control"
                                                 placeholder=""></td>
                                             <td><input type="number" name="max_mark" class="form-control"
                                                 placeholder=""></td>
@@ -2767,15 +2774,15 @@ edit=(clicked_id)=>{
   <div class="col-md-3">
       <div class="form-group">
       <label for="cand_state">State</label>
-      <input type="text" class="form-control" id="cand_state" required="">
+      <input type="text" class="form-control" id="cand_state" >
     </div>
       <div class="form-group">
       <label for="cand_duration">Duration </label>
-      <input type="number" class="form-control" id="cand_duration" required="">
+      <input type="number" class="form-control" id="cand_duration" >
     </div>
       <div class="form-group">
       <label for="cand_year_of_passing">Year Of Passing</label>
-      <input type="number" class="form-control" id="cand_year_of_passing" required="">
+      <input type="number" class="form-control" id="cand_year_of_passing" >
    
       
     </div>
@@ -2913,7 +2920,7 @@ edit=(clicked_id)=>{
                         <td><input type="text" name="" class="form-control" id="cand_lang_paper"></td> 
                          
                         <td><input type="text" name="" class="form-control" id="cand_subj_code"></td>
-                        <td><input type="text" name="" class="form-control" id="cand_total_mark"></td>
+                        <td><input type="text" name="" class="form-control" id="cand_total_mark1"></td>
   
                         <td><input type="text" name="" class="form-control" id="cand_max_mark"></td>
                          <td><input type="text" name="" class="form-control" id="" placeholder="90%"></td></tr>
@@ -3249,7 +3256,7 @@ edit=(clicked_id)=>{
 
 
   <!-- Modal -->
-  <form class="form-horizontal" role="form" method="post" action="/update_mdms" onClick="return empty()"
+  <form class="form-horizontal" role="form" method="post" action="/update_student" onClick="return empty()"
   enctype="multipart/form-data"> 
 
   <input type='text' id="edit_cand_id" name='cand_id' hidden value='' />
@@ -3413,16 +3420,15 @@ edit=(clicked_id)=>{
                   <select class="form-control" name="blood_group" id="edit_blood_group">
                     <option hidden selected>&#160;</option>
   
-                   <option value="volvo">O+</option>
-                   <option value="saab">B+</option>
-                   <option value="saab">A+</option>
+                   <option value="O+">O+</option>
+                   <option value="B+">B+</option>
+                   <option value="A+">A+</option>
   
-                   <option value="saab">AB+</option>
-                   <option value="saab">A-</option>
-                   <option value="saab">B-</option>
-                   <option value="saab">O-</option>
-                   <option value="saab">O-</option>
-                   <option value="saab">AB-</option>
+                   <option value="AB+">AB+</option>
+                   <option value="A-">A-</option>
+                   <option value="B-">B-</option>
+                   <option value="O-">O-</option>
+                   <option value="AB-">AB-</option>
   
   
   
@@ -3444,8 +3450,8 @@ edit=(clicked_id)=>{
                    <i class="fa fa-caret-down "  id="drop"></i>
                
     <select class="form-control" name="nationality" id="edit_nationality">  
-                <option value="volvo">Indian</option>
-                <option value="saab">Srilankan</option>
+                <option value="Indian">Indian</option>
+                <option value="Srilankan">Srilankan</option>
                
                
                </select> 
@@ -3462,8 +3468,8 @@ edit=(clicked_id)=>{
             
             <select class="form-control" name="willing_to_donate_blood" id="edit_willing_to_donate_blood">  
   
-             <option value="volvo">Yes</option>
-              <option value="saab">No</option>
+             <option value="Yes">Yes</option>
+              <option value="No">No</option>
              
              
             </select> 
@@ -3479,9 +3485,9 @@ edit=(clicked_id)=>{
                
                 <select class="form-control"name="religion"id="edit_religion">        
                  
-                 <option value="volvo">Hindu</option>
-                <option value="saab">Christian</option>
-                <option value="mercedes">Islam</option>
+                 <option value="Hindu">Hindu</option>
+                <option value="Christian">Christian</option>
+                <option value="Islam">Islam</option>
                
                </select> 
                
@@ -3498,10 +3504,10 @@ edit=(clicked_id)=>{
            <select class="form-control"name="community" id="edit_community">  
                         
   
-             <option value="volvo">OC</option>
-              <option value="saab">BC</option>
-              <option value="mercedes">SC</option>
-              <option value="audi">MBC</option>
+             <option value="OC">OC</option>
+              <option value="BC">BC</option>
+              <option value="SC">SC</option>
+              <option value="MBC">MBC</option>
             </select> 
               </div>
                </div>
@@ -3544,10 +3550,10 @@ edit=(clicked_id)=>{
      <select class="form-control" name="selected_category" id="edit_selected_category">    
       <option hidden selected>&#160;</option>
   
-      <option value="volvo">OC</option>
-            <option value="saab">BC</option>
-            <option value="mercedes">SC</option>
-            <option value="audi">MBC</option>
+      <option value="OC">OC</option>
+            <option value="BC">BC</option>
+            <option value="SC">SC</option>
+            <option value="MBC">MBC</option>
             </select>   </div>
             <div class="form-group">
               <label for="edit_reg_no">Registration Number</label>
@@ -3578,10 +3584,10 @@ edit=(clicked_id)=>{
   
      <select class="form-control" name="admission_type" id="edit_admission_type" >    
   
-      <option value="volvo">Regular Admission</option>
-            <option value="saab">BC</option>
-            <option value="mercedes">SC</option>
-            <option value="audi">MBC</option>
+      <option value="Regular Admission">Regular Admission</option>
+            <option value="BC">BC</option>
+            <option value="SC">SC</option>
+            <option value="MBC">MBC</option>
             </select>  
            </div>  
            <div class="form-group">
@@ -3590,9 +3596,9 @@ edit=(clicked_id)=>{
   
      <select class="form-control" name="admission_quota" id="edit_admission_quota">    
   
-      <option value="volvo">State Quota</option>
-            <option value="saab">CBSE Quota</option>
-            <option value="mercedes">ALL INDIA Quota</option>
+      <option value="State Quota">State Quota</option>
+            <option value="CBSE Quota">CBSE Quota</option>
+            <option value="ALL INDIA Quota">ALL INDIA Quota</option>
             </select>  
            </div>  
           <!-- </form> -->
@@ -4147,7 +4153,7 @@ edit=(clicked_id)=>{
                         <td><input type="text" name="lang_paper" id="edit_lang_paper"  class="form-control" "></td> 
                          
                         <td><input type="text" name="subj_code" id="edit_subj_code" class="form-control" ></td>
-                        <td><input type="text" name="total_mark_m" id="edit_total_mark" class="form-control" ></td>
+                        <td><input type="text" name="total_mark1" id="edit_total_mark1" class="form-control" ></td>
   
                         <td><input type="text" name="max_mark" id="edit_max_mark" class="form-control" ></td>
                          <td><input type="text" name="" class="form-control" placeholder="90%"></td></tr>
@@ -4717,6 +4723,9 @@ edit=(clicked_id)=>{
 
 
   <!-- Modal -->
+  <form action="" method="post">
+    <input name = "cand_id" id ='del_cand_id' hidden value="">
+    <input name="course" id = 'del_cand_course' hidden value="">
   <div class="modal fade" id="del" tabindex="-1" role="dialog" aria-labelledby="del" aria-hidden="true">
     <div class="modal-dialog" role="document">
       <div class="modal-content" id="delbox">
@@ -4740,20 +4749,23 @@ edit=(clicked_id)=>{
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-          <button type="button" class="btn btn-danger">Delete</button>
+          <button type="submit" formaction="/del_student" class="btn btn-danger">Delete</button>
         </div>
       </div>
     </div>
   </div>
+  </form>
   <!--------------------- ----------------fee modal------------ ---------------------->
 
 
-  <!-- Modal -->
+  <form class="form"  method="POST">
+    <input name = "cand_id" id ='fee_cand_id' hidden value="">
+    <input name="course" id = 'fee_cand_course' hidden value="">
   <div class="modal fade" id="fee" tabindex="-1" role="dialog" aria-labelledby="fee" aria-hidden="true">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="fee"> Fees</h5>
+          <h5  class="modal-title" id="fee"> Fees</h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
@@ -4764,7 +4776,7 @@ edit=(clicked_id)=>{
               <h5 class=" text-center">MBBS - Fees Details</h5>
               <hr class="mb-4">
               <div class="box">
-                <form class="form">
+
                   <div class="form-group row mt-4">
                     <div class="col-md-5">
 
@@ -4776,7 +4788,7 @@ edit=(clicked_id)=>{
                     </div>
                     <div class="col-md-6">
 
-                      <input type="number" id="exampleFormControlInput1">
+                      <input type="number" id="cand_tution_fee" name="tution_fee">
                     </div>
                   </div>
                   <div class="form-group row">
@@ -4790,7 +4802,7 @@ edit=(clicked_id)=>{
                     </div>
                     <div class="col-md-6">
 
-                      <input type="number" id="exampleFormControlInput1">
+                      <input type="number" id="cand_special_fee"name="special_fee">
                     </div>
                   </div>
                   <div class="form-group row">
@@ -4805,7 +4817,7 @@ edit=(clicked_id)=>{
                     </div>
                     <div class="col-md-6">
 
-                      <input type="number" id="exampleFormControlInput1">
+                      <input type="number" id="cand_medical_fee" name="medical_fee">
                     </div>
                   </div>
                   <div class="form-group row">
@@ -4819,7 +4831,7 @@ edit=(clicked_id)=>{
                     </div>
                     <div class="col-md-6">
 
-                      <input type="number" id="exampleFormControlInput1">
+                      <input type="number" id="cand_caution_fee" name="caution_fee">
                     </div>
                   </div>
                   <div class="form-group row">
@@ -4833,7 +4845,7 @@ edit=(clicked_id)=>{
                     </div>
                     <div class="col-md-6">
 
-                      <input type="number" id="exampleFormControlInput1">
+                      <input type="number" id="cand_lib_fee"name="lib_fee">
                     </div>
                   </div>
                   <div class="form-group row">
@@ -4847,7 +4859,7 @@ edit=(clicked_id)=>{
                     </div>
                     <div class="col-md-6">
 
-                      <input type="number" id="exampleFormControlInput1">
+                      <input type="number" id="cand_univ_fee" name="univ_fee">
                     </div>
                   </div>
                   <div class="form-group row">
@@ -4861,7 +4873,7 @@ edit=(clicked_id)=>{
                     </div>
                     <div class="col-md-6">
 
-                      <input type="number" id="exampleFormControlInput1">
+                      <input type="number" id="cand_lic_fee" name="lic_fee">
                     </div>
                   </div>
                   <div class="form-group row">
@@ -4875,7 +4887,7 @@ edit=(clicked_id)=>{
                     </div>
                     <div class="col-md-6">
 
-                      <input type="number" id="exampleFormControlInput1">
+                      <input type="number" id="cand_red_fee" name="red_fee">
                     </div>
                   </div>
                   <div class="form-group row">
@@ -4888,7 +4900,7 @@ edit=(clicked_id)=>{
                     </div>
                     <div class="col-md-6">
 
-                      <input type="number" id="exampleFormControlInput1">
+                      <input type="number" id="cand_mis_fee" name="mis_fee" >
                     </div>
                   </div>
 
@@ -4903,7 +4915,7 @@ edit=(clicked_id)=>{
                     </div>
                     <div class="col-md-6">
 
-                      <input type="number" id="exampleFormControlInput1">
+                      <input type="number" id="cand_flag_fee" name="flag_fee">
                     </div>
                   </div>
                   <hr class="mb-4">
@@ -4919,11 +4931,11 @@ edit=(clicked_id)=>{
                     </div>
                     <div class="col-md-4">
 
-                      <input type="number" id="exampleFormControlInput1">
+                      <input type="number" id="cand_total_fee">
                     </div>
                   </div>
 
-                </form>
+              
               </div>
             </div>
           </section>
@@ -4931,12 +4943,13 @@ edit=(clicked_id)=>{
         <div class="modal-footer">
           <button type="button" class="btn btn-info" data-dismiss="modal">Cancel</button>
 
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Save</button>
-          <button type="button" class="btn btn-primary">Save and Print</button>
+          <button type="submit"  formaction="/collect_fees" class="btn btn-secondary" data-dismiss="">Save</button>
+          <button type="submit"  formaction = "/print_fees" class="btn btn-primary">Save and Print</button>
         </div>
       </div>
     </div>
   </div>
+</form>
   <!---  Image Link Modal --->
   <div class="modal fade" id="link" tabindex="-1" role="dialog" aria-labelledby="link" aria-hidden="true">
   <div class="modal-dialog" role="document">

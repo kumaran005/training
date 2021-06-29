@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Ponmari_Sample</title>
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!-- Font Awesome -->
+    <link
+      rel="stylesheet"
+      href="/assets/dashboard/plugins/fontawesome-free/css/all.min.css"
+    />
+    <!-- Ionicons -->
+    <link
+      rel="stylesheet"
+      href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css"
+    />
+    <!-- bootsrtap -->
+
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+      crossorigin="anonymous"
+    />
+    <!-- Theme style -->
+    <link rel="stylesheet" href="/assets/dashboard/dist/css/mbbs.css" />
+    <!-- Google Font Source Sans Pro -->
+    <link
+      href="https://fonts.googleapis.com/css?family=Source+Sans+Pro300,400,400i,700"
+      rel="stylesheet"
+    />
+    <style>
+      @media print {
+        body {
+          margin-top: 50px !important;
+        }
+      }
+    </style>
+  </head>
+  <body class="hold-transition sidebar-mini">
+    <div class="toolbar no-print">
+      <button class="btn btn-info" onclick="window.print()">
+        Print Certificate
+      </button>
+    </div>
+
+    <section id="report" class="black">
+      <div class="container d-flex justify-content-center">
+        <div id="reportcard" class="" style="font-family: normal">
+          <div class="row justify-content-center">
+            <div class="col-md-12">
+              <h4
+                class="other-font"
+                style="font-family: normal; font-size: 27px"
+              >
+                <u>TIRUNELVELI MEDICAL COLLEGE, TIRUNELVELI-11. </u>
+              </h4>
+            </div>
+            <h4>
+              <b>
+                <u style="font-family: normal; font-size: 27px">
+                  SCHOLARSHIP REGISTER</u
+                >
+              </b>
+            </h4>
+            <br />
+          </div>
+
+          <b
+            ><p class="text-center mt-50" style="font-family: sans-serif">
+              <i style="font-size: 19px">PERSONAL DETAILS</i>
+            </p></b
+          >
+          <br />
+          <div class="row text-dark" id="bn">
+            <div class="col-md-3" style="font-family: sans-serif">
+              <p>
+                <b><i>NAME:</i></b>
+              </p>
+              <p>
+                <b><i>YEAR OF ADMISSION:</i></b>
+              </p>
+              <p>
+                <b><i>COURSE: </i></b>
+              </p>
+              <p>
+                <b><i>QUOTA:</i></b>
+              </p>
+              <p>
+                <b><i>ADDRESS:</i></b>
+              </p>
+            </div>
+            <div class="col-md-3" style="font-family: sans-serif">
+              <% if(userData.length!=0){ var i=1;
+              userData.forEach(function(classdata){ %>
+              <p>
+                <b><i><%=classdata.name %></i></b>
+              </p>
+              <p>
+                <b><i><%=classdata.academic_year %></i></b>
+              </p>
+              <% if(userData1.length!=0){ var i=1;
+              userData1.forEach(function(classdata1){ %>
+              <p>
+                <b><i><%=classdata1.course %></i></b>
+              </p>
+              <% i++; }) %> <% } else{ %> <% } %> <% i++; }) %> <% } else{ %> <%
+              } %> <% if(userData1.length!=0){ var i=1;
+              userData1.forEach(function(classdata1){ %>
+              <p>
+                <b><i><%=classdata1.admission_quota %></i></b>
+              </p>
+              <% if(userData2.length!=0){ var i=1;
+              userData2.forEach(function(classdata2){ %>
+              <p>
+                <b
+                  ><i>
+                    <%=classdata2.ps_address %> <%=classdata2.ps_pincode %>
+                    <%=classdata2.ps_district %> <%=classdata2.ps_state %>
+                  </i></b
+                >
+              </p>
+              <% i++; }) %> <% } else{ %> <% } %> <% i++; }) %> <% } else{ %> <%
+              } %>
+            </div>
+            <div class="col-md-2" style="font-family: sans-serif">
+              <p>
+                <b><i>DOB:</i></b>
+              </p>
+
+              <p>
+                <b><i>DOJ: </i></b>
+              </p>
+              <p>
+                <b><i>COMMUNITY: </i></b>
+              </p>
+
+              <p class="mt-5">
+                <b><i>MOBILE NO: </i></b>
+              </p>
+            </div>
+            <div class="col-md-3" style="font-family: sans-serif">
+              <% if(userData.length!=0){ var i=1;
+              userData.forEach(function(classdata){ %>
+              <p>
+                <b><i><%=classdata.date_of_birth %></i></b>
+              </p>
+              <% i++; }) %> <% } else{ %> <% } %> <% if(userData1.length!=0){
+              var i=1; userData1.forEach(function(classdata1){ %>
+              <p>
+                <b><i><%=classdata1.date_of_admission %></i></b>
+              </p>
+              <% i++; }) %> <% } else{ %> <% } %> <% if(userData.length!=0){ var
+              i=1; userData.forEach(function(classdata){ %>
+              <p>
+                <b><i><%=classdata.community %></i></b>
+              </p>
+              <% i++; }) %> <% } else{ %> <% } %> <% if(userData8.length!=0){
+              var i=1; userData8.forEach(function(classdata8){ %>
+              <p class="mt-5">
+                <b><i><%=classdata8.mobile_phone %></i></b>
+              </p>
+              <% i++; }) %> <% } else{ %> <% } %>
+            </div>
+
+            <div class="table-responsive text-center" id="tabres">
+              <table class="table table-bordered" id="tablereport">
+                <thead id="p-28">
+                  <tr>
+                    <th scope="col">NAME OF THE SCHOLARSHIP</th>
+                    <th scope="col">REF.NO & DATE</th>
+                    <th scope="col">TO WHOM</th>
+                    <th scope="col">ASST.</th>
+                    <th scope="col">O.S.</th>
+                    <th scope="col">J.A.O.</th>
+                    <th scope="col">V.P.</th>
+                    <th scope="col">DEAN</th>
+                  </tr>
+                </thead>
+                <tbody id="p-32">
+                  <tr>
+                    <td>BC/MBC/DNC State Scholarship</td>
+                    <td style="width: 200px"></td>
+                    <td></td>
+                    <td></td>
+
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td>SC/SCC/SCA/ST State Scholarship</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td>P. M. Award</td>
+                    <td></td>
+
+                    <td></td>
+                    <td></td>
+
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td>Gandhi Award</td>
+                    <td></td>
+
+                    <td></td>
+                    <td></td>
+
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+
+                  <tr>
+                    <td>Anna Award</td>
+                    <td></td>
+
+                    <td></td>
+                    <td></td>
+
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td>C. M. Award</td>
+                    <td></td>
+
+                    <td></td>
+                    <td></td>
+
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td>Intelligence Award</td>
+                    <td></td>
+
+                    <td></td>
+                    <td></td>
+
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td>Special Scholarship</td>
+                    <td></td>
+                    <td></td>
+
+                    <td></td>
+
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <section id="next" class="">
+              <b
+                ><p
+                  class="text-center mb-5 mt-320"
+                  style="font-family: sans-serif"
+                >
+                  <i style="font-size: 19px !important">PERSONAL DETAILS</i>
+                </p></b
+              >
+              <div class="row text-dark" id="bn">
+                <div class="col-md-3" style="font-family: sans-serif">
+                  <p>
+                    <b><i>NAME:</i></b>
+                  </p>
+                  <p>
+                    <b><i>YEAR OF ADMISSION:</i></b>
+                  </p>
+                  <p>
+                    <b><i>COURSE: </i></b>
+                  </p>
+                  <p>
+                    <b><i>QUOTA:</i></b>
+                  </p>
+                  <p>
+                    <b><i>ADDRESS:</i></b>
+                  </p>
+                </div>
+                <div class="col-md-3" style="font-family: sans-serif">
+                  <% if(userData.length!=0){ var i=1;
+                  userData.forEach(function(classdata){ %>
+                  <p>
+                    <b><i><%=classdata.name %></i></b>
+                  </p>
+                  <p>
+                    <b><i><%=classdata.academic_year %></i></b>
+                  </p>
+                  <% if(userData1.length!=0){ var i=1;
+                  userData1.forEach(function(classdata1){ %>
+                  <p>
+                    <b><i><%=classdata1.course %></i></b>
+                  </p>
+                  <% i++; }) %> <% } else{ %> <% } %> <% i++; }) %> <% } else{
+                  %> <% } %> <% if(userData1.length!=0){ var i=1;
+                  userData1.forEach(function(classdata1){ %>
+                  <p>
+                    <b><i><%=classdata1.admission_quota %></i></b>
+                  </p>
+                  <% if(userData2.length!=0){ var i=1;
+                  userData2.forEach(function(classdata2){ %>
+                  <p>
+                    <b
+                      ><i>
+                        <%=classdata2.ps_address %> <%=classdata2.ps_pincode %>
+                        <%=classdata2.ps_district %> <%=classdata2.ps_state %>
+                      </i></b
+                    >
+                  </p>
+                  <% i++; }) %> <% } else{ %> <% } %> <% i++; }) %> <% } else{
+                  %> <% } %>
+                </div>
+                <div class="col-md-2" style="font-family: sans-serif">
+                  <p>
+                    <b><i>DOB:</i></b>
+                  </p>
+
+                  <p>
+                    <b><i>DOJ: </i></b>
+                  </p>
+                  <p>
+                    <b><i>COMMUNITY: </i></b>
+                  </p>
+
+                  <p class="mt-5">
+                    <b><i>MOBILE NO: </i></b>
+                  </p>
+                </div>
+                <div class="col-md-3" style="font-family: sans-serif">
+                  <% if(userData.length!=0){ var i=1;
+                  userData.forEach(function(classdata){ %>
+                  <p>
+                    <b><i><%=classdata.date_of_birth %></i></b>
+                  </p>
+                  <% i++; }) %> <% } else{ %> <% } %> <%
+                  if(userData1.length!=0){ var i=1;
+                  userData1.forEach(function(classdata1){ %>
+                  <p>
+                    <b><i><%=classdata1.date_of_admission %></i></b>
+                  </p>
+                  <% i++; }) %> <% } else{ %> <% } %> <% if(userData.length!=0){
+                  var i=1; userData.forEach(function(classdata){ %>
+                  <p>
+                    <b><i><%=classdata.community %></i></b>
+                  </p>
+                  <% i++; }) %> <% } else{ %> <% } %> <%
+                  if(userData8.length!=0){ var i=1;
+                  userData8.forEach(function(classdata8){ %>
+                  <p class="mt-5">
+                    <b><i><%=classdata8.mobile_phone %></i></b>
+                  </p>
+                  <% i++; }) %> <% } else{ %> <% } %>
+                </div>
+
+                <div class="table-responsive text-center" id="tabres">
+                  <table class="table table-bordered" id="tablereport">
+                    <thead id="p-28">
+                      <tr>
+                        <th scope="col">NAME OF THE SCHOLARSHIP</th>
+                        <th scope="col" width="200">REF.NO &amp; DATE</th>
+                        <th scope="col">TO WHOM</th>
+                        <th scope="col">ASST.</th>
+                        <th scope="col">O.S.</th>
+                        <th scope="col">J.A.O.</th>
+                        <th scope="col">V.P.</th>
+                        <th scope="col">DEAN</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>First Graduate</td>
+                        <td style="width: 200px"></td>
+
+                        <td></td>
+                        <td></td>
+
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                      </tr>
+                      <tr>
+                        <td>National Scholarship Portal</td>
+                        <td></td>
+
+                        <td></td>
+                        <td></td>
+
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                      </tr>
+                      <tr>
+                        <td>N.H.F.D.C. Scholarship.</td>
+                        <td></td>
+
+                        <td></td>
+                        <td></td>
+
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                      </tr>
+                      <tr>
+                        <td>Kerala State Scholarship</td>
+                        <td></td>
+
+                        <td></td>
+                        <td></td>
+
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                      </tr>
+                      <tr>
+                        <td>Farmers Scholarship.</td>
+                        <td></td>
+
+                        <td></td>
+                        <td></td>
+
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                      </tr>
+                      <tr>
+                        <td>Railway Staff Scholarship.</td>
+                        <td></td>
+
+                        <td></td>
+                        <td></td>
+
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                      </tr>
+                      <tr>
+                        <td>Ex - Service Man Scholarship</td>
+                        <td></td>
+
+                        <td></td>
+                        <td></td>
+
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                      </tr>
+                      <tr>
+                        <td>Private Scholarship</td>
+                        <td></td>
+
+                        <td></td>
+                        <td></td>
+
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                      </tr>
+                      <tr>
+                        <td>E - Grants Scholarship</td>
+                        <td></td>
+
+                        <td></td>
+                        <td></td>
+
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                      </tr>
+                      <tr>
+                        <td>N.G.P.L. Scholarship.</td>
+                        <td></td>
+
+                        <td></td>
+                        <td></td>
+
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                      </tr>
+                      <tr>
+                        <td>Others</td>
+                        <td></td>
+
+                        <td></td>
+                        <td></td>
+
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </section>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- jQuery bootstrap -->
+    <script
+      src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+      integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+      integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+      integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+      crossorigin="anonymous"
+    ></script>
+    <script>
+      UPLOADCARE_PUBLIC_KEY = "demopublickey";
+    </script>
+    <script
+      src="https://ucarecdn.com/libs/widget/3.x/uploadcare.full.min.js"
+      charset="utf-8"
+    ></script>
+    <!-- AdminLTE App -->
+    <script src="js/adminlte.js"></script>
+    <script src="js/mbbs.js"></script>
+
+    <!-- AdminLTE for demo purposes -->
+    <script src="js/demo.js"></script>
+    <!-- page script -->
+  </body>
+</html>

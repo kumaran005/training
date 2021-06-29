@@ -93,9 +93,9 @@ body{
  
 
 <%
-if(userData1.length!=0){
+if(userData.length!=0){
 var i=1;
-userData1.forEach(function(classdata1){
+userData.forEach(function(classdata1){
 %>
 <p>:&nbsp;&nbsp;<%=classdata1.ar_no%></p>
 <p>:&nbsp;&nbsp;<%=classdata1.neet_mark%></p>
@@ -130,9 +130,9 @@ userData.forEach(function(classdata){
 
   <div class="col-md-4"style="margin-top:-42px;"id="fontnormal">
     <%
-    if(userData1.length!=0){
+    if(userData.length!=0){
     var i=1;
-    userData1.forEach(function(classdata1){
+    userData.forEach(function(classdata1){
     %>
     <p>:&nbsp;<%=classdata1.date_of_admission %></p>
     <p>:&nbsp;<%=classdata1.rank%></p>
@@ -375,17 +375,17 @@ Full Address:
  
 
 <%
-if(userData1.length!=0){
+if(userData.length!=0){
 var i=1;
-userData1.forEach(function(classdata1){
+userData.forEach(function(classdata1){
 %>
 <p>:&nbsp;&nbsp;<%=classdata1.ar_no%></p>
 <p>:&nbsp;&nbsp;<%=classdata1.neet_mark%></p>
 <p>:&nbsp;&nbsp;<%=classdata1.neet_roll_no%></p>
 <%
-if(userData.length!=0){
+if(userData1.length!=0){
 var i=1;
-userData.forEach(function(classdata){
+userData1.forEach(function(classdata){
 %>
 <p>:&nbsp;&nbsp;<%=classdata.academic_year %></p>
 <%  i++; }) %>
@@ -412,9 +412,9 @@ userData.forEach(function(classdata){
 
   <div class="col-md-4"style="margin-top:-42px;"id="fontnormal">
     <%
-    if(userData1.length!=0){
+    if(userData.length!=0){
     var i=1;
-    userData1.forEach(function(classdata1){
+    userData.forEach(function(classdata1){
     %>
     <p>:&nbsp;<%=classdata1.date_of_admission %></p>
     <p>:&nbsp;<%=classdata1.rank%></p>
@@ -589,17 +589,17 @@ Community  (Sub  caste-------------------------)  and  is  fully   aware   that 
  
 
 <%
-if(userData1.length!=0){
+if(userData.length!=0){
 var i=1;
-userData1.forEach(function(classdata1){
+userData.forEach(function(classdata1){
 %>
 <p>:&nbsp;&nbsp;<%=classdata1.ar_no%></p>
 <p>:&nbsp;&nbsp;<%=classdata1.neet_mark%></p>
 <p>:&nbsp;&nbsp;<%=classdata1.neet_roll_no%></p>
 <%
-if(userData.length!=0){
+if(userData1.length!=0){
 var i=1;
-userData.forEach(function(classdata){
+userData1.forEach(function(classdata){
 %>
 <p>:&nbsp;&nbsp;<%=classdata.academic_year %></p>
 <%  i++; }) %>
@@ -686,9 +686,7 @@ Verified at_______   on this the_______   of   _______ <br>
 </b></p></li>
 <li class="text-right"><p><b>Name:_______ </b></p></li>
 <%
-if(userData2.length!=0){
-var i=1;
-userData2.forEach(function(classdata2){
+if(userData2.length!=0){var i=1;userData2.forEach(function(classdata2){
 %>
 <li class="text-right bondaddress col-md-4"><p><b>Address:<span> <%=classdata2.ps_address %>, <%=classdata2.ps_pincode %> <%=classdata2.ps_state %> <%=classdata2.ps_district %>
 </span></b></p></li>

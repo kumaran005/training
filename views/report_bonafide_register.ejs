@@ -17,11 +17,18 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
     integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
   <!-- Theme style -->
-  <link rel="stylesheet" href="/assets/dashboard/dist/css/alter.css">
   <link rel="stylesheet" href="/assets/dashboard/dist/css/mbbs.css">
   <!-- Google Font Source Sans Pro -->
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro300,400,400i,700" rel="stylesheet">
-  
+  <style>
+    @media print{
+body{
+ margin-top:50px!important;
+
+
+}
+    }
+</style>
 </head>
 <body class="hold-transition sidebar-mini">
     <div class="toolbar no-print">
@@ -30,31 +37,33 @@
       </button>
     </div>
    
-<section id="report"class="blue ">
-  <div class="container">
-         <div id="reportcard"class="">
+<section id="report"class="text-dark">
+  <div class="container d-flex justify-content-center">
+         <div id="reportcard"class=""style="font-family:normal">
  
 <div class="row justify-content-center">
-  <div class="col-md-12"><h4 class="other-font ">TIRUNELVELI MEDICAL COLLEGE, TIRUNELVELI-11. 
+  <div class="col-md-12"><h4 class="other-font"style="font-family:normal"><u>TIRUNELVELI MEDICAL COLLEGE, TIRUNELVELI-11. </u>
 </h4>
      </div>
-         <h4><b> BONAFIDE REGISTER
+         <h4><b> <u style="font-family:normal">BONAFIDE REGISTER</u>
 </b></h4><br>
 
       
 </div>
      
-<p class="text-center"><b >PERSONAL DETAILS</b></p>
+<p class="text-center"><b ><i>PERSONAL DETAILS</i></b></p>
 <br>
-<div class="row justify-content-center">
-  <div class="col-md-2">
+<div class="row justify-content-center"id="bn">
+  <div class="col-md-3">
     <p><b><i>NAME:</i></b></p>
         <p><b><i>YEAR OF ADMISSION:</i></b></p>
- <p><b><i>DOB:</i></b></p>
+        <p><b><i>COURSE:
+        </i></b></p>
     <p><b><i>QUOTA:</i></b></p>
-    
+    <p><b><i>ADDRESS:</i></b></p>
+
 </div>
-  <div class="col-md-2">
+  <div class="col-md-3">
     <%
 if(userData.length!=0){
 var i=1;
@@ -62,7 +71,16 @@ userData.forEach(function(classdata){
 %>
         <p><b><i><%=classdata.name %></i></b></p>
         <p><b><i><%=classdata.academic_year %></i></b></p>
-        <p><b><i><%=classdata.date_of_birth %></i></b></p>
+        <%
+        if(userData1.length!=0){
+        var i=1;
+        userData1.forEach(function(classdata1){
+        %>
+        <p><b><i><%=classdata1.course %></i></b></p>
+        <%  i++; }) %>
+        <% } else{ %>
+      
+        <% } %>
         <%  i++; }) %>
         <% } else{ %>
       
@@ -73,23 +91,46 @@ userData.forEach(function(classdata){
         userData1.forEach(function(classdata1){
         %>
         <p><b><i><%=classdata1.admission_quota %></i></b></p>
-       
+        <%
+        if(userData2.length!=0){
+        var i=1;
+        userData2.forEach(function(classdata2){
+        %>
+        <p><b><i> <%=classdata2.ps_address %>
+          <%=classdata2.ps_pincode %>
+          <%=classdata2.ps_state %>
+          <%=classdata2.ps_district %></i></b></p>
+        <%  i++; }) %>
+        <% } else{ %>
+      
+        <% } %>
         <%  i++; }) %>
         <% } else{ %>
       
         <% } %>
 </div>
   <div class="col-md-2">
-   
+    <p><b><i>DOB:</i></b></p>
+
         <p><b><i>DOJ:
 </i></b></p>
  <p><b><i>COMMUNITY:
 </i></b></p>
-    <p><b><i>MOBILE NO: </i></b></p>
-    <p><b><i>ADDRESS:</i></b></p>
+
+    <p class="mt-5"><b><i>MOBILE NO: </i></b></p>
 
 </div>
-   <div class="col-md-3">
+   <div class="col-md-2">
+    <%
+    if(userData.length!=0){
+    var i=1;
+    userData.forEach(function(classdata){
+    %>
+    <p><b><i><%=classdata.date_of_birth %></i></b></p>
+    <%  i++; }) %>
+    <% } else{ %>
+  
+    <% } %>
     <%
     if(userData1.length!=0){
     var i=1;
@@ -115,32 +156,36 @@ userData.forEach(function(classdata){
         var i=1;
         userData8.forEach(function(classdata8){
         %>
-        <p><b><i><%=classdata8.mobile_phone %></i></b></p>
+        <p class="mt-5"><b><i><%=classdata8.mobile_phone %></i></b></p>
         <%  i++; }) %>
         <% } else{ %>
       
         <% } %>
-        <%
-        if(userData2.length!=0){
-        var i=1;
-        userData2.forEach(function(classdata2){
-        %>
-        <p><b><i> <%=classdata2.ps_address %>
-          <%=classdata2.ps_pincode %>
-          <%=classdata2.ps_state %>
-          <%=classdata2.ps_district %></i></b></p>
-        <%  i++; }) %>
-        <% } else{ %>
-      
-        <% } %>
+        
+</div>
+<div class="col-md-2">
+  <%
+  if(userData12.length!=0){
+  var i=1;
+  userData12.forEach(function(classdata12){
+  %>
+  <p style="border: 1px slid ;    width: 150px;
+  height: 180px;">
+    <img src="/uploads/<%=classdata12.Filename %>" width='150px'height= '180px' />
+
+    </p>
+    <%  i++; }) %>
+<% } else{ %>
+
+<% } %>
 </div>
 </div>
-<div class="table-responsive">
+<div class="table-responsive text-center"id="tabres">
     <table class="table table-bordered"id="tablereport">
   <thead>
     <tr>
       <th scope="col">DATE</th>
-      <th scope="col">PURPOSE WITH REF.NO.
+      <th scope="col"width="200px">PURPOSE WITH REF.NO.
 </th>
       <th scope="col">ASST.</th>
       <th scope="col">O.S.</th>
@@ -153,49 +198,139 @@ userData.forEach(function(classdata){
   </thead>
   <tbody>
     <tr>
-      <td >1</td>
-      <td>Aakash A M
-Mobile No: 9894435757
-E-Mail:
-aakashamparvathik@gmail.com</td>
-      <td>Murugan A
-Parvathi K
-38/B, 3rd Cross Street,
-Veeramanikapuram,
-Melapalayam
-Tirunelveli-627005
+      <td ></td>
+      <td></td>
+      <td>
 </td>
      
-<td>HSC,1811355045,SRV Boys
-HSS,Muthukalipatti,Namakkal</td>
-      <td>State Quota</td>
-      <td>B Positive</td>
-            <td><p style="border: 1px solid black;width: 100px;height: 100px">Photo</p></td>
+<td></td>
+      <td></td>
+      <td></td>
+            <td></td>
+
+    </tr>
+    <tr>
+      <td ></td>
+      <td></td>
+      <td>
+</td>
+     
+<td></td>
+      <td></td>
+      <td></td>
+            <td></td>
+
+    </tr>
+    <tr>
+      <td ></td>
+      <td></td>
+      <td>
+</td>
+     
+<td></td>
+      <td></td>
+      <td></td>
+            <td></td>
+
+    </tr>
+    <tr>
+      <td ></td>
+      <td></td>
+      <td>
+</td>
+     
+<td></td>
+      <td></td>
+      <td></td>
+            <td></td>
+
+    </tr>
+    <tr>
+      <td ></td>
+      <td></td>
+      <td>
+</td>
+     
+<td></td>
+      <td></td>
+      <td></td>
+            <td></td>
+
+    </tr>
+    <tr>
+      <td ></td>
+      <td></td>
+      <td>
+</td>
+     
+<td></td>
+      <td></td>
+      <td></td>
+            <td></td>
+
+    </tr>
+     <tr>
+      <td ></td>
+      <td></td>
+      <td>
+</td>
+     
+<td></td>
+      <td></td>
+      <td></td>
+            <td></td>
+
+    </tr>
+    <tr>
+      <td ></td>
+      <td></td>
+      <td>
+</td>
+     
+<td></td>
+      <td></td>
+      <td></td>
+            <td></td>
+
+    </tr>
+  
+    <tr>
+      <td ></td>
+      <td></td>
+      <td>
+</td>
+     
+<td></td>
+      <td></td>
+      <td></td>
+            <td></td>
+
+    </tr>
+    <tr>
+      <td ></td>
+      <td></td>
+      <td>
+</td>
+     
+<td></td>
+      <td></td>
+      <td></td>
+            <td></td>
 
     </tr>
   
         <tr>
-      <td >1</td>
-      <td>Aakash A M
-Mobile No: 9894435757
-E-Mail:
-aakashamparvathik@gmail.com</td>
-      <td>Murugan A
-Parvathi K
-38/B, 3rd Cross Street,
-Veeramanikapuram,
-Melapalayam
-Tirunelveli-627005
+      <td ></td>
+      <td></td>
+      <td>
 </td>
-      <td>16/11/2000</td>
-      <td>11/12/2020</td>
-            <td>Scheduled
-Castes-Hindu
--Hindu -
-Pallan
+      <td></td>
+      <td></td>
+            <td>
+
+
 </td>
-<td>HSC,1811355045,SRV Boys
-HSS,Muthukalipatti,Namakkal</td>
+<td></td>
  
 
     </tr>

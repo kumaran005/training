@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Ponmari_Sample</title>
+  <!-- Tell the browser to be responsive to screen width -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="/assets/dashboard/plugins/fontawesome-free/css/all.min.css">
+  <!-- Ionicons -->
+  <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+  <!-- bootsrtap -->
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <!-- Theme style -->
+  <link rel="stylesheet" href="/assets/dashboard/dist/css/alter.css">
+  <link rel="stylesheet" href="/assets/dashboard/dist/css/mbbs.css">
+  <!-- Google Font Source Sans Pro -->
+  <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro300,400,400i,700" rel="stylesheet">
+  <style>
+    @media print{
+body{
+  margin-top: 150px!important;
+
+}
+    }
+  
+</style>
+</head>
+<body class="hold-transition sidebar-mini">
+    <div class="toolbar no-print">
+      <button class="btn btn-info" onclick="window.print()">
+        Print Certificate
+      </button>
+    </div>
+   
+<section id="report"class="text-dark black"style=" color: #000;">
+  <div class="container">
+         <div id="reportcard"class="bond">
+ 
+          <div class="row justify-content-center">
+            <div class="col-md-12"><h4 class="other-font text-dark"style="font-family:normal"><u>TIRUNELVELI MEDICAL COLLEGE,
+                 TIRUNELVELI-11. </u>
+          </h4>
+          <p class="text-dark text-center mt-5"style="font-weight:600!important;font-family:normal;font-size:20px"><u>DEMAND SLIP</u>
+        </p>
+               </div>
+                   
+          
+                
+          </div>
+     
+
+<br>
+<div class="row text-left justify-content-between  weight demandtop"id="rep7">
+  <div class="col-md-3">
+
+<p><b>Name </b></p>
+  </div>
+  <div class="col-md-3"id="fontnormal">
+
+    <%
+    if(userData.length!=0){
+    var i=1;
+    userData.forEach(function(classdata){
+    %>
+    <p> :&nbsp;&nbsp;<%=classdata.name %></p>
+ 
+    <%  i++; }) %>
+<% } else{ %>
+
+<% } %>
+      </div>
+      <div class="col-md-3">
+</div>
+<div class="col-md-3">
+</div>
+</div>
+<div class="row text-left justify-content-between weight demandtop"id="rep7">
+  <div class="col-md-3">
+
+<p><b>A.R No</b></p>
+<p><b>Neet Mark   </b></p>
+<p><b>Neet UG Roll No
+</b></p>
+<p><b>Year of Admission </b></p>
+
+
+
+
+  </div>
+  <div class="col-md-2"id="fontnormal">
+ 
+
+<%
+if(userData1.length!=0){
+var i=1;
+userData1.forEach(function(classdata1){
+%>
+<p>:&nbsp;&nbsp;<%=classdata1.ar_no%></p>
+<p>:&nbsp;&nbsp;<%=classdata1.neet_mark%></p>
+<p>:&nbsp;&nbsp;<%=classdata1.neet_roll_no%></p>
+<%
+if(userData.length!=0){
+var i=1;
+userData.forEach(function(classdata){
+%>
+<p>:&nbsp;&nbsp;<%=classdata.academic_year %></p>
+<%  i++; }) %>
+<% } else{ %>
+
+<% } %>
+<%  i++; }) %>
+<% } else{ %>
+
+<% } %>
+  
+
+</div>
+
+  <div class="col-md-3"style="margin-top:-45px">
+      <p><b>Date Of Admission</b></p>
+      <p><b>Rank</b></p>
+      <p><b>Community</b></p>
+      <p><b>Select Category</b></p>
+      <p><b>Name Of The Course</b></p>
+      
+  </div>
+
+
+  <div class="col-md-4"style="margin-top:-42px;"id="fontnormal">
+    <%
+    if(userData1.length!=0){
+    var i=1;
+    userData1.forEach(function(classdata1){
+    %>
+    <p>:&nbsp;<%=classdata1.date_of_admission %></p>
+    <p>:&nbsp;<%=classdata1.rank%></p>
+    <%
+    if(userData.length!=0){
+    var i=1;
+    userData.forEach(function(classdata){
+    %>
+    <p>:&nbsp;<%=classdata.community%></p>
+    <%  i++; }) %>
+    <% } else{ %>
+  
+    <% } %>
+    <p>:&nbsp;<%=classdata1.selected_category %></p>
+    <p>:&nbsp;<%=classdata1.course %></p>
+    <%  i++; }) %>
+    <% } else{ %>
+  
+    <% } %>
+
+</div>
+
+  <br>
+</div>
+
+
+<section id="demand">
+    <h4 class="text-center"style="font-family:normal"><b>FEES TO BE PAID</b></h4>
+<div class="row text-justify  mt-1"id="demandrow">
+    <div class="col-md-2">
+        <p><b>S.NO</b></p>
+        <P>1</P>
+        <p>2</p>
+        <p>3</p>
+        <p>4</p>
+        <p>5</p>
+        <p>6</p>
+        <p>7</p>
+        <p>8</p>
+        <p>9</p>
+        <p>10</p>
+
+
+    </div>
+    <div class="col-md-5">
+  
+        <p><b>Particulars</b></p>
+        <p>Tuition fee</p>
+<p>Special Fees</p>
+<p>Medical Exam Fees</p>
+<p>Caution Deposit</p>
+<p>Library Fees</p>
+<p>University Fees</p>
+<p>LIC Fees</p>
+<p>Red Cross Fees</p>
+<p>Miscellaneous Fees</p>
+<p>Flag Day</p>
+
+<p><b>Total</b></p>
+
+    </div>
+
+    <div class="col-md-5">
+       
+        <p><b>Amount (Rs.)</b></p>
+        <%
+        if(userData11.length!=0){
+        var i=1;
+        userData11.forEach(function(classdata11){
+        %>
+<p><%=classdata11.tution_fee%></p>
+<p><%=classdata11.special_fee%></p>
+<p><%=classdata11.medical_fee%></p>
+<p><%=classdata11.caution_fee%></p>
+<p><%=classdata11.lib_fee%></p>
+<p><%=classdata11.univ_fee%></p>
+<p><%=classdata11.lic_fee%></p>
+<p><%=classdata11.red_fee%></p>
+<p><%=classdata11.mis_fee%></p>
+<p><%=classdata11.flag_fee%></p>
+
+<p id="totalline"><b><%=classdata11.total_fee%></b></p>
+<%  i++; }) %>
+<% } else{ %>
+
+<% } %>
+    </div>
+
+</div>
+<%
+if(userData11.length!=0){
+var i=1;
+userData11.forEach(function(classdata11){
+%>
+<p style="font-size: 20px;"class="ml-5">Please collect a sum of Rs.<%=classdata11.total_fee%>/- (Zero Only) from the student.</p>
+<%  i++; }) %>
+<% } else{ %>
+
+<% } %>
+<br><br><br>
+<div class="row mt-5"id="demandrow">
+    <div class="col-md-3">
+        <p>Asst. (ME)</p>
+    </div>
+    <div class="col-md-3">
+        <p>OS</p>
+    </div>
+    <div class="col-md-3">
+        <p>JAO</p>
+    </div>
+    <div class="col-md-3 text-right">
+        <p>AO</p>
+    </div><br><br>
+<div class="col-md-3 text-left mt-5">
+    <div class="t ">
+        <p>Receipt No:</p>
+        <p>Date:</p>
+    </div>
+    <br><br>
+    <p class="">CASHIER</p>
+</div>
+</div>
+</section>
+
+
+
+
+
+                
+  </div>
+</div>
+</div>
+</section>
+
+
+
+ 
+<!-- jQuery bootstrap -->
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+<script>
+UPLOADCARE_PUBLIC_KEY = 'demopublickey';
+</script>
+<script src="https://ucarecdn.com/libs/widget/3.x/uploadcare.full.min.js" charset="utf-8"></script>
+<!-- AdminLTE App -->
+<script src="js/adminlte.js"></script>
+<script src="js/mbbs.js"></script>
+
+<!-- AdminLTE for demo purposes -->
+<script src="js/demo.js"></script>
+<!-- page script -->
+
+
+</body>
+
+</html>

@@ -21,7 +21,19 @@
   <link rel="stylesheet" href="/assets/dashboard/dist/css/mbbs.css">
   <!-- Google Font Source Sans Pro -->
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro300,400,400i,700" rel="stylesheet">
-  
+  <style>
+    @media print{
+     
+      body{
+    transform:scale(1.3)!important;
+
+  }
+      body{
+        margin-top: 130px!important;
+      }
+     
+    }
+  </style>
 </head>
 <body class="hold-transition sidebar-mini">
     <div class="toolbar no-print">
@@ -31,26 +43,41 @@
     </div>
    
 <section id="report"class="blue ">
-  <div class="container-fluid">
-         <div id="reportcard"class="card ">
-    <div class="card m-4 p-3"id="border">
- 
-<div class="row">
-  <div class="col-md-3 text-center"><img src="img/r1.png"class="img-fluid"width="150"></div>
-  <div class="col-md-6"><h2 class="other-font ">Tirunelveli Medical College</h2>
-          <h5 class="text-center "><strong class="blue">Highground, Tirunelveli-627011<br>
-Ph:0462-2572733-PABX, 0462-2572944, website: www.tvmc.ac.in</strong>
-</h5></div>
-  <div class="col-md-3 text-center"><img src="img/r2.png"class="img-fluid"width="150"></div>
-</div>
+  <div class="container d-flex justify-content-center">
+    <div id="reportcard">
+          <div class=" m-4 p-3"id="">
+            <div class="row text-center"id="top">
+              <div class="col-md-2 text-center"><img src="assets/img/r1.jpg"class="img-fluid"width="150"></div>
+              <div class="col-md-7"id="topcenter"><h2 class="other-font ">Tirunelveli Medical College<br><span class="tvl">Tirunelveli,</span></h2>
+                <h5 class="blue margin"id="state"><span class="blue margin">STATE OF TAMILNADU, INDIA<BR>PINCODE:627011</span></h5>
+                      <h5 class="text-center margin"id="addrep1"><strong class="blue margin"id="addrep">
+              Tel: 91-462-2572733, 257273 Fax: 91-462-2572944</strong>
+              </h5>
+              <p id="newadd"class="margin">Under the Directorate of Medical Education, Government of Tamilnadu, Chennai-10
+              Affliated with the Tamil Nadu Dr.M.G.R. Medical University, Guindy, Chennai-32
+              Recognized by the Medical Council of India, New Delhi.
+              </p>
+              </div>
+              <div class="col-md-3 text-right"><img src="assets/img/logo.gif"class="img-fluid"width="135"></div>
+              </div>
+
       <br />
-          <hr>
-          <h4 class="text-center"><strong> 
-ACKNOWLEDGEMENT
+          <hr id="margint"> 
+          <h4 class="text-center text-dark"><strong> 
+<u style="font-family:normal;font-size:18px">ACKNOWLEDGEMENT</u>
 </strong></h4>
   <br />
-  <h5>RECEIVED THE FOLLOWING ORIGINAL CERTIFICATES ON <u>26-Mar-2021</u>
+  <%
+  if(userData13.length!=0){
+  var i=1;
+  userData13.forEach(function(classdata13){
+  %>
+  <h5><span class="text-dark"style="font-family:normal;font-size:18px">RECEIVED THE FOLLOWING ORIGINAL CERTIFICATES ON <u><%=classdata13.ack_date %></u></span>
 </h5><br>
+<%  i++; }) %>
+<% } else{ %>
+
+<% } %>
 <ul id="li">
   <li><p>FEE RECEIPT</p></li>
     <li><p>10TH MARK SHEET</p></li>
@@ -70,15 +97,15 @@ ACKNOWLEDGEMENT
   <li><p> PHYSICALLY CHALANGED CERTIFICATE</p></li>
   <br><br>
 <li style="list-style: none;">
-  <div class="row">
-    <div class="col-md-2">
+  <div class="row"id="ack">
+    <div class="col-md-3">
 <p>Candidate Name:</p>
 <p>Father Name :
 </p>
 <p>Mother Name:</p>
 <p>Address:</p>
     </div>
-    <div class="col-md-7">
+    <div class="col-md-5"id="ackadd1">
       <%
 if(userData.length!=0){
 var i=1;
@@ -87,28 +114,29 @@ userData.forEach(function(classdata){
       <p><%=classdata.name %></p>
             <p><%=classdata.father_name %></p>
       <p><%=classdata.mother_name %></p>
-      <p><%=classdata.name %></p>
-      <%  i++; }) %>
-      <% } else{ %>
-      
-      <% } %>
       <%
       if(userData2.length!=0){
       var i=1;
       userData2.forEach(function(classdata2){
       %>
-      <%=classdata2.ps_address %>
-      <%=classdata2.ps_pincode %>
-      <%=classdata2.ps_state %>
-      <%=classdata2.ps_district %>
+      <p><address>
+        <%=classdata2.ps_address %>,</address></p>
+      <p><address><%=classdata2.ps_pincode %></address></p>
+      <p><address><%=classdata2.ps_state %></address></p>
+      <p><address><%=classdata2.ps_district %></address></p>
       <%  i++; }) %>
       <% } else{ %>
       
       <% } %>
+      <%  i++; }) %>
+      <% } else{ %>
+      
+      <% } %>
+    
     </div>
-     <div class="col-md-3">
+     <div class="col-md-4">
       <p>Signature of the Candidate</p>
-      <%
+     <%
       if(userData3.length!=0){
       var i=1;
       userData3.forEach(function(classdata3){
@@ -119,13 +147,14 @@ userData.forEach(function(classdata){
       <% } else{ %>
       
       <% } %>
+      
     </div>
   </div>
 </li>
 </ul>
   
   </div>
-  </div>
+  
 </div>
 </div>
 </section>

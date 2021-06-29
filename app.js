@@ -1,21 +1,21 @@
 /**
-* Module dependencies.
-*/
-require('dotenv').config();
-const multer = require('multer');
-const exphbs = require('express-handlebars');
-const express = require('express')
-  , routes = require('./routes')
-  , user = require('./routes/user')
-  , http = require('http')
-  , path = require('path');
+ * Module dependencies.
+ */
+require("dotenv").config();
+const multer = require("multer");
+const exphbs = require("express-handlebars");
+const express = require("express"),
+  routes = require("./routes"),
+  user = require("./routes/user"),
+  http = require("http"),
+  path = require("path");
 //const methodOverride = require('method-override');
-const session = require('express-session');
+const session = require("express-session");
 const app = express();
-const mysql = require('mysql');
+const mysql = require("mysql");
 // Handlebars Middleware
-app.engine('handlebars', exphbs({ defaultLayout: 'main' }));
-app.set('view engine', 'handlebars');
+app.engine("handlebars", exphbs({ defaultLayout: "main" }));
+app.set("view engine", "handlebars");
 let bodyParser = require("body-parser");
 /*
 //Server port
@@ -53,19 +53,16 @@ connection.on('error', function(err) {
 handleDisconnect();*/
 //Server port
 const pool = mysql.createPool({
-
   connectionLimit: 100,
   host: "localhost",
   user: "root",
   password: "1234",
   database: "ems",
-  
 });
 
-
 setInterval(function () {
-  pool.query('SELECT 1', [], function () { })
-}, 5000)
+  pool.query("SELECT 1", [], function () {});
+}, 5000);
 
 //const connection;
 var getConnection = function (callback) {
@@ -84,67 +81,66 @@ module.exports = getConnection;
 
 global.db = pool;
 
+const socketio = require("socket.io");
 
-const socketio = require('socket.io');
-
-const formatMessage = require('./public/assets/utils/messages');
+const formatMessage = require("./public/assets/utils/messages");
 const {
   userJoin,
   getCurrentUser,
   userLeave,
-  getRoomUsers
-} = require('./public/assets/utils/users');
-const { render } = require('ejs');
+  getRoomUsers,
+} = require("./public/assets/utils/users");
+const { render } = require("ejs");
 const server = http.createServer(app);
 const io = socketio(server);
 
-const botName = 'EMS';
+const botName = "EMS";
 
-io.on('connection', socket => {
-  socket.on('joinRoom', ({ username, room }) => {
+io.on("connection", (socket) => {
+  socket.on("joinRoom", ({ username, room }) => {
     const user = userJoin(socket.id, username, room);
 
     socket.join(user.room);
 
     // Welcome current user
-    socket.emit('message', formatMessage(botName, 'Welcome to ChatRoom!'));
+    socket.emit("message", formatMessage(botName, "Welcome to ChatRoom!"));
 
     // Broadcast when a user connects
     socket.broadcast
       .to(user.room)
       .emit(
-        'message',
+        "message",
         formatMessage(botName, `${user.username} has joined the chat`)
       );
 
     // Send users and room info
-    io.to(user.room).emit('roomUsers', {
+    io.to(user.room).emit("roomUsers", {
       room: user.room,
-      users: getRoomUsers(user.room)
+      users: getRoomUsers(user.room),
     });
   });
 
   // Listen for chatMessage
-  socket.on('chatMessage', msg => {
+  socket.on("chatMessage", (msg) => {
     const user = getCurrentUser(socket.id);
 
-    io.to(user.room).emit('message', formatMessage(user.username, msg));
+    io.to(user.room).emit("message", formatMessage(user.username, msg));
   });
 
   // Runs when client disconnects
-  socket.on('disconnect', () => {
+  socket.on("disconnect", () => {
     const user = userLeave(socket.id);
 
     if (user) {
       io.to(user.room).emit(
-        'message',
+        "message",
         formatMessage(botName, `${user.username} has left the chat`)
       );
 
       // Send users and room info
-      io.to(user.room).emit('roomUsers', {
+      io.to(user.room).emit("roomUsers", {
         room: user.room,
-        users: getRoomUsers(user.room)
+        users: getRoomUsers(user.room),
       });
     }
   });
@@ -213,46 +209,47 @@ io.on('connection', socket => {
 // }
 
 // all environments
-app.set('port', process.env.PORT || 80);
-app.set('views', __dirname + '/views');
-app.set('view engine', 'ejs');
+app.set("port", process.env.PORT || 80);
+app.set("views", __dirname + "/views");
+app.set("view engine", "ejs");
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 //app.use(express.static('public'))
 // Public Folder
-app.use(express.static('./public'));
+app.use(express.static("./public"));
 
 // app.use(express.static(path.join(__dirname, 'public')));
-app.use(session({
-  secret: 'keyboard cat',
-  resave: false,
-  saveUninitialized: true,
-  cookie: { maxAge: 6000000000 }
-}))
+app.use(
+  session({
+    secret: "keyboard cat",
+    resave: false,
+    saveUninitialized: true,
+    cookie: { maxAge: 6000000000 },
+  })
+);
 var storage = multer.diskStorage({
   destination: function (req, file, cb) {
-    cb(null, './public/uploads/')
+    cb(null, "./public/uploads/");
   },
   filename: function (req, file, cb) {
     cb(null, Date.now() + file.originalname);
-  }
+  },
 });
 var upload = multer({ storage: storage });
 
 var storage1 = multer.diskStorage({
   destination: function (req, file, cb) {
-    cb(null, './public/uploads/')
+    cb(null, "./public/uploads/");
   },
   filename: function (req, file, cb) {
     cb(null, Date.now() + file.originalname);
-  }
+  },
 });
 var upload = multer({ storage: storage });
 
-
 //add_candidate
-/*
-app.post('/add_candidate', upload.any(), function (req, res, next) {
+
+/* app.post('/add_candidate', upload.any(), function (req, res, next) {
  
   console.log('files'+req.files);
 
@@ -2508,13 +2505,13 @@ var sql = "UPDATE `ems`.`cand_certificate_details` SET `certificate1` = '" + cer
 });*/
 
 //download process
-app.post('/biometric_dwd', function (req, res) {
+app.post("/biometric_dwd", function (req, res) {
   var post = req.body;
   var myfile = post.cand_download;
   const file = `${__dirname}/public/uploads/${myfile}`;
   res.download(file); // Set disposition and send it.
 });
-app.post('/notesdownload', function (req, res) {
+app.post("/notesdownload", function (req, res) {
   var post = req.body;
   var myfile = post.notename;
   const file = `${__dirname}/public/uploadnotes/${myfile}`;
@@ -2523,80 +2520,84 @@ app.post('/notesdownload', function (req, res) {
 
 // development only
 
-app.get('/', routes.index);
-app.get('/icboard', user.icboard);
+app.get("/", routes.index);
+app.get("/icboard", user.icboard);
 // app.get('/mbbs_viewcand', user.mbbs_viewcand);
 // app.post('/mbbs_viewcand', user.mbbs_viewcand);
 // app.get('/update_profile', user.update_profile);
 // app.post('/update_profile', user.update_profile);
 // app.get('/mbbs_editcand', user.mbbs_editcand);
 // app.post('/mbbs_editcand', user.mbbs_editcand);
-app.get('/add_user', user.add_user);
-app.get('/report1', user.report1);
-app.post('/report1', user.report1);
-app.get('/report2', user.report2);
-app.post('/report2', user.report2);
-app.get('/report3', user.report3);
-app.post('/report3', user.report3);
-app.get('/report4', user.report4);
-app.post('/report4', user.report4);
-app.get('/report5', user.report5);
-app.post('/report5', user.report5);
-app.get('/report6', user.report6);
-app.post('/report6', user.report6);
-app.get('/report7', user.report7);
-app.post('/report7', user.report7);
-app.get('/report8', user.report8);
-app.post('/report8', user.report8);
-app.get('/report9', user.report9);
-app.post('/report9', user.report9);
-app.get('/report10', user.report10);
-app.post('/report10', user.report10);
-app.get('/view_report', user.view_report);
-app.post('/view_report', user.view_report);
-app.post('/add_user', user.add_user);
-app.get('/collect_fees', user.collect_fees);
-app.post('/collect_fees', user.collect_fees);
+app.get("/add_user", user.add_user);
+// app.get("/report1", user.report1);
+// app.post("/report1", user.report1);
+// app.get("/report2", user.report2);
+// app.post("/report2", user.report2);
+// app.get("/report3", user.report3);
+// app.post("/report3", user.report3);
+// app.get("/report4", user.report4);
+// app.post("/report4", user.report4);
+// app.get("/report5", user.report5);
+// app.post("/report5", user.report5);
+// app.get("/report6", user.report6);
+// app.post("/report6", user.report6);
+// app.get("/report7", user.report7);
+// app.post("/report7", user.report7);
+// app.get("/report8", user.report8);
+// app.post("/report8", user.report8);
+// app.get("/report9", user.report9);
+// app.post("/report9", user.report9);
+// app.get("/report10", user.report10);
+// app.post("/report10", user.report10);
+app.get("/view_report", user.view_report);
+app.post("/view_report", user.view_report);
+app.post("/add_user", user.add_user);
+
+app.get("/collect_fees", user.collect_fees);
+app.post("/collect_fees", user.collect_fees);
+app.get("/print_fees", user.print_fees);
+app.post("/print_fees", user.print_fees);
 // app.get('/mbbs_viewstudent', user.mbbs_viewstudent);
 
+app.get("/pwdrecovery", user.pwdrecovery);
+app.post("/pwdrecovery", user.pwdrecovery);
+app.get("/pwdupdate", user.pwdupdate);
+app.post("/pwdupdate", user.pwdupdate);
 
-app.get('/pwdrecovery', user.pwdrecovery);
-app.post('/pwdrecovery', user.pwdrecovery);
-app.get('/pwdupdate', user.pwdupdate);
-app.post('/pwdupdate', user.pwdupdate);
-
-app.get('/forgotpwd', user.forgotpwd);
+app.get("/forgotpwd", user.forgotpwd);
 
 // app.get('/icsignup', user.icsignup);
 // app.post('/icsignup', user.icsignup);
 
-app.get('/login', routes.index);
-app.get('/logout', user.logout);
-app.post('/login', user.login);
-app.get('/home/icdashboard', user.icdashboard);
-app.get('/mbbs_board', user.mbbs_board);
-
+app.get("/login", routes.index);
+app.get("/logout", user.logout);
+app.post("/login", user.login);
+app.get("/home/icdashboard", user.icdashboard);
+app.get("/mbbs_board", user.mbbs_board);
+app.post("/mbbs_board", user.mbbs_board);
 
 //mdms
-app.get('/mdms_board', user.mdms_board);
-app.post('/mdms_board',user.mdms_board);
-app.get('/update_mdms', upload.any(),user.edit_mdmscand);
-app.post('/update_mdms', upload.any(), user.edit_mdmscand);
+app.get("/mdms_board", user.mdms_board);
+app.post("/mdms_board", user.mdms_board);
+app.get("/update_student", upload.any(), user.edit_cand);
+app.post("/update_student", upload.any(), user.edit_cand);
 //app.get('/add_students',user.insert_mdms);
-app.post('/add_students',upload.any(),user.insert_mdms);
+app.post("/add_students", upload.any(), user.insert_cand);
 
-
-
+//reports
+app.get("/get_reports", user.all_report);
+app.post("/get_reports", user.all_report);
 
 // app.get('/add_candidate', user.add_candidate);
 // app.post('/add_candidate', user.add_candidate);
-app.get('/reli_check', user.reli_check);
-app.post('/reli_check', user.reli_check);
+app.get("/reli_check", user.reli_check);
+app.post("/reli_check", user.reli_check);
 
-app.get('/home/logout', user.logout);
+app.post("/del_student", user.delete_students);
+
+app.get("/home/logout", user.logout);
 
 //Middleware
-server.listen(80,()=>{
-  console.log('http://localhost:80')
+server.listen(8080, () => {
+  console.log("http://localhost:8080");
 });
-

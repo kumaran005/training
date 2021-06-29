@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Ponmari_Sample</title>
+  <!-- Tell the browser to be responsive to screen width -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="/assets/dashboard/plugins/fontawesome-free/css/all.min.css">
+  <!-- Ionicons -->
+  <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+  <!-- bootsrtap -->
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <!-- Theme style -->
+  <link rel="stylesheet" href="/assets/dashboard/dist/css/mbbs.css">
+  <!-- Google Font Source Sans Pro -->
+  <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro300,400,400i,700" rel="stylesheet">
+  <style>
+    @media print{
+body{
+ margin-top:50px!important;
+
+
+}
+    }
+</style>
+</head>
+<body class="hold-transition sidebar-mini">
+    <div class="toolbar no-print">
+      <button class="btn btn-info" onclick="window.print()">
+        Print Certificate
+      </button>
+    </div>
+   
+<section id="report"class="text-dark ">
+  <div class="container d-flex justify-content-center">
+         <div id="reportcard"class=""style="font-family:normal">
+ 
+<div class="row justify-content-center">
+  <div class="col-md-12"><h4 class="other-font"style="font-family:normal"><u>TIRUNELVELI MEDICAL COLLEGE, TIRUNELVELI-11. </u>
+</h4>
+     </div>
+         <h4><b> <u style="font-family:normal">CHECK SLIP FOR VERIFICATION OF ADMISSION DOCUMENTS
+        </u>
+</b></h4><br>
+
+      
+</div>
+<%
+if(userData1.length!=0){
+var i=1;
+userData1.forEach(function(classdata1){
+%>   
+<%
+if(userData.length!=0){
+var i=1;
+userData.forEach(function(classdata){
+%>    
+<p class="text-center mt-5 text-dark"style="font-size: 20px;"><b ><%=classdata1.course %> COURSE ADMISSION <%=classdata.academic_year %> SESSION
+</b></p>
+
+<p class="text-center text-dark"style="font-size: 20px;"><b >COURSE: <%=classdata1.course %>
+</b></p>
+<%  i++; }) %>
+<% } else{ %>
+
+<% } %>
+
+<%  i++; }) %>
+<% } else{ %>
+
+<% } %>
+<div class="row justify-content-center mt-5"id="rowfont">
+  <div class="col-md-3">
+    <p><b><i>A.R.No. </i></b></p>
+        <p><b><i>Neet Mark </i></b></p>
+        <p><b><i>Neet Roll No 
+
+        </i></b></p>
+    <p><b><i>Year of Admission  </i></b></p>
+    <p><b><i>Name </i></b></p>
+
+</div>
+  <div class="col-md-3"id="rowfont1">
+    <%
+if(userData1.length!=0){
+var i=1;
+userData1.forEach(function(classdata1){
+%>
+        <p><b><i>:&nbsp;&nbsp;<%=classdata1.ar_no %></i></b></p>
+        <p><b><i>:&nbsp;&nbsp;<%=classdata1.neet_mark %></i></b></p>
+       
+      
+        <p><b><i>:&nbsp;&nbsp;<%=classdata1.neet_roll_no %></i></b></p>
+        
+        <%  i++; }) %>
+        <% } else{ %>
+      
+        <% } %>
+        <%
+        if(userData.length!=0){
+        var i=1;
+        userData.forEach(function(classdata){
+        %>
+        <p><b><i>:&nbsp;&nbsp;<%=classdata.academic_year %></i></b></p>
+        <p><b><i>:&nbsp;&nbsp;<%=classdata.name %></i></b></p>
+
+        <%  i++; }) %>
+        <% } else{ %>
+      
+        <% } %>
+     
+</div>
+  <div class="col-md-3">
+    <p><b><i>Rank </i></b></p>
+
+        <p><b><i>Community  
+</i></b></p>
+ <p><b><i>Selected Category 
+</i></b></p>
+
+    <p class=""><b><i>Name of the Course  </i></b></p>
+    <p class=""><b><i>Date of Admission  </i></b></p>
+
+</div>
+   <div class="col-md-3"id="rowfont1">
+    <%
+    if(userData1.length!=0){
+    var i=1;
+    userData1.forEach(function(classdata1){
+    %>
+    <p><b><i>:&nbsp;&nbsp;<%=classdata1.rank %></i></b></p>
+    <%  i++; }) %>
+    <% } else{ %>
+  
+    <% } %>
+    <%
+    if(userData.length!=0){
+    var i=1;
+    userData.forEach(function(classdata){
+    %>
+        <p><b><i>:&nbsp;&nbsp;<%=classdata.community %></i></b></p>
+        <%  i++; }) %>
+        <% } else{ %>
+      
+        <% } %>
+        <%
+        if(userData1.length!=0){
+        var i=1;
+        userData1.forEach(function(classdata1){
+        %>
+        <p><b><i>:&nbsp;&nbsp;<%=classdata1.selected_category %></i></b></p>
+        <%  i++; }) %>
+        <% } else{ %>
+      
+        <% } %>
+        <%
+        if(userData1.length!=0){
+        var i=1;
+        userData1.forEach(function(classdata1){
+        %>
+        <p><b><i>:&nbsp;&nbsp;<%=classdata1.course %></i></b></p>
+        <%  i++; }) %>
+        <% } else{ %>
+      
+        <% } %>
+        <%
+        if(userData1.length!=0){
+        var i=1;
+        userData1.forEach(function(classdata1){
+        %>
+        <p class=""><b><i>:&nbsp;&nbsp;<%=classdata1.date_of_admission %></i></b></p>
+        <%  i++; }) %>
+        <% } else{ %>
+      
+        <% } %>
+
+        
+</div>
+
+</div>
+<div class="table-responsive text-left mt-4"id="tabres1">
+    <table class="table table-bordered"id="tablereport1">
+  <thead class="th">
+    <tr>
+      <th scope="col"class="text-center">S.No</th>
+      <th scope="col"width="300px"class="text-center">Certificate Type 
+</th>
+      <th scope="col"class="text-center">Status</th>
+      <th scope="col"class="text-center">Due Date</th>
+            <th scope="col"class="text-center">Remarks </th>
+  
+      
+
+    </tr>
+  </thead>
+<tbody class="text-left th">
+  <tr>
+    <td class="text-right">1</td>
+    <td>Allotment Order</td>
+    <td>Provided
+    </td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td class="text-right">2</td>
+    <td>SSLC Mark Sheet</td>
+    <td>Provided
+    </td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td class="text-right">3</td>
+    <td>HSC First Year Mark Sheet Certificate </td>
+    <td>Provided
+    </td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td class="text-right">4</td>
+    <td>HSC Second Year Mark Sheet
+      Certificate
+     
+      </td>
+    <td>Provided
+    </td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td class="text-right">5</td>
+    <td>Transfer Certificate </td>
+    <td>Provided
+    </td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td class="text-right">6</td>
+    <td>Conduct Certificate  </td>
+    <td>Provided
+    </td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td class="text-right">7</td>
+    <td>Community Certificate  </td>
+    <td>Provided
+    </td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td class="text-right">8</td>
+    <td>Nativity Certificate  </td>
+    <td>Provided
+    </td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td class="text-right">9</td>
+    <td> Hepatitis-B Certificate  </td>
+    <td>Provided
+    </td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td class="text-right">10</td>
+    <td> Physical Fitness   </td>
+    <td>Provided
+    </td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td class="text-right">11</td>
+    <td> Photo   </td>
+    <td>Provided
+    </td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td class="text-right">12</td>
+    <td> Aadhar Card Xerox   </td>
+    <td>Provided
+    </td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td class="text-right">13</td>
+    <td> 3 Fours Sets Xerox Copies   </td>
+    <td>Provided
+    </td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td class="text-right">14</td>
+    <td>   </td>
+    <td>
+    </td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td class="text-right">15</td>
+    <td>   </td>
+    <td>
+    </td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td class="text-right">16</td>
+    <td>   </td>
+    <td>
+    </td>
+    <td></td>
+    <td></td>
+  </tr>
+</tbody>
+</table> 
+
+  </div>
+  <div class="row justify-content-center mt-5 pt-5 text-dark"style="font-size: 20px;top:100px;position:relative;font-style:italic"id="gap">
+    <div class="col-md-3"id="rowfont1">
+      <p><b><i style="font-size: 17px;">Name :</i></b></p>
+    </div>
+    <div class="col-md-3"id="rowfont1">
+      <%
+      if(userData.length!=0){
+      var i=1;
+      userData.forEach(function(classdata){
+      %>
+     
+      <p><b><i style="font-size: 17px;"><%=classdata.name %></i></b></p>
+
+      <%  i++; }) %>
+      <% } else{ %>
+    
+      <% } %>
+    </div>
+    <div class="col-md-3"id="rowfont1">
+      <p><b><i style="font-size: 17px;">Date of Admission :</i></b></p>
+    </div>
+
+    <div class="col-md-3"id="rowfont1">
+      <%
+      if(userData1.length!=0){
+      var i=1;
+      userData1.forEach(function(classdata1){
+      %>
+      <p><b><i style="font-size: 17px;"><%=classdata1.date_of_admission %></i></b></p>
+
+      <%  i++; }) %>
+      <% } else{ %>
+    
+      <% } %>
+    </div>
+    <div class="col-md-12">
+    <p id="rowfont1"><b><i style="font-size: 17px;">Verified all the above Original Documents:-</i></b></p>
+    </div>
+    <div class="col-md-9"id="prof1">
+      <p><b>PROF-I</b></p>
+    </div>
+    <div class="col-md-3 "id="prof1">
+          <p><b>PROF-II</b></p>
+  
+    </div>
+     <div class="col-md-4 "id="prof1">
+      <p><b>Asst</b></p>
+    </div>
+    <div class="col-md-5 "id="prof1">
+          <p class="pl-5"><b>OS</b></p>
+  
+    </div>
+     <div class="col-md-3 "id="prof1">
+          <p><b>JAO</b></p>
+  
+    </div>
+     <div class="col-md-9 "id="prof1">
+          <p><b>VP</b></p>
+  
+    </div>
+     <div class="col-md-3 "id="prof1">
+          <p><b>DEAN</b></p>
+  
+    </div>
+  </div>
+  </div>
+</div>
+</div>
+</section>
+
+   
+
+
+
+
+ 
+<!-- jQuery bootstrap -->
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+<script>
+UPLOADCARE_PUBLIC_KEY = 'demopublickey';
+</script>
+<script src="https://ucarecdn.com/libs/widget/3.x/uploadcare.full.min.js" charset="utf-8"></script>
+<!-- AdminLTE App -->
+<script src="js/adminlte.js"></script>
+<script src="js/mbbs.js"></script>
+
+<!-- AdminLTE for demo purposes -->
+<script src="js/demo.js"></script>
+<!-- page script -->
+
+
+</body>
+
+</html>

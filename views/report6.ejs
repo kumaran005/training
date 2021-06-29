@@ -21,7 +21,19 @@
   <link rel="stylesheet" href="/assets/dashboard/dist/css/mbbs.css">
   <!-- Google Font Source Sans Pro -->
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro300,400,400i,700" rel="stylesheet">
-  
+  <style>
+    @media print{
+      #table2{
+  border: hidden!important;
+}
+body{
+  margin-top: 0px!important;
+ 
+}
+@page {size: landscape}
+
+    }
+</style>
 </head>
 <body class="hold-transition sidebar-mini">
     <div class="toolbar no-print">
@@ -30,21 +42,21 @@
       </button>
     </div>
    
-<section id="report"class="blue ">
+<section id="report"class="black ">
   <div class="container-fluid">
-         <div id="reportcard"class="card ">
+         <div id="reportcard"class="  "style="font-family: normal;">
  
-<div class="row justify-content-center">
-  <div class="col-md-12"><h4 class="other-font ">Tirunelveli Medical College, Tirunelveli-11 Admission Register</h4>
+<div class="row justify-content-center mb-5">
+  <div class="col-md-12"><h4 class="other-font "><u>Tirunelveli Medical College, Tirunelveli-11 Admission Register</u></h4>
      </div>
 </div>
       <br />
           
-<div class="table-responsive">
-    <table class="table"id="tablereport">
-  <thead>
+      <table class="table">
+        <thead id="table2"style="border:none">
+          
     <tr>
-      <th scope="col">#</th>
+      <th scope="col">SI. NO</th>
       <th scope="col">Name of the Student/ Register No /
 Phone No
 </th>
@@ -59,7 +71,7 @@ Phone No
 
     </tr>
   </thead>
-  <tbody>
+  <tbody id="table2"class="">
     <tr>
       <td >1</td>
       <td>Aakash A M
@@ -73,7 +85,7 @@ Veeramanikapuram,
 Melapalayam
 Tirunelveli-627005
 </td>
-      <td>16/11/2000</td>
+      <td><p>16/11/2000</p></td>
       <td>11/12/2020</td>
             <td>Scheduled
 Castes-Hindu
@@ -84,8 +96,7 @@ Pallan
 HSS,Muthukalipatti,Namakkal</td>
       <td>State Quota</td>
       <td>B Positive</td>
-            <td><p style="border: 1px solid black;width: 100px;height: 100px">Photo</p></td>
-
+<td><img src="/assets/img/girl (1).jpg" class="img-fluid"style="height:128px"></td>
     </tr>
   
         <tr>
@@ -119,7 +130,7 @@ HSS,Muthukalipatti,Namakkal</td>
   </tbody>
 </table> 
 
-  </div>
+ 
  
   </div>
 </div>
