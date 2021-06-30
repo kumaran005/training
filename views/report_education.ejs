@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Ponmari_Sample</title>
+  <!-- Tell the browser to be responsive to screen width -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="/assets/dashboard/plugins/fontawesome-free/css/all.min.css">
+  <!-- Ionicons -->
+  <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+  <!-- bootsrtap -->
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <!-- Theme style -->
+  <link rel="stylesheet" href="/assets/dashboard/dist/css/alter.css">
+  <link rel="stylesheet" href="/assets/dashboard/dist/css/mbbs.css">
+  <!-- Google Font Source Sans Pro -->
+  <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro300,400,400i,700" rel="stylesheet">
+  <style>
+    @media print{
+body{
+  margin-top: 150px!important;
+
+}
+.bordercerti td, .bordercerti th {
+    border-bottom: none!important;
+   
+}
+.table-bordered td, .table-bordered th {
+    
+    border-right: 2px solid!important;
+  
+}
+.table-bordered #tbody td {
+    padding: 10px;
+}
+    }
+</style>
+</head>
+<body class="hold-transition sidebar-mini">
+    <div class="toolbar no-print">
+      <button class="btn btn-info" onclick="window.print()">
+        Print Certificate
+      </button>
+    </div>
+   
+<section id="report"class="text-dark"style=" color: #000;">
+  <div class="container">
+         <div id="reportcard"class="bond">
+ 
+          <div class="row justify-content-center">
+            <i><div class="col-md-12"><h4 class="other-font text-dark"style="    font-size: 20px;
+                "><u>TIRUNELVELI MEDICAL COLLEGE, TIRUNELVELI-11. 
+           <br>CHECK SLIP FOR VERIFICATION OF ADMISSION DOCUMENTS
+        </u>
+          </h4>
+          
+               </div></i>
+                   
+          
+                
+          </div>
+     
+
+<br>
+<div class="row text-left justify-content-between  weight"id="rep7">
+    <div class="col-md-3">
+  
+  <p><b>Name </b></p>
+    </div>
+    <div class="col-md-3"id="fontnormal">
+  
+      <%
+      if(userData.length!=0){
+      var i=1;
+      userData.forEach(function(classdata){
+      %>
+      <p> :&nbsp;&nbsp;<%=classdata.name %></p>
+   
+      <%  i++; }) %>
+  <% } else{ %>
+  
+  <% } %>
+        </div>
+        <div class="col-md-3">
+  </div>
+  <div class="col-md-3">
+  </div>
+  </div>
+  <div class="row text-left justify-content-between weight"id="rep7">
+    <div class="col-md-3">
+  
+  <p><b>A.R No</b></p>
+  <p><b>Neet Mark   </b></p>
+  <p><b>Neet UG Roll No
+  </b></p>
+  <p><b>Year of Admission </b></p>
+  
+  
+  
+  
+    </div>
+    <div class="col-md-2"id="fontnormal">
+   
+  
+  <%
+  if(userData1.length!=0){
+  var i=1;
+  userData1.forEach(function(classdata1){
+  %>
+  <p>:&nbsp;&nbsp;<%=classdata1.ar_no%></p>
+  <p>:&nbsp;&nbsp;<%=classdata1.neet_mark%></p>
+  <p>:&nbsp;&nbsp;<%=classdata1.neet_roll_no%></p>
+  <%
+  if(userData.length!=0){
+  var i=1;
+  userData.forEach(function(classdata){
+  %>
+  <p>:&nbsp;&nbsp;<%=classdata.academic_year %></p>
+  <%  i++; }) %>
+  <% } else{ %>
+  
+  <% } %>
+  <%  i++; }) %>
+  <% } else{ %>
+  
+  <% } %>
+    
+  
+  </div>
+  
+    <div class="col-md-3"style="margin-top:-45px">
+        <p><b>Date Of Admission</b></p>
+        <p><b>Rank</b></p>
+        <p><b>Community</b></p>
+        <p><b>Select Category</b></p>
+        <p><b>Name Of The Course</b></p>
+        
+    </div>
+  
+  
+    <div class="col-md-4"style="margin-top:-42px;"id="fontnormal">
+      <%
+      if(userData1.length!=0){
+      var i=1;
+      userData1.forEach(function(classdata1){
+      %>
+      <p>:&nbsp;<%=classdata1.date_of_admission %></p>
+      <p>:&nbsp;<%=classdata1.rank%></p>
+      <%
+      if(userData.length!=0){
+      var i=1;
+      userData.forEach(function(classdata){
+      %>
+      <p>:&nbsp;<%=classdata.community%></p>
+      <%  i++; }) %>
+      <% } else{ %>
+    
+      <% } %>
+      <p>:&nbsp;<%=classdata1.selected_category %></p>
+      <p>:&nbsp;<%=classdata1.course %></p>
+      <%  i++; }) %>
+      <% } else{ %>
+    
+      <% } %>
+  
+  </div>
+  
+    <br>
+  </div>
+
+
+<section id="f-15"class="text-dark">
+    <h1 class="ml-4"><i><b>Academic Information</b></i>
+    </h1>
+  <div class="row justify-content-center ol">
+
+    <div class="col-md-5">
+        <ol id="ol">
+        <li>Exam Passed</li>
+        <li>Name of the Board</li>
+        <li>School Name</li>
+        <li>Place of School With District & State</li>
+        <li>Plus Two Mark Sheet Register No</li>
+        <li>Month & Year of Passing</li>
+        <li>TC No. & Date</li>
+        <li>School Relieving Date</li>
+        <li>Eligibilty Certificate No. & Date</li>
+        <li>Migration Certificate No. & Date</li>
+        <li>Marks Scored in Neet Entrance Exam</li>
+        <li>Willingness for Second/Third Counselling</li>
+    </ol>
+    </div>
+<div class="col-md-1">
+    <p><b>:</b></p>
+    <p><b>:</b></p>
+    <p><b>:</b></p>
+    <p><b>:</b></p>
+  
+    <p><b>:</b></p>
+    <p><b>:</b></p>
+    <p><b>:</b></p>
+    <p><b>:</b></p>
+    <p><b>:</b></p>
+    <p><b>:</b></p>
+    <p><b>:</b></p>
+    <p><b>:</b></p>
+    
+</div>
+<%
+if(userData4.length!=0){
+var i=1;
+userData4.forEach(function(classdata4){
+%>
+<div class="col-md-6">
+    <p><%=classdata4.exam_passed %>
+    </p>
+    <p><%=classdata4.board %>
+    </p>
+    <p><%=classdata4.institute_name%>
+    </p>
+    <p><%=classdata4.place%>, <%=classdata4.district%>, <%=classdata4.state%>
+    </p>
+    <p><%=classdata4.register_no%>
+    </p>
+    <p><%=classdata4.month_of_passing%>, <%=classdata4.year_of_passing%>
+    </p>
+    <p>210/2018-2019,19/04/2019
+    </p>
+    <p><%=classdata4.relieving_date%></p>
+    <%  i++; }) %>
+    <% } else{ %>
+    
+    <% } %>
+    <%
+    if(userData1.length!=0){
+    var i=1;
+    userData1.forEach(function(classdata1){
+    %>
+    <p>,</p>
+    <p>,</p>
+    <p><%=classdata1.neet_mark%></p>
+    <p><%=classdata1.willing_for_counciling%></p>
+
+    <%  i++; }) %>
+    <% } else{ %>
+    
+    <% } %>
+</div>
+
+
+  </div>
+</section>     
+<div class="row neetcerti mt-3">
+    <div class="col-md-6">
+        <div class="table table-responsive">
+            <table class="table table-bordered">
+                <thead id="borderhead" class="text-center">
+                    <tr>
+                <th>Subject</th>
+                <th>Marks
+                    Obtained +2</th>
+                    <th>Maximum Marks</th>
+            </tr>
+        </thead>
+        <%
+        if(userData5.length!=0){
+        var i=1;
+        userData5.forEach(function(classdata5){
+        %>
+        <tbody class="bordercerti">
+            <tr>
+                <th>Tamil</th>
+                <td><%=classdata5.lang_total%> </td>
+                <th><i><%=classdata5.lang_max%></i> </th>
+            </tr>
+            <tr>
+                <th>English
+                </th>
+                <td><%=classdata5.eng_total%> </td>
+                <th><i><%=classdata5.eng_max%></i> </th>
+            </tr>
+            <tr>
+                <th>Mathematics
+                </th>
+                <td><%=classdata5.mat_total%> </td>
+
+                <th><i><%=classdata5.mat_max%></i> </th>
+
+            </tr>
+            <tr>
+                <th>Physics
+                </th>
+                <td><%=classdata5.phy_total%> </td>
+                <th><i><%=classdata5.phy_max%> </i> </th>
+            </tr>
+            <tr>
+                <th>Chemistry
+                </th>
+                <td><%=classdata5.chem_total%> </td>
+
+                <th><i><%=classdata5.chem_max%>  </i> </th>
+
+            </tr>
+            <tr>
+                <th>Biology
+                </th>
+                <td><%=classdata5.bio_total%> </td>
+                <th><i><%=classdata5.bio_max%>  </i> </th>
+            </tr>
+            <tr>
+                <th>Botany
+                </th>
+                <td><%=classdata5.bot_total%> </td>
+
+                <th><i><%=classdata5.bot_max%> </i> </th>
+
+            </tr>
+            <tr>
+                <th>Zoology
+                </th>
+                <td><%=classdata5.zoo_total%> </td>
+                <th><i><%=classdata5.zoo_max%> </i> </th>
+            </tr>
+            <tr>
+                <th>Aggregate
+                </th>
+                <td><%=classdata5.total_mark%> </td>
+                <th><i><%=classdata5.max_mark%>  </i> </th>
+            </tr>
+        </tbody>
+        <%  i++; }) %>
+        <% } else{ %>
+        
+        <% } %>
+            </table>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="table table-responsive"id="neetcerti">
+            <table class="table table-bordered">
+                <thead id="borderhead" class="text-center">
+            <tr>
+                <th>Subject</th>
+                <th>Percentile
+                    Obtained NEET</th>
+                    <th>Maximum Marks</th>
+            </tr>
+          
+        </thead>
+        <%
+        if(userData6.length!=0){
+        var i=1;
+        userData6.forEach(function(classdata6){
+        %>
+        <tbody class="bordercerti"id="tbody">
+            <tr>
+                <th>Physics</th>
+                <td><%=classdata6.phy_mark %></td>
+                <td><%=classdata6.phy_max_mark %></td>
+            </tr>
+            <tr>
+                <th>Chemistry</th>
+                <td><%=classdata6.chem_mark %></td>
+                <td><%=classdata6.chem_max_mark %></td>
+            </tr>
+            <tr>
+                <th>Biology</th>
+                <td><%=classdata6.bio_mark %></td>
+                <td><%=classdata6.bio_max_mark %></td>
+            </tr>
+            <tr>
+                <th>Aggregate</th>
+                <td><%=classdata6.agg_mark %></td>
+                <td><%=classdata6.agg_max_mark %></td>
+            </tr>
+        </tbody>
+        <%  i++; }) %>
+        <% } else{ %>
+        
+        <% } %>
+            </table>
+        </div>
+        
+    </div>
+</div>
+
+
+
+
+                
+  </div>
+  <div class="row mt-5 pt-5 text-dark"id="f-15">
+    <div class="col-md-8">
+    <h4><i>SIGNATURE OF THE PARENT/GUARDIAN</i></h4>
+    </div>
+    <div class="col-md-4">
+      <h4 class="text-right"><i>SIGNATURE OF THE CANDIDATE</i></h4>
+    
+    </div>
+        </div>
+
+</div>
+</div>
+</section>
+
+
+
+ 
+<!-- jQuery bootstrap -->
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+<script>
+UPLOADCARE_PUBLIC_KEY = 'demopublickey';
+</script>
+<script src="https://ucarecdn.com/libs/widget/3.x/uploadcare.full.min.js" charset="utf-8"></script>
+<!-- AdminLTE App -->
+<script src="js/adminlte.js"></script>
+<script src="js/mbbs.js"></script>
+
+<!-- AdminLTE for demo purposes -->
+<script src="js/demo.js"></script>
+<!-- page script -->
+
+
+</body>
+
+</html>

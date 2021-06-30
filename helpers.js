@@ -13,7 +13,8 @@ function begin() {
   exports.start();
 }
 exports.start = () => {
-  console.log("hi");
+  date = new Date();
+  console.log(date);
 };
 
 begin();

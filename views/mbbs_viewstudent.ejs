@@ -765,27 +765,44 @@ edit=(clicked_id)=>{
                        top: -6px;">Change </button>
                       </form>
                       <!-- <p style="font-style: italic;">33 Records Found !</p> -->
-                      <script>
-                         function c(){
-                         
-                           for (i in admission_detail){
-
-                          (document.getElementById("cand_check"+i).checked == true)?(
-                           id = document.getElementById("cand_check"+i).value,
-                           document.getElementById('cand_eck').value=id,
-                          alert(id)):null
-                         }
-                        }
-                        
-
-                      </script>
                     </div>
+                    <script>
+                        //  function c(){
+                         
+                        //    for (i in admission_detail){
+
+                        //   (document.getElementById("cand_check"+i).checked == true)?(
+                        //    id = document.getElementById("cand_check"+i).value,
+                        //    document.getElementById('cand_eck').value=id)
+                        //   :null
+                        //  }
+                        // }
+                        
+                        function showModal(value) {
+                          
+                      
+                      if(value == "Bonofide Certificate"){
+                      $('#bonofide').modal('toggle');}
+                        
+                      if(value == "Certificate Return Acknowledgment"){
+                        $('#report3').modal('toggle');
+                      }  
+                      if(value == "Conduct Certificate"){
+                        $('#report9').modal('toggle');
+                      }
+                      if(value == "Transfer Certificate"){
+                        $('#report11').modal('toggle');
+                      }
+                    }
+                      </script>
+                    
                     <div class="col-md-3">
-                    <form class="form-inline my-2 my-lg-0"style="position:relative;top:-8px"role="form" method="post" action="/get_reports">
-                      <input type="text" name="check" id="cand_eck" hidden value="" >
-                       <select name='reports' id="sel_report" class="form-control col-md-8" style="font-size: 13px;-webkit-appearance: auto;">
+                    <form id="for_report" class="form-inline my-2 my-lg-0"style="position:relative;top:-8px"role="form" method="post" action="/get_reports">
+                      <!-- <input type="text" form="for_report" name="check" id="cand_eck" hidden value="" > -->
+                      <input type="hidden" name="course" form="for_report" value="MBBS">
+                       <select name='reports' id="sel_report" form="for_report" onchange="showModal(this.value)" class="form-control  col-md-8" style="font-size: 13px;-webkit-appearance: auto;">
                         <option value=''readonly>Select Document Type</option> 
-                        <option value='Admission Register'>Admission Register</option>
+                        <option value='Admission Register' >Admission Register</option>
                          <option value='Admission Letter'>Admission Letter</option>
                          <option value='Check Slip'>Check Slip</option>
                          <option value='Student Details'> Student Details</option>
@@ -799,19 +816,18 @@ edit=(clicked_id)=>{
                          <option value='Conduct Certificate'> Conduct Certificate</option>
                          <option value='Scholarship Register'> Scholarship Register</option>
                          <option value='Bonofide Register'> Bonofide Register</option>
-                         <option value='Report'> Report</option>
+                         <option value='Report' > Report</option>
                        </select>
                    
                        &nbsp;&nbsp;
-                       <button id="btn-signup" type="submit" onclick="c()" class="btn btn-primary "style="font-size:13px; position: relative;
+                       <button id="btn-signup" type="submit" form="for_report" onclick="c()" class="btn btn-primary "style="font-size:13px; position: relative;
                        top: -6px;">Print </button>
                       </form>
                       <!-- <p style="font-style: italic;">33 Records Found !</p> -->
                     </div>
                     <div class="col-md-"style="margin-top:-15px">
                       <!-- Button trigger modal -->
-                      <button type="button" class="btn btn-primary mb-2" data-toggle="modal"
-                        data-target="#exampleModalLong" data-backdrop="static" data-keyboard="false">
+                      <button type="button" class="btn btn-primary mb-2" data-toggle="modal" data-target="#exampleModalLong" data-backdrop="static" data-keyboard="false">
                         Add New Student
                       </button>
                     </div>
@@ -840,44 +856,44 @@ edit=(clicked_id)=>{
 
                   </tr>
                 </thead>
-               
                 <tbody id="myTable" >
                   <% if(userData.length!=0){ var i=0; userData.forEach(function(classdata){ %>
-                    <tr>
+                   
                       
-                     <td>           
-                      <input type="checkbox" name="check" id="cand_check<%=i%>" value="<%=classdata.cand_id %>">
-                      
-                      <!-- <input type="text" name="check" id="cand_eck" hidden value="<%=classdata.cand_id %>"> -->
-                     </td>
-                    <tr  id="cand_table" onclick="reply_click('<%=classdata.cand_id %>')" data-target="#myModal" data-toggle="modal" >
-
-                      <td id="id">
+                    
+                    <tr  id="cand_table" onclick="reply_click('<%=classdata.cand_id %>')" >
+                      <td class="pt-4">           
+                        <input type="checkbox" form="for_report" name="check" id="cand_check<%=i%>" value="<%=classdata.cand_id %>">
+                        
+                        <!-- <input type="text" name="check" id="cand_eck" hidden value="<%=classdata.cand_id %>"> -->
+                       </td>
+                      <td id="id" data-target="#myModal" data-toggle="modal">
                         <%=classdata.cand_id %>
                       </td>
-                      <td>
+                      <td data-target="#myModal" data-toggle="modal">
 
                         <%=classdata.cand_name %>
                       </td>
                      
-                      <td id="id">
+                      <td id="id"data-target="#myModal" data-toggle="modal">
 
                         <%=classdata.reg_no %>
                       </td>
                     
-                      <td>
+                      <td data-target="#myModal" data-toggle="modal">
                         <%=classdata.admission_type %>
                       </td>
-                      <td>
+                      <td data-target="#myModal" data-toggle="modal">
                         <%=classdata.date_of_admission %>
                       </td>
 
-                    </tr></tr>
+                    </tr>
                     <% i++; }) %>
                       <% } else{ %>
 
                         <% } %>
                 </tbody>
+               
               </table>
 
             </div>
@@ -5078,6 +5094,207 @@ edit=(clicked_id)=>{
     </div>
   </div>
 </div> 
+
+<!-- report modals -->
+<!-- bonofide -->
+<div class="modal fade" id="bonofide" tabindex="-1" role="dialog" aria-labelledby="bonofideLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="bonofideLabel">Bonofide Certificate</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <!-- <form id="loginform"  class="book-form" role="form" method="post" action="/get_report"> -->
+          <!-- <input type='text' name='cand_id' hidden  value='message'/> -->
+          <div class="form-group">
+            <label for="exampleFormControlInput1">Reference No</label>
+            <input type="text" class="form-control" name="bon_ref_no" form="for_report" id="exampleFormControlInput1" placeholder="">
+          </div>
+          <div class="form-group">
+            <label for="exampleFormControlInput1">Academic Year</label>
+            <input type       ="text" form="for_report"
+            id         ="cellphone-number"class="form-control" name="bon_acad_year"
+            oninput    ="onlyNumbers(this.value)"
+            placeholder="Ex.: 2019-2020">
+          </div>
+          <div class="form-group">
+            <label for="exampleFormControlSelect1">Pursing</label>
+            <select class="form-control" name="bon_purse" form="for_report" id="exampleFormControlSelect1">
+              <option value="Pursuing" >Pursing</option>
+              <option value="Studying">Studying</option>
+              <option value="Other">Other</option>
+              
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="exampleFormControlSelect1">Studying year</label>
+            <select class="form-control"name="bon_stud_year" form="for_report" id="exampleFormControlSelect1">
+              <option value="1st Year">1st Year</option>
+              <option value="2nd Year">2nd Year</option>
+              <option value="3rd Year">3rd Year</option>
+              
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="exampleFormControlSelect1">Purpose</label>
+            <select class="form-control" name="bon_purpose"id="exampleFormControlSelect1" form="for_report">
+              <option value="STATE Quota">STATE Quota</option>
+              <option value="2nd Round AIQ Counselling">2nd Round AIQ Counselling</option>
+              <option value="Others">Others</option>
+              
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="exampleFormControlTextarea1">Purpose If others</label>
+            <textarea class="form-control" name="bon_pur_others" id="exampleFormControlTextarea1" form="for_report" rows="3"></textarea>
+          </div>
+          <div class="modal-footer">
+            <!-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button> -->
+            <button type="button" data-dismiss="modal" class="btn btn-primary">Submit </button>
+          </div>
+        <!-- </form> -->
+      </div>
+     
+    </div>
+  </div>
+</div>
+<!-- Ack Modal -->
+<div class="modal fade" id="report3" tabindex="-1" role="dialog" aria-labelledby="report3Label" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="report3Label">Certificate Acknowledgment</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <!-- <form id="loginform"  class="book-form" role="form" method="post" action="/get_report3"> -->
+          <!-- <input type='text' name='cand_id' hidden  value='<%= message %>'/> -->
+          <div class="form-group">
+            <label for="exampleFormControlInput21">Certificate Return Date</label>
+            <input type="text" class="form-control"id="ackdate" form="for_report" name="ack_date" id="exampleFormControlInput21" placeholder="">
+          </div>
+      
+          <div class="modal-footer">
+            <button type="button" data-dismiss="modal" class="btn btn-primary">Submit </button>
+          </div>
+        <!-- </form> -->
+      </div>
+     
+    </div>
+  </div>
+</div>
+
+<!-- Conduct Modal -->
+<div class="modal fade" id="report9" tabindex="-1" role="dialog" aria-labelledby="report9Label" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="report9Label">Conduct Certificate</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <!-- <form id="loginform"  class="book-form" role="form" method="post" action="/get_report9"> -->
+          <input type='text' name='cand_id' hidden  value='<%= message %>'/>
+          <div class="row">
+            <div class="col-md-6">
+          <div class="form-group">
+            <label for="exampleFormControlInput21">College Starting Period</label>
+            
+
+            <input type="text"id='txtDate' form="for_report" class="form-control date-picker" name="cond_csp" id="exampleFormControlInput21" placeholder="">
+          </div>
+      </div>
+      <div class="col-md-6">
+        <div class="form-group">
+          <label for="exampleFormControlInput211">College Ending Period</label>
+          <input type="text"id='txtDate1' form="for_report" class="form-control" name="cond_cep" id="exampleFormControlInput211" placeholder="">
+        </div>
+    </div>
+    <div class="col-md-12">
+      <div class="form-group">
+        <label for="exampleFormControlInput2121">MBBS Passed on</label>
+        <input type="text"id='txtDate2' form="for_report" class="form-control" name="cond_mbbs" id="exampleFormControlInput2121" placeholder="">
+      </div>
+  </div>
+  <div class="col-md-6">
+    <div class="form-group">
+      <label for="exampleFormControlInput2111">Training Starting Period</label>
+      <input type="text"id='txtDate3' form="for_report" class="form-control" name="cond_tsp" id="exampleFormControlInput2111" placeholder="">
+    </div>
+</div>
+<div class="col-md-6">
+  <div class="form-group">
+    <label for="exampleFormControlInput2112">Training Ending Period</label>
+    <input type="text"id='txtDate4' form="for_report" class="form-control" name="cond_tep" id="exampleFormControlInput2112" placeholder="">
+  </div>
+</div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" data-dismiss="modal" class="btn btn-primary">Submit </button>
+          </div>
+        <!-- </form> -->
+      </div>
+     
+    </div>
+  </div>
+</div>
+<!-- transfer Modal -->
+<div class="modal fade" id="report11" tabindex="-1" role="dialog" aria-labelledby="report11Label" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="report11Label">Transfer Certificate</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <!-- <form id="loginform"  class="book-form" role="form" method="post" action="/get_report11"> -->
+          <!-- <input type='text' name='cand_id' hidden  value='<%= message %>'/> -->
+          <div class="form-group">
+            <label for="exampleFormControlInput1">Date Of Relieving :
+            </label>
+            <input type="text" form="for_report" class="form-control"id="tc_reldate" name="tc_reldate" id="exampleFormControlInput1" placeholder="">
+          </div>
+          <div class="form-group">
+            <label for="exampleFormControlTextarea1">Reason For HIS/HER
+              Leaving
+              </label>
+            <textarea class="form-control" form="for_report" name="tc_reas" id="exampleFormControlTextarea15" rows="3"></textarea>
+          </div>
+          <div class="form-group">
+            <label for="exampleFormControlTextarea15">Personal Marks Of
+              Identification
+              
+              Leaving
+              </label>
+            <textarea class="form-control" form="for_report" name="tc_mark" id="exampleFormControlTextarea1" rows="3"></textarea>
+          </div>
+          <div class="form-group">
+            <label for="exampleFormControlTextarea1">Qualified
+              For Promotion
+              Higher Studies
+              </label>
+            <textarea class="form-control" form="for_report" name="tc_high" id="exampleFormControlTextarea1" rows="3"></textarea>
+          </div>
+          <div class="modal-footer">
+            <!-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button> -->
+            <button type="button" data-dismiss="modal" class="btn btn-primary">Submit </button>
+          </div>
+        </form>
+      </div>
+     
+    </div>
+  </div>
+</div>
+<!-- end of report modals -->
 
 
   <footer class="main-footer">

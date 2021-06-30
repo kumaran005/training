@@ -50,16 +50,16 @@ function convertCryptKey(strKey) {
 //    if (req.method == "POST") {
 //       var post = req.body;
 //       var cand_id = post.cand_id;
-//       var tution_fee = parseInt(post.tution_fee);
-//       var special_fee = parseInt(post.special_fee);
-//       var medical_fee = parseInt(post.medical_fee);
-//       var caution_fee = parseInt(post.caution_fee);
-//       var lib_fee = parseInt(post.lib_fee);
-//       var univ_fee = parseInt(post.univ_fee);
-//       var lic_fee = parseInt(post.lic_fee);
-//       var red_fee = parseInt(post.red_fee);
-//       var mis_fee = parseInt(post.mis_fee);
-//       var flag_fee = parseInt(post.flag_fee);
+//       var tution_fee = Number(post.tution_fee);
+//       var special_fee = Number(post.special_fee);
+//       var medical_fee = Number(post.medical_fee);
+//       var caution_fee = Number(post.caution_fee);
+//       var lib_fee = Number(post.lib_fee);
+//       var univ_fee = Number(post.univ_fee);
+//       var lic_fee = Number(post.lic_fee);
+//       var red_fee = Number(post.red_fee);
+//       var mis_fee = Number(post.mis_fee);
+//       var flag_fee = Number(post.flag_fee);
 //       var total_fee = tution_fee + special_fee + medical_fee + caution_fee + lib_fee + univ_fee + lic_fee + red_fee + mis_fee + flag_fee;
 //       var dt = new Date();
 //       //    registered_time = `${(dt.getMonth() + 1).toString().padStart(2, '0')}/${dt.getDate().toString().padStart(2, '0')}/${dt.getFullYear().toString().padStart(4, '0')} ${dt.getHours().toString().padStart(2, '0')}:${dt.getMinutes().toString().padStart(2, '0')}:${dt.getSeconds().toString().padStart(2, '0')}`;
@@ -720,16 +720,16 @@ exports.collect_fees = function (req, res) {
   var cand_id = post.cand_id;
   var course = post.course;
   console.log("posting:", post);
-  var tution_fee = parseInt(post.tution_fee);
-  var special_fee = parseInt(post.special_fee);
-  var medical_fee = parseInt(post.medical_fee);
-  var caution_fee = parseInt(post.caution_fee);
-  var lib_fee = parseInt(post.lib_fee);
-  var univ_fee = parseInt(post.univ_fee);
-  var lic_fee = parseInt(post.lic_fee);
-  var red_fee = parseInt(post.red_fee);
-  var mis_fee = parseInt(post.mis_fee);
-  var flag_fee = parseInt(post.flag_fee);
+  var tution_fee = Number(post.tution_fee);
+  var special_fee = Number(post.special_fee);
+  var medical_fee = Number(post.medical_fee);
+  var caution_fee = Number(post.caution_fee);
+  var lib_fee = Number(post.lib_fee);
+  var univ_fee = Number(post.univ_fee);
+  var lic_fee = Number(post.lic_fee);
+  var red_fee = Number(post.red_fee);
+  var mis_fee = Number(post.mis_fee);
+  var flag_fee = Number(post.flag_fee);
   var total_fee =
     tution_fee +
     special_fee +
@@ -779,232 +779,77 @@ exports.collect_fees = function (req, res) {
         null;
         break;
     }
-    /* var sql = `SELECT * FROM ems.cand_fees where cand_id in (select cand_id from cand_admission_details where (course,active_status) =('${course}','Yes')) `;
-    db.query(sql, function (err, data26) {
-      var sql18 = `SELECT * FROM ems.cand_institute_details_mdms where cand_id in (select cand_id from cand_admission_details where (course,active_status) =('${course}','Yes')) `;
-      db.query(sql18, function (err, data25) {
-        var sql17 = `SELECT * FROM ems.cand_academic_mdms_2 where cand_id in  (select cand_id from cand_admission_details where (course,active_status) =('${course}','Yes'))`;
-        db.query(sql17, function (err, data24) {
-          var sql16 = `SELECT * FROM ems.cand_academic_mdms_1 where cand_id in (select cand_id from cand_admission_details where (course,active_status) =('${course}','Yes')) `;
-          db.query(sql16, function (err, data23) {
-            var sql15 = `SELECT * FROM ems.cand_academic_mdms where cand_id in  (select cand_id from cand_admission_details where (course,active_status) =('${course}','Yes'))`;
-            db.query(sql15, function (err, data22) {
-              var sql14 = `SELECT * FROM ems.cand_neet_marks_mdms where cand_id in (select cand_id from cand_admission_details where (course,active_status) =('${course}','Yes')) `;
-              db.query(sql14, function (err, data21) {
-                var sql12 = `SELECT * FROM ems.cand_surety_details where cand_id in  (select cand_id from cand_admission_details where (course,active_status) =('${course}','Yes'))`;
-                db.query(sql12, function (err, data20) {
-                  var sql15 = `SELECT * FROM ems.cand_neet_mark_details where cand_id in (select cand_id from cand_admission_details where (course,active_status) =('${course}','Yes'))`;
-                  db.query(sql15, function (err, data19) {
-                    var sql14 = `SELECT * FROM ems.cand_marks_details where cand_id in (select cand_id from cand_admission_details where (course,active_status) =('${course}','Yes'))`;
-                    db.query(sql14, function (err, data18) {
-                      var sql13 = `SELECT * FROM ems.cand_institute_details where cand_id in (select cand_id from cand_admission_details where (course,active_status) =('${course}','Yes'))`;
-                      db.query(sql13, function (err, data17) {
-                        var sql19 = `select * from ems.cand_relieving_details where cand_id in (select cand_id from cand_admission_details where (course,active_status) =('${course}','Yes'))`;
-                        db.query(sql19, function (err, data16) {
-                          var sql18 = `SELECT * FROM ems.certificate_details where cand_id in (select cand_id from cand_admission_details where (course,active_status) =('${course}','Yes')) AND active_flag ='Y' `;
-                          db.query(sql18, function (err, data15) {
-                            var sql17 = `SELECT * FROM ems.cand_contact_details where cand_id in (select cand_id from cand_admission_details where (course,active_status) =('${course}','Yes'))`;
-                            db.query(sql17, function (err, data14) {
-                              var sql16 = `SELECT * FROM ems.cand_bank_details where cand_id in (select cand_id from cand_admission_details where (course,active_status) =('${course}','Yes'))`;
-                              db.query(sql16, function (err, data13) {
-                                var sql12 = `SELECT * FROM ems.biometric_details where cand_id in (select cand_id from cand_admission_details where (course,active_status) =('${course}','Yes')) AND active_flag ='Y'`;
-                                db.query(sql12, function (err, data12) {
-                                  var sql11 = `SELECT * FROM ems.cand_address_details where cand_id in (select cand_id from cand_admission_details where (course,active_status) =('${course}','Yes'))`;
-                                  db.query(sql11, function (err, data11) {
-                                    var sql =
-                                      "SELECT * FROM `ems`.`state_details`;";
-                                    db.query(sql, function (err, data10) {
-                                      var sql =
-                                        "SELECT * FROM `ems`.`admiss_type`;";
-                                      db.query(sql, function (err, data8) {
-                                        var sql =
-                                          "SELECT * FROM `ems`.`admiss_quota`;";
-                                        db.query(sql, function (err, data7) {
-                                          var sql =
-                                            "SELECT * FROM `ems`.`community_details`;";
-                                          db.query(sql, function (err, data6) {
-                                            var sql =
-                                              "SELECT * FROM `ems`.`nation_details`;";
-                                            db.query(
-                                              sql,
-                                              function (err, data5) {
-                                                var sql =
-                                                  "SELECT * FROM `ems`.`religion_details`;";
-                                                db.query(
-                                                  sql,
-                                                  function (err, data4) {
-                                                    var sql =
-                                                      "SELECT * FROM `ems`.`no_delete`;";
-                                                    db.query(
-                                                      sql,
-                                                      function (err, data3) {
-                                                        var sql = `SELECT * FROM ems.cand_profile_details where cand_id in (select cand_id from cand_admission_details where (course,active_status) =('${course}','Yes'))`;
-                                                        db.query(
-                                                          sql,
-                                                          function (
-                                                            err,
-                                                            data1
-                                                          ) {
-                                                            var sql = `SELECT * FROM ems.cand_admission_details where (course,active_status) =('${course}','Yes')`;
-                                                            db.query(
-                                                              sql,
-                                                              function (
-                                                                err,
-                                                                data
-                                                              ) {
-                                                                if (
-                                                                  course ==
-                                                                  "MBBS"
-                                                                ) {
-                                                                  res.render(
-                                                                    "mbbs_viewstudent.ejs",
-                                                                    {
-                                                                      message:
-                                                                        message,
-                                                                      userData:
-                                                                        data,
-                                                                      userData1:
-                                                                        data1,
-                                                                      userData3:
-                                                                        data3,
-                                                                      userData4:
-                                                                        data4,
-                                                                      userData5:
-                                                                        data5,
-                                                                      userData6:
-                                                                        data6,
-                                                                      userData7:
-                                                                        data7,
-                                                                      userData8:
-                                                                        data8,
-                                                                      userData10:
-                                                                        data10,
-                                                                      userData11:
-                                                                        data11,
-                                                                      userData12:
-                                                                        data12,
-                                                                      userData13:
-                                                                        data13,
-                                                                      userData14:
-                                                                        data14,
-                                                                      userData15:
-                                                                        data15,
-                                                                      userData16:
-                                                                        data16,
-                                                                      userData17:
-                                                                        data17,
-                                                                      userData18:
-                                                                        data18,
-                                                                      userData19:
-                                                                        data19,
-                                                                      userData26:
-                                                                        data26,
-                                                                    }
-                                                                  );
-                                                                }
-                                                                if (
-                                                                  course ==
-                                                                  "MDMS"
-                                                                ) {
-                                                                  res.render(
-                                                                    "mdms_viewstudent.ejs",
-                                                                    {
-                                                                      message:
-                                                                        message,
-                                                                      userData:
-                                                                        data,
-                                                                      userData1:
-                                                                        data1,
-                                                                      userData3:
-                                                                        data3,
-                                                                      userData4:
-                                                                        data4,
-                                                                      userData5:
-                                                                        data5,
-                                                                      userData6:
-                                                                        data6,
-                                                                      userData7:
-                                                                        data7,
-                                                                      userData8:
-                                                                        data8,
-                                                                      userData10:
-                                                                        data10,
-                                                                      userData11:
-                                                                        data11,
-                                                                      userData12:
-                                                                        data12,
-                                                                      userData13:
-                                                                        data13,
-                                                                      userData14:
-                                                                        data14,
-                                                                      userData15:
-                                                                        data15,
-                                                                      userData16:
-                                                                        data16,
-                                                                      userData20:
-                                                                        data20,
-                                                                      userData21:
-                                                                        data21,
-                                                                      userData22:
-                                                                        data22,
-                                                                      userData23:
-                                                                        data23,
-                                                                      userData24:
-                                                                        data24,
-                                                                      userData25:
-                                                                        data25,
-                                                                      userData26:
-                                                                        data26,
-                                                                    }
-                                                                  );
-                                                                }
-                                                              }
-                                                            );
-                                                          }
-                                                        );
-                                                      }
-                                                    );
-                                                  }
-                                                );
-                                              }
-                                            );
-                                          });
-                                        });
-                                      });
-                                    });
-                                  });
-                                });
-                              });
-                            });
-                          });
-                        });
-                      });
-                    });
-                  });
-                });
-              });
-            });
-          });
-        });
-      });
-    });*/
   });
 };
 
 exports.print_fees = function (req, res) {
-  var cand_id = req.body.cand_id;
+  var post = req.body;
+  var cand_id = post.cand_id;
+  var course = post.course;
+
+  console.log("posting:", post);
+  var tution_fee = Number(post.tution_fee);
+  var special_fee = Number(post.special_fee);
+  var medical_fee = Number(post.medical_fee);
+  var caution_fee = Number(post.caution_fee);
+  var lib_fee = Number(post.lib_fee);
+  var univ_fee = Number(post.univ_fee);
+  var lic_fee = Number(post.lic_fee);
+  var red_fee = Number(post.red_fee);
+  var mis_fee = Number(post.mis_fee);
+  var flag_fee = Number(post.flag_fee);
+  var total_fee =
+    tution_fee +
+    special_fee +
+    medical_fee +
+    caution_fee +
+    lib_fee +
+    univ_fee +
+    lic_fee +
+    red_fee +
+    mis_fee +
+    flag_fee;
+  console.log(
+    tution_fee +
+      special_fee +
+      medical_fee +
+      caution_fee +
+      lib_fee +
+      univ_fee +
+      lic_fee +
+      red_fee +
+      mis_fee +
+      flag_fee
+  );
+  var dt = new Date();
+  //    registered_time = `${(dt.getMonth() + 1).toString().padStart(2, '0')}/${dt.getDate().toString().padStart(2, '0')}/${dt.getFullYear().toString().padStart(4, '0')} ${dt.getHours().toString().padStart(2, '0')}:${dt.getMinutes().toString().padStart(2, '0')}:${dt.getSeconds().toString().padStart(2, '0')}`;
+  last_modified_time = `${(dt.getMonth() + 1).toString().padStart(2, "0")}/${dt
+    .getDate()
+    .toString()
+    .padStart(2, "0")}/${dt.getFullYear().toString().padStart(4, "0")} ${dt
+    .getHours()
+    .toString()
+    .padStart(2, "0")}:${dt.getMinutes().toString().padStart(2, "0")}:${dt
+    .getSeconds()
+    .toString()
+    .padStart(2, "0")}`;
+
   console.log(cand_id);
-  var sql = `SELECT * FROM ems.cand_fees where cand_id  ='${cand_id}'`;
-  db.query(sql, function (err, data11) {
-    var sql = `SELECT * FROM ems.cand_profile_details where cand_id ='${cand_id}'`;
-    db.query(sql, function (err, data) {
-      var sql = `SELECT * FROM ems.cand_admission_details where cand_id = '${cand_id}'`;
-      db.query(sql, function (err, data1) {
-        // select * from ems.cand_profile_details where cand_id in (select cand_id from cand_admission_details where couse ='MDMS');
-        res.render("report_fees.ejs", {
-          userData: data,
-          userData1: data1,
-          userData11: data11,
+  var sql = `UPDATE ems.cand_fees SET  tution_fee ='${tution_fee}', special_fee='${special_fee}', medical_fee='${medical_fee}', caution_fee='${caution_fee}', lib_fee='${lib_fee}', univ_fee='${univ_fee}', lic_fee='${lic_fee}', red_fee='${red_fee}', mis_fee='${mis_fee}', flag_fee='${flag_fee}', total_fee='${total_fee}', last_modified_time='${last_modified_time}' WHERE (cand_id ='${cand_id}')`;
+  db.query(sql, function () {
+    var sql = `SELECT * FROM ems.cand_fees where cand_id  ='${cand_id}'`;
+    db.query(sql, function (err, data11) {
+      var sql = `SELECT * FROM ems.cand_profile_details where cand_id ='${cand_id}'`;
+      db.query(sql, function (err, data) {
+        var sql = `SELECT * FROM ems.cand_admission_details where cand_id = '${cand_id}'`;
+        db.query(sql, function (err, data1) {
+          console.log(data11);
+          // select * from ems.cand_profile_details where cand_id in (select cand_id from cand_admission_details where couse ='MDMS');
+          res.render("report_fees.ejs", {
+            userData: data,
+            userData1: data1,
+            userData11: data11,
+          });
         });
       });
     });
@@ -2360,146 +2205,253 @@ exports.all_report = function (req, res) {
   var post = req.body;
   var cand_id = post.check;
   var reports = post.reports;
+  var course = post.course;
   console.table(post);
+  var bon_ref_no = post.bon_ref_no;
+  var bon_acad_year = post.bon_acad_year;
+  var bon_purse = post.bon_purse;
+  var bon_stud_year = post.bon_stud_year;
+  var bon_purpose = post.bon_purpose;
+  var bon_pur_others = post.bon_pur_others;
+  var ack_date = post.ack_date;
+  var cond_csp = post.cond_csp;
+  var cond_cep = post.cond_cep;
+  var cond_mbbs = post.cond_mbbs;
+  var cond_tsp = post.cond_tsp;
+  var cond_tep = post.cond_tep;
+  var tc_reldate = post.tc_reldate;
+  var tc_reas = post.tc_reas;
+  var tc_mark = post.tc_mark;
+  var tc_high = post.tc_high;
 
-  var sql = `SELECT * from ems.cand_biometric_details where cand_id ='${cand_id}' `;
-  db.query(sql, (err, data17) => {
-    var sql = `SELECT * from ems.cand_academic_mdms2 where cand_id ='${cand_id}' `;
-    db.query(sql, (err, data16) => {
-      var sql = `SELECT * from ems.cand_academic_mdms1 where cand_id ='${cand_id}' `;
-      db.query(sql, (err, data15) => {
-        var sql = `SELECT * from ems.cand_academic_mdms where cand_id ='${cand_id}' `;
-        db.query(sql, (err, data14) => {
-          var sql = `SELECT * from ems.cand_bank_details where cand_id ='${cand_id}' `;
-          db.query(sql, (err, data13) => {
-            var sql = `SELECT * from ems.cand_contact_details where cand_id ='${cand_id}' `;
-            db.query(sql, (err, data12) => {
-              var sql = `SELECT * from ems.cand_fees where cand_id ='${cand_id}' `;
-              db.query(sql, (err, data11) => {
-                var sql = `SELECT * from ems.cand_institute_details_mdms where cand_id ='${cand_id}' `;
-                db.query(sql, (err, data10) => {
-                  var sql = `SELECT * from ems.cand_institute_details where cand_id ='${cand_id}' `;
-                  db.query(sql, (err, data9) => {
-                    var sql = `SELECT * from ems.cand_marks_details where cand_id ='${cand_id}' `;
-                    db.query(sql, (err, data8) => {
-                      var sql = `SELECT * from ems.cand_neet_mark_details where cand_id ='${cand_id}' `;
-                      db.query(sql, (err, data7) => {
-                        var sql = `SELECT * from ems.cand_neet_mark_mdms where cand_id ='${cand_id}' `;
-                        db.query(sql, (err, data6) => {
-                          var sql = `SELECT * from ems.cand_relieving_details where cand_id ='${cand_id}' `;
-                          db.query(sql, (err, data5) => {
-                            var sql = `SELECT * from ems.cand_surety_details where cand_id ='${cand_id}' `;
-                            db.query(sql, (err, data4) => {
-                              var sql = `SELECT * from ems.cand_certificate_details where cand_id ='${cand_id}' `;
-                              db.query(sql, (err, data3) => {
-                                var sql = `SELECT * from ems.cand_address_details where cand_id ='${cand_id}' `;
-                                db.query(sql, (err, data2) => {
-                                  var sql = `SELECT * from ems.cand_profile_details where cand_id ='${cand_id}'`;
-                                  db.query(sql, (err, data1) => {
-                                    var sql = `SELECT * FROM ems.cand_admission_details where cand_id ='${cand_id}'`;
-                                    db.query(sql, (err, data) => {
-                                      switch (reports) {
-                                        case "Admission Register":
-                                          break;
-                                        case "Admission Letter":
-                                          res.render(
-                                            "report_admission_letter.ejs",
-                                            {
-                                              userData: data1,
-                                              userData1: data,
-                                              userData3: "",
-                                              userData12: "",
-                                              userData13: "",
-                                              userData14: "",
-                                            }
-                                          );
-                                          break;
-                                        case "Check Slip":
-                                          res.render("report_checkslip.ejs", {
-                                            userData: data1,
-                                            userData1: data,
-                                          });
-                                          break;
-                                        case "Student Details":
-                                          res.render("report_personal.ejs", {
-                                            userData: data1,
-                                            userData1: data,
-                                            userData2: data2,
-                                            userData8: "",
-                                          });
-                                          break;
-                                        case "Education Details":
-                                          break;
-                                        case "Bond Form":
-                                          res.render("report_bond.ejs", {
-                                            userData: data,
-                                            userData1: data1,
-                                            userData2: data2,
-                                          });
-                                          break;
-                                        case "Relieving Letter":
-                                          break;
-                                        case "Bonofide Certificate":
-                                          res.render(
-                                            "report_bonafide_certificate.ejs",
-                                            {
-                                              userData: data1,
-                                              userData1: data,
-                                              userData3: "",
-                                            }
-                                          );
-                                          break;
-                                        case "Certificate Return Acknowledgment":
-                                          res.render(
-                                            "report_acknowledgement.ejs",
-                                            {
-                                              userData: data1,
-                                              userData2: data2,
-                                              userData3: "",
-                                              userData13: "",
-                                            }
-                                          );
-                                          break;
-                                        case "University Form":
-                                          break;
-                                        case "Transfer Certificate":
-                                          res.render("report_transfer.ejs", {
-                                            userData: data1,
-                                            userData1: data,
-                                            userData2: data2,
-                                            userData12: "",
-                                            userData13: "",
-                                          });
-                                          break;
-                                        case "Conduct Certificate":
-                                          break;
-                                        case "Scholarship Register":
-                                          res.render("report_scholership.ejs", {
-                                            userData: data1,
-                                            userData1: data,
-                                            userData2: data2,
-                                            userData8: data12,
-                                          });
-                                          break;
-                                        case "Bonofide Register":
-                                          res.render(
-                                            "report_bonafide_register.ejs",
-                                            {
-                                              userData: data1,
-                                              userData1: data,
-                                              userData2: data2,
-                                              userData8: data12,
-                                              userData12: "",
-                                            }
-                                          );
-                                          break;
-                                        case "Report":
-                                          break;
+  var sql = `SELECT * from ems.biometric_details where (cand_id,category,active_flag) =('${cand_id}','Thumb','Y') `;
+  db.query(sql, (err, data19) => {
+    var sql = `SELECT * from ems.biometric_details where (cand_id,category,active_flag) =('${cand_id}','Sign','Y') `;
+    db.query(sql, (err, data18) => {
+      var sql = `SELECT * from ems.biometric_details where (cand_id,category,active_flag) =('${cand_id}','Photo','Y') `;
+      db.query(sql, (err, data17) => {
+        var sql = `SELECT * from ems.cand_academic_mdms2 where cand_id ='${cand_id}' `;
+        db.query(sql, (err, data16) => {
+          var sql = `SELECT * from ems.cand_academic_mdms1 where cand_id ='${cand_id}' `;
+          db.query(sql, (err, data15) => {
+            var sql = `SELECT * from ems.cand_academic_mdms where cand_id ='${cand_id}' `;
+            db.query(sql, (err, data14) => {
+              var sql = `SELECT * from ems.cand_bank_details where cand_id ='${cand_id}' `;
+              db.query(sql, (err, data13) => {
+                var sql = `SELECT * from ems.cand_contact_details where cand_id ='${cand_id}' `;
+                db.query(sql, (err, data12) => {
+                  var sql = `SELECT * from ems.cand_fees where cand_id ='${cand_id}' `;
+                  db.query(sql, (err, data11) => {
+                    var sql = `SELECT * from ems.cand_institute_details_mdms where cand_id ='${cand_id}' `;
+                    db.query(sql, (err, data10) => {
+                      var sql = `SELECT * from ems.cand_institute_details where cand_id ='${cand_id}' `;
+                      db.query(sql, (err, data9) => {
+                        var sql = `SELECT * from ems.cand_marks_details where cand_id ='${cand_id}' `;
+                        db.query(sql, (err, data8) => {
+                          var sql = `SELECT * from ems.cand_neet_mark_details where cand_id ='${cand_id}' `;
+                          db.query(sql, (err, data7) => {
+                            var sql = `SELECT * from ems.cand_neet_mark_mdms where cand_id ='${cand_id}' `;
+                            db.query(sql, (err, data6) => {
+                              var sql = `SELECT * from ems.cand_relieving_details where cand_id ='${cand_id}' `;
+                              db.query(sql, (err, data5) => {
+                                var sql = `SELECT * from ems.cand_surety_details where cand_id ='${cand_id}' `;
+                                db.query(sql, (err, data4) => {
+                                  var sql = `SELECT * from ems.cand_certificate_details where cand_id ='${cand_id}' `;
+                                  db.query(sql, (err, data3) => {
+                                    var sql = `SELECT * from ems.cand_address_details where cand_id ='${cand_id}' `;
+                                    db.query(sql, (err, data2) => {
+                                      var sql = `SELECT * from ems.cand_profile_details where cand_id ='${cand_id}'`;
+                                      db.query(sql, (err, data1) => {
+                                        var sql = `SELECT * FROM ems.cand_admission_details where cand_id ='${cand_id}'`;
+                                        db.query(sql, (err, data) => {
+                                          switch (reports) {
+                                            case "Admission Register":
+                                              res.render(
+                                                "report_admission_register.ejs",
+                                                {
+                                                  userData: data1,
+                                                  userData1: data,
+                                                  userData2: data2,
+                                                  userData4: data9,
+                                                  userData8: data12,
+                                                  userData12: data17,
+                                                } //pending
+                                              );
+                                              break;
+                                            case "Admission Letter":
+                                              res.render(
+                                                "report_admission_letter.ejs",
+                                                {
+                                                  userData: data1,
+                                                  userData1: data,
+                                                  userData12: data17,
+                                                  userData13: data18,
+                                                  userData14: data19,
+                                                }
+                                              );
+                                              break;
+                                            case "Check Slip":
+                                              res.render(
+                                                "report_checkslip.ejs",
+                                                {
+                                                  userData: data1,
+                                                  userData1: data,
+                                                }
+                                              );
+                                              break;
+                                            case "Student Details":
+                                              res.render(
+                                                "report_personal.ejs",
+                                                {
+                                                  userData: data1,
+                                                  userData1: data,
+                                                  userData2: data2,
+                                                  userData8: data12,
+                                                }
+                                              );
+                                              break;
+                                            case "Education Details":
+                                              res.render(
+                                                "report_education.ejs",
+                                                {
+                                                  userData: data1,
+                                                  userData1: data,
+                                                  userData4: data9,
+                                                  userData5: data8,
+                                                  userData6: data7,
+                                                }
+                                              ); //pending
+                                              break;
+                                            case "Bond Form":
+                                              res.render("report_bond.ejs", {
+                                                userData: data,
+                                                userData1: data1,
+                                                userData2: data2,
+                                              });
+                                              break;
+                                            case "Relieving Letter":
+                                              res.render(
+                                                "report_relieving.ejs",
+                                                {
+                                                  userData: data1,
+                                                  userData1: data,
+                                                  today: "",
+                                                  objDate: "",
+                                                }
+                                              );
+                                              break;
+                                            case "Bonofide Certificate":
+                                              res.render(
+                                                "report_bonafide_certificate.ejs",
+                                                {
+                                                  userData: data1,
+                                                  userData1: data,
+                                                  userData12: data17,
+                                                  bon_ref_no: bon_ref_no,
+                                                  bon_acad_year: bon_acad_year,
+                                                  bon_purse: bon_purse,
+                                                  bon_stud_year: bon_stud_year,
+                                                  bon_purpose: bon_purpose,
+                                                  bon_pur_others:
+                                                    bon_pur_others,
+                                                  today: "",
+                                                }
+                                              );
+                                              break;
+                                            case "Certificate Return Acknowledgment":
+                                              res.render(
+                                                "report_acknowledgement.ejs",
+                                                {
+                                                  userData: data1,
+                                                  userData2: data2,
+                                                  userData3: data18,
+                                                  userData13: "",
+                                                  ack_date: ack_date,
+                                                }
+                                              );
+                                              break;
+                                            case "University Form":
+                                              res.render(
+                                                "report_univ_form.ejs",
+                                                {
+                                                  userData: data1,
+                                                  userData1: data,
+                                                  userData2: data2,
+                                                  userData4: data9,
+                                                  userData5: data8,
+                                                  userData8: data12,
+                                                }
+                                              ); //pending
+                                              break;
+                                            case "Transfer Certificate":
+                                              res.render(
+                                                "report_transfer.ejs",
+                                                {
+                                                  userData: data1,
+                                                  userData1: data,
+                                                  // userData2: data2,
+                                                  userData12: data17,
+                                                  // userData13: "",
+                                                  tc_reldate: tc_reldate,
+                                                  tc_reas: tc_reas,
+                                                  tc_mark: tc_mark,
+                                                  tc_high: tc_high,
+                                                }
+                                              );
+                                              break;
+                                            case "Conduct Certificate":
+                                              res.render("report_conduct.ejs", {
+                                                userData: data1,
+                                                cond_csp: cond_csp,
+                                                cond_cep: cond_cep,
+                                                cond_mbbs: cond_mbbs,
+                                                cond_tsp: cond_tsp,
+                                                cond_tep: cond_tep,
+                                                objDate: "",
+                                              });
+                                              break;
+                                            case "Scholarship Register":
+                                              res.render(
+                                                "report_scholership.ejs",
+                                                {
+                                                  userData: data1,
+                                                  userData1: data,
+                                                  userData2: data2,
+                                                  userData8: data12,
+                                                }
+                                              );
+                                              break;
+                                            case "Bonofide Register":
+                                              res.render(
+                                                "report_bonafide_register.ejs",
+                                                {
+                                                  userData: data1,
+                                                  userData1: data,
+                                                  userData2: data2,
+                                                  userData8: data12,
+                                                  userData12: data17,
+                                                }
+                                              );
+                                              break;
+                                            case "Report":
+                                              break;
 
-                                        default:
-                                          exports.mbbs_board(req, res);
-                                          break;
-                                      }
+                                            default:
+                                              switch (course) {
+                                                case "MBBS":
+                                                  exports.mbbs_board(req, res);
+                                                  break;
+                                                case "MDMS":
+                                                  exports.mdms_board(req, res);
+                                                  break;
+                                                default:
+                                                  null;
+                                                  break;
+                                              }
+                                              break;
+                                          }
+                                        });
+                                      });
                                     });
                                   });
                                 });
@@ -2560,32 +2512,28 @@ exports.mbbs_board = (req, res) => {
                                     db.query(sql, function (err, data1) {
                                       var sql = `SELECT * FROM ems.cand_admission_details where (course, active_status) =('MBBS','Yes')`;
                                       db.query(sql, function (err, data) {
-                                        console.log("hi");
-                                        return res.render(
-                                          "mbbs_viewstudent.ejs",
-                                          {
-                                            message: message,
-                                            userData: data,
-                                            userData1: data1,
-                                            userData3: data3,
-                                            userData4: data4,
-                                            userData5: data5,
-                                            userData6: data6,
-                                            userData7: data7,
-                                            userData8: data8,
-                                            userData10: data10,
-                                            userData11: data11,
-                                            userData12: data12,
-                                            userData13: data13,
-                                            userData14: data14,
-                                            userData15: data15,
-                                            userData16: data16,
-                                            userData17: data17,
-                                            userData18: data18,
-                                            userData19: data19,
-                                            userData26: data26,
-                                          }
-                                        );
+                                        res.render("mbbs_viewstudent.ejs", {
+                                          message: message,
+                                          userData: data,
+                                          userData1: data1,
+                                          userData3: data3,
+                                          userData4: data4,
+                                          userData5: data5,
+                                          userData6: data6,
+                                          userData7: data7,
+                                          userData8: data8,
+                                          userData10: data10,
+                                          userData11: data11,
+                                          userData12: data12,
+                                          userData13: data13,
+                                          userData14: data14,
+                                          userData15: data15,
+                                          userData16: data16,
+                                          userData17: data17,
+                                          userData18: data18,
+                                          userData19: data19,
+                                          userData26: data26,
+                                        });
                                       });
                                     });
                                   });
@@ -2715,7 +2663,7 @@ exports.insert_cand = function (req, res) {
 
   var userId = req.session.userId;
   var post = req.body;
-  console.log(post);
+  console.table(post);
   var name = post.full_name;
 
   var num = Math.floor(Math.random() * 1e6);
@@ -3576,7 +3524,7 @@ exports.edit_cand = function (req, res) {
   var userId = req.session.userId;
 
   var post = req.body;
-  console.log("post", post);
+  // console.table("post", post);
   var cand_id = post.cand_id;
 
   // profile tab
@@ -4668,209 +4616,6 @@ exports.delete_students = function (req, res) {
         null;
         break;
     }
-    /* var sql = `SELECT * FROM ems.cand_fees where cand_id in (select cand_id from cand_admission_details where (course,active_status) =('${course}','Yes')) `;
-    db.query(sql, function (err, data26) {
-      var sql18 = `SELECT * FROM ems.cand_institute_details_mdms where cand_id in (select cand_id from cand_admission_details where (course,active_status) =('MDMS','Yes'))`;
-      db.query(sql18, function (err, data25) {
-        var sql17 = `SELECT * FROM ems.cand_academic_mdms_2 where cand_id in (select cand_id from cand_admission_details where (course,active_status) =('MDMS','Yes'))`;
-        db.query(sql17, function (err, data24) {
-          var sql16 = `SELECT * FROM ems.cand_academic_mdms_1 where cand_id in (select cand_id from cand_admission_details where (course,active_status) =('MDMS','Yes'))`;
-          db.query(sql16, function (err, data23) {
-            var sql15 = `SELECT * FROM ems.cand_academic_mdms where cand_id in (select cand_id from cand_admission_details where (course,active_status) =('MDMS','Yes'))`;
-            db.query(sql15, function (err, data22) {
-              var sql14 = `SELECT * FROM ems.cand_neet_marks_mdms where cand_id in (select cand_id from cand_admission_details where (course,active_status) =('MDMS','Yes'))`;
-              db.query(sql14, function (err, data21) {
-                var sql12 = `SELECT * FROM ems.cand_surety_details where cand_id in (select cand_id from cand_admission_details where (course,active_status) =('MDMS','Yes'))`;
-                db.query(sql12, function (err, data20) {
-                  var sql15 = `SELECT * FROM ems.cand_neet_mark_details where cand_id in (select cand_id from cand_admission_details where (course,active_status) =('MBBS','Yes'))`;
-                  db.query(sql15, function (err, data19) {
-                    var sql14 = `SELECT * FROM ems.cand_marks_details where cand_id in (select cand_id from cand_admission_details where (course,active_status) =('MBBS','Yes'))`;
-                    db.query(sql14, function (err, data18) {
-                      var sql13 = `SELECT * FROM ems.cand_institute_details where cand_id in (select cand_id from cand_admission_details where (course,active_status) =('MBBS','Yes'))`;
-                      db.query(sql13, function (err, data17) {
-                        var sql11 = `select * from ems.cand_relieving_details where cand_id in (select cand_id from cand_admission_details where (course,active_status) =('${course}','Yes'))`;
-                        db.query(sql11, function (err, data16) {
-                          var sql9 = `SELECT * FROM ems.certificate_details where cand_id in (select cand_id from cand_admission_details where (course,active_status) =('${course}','Yes')) AND active_flag ='Y'`;
-                          db.query(sql9, function (err, data15) {
-                            var sql8 = `SELECT * FROM ems.cand_contact_details where cand_id in (select cand_id from cand_admission_details where (course,active_status) =('${course}','Yes'))`;
-                            db.query(sql8, function (err, data14) {
-                              var sql7 = `SELECT * FROM ems.cand_bank_details where cand_id in (select cand_id from cand_admission_details where (course,active_status) =('${course}','Yes'))`;
-                              db.query(sql7, function (err, data13) {
-                                var sql3 = `SELECT * FROM ems.biometric_details where cand_id in (select cand_id from cand_admission_details where (course,active_status) =('${course}','Yes'))AND active_flag ='Y'`;
-                                db.query(sql3, function (err, data12) {
-                                  var sql2 = `SELECT * FROM ems.cand_address_details where cand_id in (select cand_id from cand_admission_details where (course,active_status) =('${course}','Yes'))`;
-                                  db.query(sql2, function (err, data11) {
-                                    var sql = `SELECT * FROM ems.state_details`;
-                                    db.query(sql, function (err, data10) {
-                                      var sql = `SELECT * FROM ems.admiss_type`;
-                                      db.query(sql, function (err, data8) {
-                                        var sql = `SELECT * FROM ems.admiss_quota`;
-                                        db.query(sql, function (err, data7) {
-                                          var sql = `SELECT * FROM ems.community_details`;
-                                          db.query(sql, function (err, data6) {
-                                            var sql = `SELECT * FROM ems.nation_details`;
-                                            db.query(
-                                              sql,
-                                              function (err, data5) {
-                                                var sql = `SELECT * FROM ems.religion_details`;
-                                                db.query(
-                                                  sql,
-                                                  function (err, data4) {
-                                                    var sql = `SELECT * FROM ems.no_delete`;
-                                                    db.query(
-                                                      sql,
-                                                      function (err, data3) {
-                                                        var sql = `SELECT * FROM ems.cand_profile_details where cand_id in (select cand_id from cand_admission_details where (course,active_status) =('${course}','Yes'))`;
-                                                        db.query(
-                                                          sql,
-                                                          function (
-                                                            err,
-                                                            data1
-                                                          ) {
-                                                            var sql = `SELECT * FROM ems.cand_admission_details where (course,active_status) = ('${course}','Yes')`;
-                                                            db.query(
-                                                              sql,
-                                                              function (
-                                                                err,
-                                                                data
-                                                              ) {
-                                                                // select * from ems.cand_profile_details where cand_id in (select cand_id from cand_admission_details where couse ='MDMS');
-                                                                if (
-                                                                  course ==
-                                                                  "MBBS"
-                                                                ) {
-                                                                  res.render(
-                                                                    "mbbs_viewstudent.ejs",
-                                                                    {
-                                                                      message:
-                                                                        message,
-                                                                      userData:
-                                                                        data,
-                                                                      userData1:
-                                                                        data1,
-                                                                      userData3:
-                                                                        data3,
-                                                                      userData4:
-                                                                        data4,
-                                                                      userData5:
-                                                                        data5,
-                                                                      userData6:
-                                                                        data6,
-                                                                      userData7:
-                                                                        data7,
-                                                                      userData8:
-                                                                        data8,
-                                                                      userData10:
-                                                                        data10,
-                                                                      userData11:
-                                                                        data11,
-                                                                      userData12:
-                                                                        data12,
-                                                                      userData13:
-                                                                        data13,
-                                                                      userData14:
-                                                                        data14,
-                                                                      userData15:
-                                                                        data15,
-                                                                      userData16:
-                                                                        data16,
-                                                                      userData17:
-                                                                        data17,
-                                                                      userData18:
-                                                                        data18,
-                                                                      userData19:
-                                                                        data19,
-                                                                      userData26:
-                                                                        data26,
-                                                                    }
-                                                                  );
-                                                                }
-                                                                if (
-                                                                  course ==
-                                                                  "MDMS"
-                                                                ) {
-                                                                  res.render(
-                                                                    "mdms_viewstudent.ejs",
-                                                                    {
-                                                                      message:
-                                                                        message,
-                                                                      userData:
-                                                                        data,
-                                                                      userData1:
-                                                                        data1,
-                                                                      userData3:
-                                                                        data3,
-                                                                      userData4:
-                                                                        data4,
-                                                                      userData5:
-                                                                        data5,
-                                                                      userData6:
-                                                                        data6,
-                                                                      userData7:
-                                                                        data7,
-                                                                      userData8:
-                                                                        data8,
-                                                                      userData10:
-                                                                        data10,
-                                                                      userData11:
-                                                                        data11,
-                                                                      userData12:
-                                                                        data12,
-                                                                      userData13:
-                                                                        data13,
-                                                                      userData14:
-                                                                        data14,
-                                                                      userData15:
-                                                                        data15,
-                                                                      userData16:
-                                                                        data16,
-                                                                      userData20:
-                                                                        data20,
-                                                                      userData21:
-                                                                        data21,
-                                                                      userData22:
-                                                                        data22,
-                                                                      userData23:
-                                                                        data23,
-                                                                      userData24:
-                                                                        data24,
-                                                                      userData25:
-                                                                        data25,
-                                                                      userData26:
-                                                                        data26,
-                                                                    }
-                                                                  );
-                                                                }
-                                                              }
-                                                            );
-                                                          }
-                                                        );
-                                                      }
-                                                    );
-                                                  }
-                                                );
-                                              }
-                                            );
-                                          });
-                                        });
-                                      });
-                                    });
-                                  });
-                                });
-                              });
-                            });
-                          });
-                        });
-                      });
-                    });
-                  });
-                });
-              });
-            });
-          });
-        });
-      });
-    });*/
   });
 };
 //-----------------------------------------------dashboard page functionality----------------------------------------------

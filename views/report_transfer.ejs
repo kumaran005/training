@@ -130,16 +130,9 @@ userData.forEach(function(classdata){
         <li><h5><%=classdata.nationality %> / <%=classdata.religion %> </h5></li>
         <li><h5><%=classdata.community %></h5></li>
         <li><h5> <%=classdata.date_of_birth %></h5></li>
-        <%
-        if(userData13.length!=0){
-        var i=1;
-        userData13.forEach(function(classdata13){
-        %>
-        <li><h5><%=classdata13.tc_mark %></h5></li>
-        <%  i++; }) %>
-        <% } else{ %>
-        
-        <% } %>
+      
+        <li><h5><%=tc_mark %></h5></li>
+      
         <%
         if(userData1.length!=0){
         var i=1;
@@ -148,19 +141,12 @@ userData.forEach(function(classdata){
         <li><h5></h5></li><br>
         <li class="mt-1"><h5 class="mt-5"> <%=classdata1.course %></h5></li>
         <li><h5> <%=classdata1.date_of_admission %></h5></li>
-        <%
-        if(userData13.length!=0){
-        var i=1;
-        userData13.forEach(function(classdata13){
-        %>
-        <li><h5><%=classdata13.tc_reldate %> </h5></li>
-        <li><h5><%=classdata13.tc_reas %> </h5></li>
+      
+        <li><h5><%=tc_reldate %> </h5></li>
+        <li><h5><%=tc_reas %> </h5></li>
 
-        <li class="mt-100"><h5 class="pt-5"><%=classdata13.tc_high %> </h5></li>
-        <%  i++; }) %>
-        <% } else{ %>
+        <li class="mt-100"><h5 class="pt-5"><%=tc_high %> </h5></li>
         
-        <% } %>
         <%  i++; }) %>
 <% } else{ %>
 

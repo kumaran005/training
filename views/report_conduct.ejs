@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Ponmari_Sample</title>
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!-- Font Awesome -->
+    <link
+      rel="stylesheet"
+      href="/assets/dashboard/plugins/fontawesome-free/css/all.min.css"
+    />
+    <!-- Ionicons -->
+    <link
+      rel="stylesheet"
+      href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css"
+    />
+    <!-- bootsrtap -->
+
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+      crossorigin="anonymous"
+    />
+    <!-- Theme style -->
+
+    <link rel="stylesheet" href="/assets/dashboard/dist/css/mbbs.css" />
+
+    <link
+      href="//db.onlinewebfonts.com/c/90a8f57fcc9e4f2e1a3773770692ba95?family=AlgerianW01"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <style>
+      @media print {
+        body {
+          transform: scale(1.3) !important;
+        }
+      }
+      @import url(//db.onlinewebfonts.com/c/90a8f57fcc9e4f2e1a3773770692ba95?family=AlgerianW01);
+
+      body {
+        font-family: "AlgerianW01";
+      }
+      #border {
+        background: url(/assets/img/reportbg.jpg);
+        background-repeat: no-repeat;
+        background-position: 0px 6px;
+        background-size: contain;
+        z-index: 9;
+      }
+    </style>
+  </head>
+
+  <body class="hold-transition sidebar-mini">
+    <div class="toolbar no-print">
+      <button class="btn btn-info" onclick="window.print()">
+        Print Certificate
+      </button>
+      <button id="cmd">generate PDF</button>
+    </div>
+
+    <section id="report" class="blue">
+      <div class="container d-flex justify-content-center">
+        <div id="reportcard" class="">
+          <div class="card m-4 p-3" id="bordert">
+            <div class="row text-center" id="top">
+              <div class="col-md-2 text-center">
+                <img src="assets/img/r1.jpg" class="img-fluid" width="150" />
+              </div>
+              <div class="col-md-7" id="topcenter">
+                <h2 class="other-font" style="font-family: sans-serif">
+                  Tirunelveli Medical College<br /><span class="tvl"
+                    >Tirunelveli,</span
+                  >
+                </h2>
+                <h5 class="blue margin" id="state">
+                  <span class="blue margin"
+                    >STATE OF TAMILNADU, INDIA<BR />PINCODE:627011</span
+                  >
+                </h5>
+                <h5 class="text-center margin" id="addrep1">
+                  <strong class="blue margin" id="addrep">
+                    Tel: 91-462-2572733, 257273 Fax: 91-462-2572944</strong
+                  >
+                </h5>
+                <p id="newadd" class="margin">
+                  Under the Directorate of Medical Education, Government of
+                  Tamilnadu, Chennai-10 Affliated with the Tamil Nadu Dr.M.G.R.
+                  Medical University, Guindy, Chennai-32 Recognized by the
+                  Medical Council of India, New Delhi.
+                </p>
+              </div>
+              <div class="col-md-3 text-right">
+                <img src="assets/img/logo.gif" class="img-fluid" width="135" />
+              </div>
+            </div>
+
+            <hr class="margin" />
+            <div id="border">
+              <div class="row justify-content-center text-dark" id="bonofide">
+                <h2 class="mb-3 mt-4">
+                  <b
+                    ><u style="font-size: 39px"
+                      >COURSE CUM CONDUCT CERTIFICATE</u
+                    ></b
+                  >
+                </h2>
+
+                <ul class="mt-4">
+                  <% if(userData.length!=0){ var i=1;
+                  userData.forEach(function(classdata){ %>
+                  <li>
+                    <h4
+                      style="
+                        line-height: 3em;
+                        font-size: 25px;
+                        text-indent: 5.6cm; ;
+                      "
+                      id="bonafidecert"
+                    >
+                      THIS IS TO CERTIFY THAT
+                      <b style="text-transform: uppercase !important"
+                        ><%=classdata.name %></b
+                      >
+                      WAS A BONAFIDE STUDENT OF THIS COLLEGE DURING THE PERIOD
+                      FROM
+
+                      <b style="text-transform: uppercase !important"
+                        ><%=cond_csp %> TO <%=cond_cep %>
+                      </b>
+
+                      <% i++; }) %> <% } else{ %> <% } %> AND PASSED FINAL MBBS
+                      EXAMINATION HELD IN
+                      <b> <%=cond_mbbs %></b>. HE/SHE SUCCESSFULLY COMPLETED THE
+                      <b style="text-transform: uppercase !important"
+                        >COMPULSORY ROTATORY RESIDENT INTERNSHIP TRAINING </b
+                      >FOR A PERIOD FROM
+                      <b style="text-transform: uppercase !important"
+                        ><%=cond_tsp %> TO <%=cond_tep %></b
+                      >
+                    </h4>
+                  </li>
+                  <li class="ml-4">
+                    <h4
+                      style="
+                        line-height: 3em;
+                        font-size: 25px;
+                        text-transform: uppercase;
+                      "
+                      class="ml-3"
+                    >
+                      DURING THE ABOVE PERIOD HIS/HER CONDUCT AND CHARACTER HAVE
+                      BEEN <b>GOOD.</b>
+                    </h4>
+                  </li>
+                  <div
+                    class="row justify-content-center"
+                    style="margin-top: 230px"
+                    id="bd"
+                  >
+                    <div class="col-md-8 pl-5">
+                      <p class="text-center" style="width: 189px">
+                        <b style="text-transform: uppercase !important"
+                          >ISSUED UNDER SEAL <br />
+                          ON THIS DAY OF<br />
+                          <%=objDate %>
+                        </b>
+                      </p>
+                    </div>
+                    <div class="col-md-4">
+                      <p class="text-center">
+                        <b
+                          >DEAN<br />
+                          TIRUNELVELI MEDICAL COLLEGE, <br />TIRUNELVELI
+                        </b>
+                      </p>
+                    </div>
+                  </div>
+                </ul>
+                <br />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- jQuery bootstrap -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+      integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+      integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      type="text/javascript"
+      src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.1.135/jspdf.min.js"
+    ></script>
+    <script>
+      UPLOADCARE_PUBLIC_KEY = "demopublickey";
+    </script>
+    <script
+      src="https://ucarecdn.com/libs/widget/3.x/uploadcare.full.min.js"
+      charset="utf-8"
+    ></script>
+    <!-- AdminLTE App -->
+    <script src="js/adminlte.js"></script>
+    <script src="js/mbbs.js"></script>
+
+    <!-- AdminLTE for demo purposes -->
+    <script src="js/demo.js"></script>
+    <!-- page script -->
+
+    <script type="text/javascript">
+      $(function () {
+        var specialElementHandlers = {
+          "#editor": function (element, renderer) {
+            return true;
+          },
+        };
+        $("#cmd").click(function () {
+          var doc = new jsPDF();
+          doc.fromHTML($("#report").html(), 15, 15, {
+            width: 170,
+            elementHandlers: specialElementHandlers,
+          });
+          doc.save("sample-file.pdf");
+        });
+      });
+    </script>
+    <script></script>
+  </body>
+</html>
