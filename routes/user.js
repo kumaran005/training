@@ -2206,6 +2206,7 @@ exports.all_report = function (req, res) {
   var cand_id = post.check;
   var reports = post.reports;
   var course = post.course;
+  console.log(typeof cand_id);
   console.table(post);
   var bon_ref_no = post.bon_ref_no;
   var bon_acad_year = post.bon_acad_year;
@@ -2266,18 +2267,80 @@ exports.all_report = function (req, res) {
                                         db.query(sql, (err, data) => {
                                           switch (reports) {
                                             case "Admission Register":
-                                              res.render(
-                                                "report_admission_register.ejs",
-                                                {
-                                                  userData: data1,
-                                                  userData1: data,
-                                                  userData2: data2,
-                                                  userData4: data9,
-                                                  userData8: data12,
-                                                  userData12: data17,
-                                                } //pending
+                                              if (typeof cand_id === "object") {
+                                                var sql_admission = `SELECT * FROM ems.cand_admission_details where cand_id in ('${cand_id.join(
+                                                  "','"
+                                                )}')`;
+                                                var sql_contact = `SELECT * from ems.cand_contact_details where cand_id in('${cand_id.join(
+                                                  "','"
+                                                )}')`;
+                                                var sql_profile = `SELECT * FROM ems.cand_profile_details where cand_id in('${cand_id.join(
+                                                  "','"
+                                                )}')`;
+                                                var sql_address = `SELECT * from ems.cand_address_details where cand_id in ('${cand_id.join(
+                                                  "','"
+                                                )}')`;
+                                                var sql_institute = `SELECT * from ems.cand_institute_details where cand_id in('${cand_id.join(
+                                                  "','"
+                                                )}')`;
+                                              } else {
+                                                var sql_admission = `SELECT * FROM ems.cand_admission_details where cand_id in ('${cand_id}')`;
+                                                var sql_contact = `SELECT * from ems.cand_contact_details where cand_id in('${cand_id}')`;
+                                                var sql_profile = `SELECT * from ems.cand_profile_details where cand_id in('${cand_id}')`;
+                                                var sql_address = `SELECT * from ems.cand_address_details where cand_id in('${cand_id}')`;
+                                                var sql_institute = `SELECT * from ems.cand_institute_details where cand_id in('${cand_id}')`;
+                                              }
+                                              // console.log("sql", sql);
+                                              db.query(
+                                                sql_admission,
+                                                (err, data_admission) => {
+                                                  db.query(
+                                                    sql_contact,
+                                                    (err, data_contact) => {
+                                                      db.query(
+                                                        sql_profile,
+                                                        (err, data_profile) => {
+                                                          db.query(
+                                                            sql_address,
+                                                            (
+                                                              err,
+                                                              data_address
+                                                            ) => {
+                                                              db.query(
+                                                                sql_institute,
+                                                                (
+                                                                  err,
+                                                                  data_institute
+                                                                ) => {
+                                                                  return res.render(
+                                                                    "report_admission_register.ejs",
+                                                                    {
+                                                                      userData:
+                                                                        data_admission,
+                                                                      userData1:
+                                                                        data_profile,
+                                                                      userData2:
+                                                                        data_address,
+                                                                      userData4:
+                                                                        data_institute,
+                                                                      userData8:
+                                                                        data_contact,
+                                                                      userData12:
+                                                                        "",
+                                                                    } //pending
+                                                                  );
+                                                                }
+                                                              );
+                                                            }
+                                                          );
+                                                        }
+                                                      );
+                                                    }
+                                                  );
+                                                }
                                               );
                                               break;
+
                                             case "Admission Letter":
                                               res.render(
                                                 "report_admission_letter.ejs",
@@ -4273,7 +4336,7 @@ exports.edit_cand = function (req, res) {
                       db.query(sql, function () {
                         var sql = `UPDATE ems.cand_relieving_details SET relieved = '${relieved}',amount_refunded = '${amount_refunded}',date_of_relieving = '${date_of_relieving}',date_of_reallotment = '${date_of_reallotment}',college_name = '${college_name}',last_modified_time='${last_modified_time}' WHERE (cand_id = '${cand_id}')`;
                         db.query(sql, function () {
-                          var sql = `UPDATE ems.cand_institute_details SET institute_name ='${institute_name}', place ='${place}', district='${district}, state='${state}', relieving_date='${relieving_date}', duration='${duration}', exam_passed='${exam_passed}', register_no='${register_no}', month_of_passing='${month_of_passing}', year_of_passing='${year_of_passing}', board='${board}', last_modified_time='${last_modified_time}' WHERE (cand_id='${cand_id}')`;
+                          var sql = `UPDATE ems.cand_institute_details SET institute_name ='${institute_name}', place ='${place}', district='${district}', state='${state}', relieving_date='${relieving_date}', duration='${duration}', exam_passed='${exam_passed}', register_no='${register_no}', month_of_passing='${month_of_passing}', year_of_passing='${year_of_passing}', board='${board}', last_modified_time='${last_modified_time}' WHERE (cand_id='${cand_id}')`;
                           db.query(sql, function () {
                             var sql = `UPDATE ems.cand_neet_mark_details SET phy_mark='${phy_neet_mark}', phy_max_mark='${phy_neet_max}', chem_mark='${chem_neet_mark}', chem_max_mark='${chem_neet_max}', bio_mark='${bio_neet_mark}', bio_max_mark='${bio_neet_max}', agg_mark='${agg_neet_mark}', agg_max_mark='${agg_neet_max}', last_modified_time='${last_modified_time}' WHERE (cand_id = '${cand_id}')`;
                             db.query(sql, function () {

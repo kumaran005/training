@@ -2,6 +2,11 @@
 <html>
 
 <head>
+  <script>
+    var datas = '<%-JSON.stringify(userData)%>';
+    var data2 = '<%-JSON.stringify(userData8)%>';
+    var data3 = '<%-JSON.stringify(userData1)%>';
+  </script>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>Ponmari_Sample</title>
@@ -73,92 +78,43 @@ Phone No
 
     </tr>
   </thead>
-  <%
-if(userData.length!=0){
-var i=1;
-userData.forEach(function(classdata){
-%>
   <tbody id="table2"class="">
+  <%
+for (i in userData){
+%>
     <tr id="tleft">
-      <td >1</td>
-      <td><%=classdata.name %> <%=classdata.initial %><br>
-        <%
-        if(userData8.length!=0){
-        var i=1;
-        userData8.forEach(function(classdata8){
-        %>
-Mobile No:<%=classdata8.mobile_phone %><br>
-E-Mail: <span style="text-transform: lowercase;">
-<%=classdata8.email_id %></td></span>
-<%  i++; }) %>
-<% } else{ %>
+      <td ><%=Number(i)+1%></td>
+      <td><%=userData[i].cand_name %> <%=userData1[i].initial %><br>
+ 
+Mobile No:<%=userData8[i].mobile_phone %><br> 
+ E-Mail: <span style="text-transform: lowercase;">
+<%=userData8[i].email_id %></td></span>
 
-<% } %>
-<%
-if(userData.length!=0){
-var i=1;
-userData.forEach(function(classdata){
-%>
-      <td><%=classdata.father_name %><br>
-        <%  i++; }) %>
-<% } else{ %>
 
-<% } %>
-<%
-if(userData2.length!=0){
-var i=1;
-userData2.forEach(function(classdata2){
-%>
-<%=classdata2.ps_address%>
-<%  i++; }) %>
-<% } else{ %>
+       <td><%= userData1[i].father_name%><br> 
 
-<% } %>
+
+<%=userData2[i].ps_address%>
+
 </td>
-<%
-if(userData.length!=0){
-var i=1;
-userData.forEach(function(classdata){
-%>
-      <td style="width: 82px;"><p><%=classdata.date_of_birth%></p></td>
-      <%
-if(userData1.length!=0){
-var i=1;
-userData1.forEach(function(classdata1){
-%>
-      <td style="width: 93px;"><%=classdata1.date_of_admission%></td>
-      <%  i++; }) %>
-<% } else{ %>
 
-<% } %>
-            <td><%=classdata.community%>- <%=classdata.religion%>- <%=classdata.caste%>
+
+      <td style="width: 82px;"><p><%=userData1[i].date_of_birth%></p></td>
+      
+
+      <td style="width: 93px;"><%=userData[i].date_of_admission%></td>
+
+            <td><%=userData1[i].community%>- <%=userData1[i].religion%>- <%=userData1[i].caste%>
 </td>
-<%
-if(userData4.length!=0){
-var i=1;
-userData4.forEach(function(classdata4){
-%>
-<td><%=classdata4.exam_passed%>, <%=classdata4.register_no%>, <%=classdata4.institute_name%>, <%=classdata4.place%>, <%=classdata4.district%>, <%=classdata4.state%></td>
-<%  i++; }) %>
-<% } else{ %>
 
-<% } %>
-<%
-if(userData1.length!=0){
-var i=1;
-userData1.forEach(function(classdata1){
-%>
-      <td><%=classdata1.admission_quota%></td>
-      <%  i++; }) %>
-<% } else{ %>
+<td><%=userData4[i].exam_passed%>, <%=userData4[i].register_no%>, <%=userData4[i].institute_name%>, <%=userData4[i].place%>, <%=userData4[i].district%>, <%=userData4[i].state%></td>
 
-<% } %>
-<td><%=classdata.blood_group%></td>
-      <%  i++; }) %>
-<% } else{ %>
 
-<% } %>
-<%
+      <td><%=userData[i].admission_quota%></td>
+
+<td><%=userData1[i].blood_group%></td>
+
+<!--<%
 if(userData12.length!=0){
 var i=1;
 userData12.forEach(function(classdata12){
@@ -167,15 +123,12 @@ userData12.forEach(function(classdata12){
 <%  i++; }) %>
 <% } else{ %>
 
-<% } %>
+<% } %> -->
     </tr>
-  
+    
+    <% } %>
         
   </tbody>
-  <%  i++; }) %>
-  <% } else{ %>
-  
-  <% } %>
 </table> 
 
  
