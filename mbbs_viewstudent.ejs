@@ -787,10 +787,6 @@ edit=(clicked_id)=>{
                       if(value == "Certificate Return Acknowledgment"){
                         $('#report3').modal('toggle');
                       }  
-                        if(value == "Relieving Letter"){
-                        $('#relreport').modal('toggle');
-                      } 
-                      
                       if(value == "Conduct Certificate"){
                         $('#report9').modal('toggle');
                       }
@@ -5127,7 +5123,6 @@ edit=(clicked_id)=>{
           <div class="form-group">
             <label for="exampleFormControlSelect1">Pursing</label>
             <select class="form-control" name="bon_purse" form="for_report" id="exampleFormControlSelect1">
-              <option hidden="" selected="">&nbsp;</option>
               <option value="Pursuing" >Pursing</option>
               <option value="Studying">Studying</option>
               <option value="Other">Other</option>
@@ -5137,7 +5132,6 @@ edit=(clicked_id)=>{
           <div class="form-group">
             <label for="exampleFormControlSelect1">Studying year</label>
             <select class="form-control"name="bon_stud_year" form="for_report" id="exampleFormControlSelect1">
-              <option hidden="" selected="">&nbsp;</option>
               <option value="1st Year">1st Year</option>
               <option value="2nd Year">2nd Year</option>
               <option value="3rd Year">3rd Year</option>
@@ -5147,7 +5141,6 @@ edit=(clicked_id)=>{
           <div class="form-group">
             <label for="exampleFormControlSelect1">Purpose</label>
             <select class="form-control" name="bon_purpose"id="exampleFormControlSelect1" form="for_report">
-              <option hidden="" selected="">&nbsp;</option>
               <option value="STATE Quota">STATE Quota</option>
               <option value="2nd Round AIQ Counselling">2nd Round AIQ Counselling</option>
               <option value="Others">Others</option>
@@ -5185,7 +5178,7 @@ edit=(clicked_id)=>{
             <label for="exampleFormControlInput21">Certificate Return Date</label>
             <input type="text" class="form-control"id="ackdate" form="for_report" name="ack_date" id="exampleFormControlInput21" placeholder="">
           </div>
-          
+      
           <div class="modal-footer">
             <button type="button" data-dismiss="modal" class="btn btn-primary">Submit </button>
           </div>
@@ -5195,129 +5188,7 @@ edit=(clicked_id)=>{
     </div>
   </div>
 </div>
-<!-- relieving modal -->
-<div class="modal fade" id="relreport" tabindex="-1" role="dialog" aria-labelledby="report3Label" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="report3Label">Relieving Details</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <!-- <form id="loginform"  class="book-form" role="form" method="post" action="/get_report3"> -->
-          <!-- <input type='text' name='cand_id' hidden  value='<%= message %>'/> -->
-          <div class="row">
-            <div class="col-md-6">
-              <div class="form-group">
-                <label for="exampleFormControlInput21">Reference No</label>
-                <input type="text" class="form-control"id="ackdate" form="for_report" name="ref_no" id="exampleFormControlInput21" placeholder="">
-              </div>
-              </div>
-            <div class="col-md-6">
-          <div class="form-group">
-            <label for="exampleFormControlInput21">Relieving Date</label>
-            <input type="date" class="form-control"id="ackdate" form="for_report" name="rel_date" id="exampleFormControlInput21" placeholder="">
-          </div>
-          </div>
-          <div class="col-md-6">
-            <div class="form-group">
-              <label for="exampleFormControlTextarea1">Admission Quota</label>
-              <i class="fa fa-caret-down" id="drop"></i>
 
-              <select class="form-control" form="for_report" name="admission_quota">
-                <option hidden="" selected="">&nbsp;</option>
-
-                <%
-                if(userData7.length!=0){
-                var i=1;
-                userData7.forEach(function(classdata7){
-                %>
-                <option value='<%=classdata7.admiss_quota %>'><%=classdata7.admiss_quota %></option>
-                <%  i++; }) %>
-                <% } else{ %>
-            
-                <% } %>
-              </select>
-            </div>
-          </div>
-          <div class="col-md-6">
-            <div class="form-group">
-              <label for="exampleFormControlInput21">Indvidual's Letter Dated</label>
-              <input type="date" class="form-control"id="ackdate" form="for_report" name="letter_date" id="exampleFormControlInput21" placeholder="">
-            </div>
-            </div>
-          </div>
-          <div class="table-responsive ">
-
-              <table class="table" id="studtable">
-
-                <thead>
-                  <tr>
-                    <th scope="col"><input type="checkbox" name="" id=""></th>
-                    <th scope="col">Student Id</th>
-                    <th scope="col"width="300"> Candidate Name</th>
-                    <th scope="col">Registration No</th>
-                    
-                    <th scope="col">Admission Type</th>
-                    <th scope="col">Date of Admission</th>
-
-
-
-                  </tr>
-                </thead>
-                <tbody id="myTable" >
-                  
-                  <% if(userData27.length!=0){ var i=0; userData27.forEach(function(classdata){ %>
-                   
-                      
-                    
-                    <tr  id="cand_table" >
-                      <td class="pt-4">           
-                        <input type="checkbox" form="for_report" name="rel_check" id="cand_check<%=i%>" value="<%=classdata.cand_id %>">
-                        
-                        <!-- <input type="text" name="check" id="cand_eck" hidden value="<%=classdata.cand_id %>"> -->
-                       </td>
-                      <td id="id" >
-                        <%=classdata.cand_id %>
-                      </td>
-                      <td >
-
-                        <%=classdata.cand_name %>
-                      </td>
-                     
-                      <td id="id">
-
-                        <%=classdata.reg_no %>
-                      </td>
-                    
-                      <td >
-                        <%=classdata.admission_type %>
-                      </td>
-                      <td >
-                        <%=classdata.date_of_admission %>
-                      </td>
-
-                    </tr>
-                    <% i++; }) %>
-                      <% } else{ %>
-
-                        <% } %>
-                </tbody>
-               
-              </table>
-
-            </div>
-          <div class="modal-footer">
-            <button type="button" data-dismiss="modal" class="btn btn-primary">Submit </button>
-          </div>
-        <!-- </form> -->
-      </div>
-     
-    </div>
-  </div>
-</div>
 <!-- Conduct Modal -->
 <div class="modal fade" id="report9" tabindex="-1" role="dialog" aria-labelledby="report9Label" aria-hidden="true">
   <div class="modal-dialog" role="document">

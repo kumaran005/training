@@ -81,9 +81,9 @@
                    <p class="mt-5 "><b>Ref: </b></p>
                                  </div>
                <%
-               if(userData1.length!=0){
+               if(userData.length!=0){
                var i=1;
-               userData1.forEach(function(classdata1){
+               userData.forEach(function(classdata1){
                %>
                <div class="col-md-10 pl-5">
                    <p>Medical Education - Tirunelveli Medical College, Tirunelveli - Candidates who joined MBBS
@@ -126,43 +126,24 @@
             
                 </tr>
               </thead>
-              <%
-              if(userData1.length!=0){
-              var i=1;
-              userData1.forEach(function(classdata1){
-              %>
+             <% for(i in userData){%>
              <tbody style="border-top: 3px solid;"id="relbody">
                  <tr>
-                     <td >1</td>
-                     <%
-                     if(userData.length!=0){
-                     var i=1;
-                     userData.forEach(function(classdata){
-                     %>
-                     <td><%=classdata.name %></td>
-                     <%  i++; }) %>
-                     <% } else{ %>
+                     <td ><%=Number(i)+1%></td>
                      
-                     <% } %>
-                     <%
-                     if(userData1.length!=0){
-                     var i=1;
-                     userData1.forEach(function(classdata1){
-                     %>
-                     <td><%=classdata1.course %></td>
-                     <td><%=classdata1.date_of_admission %></td>
+                     <td><%=userData[i].cand_name %></td>
+                     
+                    
+                     <td><%=userData[i].course %></td>
+                     <td><%=userData[i].date_of_admission %></td>
                      <td></td>
                      <td></td>
-                     <%  i++; }) %>
-                     <% } else{ %>
+                 
                      
                      <% } %>
                  </tr>
              </tbody>
-             <%  i++; }) %>
-             <% } else{ %>
-             
-             <% } %>
+            
             </table>
            <div class="col-md-12">
             <p class="ml-5"style="font-family:normal">All the original certificates submitted by the candidates are herewith returned.
