@@ -19,6 +19,7 @@
   <!-- Theme style -->
   <link rel="stylesheet" href="/assets/design/css/alter.css">
   <link rel="stylesheet" href="/assets/design/css/mbbs.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/css/bootstrap-select.min.css">
   <!-- Google Font Source Sans Pro -->
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro300,400,400i,700" rel="stylesheet">
   <script type="text/javascript">
@@ -767,35 +768,36 @@ edit=(clicked_id)=>{
                       <!-- <p style="font-style: italic;">33 Records Found !</p> -->
                     </div>
                     <script>
-                        //  function c(){
-                         
-                        //    for (i in admission_detail){
-
-                        //   (document.getElementById("cand_check"+i).checked == true)?(
-                        //    id = document.getElementById("cand_check"+i).value,
-                        //    document.getElementById('cand_eck').value=id)
-                        //   :null
-                        //  }
-                        // }
+                        $("#checkdate").datepicker({
+                            dateFormat: "d MM yy",
+                            duration: "medium"
+                          });
                         
-                        function showModal(value) {
+                        function c() {
                           
-                      
-                      if(value == "Bonofide Certificate"){
+                    //  alert( $('#sel_report').val());
+                      if($('#sel_report').val() == "Bonofide Certificate"){
                       $('#bonofide').modal('toggle');}
                         
-                      if(value == "Certificate Return Acknowledgment"){
+                     else if($('#sel_report').val() == "Certificate Return Acknowledgment"){
                         $('#report3').modal('toggle');
                       }  
-                        if(value == "Relieving Letter"){
+                      else  if($('#sel_report').val() == "Relieving Letter"){
                         $('#relreport').modal('toggle');
                       } 
                       
-                      if(value == "Conduct Certificate"){
+                      else  if($('#sel_report').val() == "Conduct Certificate"){
                         $('#report9').modal('toggle');
                       }
-                      if(value == "Transfer Certificate"){
+                     else if($('#sel_report').val() == "Transfer Certificate"){
                         $('#report11').modal('toggle');
+                      }       
+                     else if($('#sel_report').val() == "Check Slip"){
+                        $('#checkslip').modal('toggle');
+                      }
+                      
+                      else{
+                        $("#submitHidden").click();
                       }
                     }
                       </script>
@@ -824,8 +826,9 @@ edit=(clicked_id)=>{
                        </select>
                    
                        &nbsp;&nbsp;
-                       <button id="btn-signup" type="submit" form="for_report" onclick="c()" class="btn btn-primary "style="font-size:13px; position: relative;
+                       <button id="btn-signup" type="button" form="for_report" onclick="c()" class="btn btn-primary "style="font-size:13px; position: relative;
                        top: -6px;">Print </button>
+                       <input type="submit" id="submitHidden" hidden style="display: none;" >
                       </form>
                       <!-- <p style="font-style: italic;">33 Records Found !</p> -->
                     </div>
@@ -5160,7 +5163,7 @@ edit=(clicked_id)=>{
           </div>
           <div class="modal-footer">
             <!-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button> -->
-            <button type="button" data-dismiss="modal" class="btn btn-primary">Submit </button>
+            <button type="submit" data-dismiss="" form="for_report" class="btn btn-primary">Submit </button>
           </div>
         <!-- </form> -->
       </div>
@@ -5187,7 +5190,7 @@ edit=(clicked_id)=>{
           </div>
           
           <div class="modal-footer">
-            <button type="button" data-dismiss="modal" class="btn btn-primary">Submit </button>
+            <button type="submit" form="for_report" data-dismiss="" class="btn btn-primary">Submit </button>
           </div>
         <!-- </form> -->
       </div>
@@ -5310,7 +5313,7 @@ edit=(clicked_id)=>{
 
             </div>
           <div class="modal-footer">
-            <button type="button" data-dismiss="modal" class="btn btn-primary">Submit </button>
+            <button type="submit" form="for_report" data-dismiss="" class="btn btn-primary">Submit </button>
           </div>
         <!-- </form> -->
       </div>
@@ -5366,7 +5369,7 @@ edit=(clicked_id)=>{
 </div>
           </div>
           <div class="modal-footer">
-            <button type="button" data-dismiss="modal" class="btn btn-primary">Submit </button>
+            <button type="submit" data-dismiss="" form="for_report" class="btn btn-primary">Submit </button>
           </div>
         <!-- </form> -->
       </div>
@@ -5415,7 +5418,7 @@ edit=(clicked_id)=>{
           </div>
           <div class="modal-footer">
             <!-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button> -->
-            <button type="button" data-dismiss="modal" class="btn btn-primary">Submit </button>
+            <button type="submit" data-dismiss="" form="for_report" class="btn btn-primary">Submit </button>
           </div>
         </form>
       </div>
@@ -5423,6 +5426,310 @@ edit=(clicked_id)=>{
     </div>
   </div>
 </div>
+
+<!-- check slip -->
+<div class="modal fade" id="checkslip" tabindex="-1" role="dialog" aria-labelledby="checkslip" aria-hidden="true">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="checkslip">Check Slip Details</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <!-- <form id="loginform"  class="book-form" role="form" method="post" action="/get_report3"> -->
+          <!-- <input type='text' name='cand_id' hidden  value='<%= message %>'/> -->
+          <div class="row">
+            <div class="col-md-3">
+          <div class="form-group">
+            <label for="exampleFormControlInput21">Certificate Type</label>
+            <div class="form-group">
+              <select id="select"class="selectpicker"  data-live-search="true">
+                <option hidden="" selected="">&nbsp;</option>
+                <option>Allotment Order</option>
+                <option>SSLC Mark Sheet</option>
+                <option>HSC First Year Mark Sheet Certificate</option>
+                <option>HSC Second Year Mark Sheet Certificate</option>
+                <option>Transfer Certificate</option>
+                <option>Community Certificate</option>
+                <option>Conduct Certificate</option>
+                <option>Nativity Certificate</option>
+                <option>Physical Fitness</option>
+                <option>Photo</option>
+                <option>Hepatites-B Certificate</option>
+                <option>Senior Secondary Mark Sheet</option>
+                <option>CBSE/ISC Pass Certificate</option>
+                <option>Neet Score Card</option>
+                <option>Neet Hall Ticket</option>
+                <option>Neet Rank Letter</option>
+                <option>Migration Certificate</option>
+                <option>Eligiblity Certificate Date</option>
+                <option>First to Final MBBS Mark Sheets</option>
+                <option>CRRI Completion Certificate</option>
+                <option>MBBS Degree Certificate</option>
+                <option>MBBS Registration Certificate</option>
+                <option>MBBS Course Cum Conduct Certificate</option>
+                <option>MBBS Attempt Certificate</option>
+                <option>PG Diploma Mark Sheet</option>
+                <option>PG Diploma Degree Certificate</option>
+                <option>PG Diploma  Registration Certificate</option>
+                <option>MDMS Mark Sheet</option>
+                <option>MDMS Degree Certificate</option>
+                <option>MDMS Registration Certificate</option>
+                <option>MDMS Course Cum Conduct Certificate</option>
+                <option>MDMS Transfer Certificate</option>
+                <option>NEET Admit Card</option>
+                <option>NEET Rank Card</option>
+                <option>Four Sets Xerox Copies</option>
+                <option>Bond Executed By the Candidate</option>
+                <option>Aadhar Card Xerox</option>
+                <option>Bank Pass Book Xerox</option>
+                <option>Pan Card Xerox</option>
+
+
+              </select>
+            </div>          </div>
+            <div class="form-group">
+              <label for="exampleFormControlInput21">Certificate Type</label>
+              <div class="form-group">
+                <select id="select"class="selectpicker"  data-live-search="true">
+                  <option hidden="" selected="">&nbsp;</option>
+                  <option>Allotment Order</option>
+                  <option>SSLC Mark Sheet</option>
+                  <option>HSC First Year Mark Sheet Certificate</option>
+                  <option>HSC Second Year Mark Sheet Certificate</option>
+                  <option>Transfer Certificate</option>
+                  <option>Community Certificate</option>
+                  <option>Conduct Certificate</option>
+                  <option>Nativity Certificate</option>
+                  <option>Physical Fitness</option>
+                  <option>Photo</option>
+                  <option>Hepatites-B Certificate</option>
+                  <option>Senior Secondary Mark Sheet</option>
+                  <option>CBSE/ISC Pass Certificate</option>
+                  <option>Neet Score Card</option>
+                  <option>Neet Hall Ticket</option>
+                  <option>Neet Rank Letter</option>
+                  <option>Migration Certificate</option>
+                  <option>Eligiblity Certificate Date</option>
+                  <option>First to Final MBBS Mark Sheets</option>
+                  <option>CRRI Completion Certificate</option>
+                  <option>MBBS Degree Certificate</option>
+                  <option>MBBS Registration Certificate</option>
+                  <option>MBBS Course Cum Conduct Certificate</option>
+                  <option>MBBS Attempt Certificate</option>
+                  <option>PG Diploma Mark Sheet</option>
+                  <option>PG Diploma Degree Certificate</option>
+                  <option>PG Diploma  Registration Certificate</option>
+                  <option>MDMS Mark Sheet</option>
+                  <option>MDMS Degree Certificate</option>
+                  <option>MDMS Registration Certificate</option>
+                  <option>MDMS Course Cum Conduct Certificate</option>
+                  <option>MDMS Transfer Certificate</option>
+                  <option>NEET Admit Card</option>
+                  <option>NEET Rank Card</option>
+                  <option>Four Sets Xerox Copies</option>
+                  <option>Bond Executed By the Candidate</option>
+                  <option>Aadhar Card Xerox</option>
+                  <option>Bank Pass Book Xerox</option>
+                  <option>Pan Card Xerox</option>
+  
+  
+                </select>
+              </div>          </div>
+              <div class="form-group">
+                <label for="exampleFormControlInput21">Certificate Type</label>
+                <div class="form-group">
+                  <select id="select"class="selectpicker"  data-live-search="true">
+                    <option hidden="" selected="">&nbsp;</option>
+                    <option>Allotment Order</option>
+                    <option>SSLC Mark Sheet</option>
+                    <option>HSC First Year Mark Sheet Certificate</option>
+                    <option>HSC Second Year Mark Sheet Certificate</option>
+                    <option>Transfer Certificate</option>
+                    <option>Community Certificate</option>
+                    <option>Conduct Certificate</option>
+                    <option>Nativity Certificate</option>
+                    <option>Physical Fitness</option>
+                    <option>Photo</option>
+                    <option>Hepatites-B Certificate</option>
+                    <option>Senior Secondary Mark Sheet</option>
+                    <option>CBSE/ISC Pass Certificate</option>
+                    <option>Neet Score Card</option>
+                    <option>Neet Hall Ticket</option>
+                    <option>Neet Rank Letter</option>
+                    <option>Migration Certificate</option>
+                    <option>Eligiblity Certificate Date</option>
+                    <option>First to Final MBBS Mark Sheets</option>
+                    <option>CRRI Completion Certificate</option>
+                    <option>MBBS Degree Certificate</option>
+                    <option>MBBS Registration Certificate</option>
+                    <option>MBBS Course Cum Conduct Certificate</option>
+                    <option>MBBS Attempt Certificate</option>
+                    <option>PG Diploma Mark Sheet</option>
+                    <option>PG Diploma Degree Certificate</option>
+                    <option>PG Diploma  Registration Certificate</option>
+                    <option>MDMS Mark Sheet</option>
+                    <option>MDMS Degree Certificate</option>
+                    <option>MDMS Registration Certificate</option>
+                    <option>MDMS Course Cum Conduct Certificate</option>
+                    <option>MDMS Transfer Certificate</option>
+                    <option>NEET Admit Card</option>
+                    <option>NEET Rank Card</option>
+                    <option>Four Sets Xerox Copies</option>
+                    <option>Bond Executed By the Candidate</option>
+                    <option>Aadhar Card Xerox</option>
+                    <option>Bank Pass Book Xerox</option>
+                    <option>Pan Card Xerox</option>
+    
+    
+                  </select>
+                </div>          </div>
+                <div class="form-group">
+                  <label for="exampleFormControlInput21">Certificate Type</label>
+                  <div class="form-group">
+                    <select id="select"class="selectpicker"  data-live-search="true">
+                      <option hidden="" selected="">&nbsp;</option>
+                      <option>Allotment Order</option>
+                      <option>SSLC Mark Sheet</option>
+                      <option>HSC First Year Mark Sheet Certificate</option>
+                      <option>HSC Second Year Mark Sheet Certificate</option>
+                      <option>Transfer Certificate</option>
+                      <option>Community Certificate</option>
+                      <option>Conduct Certificate</option>
+                      <option>Nativity Certificate</option>
+                      <option>Physical Fitness</option>
+                      <option>Photo</option>
+                      <option>Hepatites-B Certificate</option>
+                      <option>Senior Secondary Mark Sheet</option>
+                      <option>CBSE/ISC Pass Certificate</option>
+                      <option>Neet Score Card</option>
+                      <option>Neet Hall Ticket</option>
+                      <option>Neet Rank Letter</option>
+                      <option>Migration Certificate</option>
+                      <option>Eligiblity Certificate Date</option>
+                      <option>First to Final MBBS Mark Sheets</option>
+                      <option>CRRI Completion Certificate</option>
+                      <option>MBBS Degree Certificate</option>
+                      <option>MBBS Registration Certificate</option>
+                      <option>MBBS Course Cum Conduct Certificate</option>
+                      <option>MBBS Attempt Certificate</option>
+                      <option>PG Diploma Mark Sheet</option>
+                      <option>PG Diploma Degree Certificate</option>
+                      <option>PG Diploma  Registration Certificate</option>
+                      <option>MDMS Mark Sheet</option>
+                      <option>MDMS Degree Certificate</option>
+                      <option>MDMS Registration Certificate</option>
+                      <option>MDMS Course Cum Conduct Certificate</option>
+                      <option>MDMS Transfer Certificate</option>
+                      <option>NEET Admit Card</option>
+                      <option>NEET Rank Card</option>
+                      <option>Four Sets Xerox Copies</option>
+                      <option>Bond Executed By the Candidate</option>
+                      <option>Aadhar Card Xerox</option>
+                      <option>Bank Pass Book Xerox</option>
+                      <option>Pan Card Xerox</option>
+      
+      
+                    </select>
+                  </div>          </div>
+          </div>
+          <div class="col-md-3">
+            <div class="form-group">
+              <label for="exampleFormControlInput21">Certificate Status</label>
+              
+                <select id="select"class="selectpicker"  data-live-search="true">
+                  <option hidden="" selected="">&nbsp;</option>
+                  <option>Not Applicable</option>
+                  <option>Choosen</option>
+                  <option>Provided</option>
+                  <option>Due Date</option>
+                  <option>Others</option>
+                    <option>Migration in TC</option>
+                    <option>Migration in CC</option>
+                  </select>
+            </div>
+            <div class="form-group">
+              <label for="exampleFormControlInput21">Certificate Status</label>
+              
+                <select id="select"class="selectpicker"  data-live-search="true">
+                  <option hidden="" selected="">&nbsp;</option>
+                  <option>Not Applicable</option>
+                  <option>Choosen</option>
+                  <option>Provided</option>
+                  <option>Due Date</option>
+                  <option>Others</option>
+                    <option>Migration in TC</option>
+                    <option>Migration in CC</option>
+                  </select>
+            </div>
+            <div class="form-group">
+              <label for="exampleFormControlInput21">Certificate Status</label>
+              
+                <select id="select"class="selectpicker"  data-live-search="true">
+                  <option hidden="" selected="">&nbsp;</option>
+                  <option>Not Applicable</option>
+                  <option>Choosen</option>
+                  <option>Provided</option>
+                  <option>Due Date</option>
+                  <option>Others</option>
+                    <option>Migration in TC</option>
+                    <option>Migration in CC</option>
+                  </select>
+            </div>
+            
+            </div>
+            <div class="col-md-3">
+              <div class="form-group">
+                <label for="exampleFormControlInput21">Due Date</label>
+                <input type="text" class="form-control"id="checkdate" form="for_report" name="ack_date" id="exampleFormControlInput21" placeholder="">
+              </div>
+              <div class="form-group">
+                <label for="exampleFormControlInput21">Due Date</label>
+                <input type="text" class="form-control"id="checkdate" form="for_report" name="ack_date" id="exampleFormControlInput21" placeholder="">
+              </div>
+              <div class="form-group">
+                <label for="exampleFormControlInput21">Due Date</label>
+                <input type="text" class="form-control"id="checkdate" form="for_report" name="ack_date" id="exampleFormControlInput21" placeholder="">
+              </div>
+              <div class="form-group">
+                <label for="exampleFormControlInput21">Due Date</label>
+                <input type="text" class="form-control"id="checkdate" form="for_report" name="ack_date" id="exampleFormControlInput21" placeholder="">
+              </div>
+              </div>
+              <div class="col-md-3">
+                <div class="form-group">
+                  <label for="exampleFormControlInput21">Certificate Return Date</label>
+                  <input type="text" class="form-control"id="checkdate" form="for_report" name="" id="exampleFormControlInput21" placeholder="">
+                </div>
+                <div class="form-group">
+                  <label for="exampleFormControlInput21">Certificate Return Date</label>
+                  <input type="text" class="form-control"id="checkdate" form="for_report" name="" id="exampleFormControlInput21" placeholder="">
+                </div>
+                <div class="form-group">
+                  <label for="exampleFormControlInput21">Certificate Return Date</label>
+                  <input type="text" class="form-control"id="checkdate" form="for_report" name="" id="exampleFormControlInput21" placeholder="">
+                </div>
+                <div class="form-group">
+                  <label for="exampleFormControlInput21">Certificate Return Date</label>
+                  <input type="text" class="form-control"id="checkdate" form="for_report" name="" id="exampleFormControlInput21" placeholder="">
+                </div>
+                </div>
+          </div>
+          <div class="modal-footer">
+            <button type="submit" data-dismiss="" form="for_report" class="btn btn-primary">Submit </button>
+          </div>
+        <!-- </form> -->
+      </div>
+     
+    </div>
+  </div>
+</div>
+
+
+<!-- Check Slip Modal -->
+
 <!-- end of report modals -->
 
 
@@ -5505,6 +5812,7 @@ edit=(clicked_id)=>{
   <!-- AdminLTE App -->
   <script src="/assets/design/js/adminlte.js"></script>
   <script src="/assets/design/js/mbbs.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/js/bootstrap-select.min.js"></script>
 
   <!-- AdminLTE for demo purposes -->
   <script src="/assets/design/js/demo.js"></script>
