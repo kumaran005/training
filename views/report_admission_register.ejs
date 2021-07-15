@@ -114,16 +114,9 @@ Mobile No:<%=userData8[i].mobile_phone %><br>
 
 <td><%=userData1[i].blood_group%></td>
 
-<!--<%
-if(userData12.length!=0){
-var i=1;
-userData12.forEach(function(classdata12){
-%>
-<td><img src="/uploads/<%=classdata12.Filename %>" class="img-fluid"style="width: 300px"></td>
-<%  i++; }) %>
-<% } else{ %>
 
-<% } %> -->
+<td><img src="/uploads/<%=userData12[i].Filename %>" class="img-fluid"style="width: 300px"></td>
+
     </tr>
     
     <% } %>

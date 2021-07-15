@@ -250,7 +250,7 @@ view=(clicked_id)=>{
         document.getElementById("cand_father_name").innerHTML = profile['father_name'];
         document.getElementById("cand_mother_name").innerHTML = profile['mother_name'];
         document.getElementById("cand_date_of_birth").innerHTML = profile['date_of_birth'];
-        document.getElementById("cand_gender").innerHTML = profile['gender'];
+        document.getElementById("cand_gender").placeholder = profile['gender'] == "undefined" ? profile['gender']="":profile['gender'];
         document.getElementById("cand_blood_group").innerHTML = profile['blood_group'];
         document.getElementById("cand_religion").innerHTML = profile['religion'];
         document.getElementById("cand_community").innerHTML = profile['community'];
@@ -1022,25 +1022,11 @@ Add New Student
                 </div>
                 </div>
                   </div> 
-                  <div class="form-group">
-                    <label for="exampleFormControlTextarea1"class="text-danger">Blood Group * </label>
-                    <i class="fa fa-caret-down "id="drop"></i>
-                
-                    <select class="form-control" name="blood_group">
-                      <option hidden selected>&#160;</option>
-    
-                     <option value="O+">O+</option>
-                     <option value="B+">B+</option>
-                     <option value="A+">A+</option>
+                <div class="form-group">
+                                <label for="exampleFormControlTextarea1" class="text-danger">Blood Group* </label>
+                                <input type="text" class="form-control" id="examplontrolInput1" name='blood_group' />
 
-                     <option value="AB+">AB+</option>
-                     <option value="A-">A-</option>
-                     <option value="B-">B-</option>
-                     <option value="O-">O-</option>
-                     <option value="AB-">AB-</option>
-                    
-                    </select>                 
-                  </div> 
+                              </div>
                   <div class="form-group">
                     <label for="exampleFormControlTextarea1">Academic Year</label>
                         <input type="text" class="form-control" id="examplontrolInput1" name="academic_year">
@@ -1055,9 +1041,16 @@ Add New Student
                 <select class="form-control" name="nationality">
                   <option hidden selected>&#160;</option>
 
-                 <option value="Indian">Indian</option>
-                 <option value="Srilankan">Srilankan</option>
-                
+                                  <%
+                                  if(userData5.length!=0){
+                                  var i=1;
+                                  userData5.forEach(function(classdata5){
+                                  %>
+                                  <option value='<%=classdata5.nationality %>'><%=classdata5.nationality %></option>
+                                  <%  i++; }) %>
+                                  <% } else{ %>
+                              
+                                  <% } %>
                 
                 </select> 
                  </div>
@@ -1091,9 +1084,17 @@ Add New Student
                 
                 <select class="form-control" name="religion">       
                   <option hidden selected>&#160;</option>
-                  <option value="Hindu">Hindu</option>
-                 <option value="Christian">Christian</option>
-                 <option value="Islam">Islam</option>
+
+                                  <%
+                                  if(userData4.length!=0){
+                                  var i=1;
+                                  userData4.forEach(function(classdata4){
+                                  %>
+                                  <option value='<%=classdata4.religion %>'><%=classdata4.religion %></option>
+                                  <%  i++; }) %>
+                                  <% } else{ %>
+                              
+                                  <% } %>
                 
                 </select> 
                 
@@ -1109,11 +1110,16 @@ Add New Student
             
             <select class="form-control" name="community">   
               <option hidden selected>&#160;</option>
-
-              <option value="OC">OC</option>
-               <option value="BC">BC</option>
-               <option value="SC">SC</option>
-               <option value="MBC">MBC</option>
+                                  <%
+                                  if(userData6.length!=0){
+                                  var i=1;
+                                  userData6.forEach(function(classdata6){
+                                  %>
+                                  <option value='<%=classdata6.community %>'><%=classdata6.community %></option>
+                                  <%  i++; }) %>
+                                  <% } else{ %>
+                              
+                                  <% } %>
              </select> 
                </div>
                 </div>
@@ -1173,10 +1179,17 @@ Add New Student
          <select class="form-control" name="selected_category">    
           <option hidden selected>&#160;</option>
  
-          <option value="OC">OC</option>
-                <option value="BC">BC</option>
-                <option value="SC">SC</option>
-                <option value="MBC">MBC</option>
+          
+                                          <%
+                                          if(userData6.length!=0){
+                                          var i=1;
+                                          userData6.forEach(function(classdata6){
+                                          %>
+                                          <option value='<%=classdata6.community %>'><%=classdata6.community %></option>
+                                          <%  i++; }) %>
+                                          <% } else{ %>
+                                      
+                                          <% } %>
                 </select>   
               </div>
                 <div class="form-group">
@@ -1184,6 +1197,7 @@ Add New Student
   
                   <input type="number" id="quantity" name="reg_no" class="form-control"> 
                 </div>
+                
               <!-- </form> -->
               </div>
               <div class="col-md-4">
@@ -1207,24 +1221,40 @@ Add New Student
         <i class="fa fa-caret-down "id="drop"></i>
 
          <select class="form-control" name="admission_type">    
-                <option value="Regular Admission">Regular Admission</option>
-                <option value="BC">BC</option>
-                <option value="SC">SC</option>
-                <option value="MBC">MBC</option>
+           <option hidden selected>&#160;</option>     
+                                          <%
+                                          if(userData8.length!=0){
+                                          var i=1;
+                                          userData8.forEach(function(classdata8){
+                                          %>
+                                          <option value='<%=classdata8.admiss_type %>'><%=classdata8.admiss_type %></option>
+                                          <%  i++; }) %>
+                                          <% } else{ %>
+                                      
+                                          <% } %>
                 </select>  
                </div>  
-               <div class="form-group">
-                <label for="exampleFormControlTextarea1">Admission Quota</label>
-        <i class="fa fa-caret-down "id="drop"></i>
+             
 
-         <select class="form-control" name="admission_quota">    
-          <option hidden selected>&#160;</option>
- 
-          <option value="State Quota">State Quota</option>
-                <option value="CBSE Quota">CBSE Quota</option>
-                <option value="ALL INDIA Quota">ALL INDIA Quota</option>
-                </select>  
-               </div>  
+                <div class="form-group">
+                                        <label for="exampleFormControlTextarea1">Admission Quota</label>
+                                        <i class="fa fa-caret-down" id="drop"></i>
+
+                                        <select class="form-control" name='admission_quota'>
+                                          <option hidden="" selected="">&nbsp;</option>
+
+                                          <%
+                                          if(userData7.length!=0){
+                                          var i=1;
+                                          userData7.forEach(function(classdata7){
+                                          %>
+                                          <option value='<%=classdata7.admiss_quota %>'><%=classdata7.admiss_quota %></option>
+                                          <%  i++; }) %>
+                                          <% } else{ %>
+                                      
+                                          <% } %>
+                                        </select>
+                                      </div>
               <!-- </form> -->
               </div>
               <div class="col-md-4">

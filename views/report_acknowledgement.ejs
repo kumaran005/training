@@ -22,6 +22,9 @@
   <!-- Google Font Source Sans Pro -->
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro300,400,400i,700" rel="stylesheet">
   <style>
+    #li{
+      font-weight: 400;
+    }
     @media print{
      
       body{
@@ -67,19 +70,24 @@
 <u style="font-family:normal;font-size:18px">ACKNOWLEDGEMENT</u>
 </strong></h4>
   <br />
-  <%
-  if(userData13.length!=0){
-  var i=1;
-  userData13.forEach(function(classdata13){
-  %>
-  <h5><span class="text-dark"style="font-family:normal;font-size:18px">RECEIVED THE FOLLOWING ORIGINAL CERTIFICATES ON <u><%=classdata13.ack_date %></u></span>
+ 
+  <h5><span class="text-dark"style="font-family:normal;font-size:18px;font-weight: 400;">RECEIVED THE FOLLOWING ORIGINAL CERTIFICATES ON <u><%=ack_date%></u></span>
 </h5><br>
-<%  i++; }) %>
-<% } else{ %>
 
-<% } %>
 <ul id="li">
-  <li><p>FEE RECEIPT</p></li>
+  
+
+                                  <%
+                                  if(userData27.length!=0){
+                                  var i=1;
+                                  userData27.forEach(function(classdata27){
+                                  %>
+                                  <li><p><%=classdata27.certificate %></p></li>
+                                  <%  i++; }) %>
+                                  <% } else{ %>
+                              
+                                  <% } %>
+<!--   <li><p>FEE RECEIPT</p></li>
     <li><p>10TH MARK SHEET</p></li>
   <li><p>10TH PASS CERTIFICATE
 </p></li>
@@ -94,7 +102,7 @@
   <li><p>MIGRATION CERTIFICATE</p></li>
   <li><p> ELIGIBILITY CERTIFICATE</p></li>
   <li><p>PHYSICAL WITH DISABILITY CERTIFICATE</p></li>
-  <li><p> PHYSICALLY CHALANGED CERTIFICATE</p></li>
+  <li><p> PHYSICALLY CHALANGED CERTIFICATE</p></li> -->
   <br><br>
 <li style="list-style: none;">
   <div class="row"id="ack">
@@ -136,17 +144,7 @@ userData.forEach(function(classdata){
     </div>
      <div class="col-md-4">
       <p>Signature of the Candidate</p>
-     <%
-      if(userData3.length!=0){
-      var i=1;
-      userData3.forEach(function(classdata3){
-      %>
-      <img src="/uploads/<%=classdata3.Filename %>" width='150' height="100"/>
-     
-      <%  i++; }) %>
-      <% } else{ %>
-      
-      <% } %>
+    
       
     </div>
   </div>

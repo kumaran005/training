@@ -434,8 +434,16 @@ body{
         </div>
 
        <div class="col-md-3 text-right">
-              <img src="/assets/img/devi1.jpg"width="200"alt="logo"class="img-fluid">
-        
+<%
+if(userData12.length!=0){
+var i=1;
+userData12.forEach(function(classdata12){
+%>
+<td><img src="/uploads/<%=classdata12.Filename %>" class="img-fluid"style="width: 300px"></td>
+<%  i++; }) %>
+<% } else{ %>
+
+<% } %>        
        </div> 
 
   </div>

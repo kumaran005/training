@@ -126,6 +126,7 @@
             
                 </tr>
               </thead>
+              <script>var dayt = '<%-JSON.stringify(userData10)%>'</script>
              <% for(i in userData){%>
              <tbody style="border-top: 3px solid;"id="relbody">
                  <tr>
@@ -136,8 +137,8 @@
                     
                      <td><%=userData[i].course %></td>
                      <td><%=userData[i].date_of_admission %></td>
-                     <td></td>
-                     <td></td>
+                     <td><%=userData10[i].college_name%></td>
+                     <td><%=userData10[i].amount_refunded%></td>
                  
                      
                      <% } %>

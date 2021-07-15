@@ -29,8 +29,32 @@
     transform:scale(1.3)!important;
 
   }
+  
+ #tablecerti th, #tablecerti td {
+   border: none!important;
+ }
+ #tablereport th,#tablereport td{
+   border: 1px solid #000!important;
+ }
       }
+      #pt-100{
+ padding-top: 100px;
+ }
+ #capital{
+   text-transform: capitalize!important;
+  }
+ #tablecerti th, #tablecerti td{
+   text-transform: unset;
+ }
+ #tablecerti th, #tablecerti td, #tablecerti thead,#tablecerti tbody {
+   border: none!important;
+   font-size: 20px;
+   background: transparent!important;
+ }
+ 
 </style>
+
+  
 </head>
 
 <body class="hold-transition sidebar-mini">
@@ -41,7 +65,7 @@
     <button class="btn btn-info" onclick="window.print()">
       Print Certificate
     </button>
-    <button id="cmd">generate PDF</button>
+    <!-- <button id="cmd">generate PDF</button> -->
 
   </div>
 
@@ -78,84 +102,151 @@ if(userData.length!=0){
 var i=1;
 userData.forEach(function(classdata){
 %>
-      <ul class="text-left"id="tc">
-        <div class="row"id="margint">
-            <div class="col-md-12">
-                <li><h5 class="float-right mb-3">CERTIFICATE NO: 210/2018-2019
-                </h5></li>
-            </div>
-          <div class="col-md-4 ">
-        <li><h5>NAME OF THE STUDENT </h5></li>
-        <li><h5>SEX</h5> </li>
-        <li><h5>FATHER'S NAME</h5></li>
-        <li><h5>NATIONALITY, RELIGION</h5> </li>
-        <li><h5>COMMUNITY </h5></li>
-        <li><h5>DATE OF BIRTH</h5></li>
-        <li><h5>PERSONAL MARKS OF
-            IDENTIFICATION
-             </h5></li><br>
-            <li><h5 class="mt-4">COURSE </h5></li>
+<section id="tablecerti"class="pl">
+  <div class="row">
+      <div class="col-md-9">
+      <table class="table  text-left index">
+         
+          <tbody>
+            <tr>
+              
+              <th style="width: 400px;">
+                NAME OF THE STUDENT
+              </th>
 
-            <li><h5>DATE OF ADMISSION </h5></li>
-            <li><h5>DATE OF RELIEVING </h5></li>
-            <li><h5>REASON FOR HIS/HER
-                LEAVING </h5></li>
-                <li class="mt-100"><h5>WHETHER QUALIFIED
-                    FOR PROMOTION
-                    HIGHER STUDIES  </h5></li>
-                  
+              <th id="capital">:&nbsp; &nbsp;<%=classdata.name %></th>  
 
-        <br>
-      
-      </div>
-      <div class="col-md-1">
-        <li><h5>:</h5></li>
-        <li><h5>:</h5></li>
-        <li><h5>:</h5></li>
-        <li><h5>:</h5></li>
-        <li><h5>:</h5></li>
-        <li><h5>:</h5></li>
-        <li><h5>:</h5></li><br>
-        <li class="mt-5"><h5 class="mt-3">:</h5></li>
-        <li><h5>:</h5></li>
-        <li><h5>:</h5></li>
-        <li><h5>:</h5></li>
-        <li class="mt-100 pt-5"><h5>:</h5></li>
+            </tr>
+            <tr>
+              
+              <th style="width: 400px;">
+                SEX
+              </th>
+
+              <th id="capital">:&nbsp; &nbsp;<%=classdata.gender %></th>  
+
+            </tr>
+            <tr>
+              
+              <th style="width: 400px;">
+                FATHER'S NAME
+              </th>
+
+              <th id="capital">:&nbsp; &nbsp; <%=classdata.father_name %></th>  
+
+            </tr>
+            <tr>
+              
+              <th style="width: 400px;">
+                NATIONALITY, RELIGION
+              </th>
+
+              <th id="capital">:&nbsp; &nbsp; <%=classdata.nationality %> / <%=classdata.religion %></th>  
+
+            </tr>
+            <tr>
+              
+              <th style="width: 400px;">
+                COMMUNITY
+              </th>
+
+              <th id="capital">:&nbsp; &nbsp; <%=classdata.community %></th>  
+
+            </tr>
+          
+            <tr>
+              
+              <th style="width: 400px;">
+                DATE OF BIRTH
+              </th>
+
+              <th id="capital">:&nbsp; &nbsp; <%=classdata.date_of_birth %></th>  
+
+            </tr>
+            <tr>
+              
+              <th style="width: 400px;">
+                PERSONAL MARKS OF IDENTIFICATION
+
+              </th>
+
+              <th id="capital">:&nbsp; &nbsp; <%=tc_mark %></th>  
+
+            </tr>
+            <%
+            if(userData1.length!=0){
+            var i=1;
+            userData1.forEach(function(classdata1){
+            %>
+            <tr>
+              
+              <th style="width: 400px;"class="pt-5 mt-5">
+                COURSE
+              </th>
+
+              <th id="capital"class="pt-5 mt-5">:&nbsp; &nbsp; <%=classdata1.course %></th>  
+
+            </tr>
+            <tr>
+              
+              <th style="width: 400px;">
+                DATE OF ADMISSION
+              </th>
+
+              <th id="capital">:&nbsp; &nbsp;  <%=classdata1.date_of_admission %></th>  
+
+            </tr>
+            <tr>
+              
+              <th style="width: 400px;">
+                DATE OF RELIEVING
+              </th>
+
+              <th id="capital">:&nbsp; &nbsp; <%=tc_reldate %> </th>  
+
+            </tr>
+            <tr>
+              
+              <th style="width: 400px;">
+                REASON FOR HIS/HER LEAVING
+
+              </th>
+
+              <th id="capital">:&nbsp; &nbsp;
+                
+                <%=tc_reas %> </th>  
+
+            </tr>
+            <tr>
+              
+              <th style="width: 400px;padding-top: 120px;"class="">
+                WHETHER QUALIFIED<br> FOR PROMOTION<br> HIGHER STUDIES
+
+              </th>
+
+              <th id="capital"class=""style="padding-top: 120px;">:&nbsp; &nbsp; <%=tc_high %></th>  
+
+            </tr>
+            <%  i++; }) %>
+            <% } else{ %>
+            
+            <% } %>
+          </tbody>
+        </table>
         
-    </div>
-      <div class="col-md-4"id="ackadd">
-        <li><h5><%=classdata.name %></h5></li>
-        <li><h5><%=classdata.gender %></h5></li>
-        <li><h5><%=classdata.father_name %></h5></li>
-        <li><h5><%=classdata.nationality %> / <%=classdata.religion %> </h5></li>
-        <li><h5><%=classdata.community %></h5></li>
-        <li><h5> <%=classdata.date_of_birth %></h5></li>
-      
-        <li><h5><%=tc_mark %></h5></li>
-      
-        <%
-        if(userData1.length!=0){
-        var i=1;
-        userData1.forEach(function(classdata1){
-        %>
-        <li><h5></h5></li><br>
-        <li class="mt-1"><h5 class="mt-5"> <%=classdata1.course %></h5></li>
-        <li><h5> <%=classdata1.date_of_admission %></h5></li>
-      
-        <li><h5><%=tc_reldate %> </h5></li>
-        <li><h5><%=tc_reas %> </h5></li>
-
-        <li class="mt-100"><h5 class="pt-5"><%=tc_high %> </h5></li>
+        </div>
         
-        <%  i++; }) %>
-<% } else{ %>
-
-<% } %>
-      </div>
-      <div class="col-md-3"id="img">
-        <%
+      
+       <div class="col-md-3 text-right">
+        <p class=""style="    font-family: none;
+        font-size: 20px;width: 286px;
+    position: relative;
+    top: -20px;
+    right: 130px;"><b>CERTIFICATE NO: 2/2018-2019</b>
+        </p>
+  <%
         if(userData12.length!=0){
-        var i=1;
+        var i=0;
         userData12.forEach(function(classdata12){
         %>
         <p style="border: 1px slid ;    width: 150px;
@@ -166,59 +257,47 @@ userData.forEach(function(classdata){
           <%  i++; }) %>
 <% } else{ %>
 
-<% } %>
-
-      </div>
+<% } %>        
+       </div> 
+</div>
+<ul>
+  <li><div class="row"id="mt-140">
+  <div class="col-md-8">
+    <div class="row">
+      <div class="col-md-12">
      
-    </div>
-        
-<%  i++; }) %>
-<% } else{ %>
-
-<% } %>
-<%
-if(userData1.length!=0){
-var i=1;
-userData1.forEach(function(classdata1){
-%>
-<li>
-
-<br></li>
-
-
-<%  i++; }) %>
-<% } else{ %>
-
-<% } %>
-
-</li>
-<li><div class="row mt-100"id="">
-<div class="col-md-8">
-  <div class="row">
-    <div class="col-md-12">
-   
-<p style="font-size: 20px;font-weight: 800"class="text-dark ">PLACE :
-</p>
-<p style="font-size: 20px;font-weight: 800"class="text-dark ">DATE :
-</p>
-</div>
-
-</div>
-</div>
-<div class="col-md-4 text-center">
-                 <p style="font-size: 20px;font-weight: 800;"class="text-dark ">Dean<br>
-                    Tirunelveli Medical College,
-                    Tirunelveli -11
-</p>
-</div>
-</div></li>
-
-      </ul>
-    </div>
-</div>
-</div>
-</div>
+  <p style="font-size: 20px;font-weight: 800"class="text-dark ">PLACE :
+  </p>
+  <p style="font-size: 20px;font-weight: 800"class="text-dark ">DATE :
+  </p>
+  </div>
+  
+  </div>
+  </div>
+  <div class="col-md-4 text-center">
+                   <p style="font-size: 20px;font-weight: 800;"class="text-dark ">Dean<br>
+                      Tirunelveli Medical College,
+                      Tirunelveli -11
+  </p>
+  </div>
+  </div></li>
+  
+        </ul>
 </section>
+
+<%  i++; }) %>
+<% } else{ %>
+
+<% } %>
+
+  
+</div>
+</div>
+</div>
+    
+</section>
+</div>
+
 <!-- jQuery bootstrap -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 
@@ -238,7 +317,7 @@ UPLOADCARE_PUBLIC_KEY = 'demopublickey';
 <!-- page script -->
 
 <script type="text/javascript">
-	$(function () {
+  $(function () {
 
     var specialElementHandlers = {
         '#editor': function (element,renderer) {
