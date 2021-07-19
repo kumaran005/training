@@ -1,8 +1,8 @@
--- MySQL dump 10.13  Distrib 8.0.23, for Win64 (x86_64)
+-- MySQL dump 10.13  Distrib 8.0.25, for Win64 (x86_64)
 --
 -- Host: localhost    Database: ems
 -- ------------------------------------------------------
--- Server version	8.0.23
+-- Server version	8.0.25
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -44,7 +44,7 @@ CREATE TABLE `cand_profile_details` (
   `registered_time` varchar(450) DEFAULT NULL,
   `last_modified_time` varchar(450) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=94 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=96 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -53,7 +53,6 @@ CREATE TABLE `cand_profile_details` (
 
 LOCK TABLES `cand_profile_details` WRITE;
 /*!40000 ALTER TABLE `cand_profile_details` DISABLE KEYS */;
-INSERT INTO `cand_profile_details` VALUES (84,'Raja125635','Rajakumaran V','v','','undefined','','','','Third Gender','undefined','undefined','undefined','','undefined','undefined','','','06/13/2021 20:39:02','06/13/2021 20:39:02'),(85,'news90315','newstudent','','','undefined','','','','Male','undefined','undefined','undefined','','undefined','undefined','','','06/12/2021 09:32:55','06/12/2021 09:32:55'),(86,'blac780865','blacky','v','',' ','test father ','','2001-03-12','Male',' ',' ',' ','',' ',' ','','','06/12/2021 12:19:55','06/12/2021 12:19:55'),(87,'kuma240208','kumaran','r','',' ','test father ','','1990-03-12','Male','undefined','undefined','undefined','','undefined','undefined','','','06/12/2021 12:27:55','06/12/2021 12:27:55'),(88,'kuma681905','kumaran','r','',' ','test father ','','1990-03-12','Male',' ',' ',' ','',' ',' ','','','06/12/2021 12:26:53','06/12/2021 12:26:53'),(89,'venk55947','venkat','','','undefined','','','','Male','undefined','undefined','volvo','','undefined','undefined','2019-2020','','06/14/2021 14:43:05','06/14/2021 14:43:05'),(90,'Raja409544','Rajakumaran V','v','',' ','test father ','','2000-04-12','Male',' ',' ',' ','',' ',' ','','','06/14/2021 16:45:36','06/14/2021 16:45:36'),(91,'test629610','teststudent','v','',' ','test father ','','2200-03-12','Male',' ',' ',' ','',' ',' ','','','06/14/2021 17:14:24','06/14/2021 17:14:24'),(92,'Raja708158','Rajakumaran V','','','undefined','','','','undefined','O+','Hindu','Backward Classes(PC)','MBC','Indian','yes','','','06/14/2021 18:33:09','06/14/2021 18:33:09'),(93,'test135138','teststudent','v','no','undefined','test father ','test mother name','2000-02-12','Male','O+','Hindu','Backward Classes Muslims(PC)','BC','Indian','yes','2019-2020','78907890','06/14/2021 19:48:22','06/14/2021 19:48:22');
 /*!40000 ALTER TABLE `cand_profile_details` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -66,4 +65,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-06-15 14:00:36
+-- Dump completed on 2021-07-17 13:38:05

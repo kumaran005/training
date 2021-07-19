@@ -1,8 +1,8 @@
--- MySQL dump 10.13  Distrib 8.0.23, for Win64 (x86_64)
+-- MySQL dump 10.13  Distrib 8.0.25, for Win64 (x86_64)
 --
 -- Host: localhost    Database: ems
 -- ------------------------------------------------------
--- Server version	8.0.23
+-- Server version	8.0.25
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -38,7 +38,7 @@ CREATE TABLE `cand_fees` (
   `total_fee` varchar(300) DEFAULT NULL,
   `last_modified_time` varchar(200) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -47,7 +47,6 @@ CREATE TABLE `cand_fees` (
 
 LOCK TABLES `cand_fees` WRITE;
 /*!40000 ALTER TABLE `cand_fees` DISABLE KEYS */;
-INSERT INTO `cand_fees` VALUES (4,'Raja125635','32','24','24','24','24','24','2','3','23','2','182','06/13/2021 21:56:13'),(5,'news90315','54','53','NaN','5353','NaN','55','5','353','NaN','35','NaN','06/14/2021 17:19:43'),(6,'venk55947','23','23','23','67','76','7686','7','67','767','68','8807','06/13/2021 22:28:42'),(7,'Raja409544','54','4','NaN','45','65','NaN','NaN','NaN','NaN','65','NaN','06/14/2021 17:58:13'),(8,'test629610',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'06/14/2021 17:14:24'),(9,'Raja708158','23','34','45','56','45','45','65','45','46','45','449','06/14/2021 19:36:54'),(10,'test135138',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'06/14/2021 19:48:22');
 /*!40000 ALTER TABLE `cand_fees` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -60,4 +59,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-06-15 14:00:36
+-- Dump completed on 2021-07-17 13:38:11

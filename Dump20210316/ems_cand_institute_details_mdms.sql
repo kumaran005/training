@@ -1,8 +1,8 @@
--- MySQL dump 10.13  Distrib 8.0.23, for Win64 (x86_64)
+-- MySQL dump 10.13  Distrib 8.0.25, for Win64 (x86_64)
 --
 -- Host: localhost    Database: ems
 -- ------------------------------------------------------
--- Server version	8.0.23
+-- Server version	8.0.25
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -31,7 +31,7 @@ CREATE TABLE `cand_institute_details_mdms` (
   `period_of_agreement` varchar(900) DEFAULT NULL,
   `last_modified_time` varchar(900) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=81 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=83 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -40,7 +40,6 @@ CREATE TABLE `cand_institute_details_mdms` (
 
 LOCK TABLES `cand_institute_details_mdms` WRITE;
 /*!40000 ALTER TABLE `cand_institute_details_mdms` DISABLE KEYS */;
-INSERT INTO `cand_institute_details_mdms` VALUES (71,'Raja125635','','undefined','undefined','undefined','06/13/2021 20:39:02'),(72,'news90315','','undefined','undefined','undefined','06/12/2021 09:32:55'),(73,'blac780865','','','',' ','06/12/2021 12:19:55'),(74,'kuma240208','','','',' ','06/12/2021 12:27:55'),(75,'kuma681905','','','',' ','06/12/2021 12:26:53'),(76,'venk55947','','undefined','undefined','undefined','06/14/2021 14:43:05'),(77,'Raja409544','','','',' ','06/14/2021 16:45:36'),(78,'test629610','','','',' ','06/14/2021 17:14:24'),(79,'Raja708158','','undefined','undefined','undefined','06/14/2021 18:33:09'),(80,'test135138','naemnama','undefined','undefined','undefined','06/14/2021 19:48:22');
 /*!40000 ALTER TABLE `cand_institute_details_mdms` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -53,4 +52,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-06-15 14:00:37
+-- Dump completed on 2021-07-17 13:38:08

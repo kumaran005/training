@@ -16,36 +16,32 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `cand_address_details`
+-- Table structure for table `check_slip`
 --
 
-DROP TABLE IF EXISTS `cand_address_details`;
+DROP TABLE IF EXISTS `check_slip`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `cand_address_details` (
+CREATE TABLE `check_slip` (
   `id` int NOT NULL AUTO_INCREMENT,
-  `cand_id` varchar(900) DEFAULT NULL,
-  `address_type` varchar(900) DEFAULT NULL,
-  `ps_address` varchar(900) DEFAULT NULL,
-  `ps_pincode` varchar(900) DEFAULT NULL,
-  `ps_state` varchar(900) DEFAULT NULL,
-  `ps_district` varchar(900) DEFAULT NULL,
-  `pm_address` varchar(900) DEFAULT NULL,
-  `pm_pincode` varchar(900) DEFAULT NULL,
-  `pm_state` varchar(900) DEFAULT NULL,
-  `pm_district` varchar(900) DEFAULT NULL,
-  `last_modified_time` varchar(900) DEFAULT NULL,
+  `cand_id` varchar(500) DEFAULT NULL,
+  `example_type` varchar(500) DEFAULT NULL,
+  `certificate_type` varchar(500) DEFAULT NULL,
+  `certificate_status` varchar(500) DEFAULT NULL,
+  `due_date` varchar(500) DEFAULT NULL,
+  `remark` varchar(500) DEFAULT NULL,
+  `last_modified_time` varchar(500) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=368 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `cand_address_details`
+-- Dumping data for table `check_slip`
 --
 
-LOCK TABLES `cand_address_details` WRITE;
-/*!40000 ALTER TABLE `cand_address_details` DISABLE KEYS */;
-/*!40000 ALTER TABLE `cand_address_details` ENABLE KEYS */;
+LOCK TABLES `check_slip` WRITE;
+/*!40000 ALTER TABLE `check_slip` DISABLE KEYS */;
+/*!40000 ALTER TABLE `check_slip` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -57,4 +53,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-07-17 13:38:07
+-- Dump completed on 2021-07-17 13:38:06

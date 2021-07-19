@@ -1,8 +1,8 @@
--- MySQL dump 10.13  Distrib 8.0.23, for Win64 (x86_64)
+-- MySQL dump 10.13  Distrib 8.0.25, for Win64 (x86_64)
 --
 -- Host: localhost    Database: ems
 -- ------------------------------------------------------
--- Server version	8.0.23
+-- Server version	8.0.25
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -36,7 +36,7 @@ CREATE TABLE `cand_academic_mdms_2` (
   `mdms_speciality` varchar(900) DEFAULT NULL,
   `last_modified_time` varchar(900) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=79 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=81 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -45,7 +45,6 @@ CREATE TABLE `cand_academic_mdms_2` (
 
 LOCK TABLES `cand_academic_mdms_2` WRITE;
 /*!40000 ALTER TABLE `cand_academic_mdms_2` DISABLE KEYS */;
-INSERT INTO `cand_academic_mdms_2` VALUES (69,'Raja125635','undefined','undefined','undefined','undefined','undefined','undefined','undefined','undefined','undefined','06/13/2021 20:39:02'),(70,'news90315','undefined','undefined','undefined','undefined','undefined','undefined','undefined','undefined','undefined','06/12/2021 09:32:55'),(71,'blac780865','','','',' ','','',' ','','',NULL),(72,'kuma240208','','','',' ','','',' ','','','06/12/2021 12:27:55'),(73,'kuma681905','','','',' ','','',' ','','',NULL),(74,'venk55947','undefined','undefined','undefined','undefined','undefined','undefined','undefined','undefined','undefined','06/14/2021 14:43:05'),(75,'Raja409544','','','',' ','','',' ','','',NULL),(76,'test629610','','','',' ','','',' ','','',NULL),(77,'Raja708158','undefined','undefined','undefined','undefined','undefined','undefined','undefined','undefined','undefined',NULL),(78,'test135138','undefined','undefined','undefined','undefined','undefined','undefined','undefined','undefined','undefined',NULL);
 /*!40000 ALTER TABLE `cand_academic_mdms_2` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -58,4 +57,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-06-15 14:00:36
+-- Dump completed on 2021-07-17 13:38:11

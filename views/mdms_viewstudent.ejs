@@ -1024,8 +1024,29 @@ Add New Student
                   </div> 
                 <div class="form-group">
                                 <label for="exampleFormControlTextarea1" class="text-danger">Blood Group* </label>
-                                <input type="text" class="form-control" id="examplontrolInput1" name='blood_group' />
-
+                                <!-- <input type="text" class="form-control" id="examplontrolInput1" name='blood_group' /> -->
+                <i class="fa fa-caret-down "id="drop"></i>
+              
+                  <select class="form-control" name="blood_group" id="">
+                    <option hidden selected>&#160;</option>
+  
+                   <option value="O+">O+</option>
+                   <option value="B+">B+</option>
+                   <option value="A+">A+</option>
+  
+                   <option value="AB+">AB+</option>
+                   <option value="A-">A-</option>
+                   <option value="B-">B-</option>
+                   <option value="O-">O-</option>
+                   <option value="AB-">AB-</option>
+  
+  
+  
+  
+  
+                  
+                  
+                  </select>
                               </div>
                   <div class="form-group">
                     <label for="exampleFormControlTextarea1">Academic Year</label>
@@ -1062,15 +1083,16 @@ Add New Student
                 <div class="form-group">
                   <label for="community">Willing To Donate Blood</label>
              
-             <i class="fa fa-caret-down "id="drop"></i>
+               
+            <i class="fa fa-caret-down" id="drop"></i>
+            
+            <select class="form-control" name="willing_to_donate_blood" id="">  
+            <option hidden selected>&#160;</option>
+             <option value="Yes">Yes</option>
+              <option value="No">No</option>
              
-             <select class="form-control" name="willing_to_donate_blood" >           
-              <option hidden selected>&#160;</option>
- 
-              <option value="Yes">Yes</option>
-               <option value="No">No</option>
-              
-              
+             
+            </select> 
              </select> 
                </div>
                 </div>
@@ -1281,15 +1303,15 @@ Add New Student
               </div>  
               <div class="form-group">
                   <label for="exampleFormControlTextarea1">Willing For Counselling</label>
-          <i class="fa fa-caret-down "id="drop"></i>
-  
-           <select class="form-control" name="willing_for_counciling">    
-            <option hidden selected>&#160;</option>
-   
-            <option value="Yes">Yes</option>
-                  <option value="No">No</option>
-            
-                  </select>  
+          <i class="fa fa-caret-down " id="drop"></i>
+
+            <select class="form-control" name='willing_for_counciling'>
+              <option hidden="" selected="">&nbsp;</option>
+
+              <option value="Yes">Yes</option>
+              <option value="No">No</option>
+
+            </select>
                  </div>  
               <!-- </form> -->
               </div>
@@ -1341,42 +1363,16 @@ Add New Student
   <select name="ps_state" id="address2Ship" class="form-control">
     <option hidden selected>&#160;</option>
 
-  <option value="Andhra Pradesh">Andhra Pradesh</option>
-  <option value="Andaman and Nicobar Islands">Andaman and Nicobar Islands</option>
-  <option value="Arunachal Pradesh">Arunachal Pradesh</option>
-  <option value="Assam">Assam</option>
-  <option value="Bihar">Bihar</option>
-  <option value="Chandigarh">Chandigarh</option>
-  <option value="Chhattisgarh">Chhattisgarh</option>
-  <option value="Dadar and Nagar Haveli">Dadar and Nagar Haveli</option>
-  <option value="Daman and Diu">Daman and Diu</option>
-  <option value="Delhi">Delhi</option>
-  <option value="Lakshadweep">Lakshadweep</option>
-  <option value="Puducherry">Puducherry</option>
-  <option value="Goa">Goa</option>
-  <option value="Gujarat">Gujarat</option>
-  <option value="Haryana">Haryana</option>
-  <option value="Himachal Pradesh">Himachal Pradesh</option>
-  <option value="Jammu and Kashmir">Jammu and Kashmir</option>
-  <option value="Jharkhand">Jharkhand</option>
-  <option value="Karnataka">Karnataka</option>
-  <option value="Kerala">Kerala</option>
-  <option value="Madhya Pradesh">Madhya Pradesh</option>
-  <option value="Maharashtra">Maharashtra</option>
-  <option value="Manipur">Manipur</option>
-  <option value="Meghalaya">Meghalaya</option>
-  <option value="Mizoram">Mizoram</option>
-  <option value="Nagaland">Nagaland</option>
-  <option value="Odisha">Odisha</option>
-  <option value="Punjab">Punjab</option>
-  <option value="Rajasthan">Rajasthan</option>
-  <option value="Sikkim">Sikkim</option>
-  <option value="Tamil Nadu">Tamil Nadu</option>
-  <option value="Telangana">Telangana</option>
-  <option value="Tripura">Tripura</option>
-  <option value="Uttar Pradesh">Uttar Pradesh</option>
-  <option value="Uttarakhand">Uttarakhand</option>
-  <option value="West Bengal">West Bengal</option>
+        <%
+          if(userData10.length!=0){
+          var i=1;
+          userData10.forEach(function(classdata10){
+          %>
+          <option value='<%=classdata10.name %>'><%=classdata10.name %></option>
+          <%  i++; }) %>
+          <% } else{ %>
+      
+          <% } %>
   </select>
     </div>  
      <div class="form-group">
@@ -1404,42 +1400,16 @@ Add New Student
   <select name="pm_state" id="address2Bill" class="form-control">
     <option hidden selected>&#160;</option>
 
-  <option value="Andhra Pradesh">Andhra Pradesh</option>
-  <option value="Andaman and Nicobar Islands">Andaman and Nicobar Islands</option>
-  <option value="Arunachal Pradesh">Arunachal Pradesh</option>
-  <option value="Assam">Assam</option>
-  <option value="Bihar">Bihar</option>
-  <option value="Chandigarh">Chandigarh</option>
-  <option value="Chhattisgarh">Chhattisgarh</option>
-  <option value="Dadar and Nagar Haveli">Dadar and Nagar Haveli</option>
-  <option value="Daman and Diu">Daman and Diu</option>
-  <option value="Delhi">Delhi</option>
-  <option value="Lakshadweep">Lakshadweep</option>
-  <option value="Puducherry">Puducherry</option>
-  <option value="Goa">Goa</option>
-  <option value="Gujarat">Gujarat</option>
-  <option value="Haryana">Haryana</option>
-  <option value="Himachal Pradesh">Himachal Pradesh</option>
-  <option value="Jammu and Kashmir">Jammu and Kashmir</option>
-  <option value="Jharkhand">Jharkhand</option>
-  <option value="Karnataka">Karnataka</option>
-  <option value="Kerala">Kerala</option>
-  <option value="Madhya Pradesh">Madhya Pradesh</option>
-  <option value="Maharashtra">Maharashtra</option>
-  <option value="Manipur">Manipur</option>
-  <option value="Meghalaya">Meghalaya</option>
-  <option value="Mizoram">Mizoram</option>
-  <option value="Nagaland">Nagaland</option>
-  <option value="Odisha">Odisha</option>
-  <option value="Punjab">Punjab</option>
-  <option value="Rajasthan">Rajasthan</option>
-  <option value="Sikkim">Sikkim</option>
-  <option value="Tamil Nadu">Tamil Nadu</option>
-  <option value="Telangana">Telangana</option>
-  <option value="Tripura">Tripura</option>
-  <option value="Uttar Pradesh">Uttar Pradesh</option>
-  <option value="Uttarakhand">Uttarakhand</option>
-  <option value="West Bengal">West Bengal</option>
+          <%
+          if(userData10.length!=0){
+          var i=1;
+          userData10.forEach(function(classdata10){
+          %>
+          <option value='<%=classdata10.name %>'><%=classdata10.name %></option>
+          <%  i++; }) %>
+          <% } else{ %>
+      
+          <% } %>
   </select>
     </div>  
      <div class="form-group">
@@ -3706,7 +3676,7 @@ image.src = URL.createadmissionectURL(event.target.files[0]);
                 <i class="fa fa-caret-down " id="drop"></i>
             
                 <select class="form-control" id="edit_blood_group" name="blood_group">
-                
+                <option hidden selected>&#160;</option>
                  <option value="O+">O+</option>
                  <option value="B+">B+</option>
                  <option value="A+">A+</option>
@@ -3730,9 +3700,18 @@ image.src = URL.createadmissionectURL(event.target.files[0]);
                  <i class="fa fa-caret-down " id="drop"></i>
              
   <select class="form-control" id="edit_nationality" name="nationality">  
-              <option value="Indian">Indian</option>
-              <option value="srilankan">Srilankan</option>
-             
+             <option hidden selected>&#160;</option>
+
+                                  <%
+                                  if(userData5.length!=0){
+                                  var i=1;
+                                  userData5.forEach(function(classdata5){
+                                  %>
+                                  <option value='<%=classdata5.nationality %>'><%=classdata5.nationality %></option>
+                                  <%  i++; }) %>
+                                  <% } else{ %>
+                              
+                                  <% } %>
              </select> 
               </div>
               <div class="form-group">
@@ -3746,7 +3725,7 @@ image.src = URL.createadmissionectURL(event.target.files[0]);
           <i class="fa fa-caret-down " id="drop"></i>
           
           <select class="form-control" id="edit_willing_to_donate_blood" name="willing_to_donate_blood" >  
-                       
+           <option hidden selected>&#160;</option>            
            <option value="Yes">Yes</option>
             <option value="No">No</option>
            
@@ -3763,10 +3742,18 @@ image.src = URL.createadmissionectURL(event.target.files[0]);
              <i class="fa fa-caret-down " id="drop"></i>
              
               <select class="form-control" id="edit_religion" name="religion" >        
-                          
-               <option value="Hindu">Hindu</option>
-              <option value="Christian">Christian</option>
-              <option value="Islam">Islam</option>
+                  <option hidden selected>&#160;</option>
+
+                                  <%
+                                  if(userData4.length!=0){
+                                  var i=1;
+                                  userData4.forEach(function(classdata4){
+                                  %>
+                                  <option value='<%=classdata4.religion %>'><%=classdata4.religion %></option>
+                                  <%  i++; }) %>
+                                  <% } else{ %>
+                              
+                                  <% } %>
              
              </select> 
              
@@ -3782,10 +3769,17 @@ image.src = URL.createadmissionectURL(event.target.files[0]);
          
          <select class="form-control"  id="edit_community" name="community">  
                              
-           <option value="OC">OC</option>
-            <option value="BC">BC</option>
-            <option value="SC">SC</option>
-            <option value="MBC">MBC</option>
+                                  <option hidden selected>&#160;</option>
+                                  <%
+                                  if(userData6.length!=0){
+                                  var i=1;
+                                  userData6.forEach(function(classdata6){
+                                  %>
+                                  <option value='<%=classdata6.community %>'><%=classdata6.community %></option>
+                                  <%  i++; }) %>
+                                  <% } else{ %>
+                              
+                                  <% } %>
           </select> 
             </div>
              </div>
@@ -3826,11 +3820,18 @@ image.src = URL.createadmissionectURL(event.target.files[0]);
   <i class="fa fa-caret-down " id="drop"></i>
 
    <select class="form-control" name="selected_category" id="edit_selected_category">    
-      
-    <option value="OC">OC</option>
-          <option value="BC">BC</option>
-          <option value="SC">SC</option>
-          <option value="MBC">MBC</option>
+      <option hidden selected>&#160;</option>
+
+                                          <%
+                                          if(userData6.length!=0){
+                                          var i=1;
+                                          userData6.forEach(function(classdata6){
+                                          %>
+                                          <option value='<%=classdata6.community %>'><%=classdata6.community %></option>
+                                          <%  i++; }) %>
+                                          <% } else{ %>
+                                      
+                                          <% } %>
           </select>   </div>
           <div class="form-group">
             <label for="edit_reg_no">Registration Number</label>
@@ -3860,11 +3861,18 @@ image.src = URL.createadmissionectURL(event.target.files[0]);
   <i class="fa fa-caret-down " id="drop"></i>
 
    <select class="form-control" id="edit_admission_type" name="admission_type">    
-        
-    <option value="Regular Admission">Regular Admission</option>
-          <option value="BC">BC</option>
-          <option value="SC">SC</option>
-          <option value="MBC">MBC</option>
+         <option hidden selected>&#160;</option>
+
+                                          <%
+                                          if(userData8.length!=0){
+                                          var i=1;
+                                          userData8.forEach(function(classdata8){
+                                          %>
+                                          <option value='<%=classdata8.admiss_type %>'><%=classdata8.admiss_type %></option>
+                                          <%  i++; }) %>
+                                          <% } else{ %>
+                                      
+                                          <% } %>
           </select>  
          </div>  
          <div class="form-group">
@@ -3872,9 +3880,18 @@ image.src = URL.createadmissionectURL(event.target.files[0]);
   <i class="fa fa-caret-down " id="drop"></i>
 
    <select class="form-control" id="edit_admission_quota" name="admission_quota">    
-        <option value="State Quota">State Quota</option>
-          <option value="CBSE Quota">CBSE Quota</option>
-          <option value="All INDIA Quota">ALL INDIA Quota</option>
+   <option hidden="" selected="">&nbsp;</option>
+
+                <%
+                if(userData7.length!=0){
+                var i=1;
+                userData7.forEach(function(classdata7){
+                %>
+                <option value='<%=classdata7.admiss_quota %>'><%=classdata7.admiss_quota %></option>
+                <%  i++; }) %>
+                <% } else{ %>
+            
+                <% } %>
           </select>  
          </div>  
         <!-- </form> -->
@@ -3928,14 +3945,15 @@ image.src = URL.createadmissionectURL(event.target.files[0]);
                 </div>
           <div class="form-group">
             <label for="edit_willing_for_counciling">Willing For Counselling</label>
-    <i class="fa fa-caret-down " id="drop"></i>
+  
+            <i class="fa fa-caret-down" id="drop"></i>
 
-     <select class="form-control" id="edit_willing_for_counciling" name="willing_for_counciling">    
-         
-      <option value="Yes">Yes</option>
-            <option value="No">No</option>
-      
-            </select>  
+                                        <select class="form-control" id="edit_willing_for_counciling" name="willing_for_counciling">
+                                          <option hidden selected>&#160;</option>
+                                          <option value="Yes">Yes</option>
+                                          <option value="No">No</option>
+
+                                        </select>
            </div>  
         <!-- </form> -->
         </div>
@@ -3966,42 +3984,19 @@ image.src = URL.createadmissionectURL(event.target.files[0]);
       <div class="form-group">
       <label for="edit_ps_state">State</label>
   <select name="ps_state" id="edit_ps_state" class="form-control" >
-  <option value="Andhra Pradesh">Andhra Pradesh</option>
-  <option value="Andaman and Nicobar Islands">Andaman and Nicobar Islands</option>
-  <option value="Arunachal Pradesh">Arunachal Pradesh</option>
-  <option value="Assam">Assam</option>
-  <option value="Bihar">Bihar</option>
-  <option value="Chandigarh">Chandigarh</option>
-  <option value="Chhattisgarh">Chhattisgarh</option>
-  <option value="Dadar and Nagar Haveli">Dadar and Nagar Haveli</option>
-  <option value="Daman and Diu">Daman and Diu</option>
-  <option value="Delhi">Delhi</option>
-  <option value="Lakshadweep">Lakshadweep</option>
-  <option value="Puducherry">Puducherry</option>
-  <option value="Goa">Goa</option>
-  <option value="Gujarat">Gujarat</option>
-  <option value="Haryana">Haryana</option>
-  <option value="Himachal Pradesh">Himachal Pradesh</option>
-  <option value="Jammu and Kashmir">Jammu and Kashmir</option>
-  <option value="Jharkhand">Jharkhand</option>
-  <option value="Karnataka">Karnataka</option>
-  <option value="Kerala">Kerala</option>
-  <option value="Madhya Pradesh">Madhya Pradesh</option>
-  <option value="Maharashtra">Maharashtra</option>
-  <option value="Manipur">Manipur</option>
-  <option value="Meghalaya">Meghalaya</option>
-  <option value="Mizoram">Mizoram</option>
-  <option value="Nagaland">Nagaland</option>
-  <option value="Odisha">Odisha</option>
-  <option value="Punjab">Punjab</option>
-  <option value="Rajasthan">Rajasthan</option>
-  <option value="Sikkim">Sikkim</option>
-  <option value="Tamil Nadu">Tamil Nadu</option>
-  <option value="Telangana">Telangana</option>
-  <option value="Tripura">Tripura</option>
-  <option value="Uttar Pradesh">Uttar Pradesh</option>
-  <option value="Uttarakhand">Uttarakhand</option>
-  <option value="West Bengal">West Bengal</option>
+  <option hidden selected>&#160;</option>
+
+                                        <%
+                                        if(userData10.length!=0){
+                                        var i=1;
+                                        userData10.forEach(function(classdata10){
+                                        %>
+                                        <option value='<%=classdata10.name %>'><%=classdata10.name %></option>
+                                        <%  i++; }) %>
+                                        <% } else{ %>
+                                    
+                                        <% } %>
+
   </select>
     </div>  
      <div class="form-group">
@@ -4024,42 +4019,18 @@ image.src = URL.createadmissionectURL(event.target.files[0]);
       <div class="form-group">
       <label for="edit_pm_state">State</label>
   <select name="pm_state" id="edit_pm_state" class="form-control" >
-  <option value="Andhra Pradesh">Andhra Pradesh</option>
-  <option value="Andaman and Nicobar Islands">Andaman and Nicobar Islands</option>
-  <option value="Arunachal Pradesh">Arunachal Pradesh</option>
-  <option value="Assam">Assam</option>
-  <option value="Bihar">Bihar</option>
-  <option value="Chandigarh">Chandigarh</option>
-  <option value="Chhattisgarh">Chhattisgarh</option>
-  <option value="Dadar and Nagar Haveli">Dadar and Nagar Haveli</option>
-  <option value="Daman and Diu">Daman and Diu</option>
-  <option value="Delhi">Delhi</option>
-  <option value="Lakshadweep">Lakshadweep</option>
-  <option value="Puducherry">Puducherry</option>
-  <option value="Goa">Goa</option>
-  <option value="Gujarat">Gujarat</option>
-  <option value="Haryana">Haryana</option>
-  <option value="Himachal Pradesh">Himachal Pradesh</option>
-  <option value="Jammu and Kashmir">Jammu and Kashmir</option>
-  <option value="Jharkhand">Jharkhand</option>
-  <option value="Karnataka">Karnataka</option>
-  <option value="Kerala">Kerala</option>
-  <option value="Madhya Pradesh">Madhya Pradesh</option>
-  <option value="Maharashtra">Maharashtra</option>
-  <option value="Manipur">Manipur</option>
-  <option value="Meghalaya">Meghalaya</option>
-  <option value="Mizoram">Mizoram</option>
-  <option value="Nagaland">Nagaland</option>
-  <option value="Odisha">Odisha</option>
-  <option value="Punjab">Punjab</option>
-  <option value="Rajasthan">Rajasthan</option>
-  <option value="Sikkim">Sikkim</option>
-  <option value="Tamil Nadu">Tamil Nadu</option>
-  <option value="Telangana">Telangana</option>
-  <option value="Tripura">Tripura</option>
-  <option value="Uttar Pradesh">Uttar Pradesh</option>
-  <option value="Uttarakhand">Uttarakhand</option>
-  <option value="West Bengal">West Bengal</option>
+<option hidden selected>&#160;</option>
+
+                                        <%
+                                        if(userData10.length!=0){
+                                        var i=1;
+                                        userData10.forEach(function(classdata10){
+                                        %>
+                                        <option value='<%=classdata10.name %>'><%=classdata10.name %></option>
+                                        <%  i++; }) %>
+                                        <% } else{ %>
+                                    
+                                        <% } %>
   </select>
     </div>  
      <div class="form-group">

@@ -1028,7 +1028,21 @@ edit=(clicked_id)=>{
                               </div>
                               <div class="form-group">
                                 <label for="exampleFormControlTextarea1" class="text-danger">Blood Group* </label>
-                                <input type="text" class="form-control" id="examplontrolInput1" name='blood_group' />
+                                <!-- <input type="text" class="form-control" id="examplontrolInput1" name='blood_group' /> -->
+<i class="fa fa-caret-down "id="drop"></i>
+              
+                  <select class="form-control" name="blood_group" id="">
+                    <option hidden selected>&#160;</option>
+  
+                   <option value="O+">O+</option>
+                   <option value="B+">B+</option>
+                   <option value="A+">A+</option>
+  
+                   <option value="AB+">AB+</option>
+                   <option value="A-">A-</option>
+                   <option value="B-">B-</option>
+                   <option value="O-">O-</option>
+                   <option value="AB-">AB-</option>
 
                               </div>
                               <div class="form-group">
@@ -1287,7 +1301,7 @@ edit=(clicked_id)=>{
                                         <i class="fa fa-caret-down " id="drop"></i>
 
                                         <select class="form-control" name='willing_for_counciling'>
-                                          <option hidden="" selected="">&nbsp;</option>
+                                          <option hidden selected>&#160;</option>
 
                                           <option value="Yes">Yes</option>
                                           <option value="No">No</option>
@@ -1667,7 +1681,7 @@ edit=(clicked_id)=>{
                                         <i class="fa fa-caret-down " id="drop"></i>
   
                                         <select class="form-control" name="year_of_passing" id="year_of_passing">
-                                    
+                                          <option hidden selected>&#160;</option>
                                           <option value="2010">2010</option>
                                           <option value="2011">2011</option>
                                           <option value="2012">2012</option>
@@ -2577,7 +2591,7 @@ edit=(clicked_id)=>{
       </div>  
        <div class="form-group">
         <label for="cand_ps_district">District</label>
-    <input type="text" id="cand_ps_district" name="quantity" class="form-control"value="TVL"> 
+    <input type="text" id="cand_ps_district" name="quantity" class="form-control"value=""> 
       </div>  
          
       </form>
@@ -3498,10 +3512,10 @@ edit=(clicked_id)=>{
                <div class="form-group">
                  <label for="edit_willing_to_donate_blood">Willing To Donate Blood</label>
             
-            <i class="fa fa-caret-down " id="drop"></i>
+            <i class="fa fa-caret-down" id="drop"></i>
             
             <select class="form-control" name="willing_to_donate_blood" id="edit_willing_to_donate_blood">  
-  
+            <option hidden selected>&#160;</option>
              <option value="Yes">Yes</option>
               <option value="No">No</option>
              
@@ -3705,6 +3719,7 @@ edit=(clicked_id)=>{
       <i class="fa fa-caret-down "id="drop"></i>
   
        <select class="form-control" name="willing_for_counciling" id="edit_willing_for_counciling">    
+        <option hidden selected>&#160;</option>
         <option value="Yes">Yes</option>
               <option value="No">No</option>
         
@@ -4009,7 +4024,7 @@ edit=(clicked_id)=>{
       <i class="fa fa-caret-down " id="drop"></i>
   
       <select class="form-control" name="month_of_passing" id="edit_month_of_passing">
-  
+  <option hidden selected>&#160;</option>
         <option>March</option>
         <option>2</option>
         <option>3</option>
@@ -4032,7 +4047,7 @@ edit=(clicked_id)=>{
       <i class="fa fa-caret-down " id="drop"></i>
   
       <select class="form-control" name="year_of_passing" id="edit_year_of_passing">
-  
+  <option hidden selected>&#160;</option>
         <option>2010</option>
         <option>2</option>
         <option>3</option>
@@ -5251,14 +5266,14 @@ edit=(clicked_id)=>{
 
               <div class="form-group">
                 <label for="exampleFormControlInput21">Reference No</label>
-                <input type="text" class="form-control"id="" form="for_report" name="ref_no" id="exampleFormControlInput21" placeholder="">
+                <input type="text" class="form-control"id="" form="for_report" name="ref" id="exampleFormControlInput21" placeholder="">
               </div>
               </div>
          
           <div class="col-md-6">
             <div class="form-group">
               <label for="exampleFormControlInput21">Indvidual's Letter Dated</label>
-              <input type="date" class="form-control"id="ackdate" form="for_report" name="letter_date" id="exampleFormControlInput21" placeholder="">
+              <input type="date" class="form-control"id="ackdate" form="for_report" name="indiDate" id="exampleFormControlInput21" placeholder="">
             </div>
             </div>
           </div>
@@ -5294,7 +5309,7 @@ edit=(clicked_id)=>{
                         
                         <!-- <input type="text" name="check" id="cand_eck" hidden value="<%=classdata.cand_id %>"> -->
                        </td>
-                      <td id="id" >
+                      <td id="id">
                         <%=classdata.cand_id %>
                       </td>
                       <td >
@@ -5317,7 +5332,7 @@ edit=(clicked_id)=>{
                         <%=classdata.admission_quota %>
                       </td>
                       <% if(userData16.length!=0){ var i=0; userData16.forEach(function(classdata16){ %>
-                      <td >
+                      <td hidden="">
                         <%=classdata16.date_of_relieving%>
                       </td>
                         <% i++; }) %>
@@ -5467,9 +5482,10 @@ edit=(clicked_id)=>{
             <div class="col-md-3">
           <div class="form-group">
             <label for="exampleFormControlInput21">Certificate Type</label>
-            <div class="form-group">
-              <select id="select"class="selectpicker"  data-live-search="true">
-                <option hidden="" selected="">&nbsp;</option>
+          
+              <select id="select"class="selectpicker"form="for_report" name="check_slip" data-live-search="true">
+                  <option hidden="" selected="">&nbsp;</option>
+
                 <option>Allotment Order</option>
                 <option>SSLC Mark Sheet</option>
                 <option>HSC First Year Mark Sheet Certificate</option>
@@ -5512,108 +5528,266 @@ edit=(clicked_id)=>{
 
 
               </select>
-            </div>          </div>
+            </div>          
             <div class="form-group">
-              <label for="exampleFormControlInput21">Certificate Type</label>
-              <div class="form-group">
-                <select id="select"class="selectpicker"  data-live-search="true">
-                  <option hidden="" selected="">&nbsp;</option>
-                  <option>Allotment Order</option>
-                  <option>SSLC Mark Sheet</option>
-                  <option>HSC First Year Mark Sheet Certificate</option>
-                  <option>HSC Second Year Mark Sheet Certificate</option>
-                  <option>Transfer Certificate</option>
-                  <option>Community Certificate</option>
-                  <option>Conduct Certificate</option>
-                  <option>Nativity Certificate</option>
-                  <option>Physical Fitness</option>
-                  <option>Photo</option>
-                  <option>Hepatites-B Certificate</option>
-                  <option>Senior Secondary Mark Sheet</option>
-                  <option>CBSE/ISC Pass Certificate</option>
-                  <option>Neet Score Card</option>
-                  <option>Neet Hall Ticket</option>
-                  <option>Neet Rank Letter</option>
-                  <option>Migration Certificate</option>
-                  <option>Eligiblity Certificate Date</option>
-                  <option>First to Final MBBS Mark Sheets</option>
-                  <option>CRRI Completion Certificate</option>
-                  <option>MBBS Degree Certificate</option>
-                  <option>MBBS Registration Certificate</option>
-                  <option>MBBS Course Cum Conduct Certificate</option>
-                  <option>MBBS Attempt Certificate</option>
-                  <option>PG Diploma Mark Sheet</option>
-                  <option>PG Diploma Degree Certificate</option>
-                  <option>PG Diploma  Registration Certificate</option>
-                  <option>MDMS Mark Sheet</option>
-                  <option>MDMS Degree Certificate</option>
-                  <option>MDMS Registration Certificate</option>
-                  <option>MDMS Course Cum Conduct Certificate</option>
-                  <option>MDMS Transfer Certificate</option>
-                  <option>NEET Admit Card</option>
-                  <option>NEET Rank Card</option>
-                  <option>Four Sets Xerox Copies</option>
-                  <option>Bond Executed By the Candidate</option>
-                  <option>Aadhar Card Xerox</option>
-                  <option>Bank Pass Book Xerox</option>
-                  <option>Pan Card Xerox</option>
-  
-  
-                </select>
-              </div>          </div>
-              <div class="form-group">
-                <label for="exampleFormControlInput21">Certificate Type</label>
-                <div class="form-group">
-                  <select id="select"class="selectpicker"  data-live-search="true">
-                    <option hidden="" selected="">&nbsp;</option>
-                    <option>Allotment Order</option>
-                    <option>SSLC Mark Sheet</option>
-                    <option>HSC First Year Mark Sheet Certificate</option>
-                    <option>HSC Second Year Mark Sheet Certificate</option>
-                    <option>Transfer Certificate</option>
-                    <option>Community Certificate</option>
-                    <option>Conduct Certificate</option>
-                    <option>Nativity Certificate</option>
-                    <option>Physical Fitness</option>
-                    <option>Photo</option>
-                    <option>Hepatites-B Certificate</option>
-                    <option>Senior Secondary Mark Sheet</option>
-                    <option>CBSE/ISC Pass Certificate</option>
-                    <option>Neet Score Card</option>
-                    <option>Neet Hall Ticket</option>
-                    <option>Neet Rank Letter</option>
-                    <option>Migration Certificate</option>
-                    <option>Eligiblity Certificate Date</option>
-                    <option>First to Final MBBS Mark Sheets</option>
-                    <option>CRRI Completion Certificate</option>
-                    <option>MBBS Degree Certificate</option>
-                    <option>MBBS Registration Certificate</option>
-                    <option>MBBS Course Cum Conduct Certificate</option>
-                    <option>MBBS Attempt Certificate</option>
-                    <option>PG Diploma Mark Sheet</option>
-                    <option>PG Diploma Degree Certificate</option>
-                    <option>PG Diploma  Registration Certificate</option>
-                    <option>MDMS Mark Sheet</option>
-                    <option>MDMS Degree Certificate</option>
-                    <option>MDMS Registration Certificate</option>
-                    <option>MDMS Course Cum Conduct Certificate</option>
-                    <option>MDMS Transfer Certificate</option>
-                    <option>NEET Admit Card</option>
-                    <option>NEET Rank Card</option>
-                    <option>Four Sets Xerox Copies</option>
-                    <option>Bond Executed By the Candidate</option>
-                    <option>Aadhar Card Xerox</option>
-                    <option>Bank Pass Book Xerox</option>
-                    <option>Pan Card Xerox</option>
-    
-    
-                  </select>
-                </div>          </div>
-                <div class="form-group">
-                  <label for="exampleFormControlInput21">Certificate Type</label>
+          
+                <select id="select"class="selectpicker"form="for_report" name="check_slip"   data-live-search="true">
+                 <option hidden="" selected="">&nbsp;</option>
+
+                <option>Neet Hall Ticket</option>
+                <option>Allotment Order</option>
+                <option>SSLC Mark Sheet</option>
+                <option>HSC First Year Mark Sheet Certificate</option>
+                <option>HSC Second Year Mark Sheet Certificate</option>
+                <option>Transfer Certificate</option>
+                <option>Community Certificate</option>
+                <option>Conduct Certificate</option>
+                <option>Nativity Certificate</option>
+                <option>Physical Fitness</option>
+                <option>Photo</option>
+                <option>Hepatites-B Certificate</option>
+                <option>Senior Secondary Mark Sheet</option>
+                <option>CBSE/ISC Pass Certificate</option>
+                <option>Neet Score Card</option>
+               
+                <option>Neet Rank Letter</option>
+                <option>Migration Certificate</option>
+                <option>Eligiblity Certificate Date</option>
+                <option>First to Final MBBS Mark Sheets</option>
+                <option>CRRI Completion Certificate</option>
+                <option>MBBS Degree Certificate</option>
+                <option>MBBS Registration Certificate</option>
+                <option>MBBS Course Cum Conduct Certificate</option>
+                <option>MBBS Attempt Certificate</option>
+                <option>PG Diploma Mark Sheet</option>
+                <option>PG Diploma Degree Certificate</option>
+                <option>PG Diploma  Registration Certificate</option>
+                <option>MDMS Mark Sheet</option>
+                <option>MDMS Degree Certificate</option>
+                <option>MDMS Registration Certificate</option>
+                <option>MDMS Course Cum Conduct Certificate</option>
+                <option>MDMS Transfer Certificate</option>
+                <option>NEET Admit Card</option>
+                <option>NEET Rank Card</option>
+                <option>Four Sets Xerox Copies</option>
+                <option>Bond Executed By the Candidate</option>
+                <option>Aadhar Card Xerox</option>
+                <option>Bank Pass Book Xerox</option>
+                <option>Pan Card Xerox</option>
+
+
+              </select>
+              </div>        
+              
+
+                        
+               
                   <div class="form-group">
-                    <select id="select"class="selectpicker"  data-live-search="true">
+  <select id="select"class="selectpicker"form="for_report" name="check_slip"   data-live-search="true">
                       <option hidden="" selected="">&nbsp;</option>
+
+                             <option>Neet Score Card</option>
+                            <option>SSLC Mark Sheet</option>
+                      <option>Allotment Order</option>
+                     
+                      <option>HSC First Year Mark Sheet Certificate</option>
+                      <option>HSC Second Year Mark Sheet Certificate</option>
+                      <option>Transfer Certificate</option>
+                      <option>Community Certificate</option>
+                      <option>Conduct Certificate</option>
+                      <option>Nativity Certificate</option>
+                      <option>Physical Fitness</option>
+                      <option>Photo</option>
+                      <option>Hepatites-B Certificate</option>
+                      <option>Senior Secondary Mark Sheet</option>
+                      <option>CBSE/ISC Pass Certificate</option>
+                      
+                      <option>Neet Hall Ticket</option>
+                      <option>Neet Rank Letter</option>
+                      <option>Migration Certificate</option>
+                      <option>Eligiblity Certificate Date</option>
+                      <option>First to Final MBBS Mark Sheets</option>
+                      <option>CRRI Completion Certificate</option>
+                      <option>MBBS Degree Certificate</option>
+                      <option>MBBS Registration Certificate</option>
+                      <option>MBBS Course Cum Conduct Certificate</option>
+                      <option>MBBS Attempt Certificate</option>
+                      <option>PG Diploma Mark Sheet</option>
+                      <option>PG Diploma Degree Certificate</option>
+                      <option>PG Diploma  Registration Certificate</option>
+                      <option>MDMS Mark Sheet</option>
+                      <option>MDMS Degree Certificate</option>
+                      <option>MDMS Registration Certificate</option>
+                      <option>MDMS Course Cum Conduct Certificate</option>
+                      <option>MDMS Transfer Certificate</option>
+                      <option>NEET Admit Card</option>
+                      <option>NEET Rank Card</option>
+                      <option>Four Sets Xerox Copies</option>
+                      <option>Bond Executed By the Candidate</option>
+                      <option>Aadhar Card Xerox</option>
+                      <option>Bank Pass Book Xerox</option>
+                      <option>Pan Card Xerox</option>
+      
+      
+                    </select>
+                  </div> 
+                 
+                  <div class="form-group">
+                 
+  <select id="select"class="selectpicker"form="for_report" name="check_slip"   data-live-search="true">                      
+                            <option>SSLC Mark Sheet</option>
+                              <option>Conduct Certificate</option>
+                      <option hidden="" selected="">&nbsp;</option>
+                      <option>Allotment Order</option>
+                      <option>HSC First Year Mark Sheet Certificate</option>
+                      <option>HSC Second Year Mark Sheet Certificate</option>
+                      <option>Transfer Certificate</option>
+                      <option>Community Certificate</option>
+                      <option>HSC Second Year Mark Sheet Certificate</option>
+                      <option>Nativity Certificate</option>
+                      <option>Physical Fitness</option>
+                      <option>Photo</option>
+                      <option>Hepatites-B Certificate</option>
+                      <option>Senior Secondary Mark Sheet</option>
+                      <option>CBSE/ISC Pass Certificate</option>
+                      <option>Neet Score Card</option>
+                      <option>Neet Hall Ticket</option>
+                      <option>Neet Rank Letter</option>
+                      <option>Migration Certificate</option>
+                      <option>Eligiblity Certificate Date</option>
+                      <option>First to Final MBBS Mark Sheets</option>
+                      <option>CRRI Completion Certificate</option>
+                      <option>MBBS Degree Certificate</option>
+                      <option>MBBS Registration Certificate</option>
+                      <option>MBBS Course Cum Conduct Certificate</option>
+                      <option>MBBS Attempt Certificate</option>
+                      <option>PG Diploma Mark Sheet</option>
+                      <option>PG Diploma Degree Certificate</option>
+                      <option>PG Diploma  Registration Certificate</option>
+                      <option>MDMS Mark Sheet</option>
+                      <option>MDMS Degree Certificate</option>
+                      <option>MDMS Registration Certificate</option>
+                      <option>MDMS Course Cum Conduct Certificate</option>
+                      <option>MDMS Transfer Certificate</option>
+                      <option>NEET Admit Card</option>
+                      <option>NEET Rank Card</option>
+                      <option>Four Sets Xerox Copies</option>
+                      <option>Bond Executed By the Candidate</option>
+                      <option>Aadhar Card Xerox</option>
+                      <option>Bank Pass Book Xerox</option>
+                      <option>Pan Card Xerox</option>
+      
+      
+                    </select>
+                  </div>       
+                   <div class="form-group">
+  <select id="select"class="selectpicker"form="for_report" name="check_slip"   data-live-search="true">                   <option hidden="" selected="">&nbsp;</option>
+
+                            <option>SSLC Mark Sheet</option>
+                              <option>Conduct Certificate</option>
+                      <option>Allotment Order</option>
+                     
+                      <option>HSC First Year Mark Sheet Certificate</option>
+                      <option>HSC Second Year Mark Sheet Certificate</option>
+                      <option>Transfer Certificate</option>
+                      <option>Community Certificate</option>
+                      <option>HSC Second Year Mark Sheet Certificate</option>
+                      <option>Nativity Certificate</option>
+                      <option>Physical Fitness</option>
+                      <option>Photo</option>
+                      <option>Hepatites-B Certificate</option>
+                      <option>Senior Secondary Mark Sheet</option>
+                      <option>CBSE/ISC Pass Certificate</option>
+                      <option>Neet Score Card</option>
+                      <option>Neet Hall Ticket</option>
+                      <option>Neet Rank Letter</option>
+                      <option>Migration Certificate</option>
+                      <option>Eligiblity Certificate Date</option>
+                      <option>First to Final MBBS Mark Sheets</option>
+                      <option>CRRI Completion Certificate</option>
+                      <option>MBBS Degree Certificate</option>
+                      <option>MBBS Registration Certificate</option>
+                      <option>MBBS Course Cum Conduct Certificate</option>
+                      <option>MBBS Attempt Certificate</option>
+                      <option>PG Diploma Mark Sheet</option>
+                      <option>PG Diploma Degree Certificate</option>
+                      <option>PG Diploma  Registration Certificate</option>
+                      <option>MDMS Mark Sheet</option>
+                      <option>MDMS Degree Certificate</option>
+                      <option>MDMS Registration Certificate</option>
+                      <option>MDMS Course Cum Conduct Certificate</option>
+                      <option>MDMS Transfer Certificate</option>
+                      <option>NEET Admit Card</option>
+                      <option>NEET Rank Card</option>
+                      <option>Four Sets Xerox Copies</option>
+                      <option>Bond Executed By the Candidate</option>
+                      <option>Aadhar Card Xerox</option>
+                      <option>Bank Pass Book Xerox</option>
+                      <option>Pan Card Xerox</option>
+      
+      
+                    </select>
+                  </div> 
+                         
+                   
+                  <div class="form-group">
+  <select id="select"class="selectpicker"form="for_report" name="check_slip"   data-live-search="true">                  <option hidden="" selected="">&nbsp;</option>
+                       
+                    <option>HSC First Year Mark Sheet Certificate</option>
+
+                        <option>Nativity Certificate</option>
+                            <option>SSLC Mark Sheet</option>
+                      <option>Allotment Order</option>
+                      <option>SSLC Mark Sheet</option>
+                      <option>HSC Second Year Mark Sheet Certificate</option>
+                      <option>Transfer Certificate</option>
+                      <option>Community Certificate</option>
+                      <option>Conduct Certificate</option>
+                      <option>Nativity Certificate</option>
+                      <option>Physical Fitness</option>
+                      <option>Photo</option>
+                      <option>Hepatites-B Certificate</option>
+                      <option>Senior Secondary Mark Sheet</option>
+                      <option>CBSE/ISC Pass Certificate</option>
+                      <option>Neet Score Card</option>
+                      <option>Neet Hall Ticket</option>
+                      <option>Neet Rank Letter</option>
+                      <option>Migration Certificate</option>
+                      <option>Eligiblity Certificate Date</option>
+                      <option>First to Final MBBS Mark Sheets</option>
+                      <option>CRRI Completion Certificate</option>
+                      <option>MBBS Degree Certificate</option>
+                      <option>MBBS Registration Certificate</option>
+                      <option>MBBS Course Cum Conduct Certificate</option>
+                      <option>MBBS Attempt Certificate</option>
+                      <option>PG Diploma Mark Sheet</option>
+                      <option>PG Diploma Degree Certificate</option>
+                      <option>PG Diploma  Registration Certificate</option>
+                      <option>MDMS Mark Sheet</option>
+                      <option>MDMS Degree Certificate</option>
+                      <option>MDMS Registration Certificate</option>
+                      <option>MDMS Course Cum Conduct Certificate</option>
+                      <option>MDMS Transfer Certificate</option>
+                      <option>NEET Admit Card</option>
+                      <option>NEET Rank Card</option>
+                      <option>Four Sets Xerox Copies</option>
+                      <option>Bond Executed By the Candidate</option>
+                      <option>Aadhar Card Xerox</option>
+                      <option>Bank Pass Book Xerox</option>
+                      <option>Pan Card Xerox</option>
+      
+      
+                    </select>
+                  </div>         
+                  
+                  <div class="form-group">
+  <select id="select"class="selectpicker"form="for_report" name="check_slip"   data-live-search="true">                  <option hidden="" selected="">&nbsp;</option>
+                       
+                 <option>HSC Second Year Mark Sheet Certificate</option>
+
+
+                        <option>Nativity Certificate</option>
+                            <option>SSLC Mark Sheet</option>
                       <option>Allotment Order</option>
                       <option>SSLC Mark Sheet</option>
                       <option>HSC First Year Mark Sheet Certificate</option>
@@ -5656,15 +5830,623 @@ edit=(clicked_id)=>{
       
       
                     </select>
-                  </div>          </div>
+                         
           </div>
+            <div class="form-group">
+  <select id="select"class="selectpicker"form="for_report" name="check_slip"   data-live-search="true">                  <option hidden="" selected="">&nbsp;</option>
+                         
+                     <option>Transfer Certificate</option>
+                          <option>Neet Hall Ticket</option>
+                           <option>Neet Score Card</option>
+                            <option>SSLC Mark Sheet</option>
+                      <option>Allotment Order</option>
+                     
+                      <option>HSC First Year Mark Sheet Certificate</option>
+                      <option>HSC Second Year Mark Sheet Certificate</option>
+                     
+                      <option>Community Certificate</option>
+                      <option>Conduct Certificate</option>
+                      <option>Nativity Certificate</option>
+                      <option>Physical Fitness</option>
+                      <option>Photo</option>
+                      <option>Hepatites-B Certificate</option>
+                      <option>Senior Secondary Mark Sheet</option>
+                      <option>CBSE/ISC Pass Certificate</option>
+                      
+                      
+                      <option>Neet Rank Letter</option>
+                      <option>Migration Certificate</option>
+                      <option>Eligiblity Certificate Date</option>
+                      <option>First to Final MBBS Mark Sheets</option>
+                      <option>CRRI Completion Certificate</option>
+                      <option>MBBS Degree Certificate</option>
+                      <option>MBBS Registration Certificate</option>
+                      <option>MBBS Course Cum Conduct Certificate</option>
+                      <option>MBBS Attempt Certificate</option>
+                      <option>PG Diploma Mark Sheet</option>
+                      <option>PG Diploma Degree Certificate</option>
+                      <option>PG Diploma  Registration Certificate</option>
+                      <option>MDMS Mark Sheet</option>
+                      <option>MDMS Degree Certificate</option>
+                      <option>MDMS Registration Certificate</option>
+                      <option>MDMS Course Cum Conduct Certificate</option>
+                      <option>MDMS Transfer Certificate</option>
+                      <option>NEET Admit Card</option>
+                      <option>NEET Rank Card</option>
+                      <option>Four Sets Xerox Copies</option>
+                      <option>Bond Executed By the Candidate</option>
+                      <option>Aadhar Card Xerox</option>
+                      <option>Bank Pass Book Xerox</option>
+                      <option>Pan Card Xerox</option>
+      
+      
+                    </select>
+                </div>  
+                  <div class="form-group">
+  <select id="select"class="selectpicker"form="for_report" name="check_slip"   data-live-search="true">                  <option hidden="" selected="">&nbsp;</option>
+                         
+                                  <option>Conduct Certificate</option>
+
+                          <option>Transfer Certificate</option>
+                          <option>Neet Hall Ticket</option>
+                           <option>Neet Score Card</option>
+                            <option>SSLC Mark Sheet</option>
+
+                      <option>Allotment Order</option>
+                     
+                      <option>HSC First Year Mark Sheet Certificate</option>
+                      <option>HSC Second Year Mark Sheet Certificate</option>
+                     
+                      <option>Community Certificate</option>
+                      <option>Nativity Certificate</option>
+                      <option>Physical Fitness</option>
+                      <option>Photo</option>
+                      <option>Hepatites-B Certificate</option>
+                      <option>Senior Secondary Mark Sheet</option>
+                      <option>CBSE/ISC Pass Certificate</option>
+                      
+                      
+                      <option>Neet Rank Letter</option>
+                      <option>Migration Certificate</option>
+                      <option>Eligiblity Certificate Date</option>
+                      <option>First to Final MBBS Mark Sheets</option>
+                      <option>CRRI Completion Certificate</option>
+                      <option>MBBS Degree Certificate</option>
+                      <option>MBBS Registration Certificate</option>
+                      <option>MBBS Course Cum Conduct Certificate</option>
+                      <option>MBBS Attempt Certificate</option>
+                      <option>PG Diploma Mark Sheet</option>
+                      <option>PG Diploma Degree Certificate</option>
+                      <option>PG Diploma  Registration Certificate</option>
+                      <option>MDMS Mark Sheet</option>
+                      <option>MDMS Degree Certificate</option>
+                      <option>MDMS Registration Certificate</option>
+                      <option>MDMS Course Cum Conduct Certificate</option>
+                      <option>MDMS Transfer Certificate</option>
+                      <option>NEET Admit Card</option>
+                      <option>NEET Rank Card</option>
+                      <option>Four Sets Xerox Copies</option>
+                      <option>Bond Executed By the Candidate</option>
+                      <option>Aadhar Card Xerox</option>
+                      <option>Bank Pass Book Xerox</option>
+                      <option>Pan Card Xerox</option>
+      
+      
+                    </select>
+                 </div>
+                  <div class="form-group">
+  <select id="select"class="selectpicker"form="for_report" name="check_slip"   data-live-search="true">                    <option hidden="" selected="">&nbsp;</option>
+                      
+                     <option>Community Certificate</option>
+
+                          <option>Conduct Certificate</option>
+
+                          <option>Transfer Certificate</option>
+                          <option>Neet Hall Ticket</option>
+                           <option>Neet Score Card</option>
+                            <option>SSLC Mark Sheet</option>
+                      <option>Allotment Order</option>
+                     
+                      <option>HSC First Year Mark Sheet Certificate</option>
+                      <option>HSC Second Year Mark Sheet Certificate</option>
+                     
+                      <option>Nativity Certificate</option>
+                      <option>Physical Fitness</option>
+                      <option>Photo</option>
+                      <option>Hepatites-B Certificate</option>
+                      <option>Senior Secondary Mark Sheet</option>
+                      <option>CBSE/ISC Pass Certificate</option>
+                      
+                      
+                      <option>Neet Rank Letter</option>
+                      <option>Migration Certificate</option>
+                      <option>Eligiblity Certificate Date</option>
+                      <option>First to Final MBBS Mark Sheets</option>
+                      <option>CRRI Completion Certificate</option>
+                      <option>MBBS Degree Certificate</option>
+                      <option>MBBS Registration Certificate</option>
+                      <option>MBBS Course Cum Conduct Certificate</option>
+                      <option>MBBS Attempt Certificate</option>
+                      <option>PG Diploma Mark Sheet</option>
+                      <option>PG Diploma Degree Certificate</option>
+                      <option>PG Diploma  Registration Certificate</option>
+                      <option>MDMS Mark Sheet</option>
+                      <option>MDMS Degree Certificate</option>
+                      <option>MDMS Registration Certificate</option>
+                      <option>MDMS Course Cum Conduct Certificate</option>
+                      <option>MDMS Transfer Certificate</option>
+                      <option>NEET Admit Card</option>
+                      <option>NEET Rank Card</option>
+                      <option>Four Sets Xerox Copies</option>
+                      <option>Bond Executed By the Candidate</option>
+                      <option>Aadhar Card Xerox</option>
+                      <option>Bank Pass Book Xerox</option>
+                      <option>Pan Card Xerox</option>
+      
+      
+                    </select>
+                </div>  
+                <div class="form-group">
+  <select id="select"class="selectpicker"form="for_report" name="check_slip"   data-live-search="true">                  <option hidden="" selected="">&nbsp;</option>
+                          
+                              <option>Nativity Certificate</option>
+
+                        <option>Community Certificate</option>
+
+                          <option>Conduct Certificate</option>
+
+                          <option>Transfer Certificate</option>
+                          <option>Neet Hall Ticket</option>
+                           <option>Neet Score Card</option>
+                            <option>SSLC Mark Sheet</option>
+                      <option>Allotment Order</option>
+                     
+                      <option>HSC First Year Mark Sheet Certificate</option>
+                      <option>HSC Second Year Mark Sheet Certificate</option>
+                     
+                      <option>Physical Fitness</option>
+                      <option>Photo</option>
+                      <option>Hepatites-B Certificate</option>
+                      <option>Senior Secondary Mark Sheet</option>
+                      <option>CBSE/ISC Pass Certificate</option>
+                      
+                      
+                      <option>Neet Rank Letter</option>
+                      <option>Migration Certificate</option>
+                      <option>Eligiblity Certificate Date</option>
+                      <option>First to Final MBBS Mark Sheets</option>
+                      <option>CRRI Completion Certificate</option>
+                      <option>MBBS Degree Certificate</option>
+                      <option>MBBS Registration Certificate</option>
+                      <option>MBBS Course Cum Conduct Certificate</option>
+                      <option>MBBS Attempt Certificate</option>
+                      <option>PG Diploma Mark Sheet</option>
+                      <option>PG Diploma Degree Certificate</option>
+                      <option>PG Diploma  Registration Certificate</option>
+                      <option>MDMS Mark Sheet</option>
+                      <option>MDMS Degree Certificate</option>
+                      <option>MDMS Registration Certificate</option>
+                      <option>MDMS Course Cum Conduct Certificate</option>
+                      <option>MDMS Transfer Certificate</option>
+                      <option>NEET Admit Card</option>
+                      <option>NEET Rank Card</option>
+                      <option>Four Sets Xerox Copies</option>
+                      <option>Bond Executed By the Candidate</option>
+                      <option>Aadhar Card Xerox</option>
+                      <option>Bank Pass Book Xerox</option>
+                      <option>Pan Card Xerox</option>
+      
+      
+                    </select>
+                </div>  
+                 <div class="form-group">
+  <select id="select"class="selectpicker"form="for_report" name="check_slip"   data-live-search="true">                  <option hidden="" selected="">&nbsp;</option>
+                         
+                            <option>Physical Fitness</option>
+                           <option>Nativity Certificate</option>
+
+                        <option>Community Certificate</option>
+
+                          <option>Conduct Certificate</option>
+
+                          <option>Transfer Certificate</option>
+                          <option>Neet Hall Ticket</option>
+                           <option>Neet Score Card</option>
+                            <option>SSLC Mark Sheet</option>
+                      <option>Allotment Order</option>
+                     
+                      <option>HSC First Year Mark Sheet Certificate</option>
+                      <option>HSC Second Year Mark Sheet Certificate</option>
+                     
+                      
+                      <option>Photo</option>
+                      <option>Hepatites-B Certificate</option>
+                      <option>Senior Secondary Mark Sheet</option>
+                      <option>CBSE/ISC Pass Certificate</option>
+                      
+                      
+                      <option>Neet Rank Letter</option>
+                      <option>Migration Certificate</option>
+                      <option>Eligiblity Certificate Date</option>
+                      <option>First to Final MBBS Mark Sheets</option>
+                      <option>CRRI Completion Certificate</option>
+                      <option>MBBS Degree Certificate</option>
+                      <option>MBBS Registration Certificate</option>
+                      <option>MBBS Course Cum Conduct Certificate</option>
+                      <option>MBBS Attempt Certificate</option>
+                      <option>PG Diploma Mark Sheet</option>
+                      <option>PG Diploma Degree Certificate</option>
+                      <option>PG Diploma  Registration Certificate</option>
+                      <option>MDMS Mark Sheet</option>
+                      <option>MDMS Degree Certificate</option>
+                      <option>MDMS Registration Certificate</option>
+                      <option>MDMS Course Cum Conduct Certificate</option>
+                      <option>MDMS Transfer Certificate</option>
+                      <option>NEET Admit Card</option>
+                      <option>NEET Rank Card</option>
+                      <option>Four Sets Xerox Copies</option>
+                      <option>Bond Executed By the Candidate</option>
+                      <option>Aadhar Card Xerox</option>
+                      <option>Bank Pass Book Xerox</option>
+                      <option>Pan Card Xerox</option>
+      
+      
+                    </select>
+                </div>  
+                <div class="form-group">
+  <select id="select"class="selectpicker"form="for_report" name="check_slip"   data-live-search="true">                    <option hidden="" selected="">&nbsp;</option>
+                       
+                                <option>Photo</option>
+                          <option>Physical Fitness</option>
+                           <option>Nativity Certificate</option>
+
+                        <option>Community Certificate</option>
+
+                          <option>Conduct Certificate</option>
+
+                          <option>Transfer Certificate</option>
+                          <option>Neet Hall Ticket</option>
+                           <option>Neet Score Card</option>
+                            <option>SSLC Mark Sheet</option>
+                      <option>Allotment Order</option>
+                     
+                      <option>HSC First Year Mark Sheet Certificate</option>
+                      <option>HSC Second Year Mark Sheet Certificate</option>
+                     
+                      
+                      
+                      <option>Hepatites-B Certificate</option>
+                      <option>Senior Secondary Mark Sheet</option>
+                      <option>CBSE/ISC Pass Certificate</option>
+                      
+                      
+                      <option>Neet Rank Letter</option>
+                      <option>Migration Certificate</option>
+                      <option>Eligiblity Certificate Date</option>
+                      <option>First to Final MBBS Mark Sheets</option>
+                      <option>CRRI Completion Certificate</option>
+                      <option>MBBS Degree Certificate</option>
+                      <option>MBBS Registration Certificate</option>
+                      <option>MBBS Course Cum Conduct Certificate</option>
+                      <option>MBBS Attempt Certificate</option>
+                      <option>PG Diploma Mark Sheet</option>
+                      <option>PG Diploma Degree Certificate</option>
+                      <option>PG Diploma  Registration Certificate</option>
+                      <option>MDMS Mark Sheet</option>
+                      <option>MDMS Degree Certificate</option>
+                      <option>MDMS Registration Certificate</option>
+                      <option>MDMS Course Cum Conduct Certificate</option>
+                      <option>MDMS Transfer Certificate</option>
+                      <option>NEET Admit Card</option>
+                      <option>NEET Rank Card</option>
+                      <option>Four Sets Xerox Copies</option>
+                      <option>Bond Executed By the Candidate</option>
+                      <option>Aadhar Card Xerox</option>
+                      <option>Bank Pass Book Xerox</option>
+                      <option>Pan Card Xerox</option>
+      
+      
+                    </select>
+                </div> 
+                 <div class="form-group">
+  <select id="select"class="selectpicker"form="for_report" name="check_slip"   data-live-search="true">                  <option hidden="" selected="">&nbsp;</option>
+                        
+                             <option>Hepatites-B Certificate</option>
+                         <option>Photo</option>
+                          <option>Physical Fitness</option>
+                           <option>Nativity Certificate</option>
+
+                        <option>Community Certificate</option>
+
+                          <option>Conduct Certificate</option>
+
+                          <option>Transfer Certificate</option>
+                          <option>Neet Hall Ticket</option>
+                           <option>Neet Score Card</option>
+                            <option>SSLC Mark Sheet</option>
+                      <option>Allotment Order</option>
+                     
+                      <option>HSC First Year Mark Sheet Certificate</option>
+                      <option>HSC Second Year Mark Sheet Certificate</option>
+                     
+                      
+                      
+                     
+                      <option>Senior Secondary Mark Sheet</option>
+                      <option>CBSE/ISC Pass Certificate</option>
+                      
+                      
+                      <option>Neet Rank Letter</option>
+                      <option>Migration Certificate</option>
+                      <option>Eligiblity Certificate Date</option>
+                      <option>First to Final MBBS Mark Sheets</option>
+                      <option>CRRI Completion Certificate</option>
+                      <option>MBBS Degree Certificate</option>
+                      <option>MBBS Registration Certificate</option>
+                      <option>MBBS Course Cum Conduct Certificate</option>
+                      <option>MBBS Attempt Certificate</option>
+                      <option>PG Diploma Mark Sheet</option>
+                      <option>PG Diploma Degree Certificate</option>
+                      <option>PG Diploma  Registration Certificate</option>
+                      <option>MDMS Mark Sheet</option>
+                      <option>MDMS Degree Certificate</option>
+                      <option>MDMS Registration Certificate</option>
+                      <option>MDMS Course Cum Conduct Certificate</option>
+                      <option>MDMS Transfer Certificate</option>
+                      <option>NEET Admit Card</option>
+                      <option>NEET Rank Card</option>
+                      <option>Four Sets Xerox Copies</option>
+                      <option>Bond Executed By the Candidate</option>
+                      <option>Aadhar Card Xerox</option>
+                      <option>Bank Pass Book Xerox</option>
+                      <option>Pan Card Xerox</option>
+      
+      
+                    </select>
+                </div>  
+                 <div class="form-group">
+  <select id="select"class="selectpicker"form="for_report" name="check_slip"   data-live-search="true">                  <option hidden="" selected="">&nbsp;</option>
+                        
+                            <option>Aadhar Card Xerox</option>
+                         <option>Hepatites-B Certificate</option>
+                         <option>Photo</option>
+                          <option>Physical Fitness</option>
+                           <option>Nativity Certificate</option>
+
+                        <option>Community Certificate</option>
+
+                          <option>Conduct Certificate</option>
+
+                          <option>Transfer Certificate</option>
+                          <option>Neet Hall Ticket</option>
+                           <option>Neet Score Card</option>
+                            <option>SSLC Mark Sheet</option>
+                      <option>Allotment Order</option>
+                     
+                      <option>HSC First Year Mark Sheet Certificate</option>
+                      <option>HSC Second Year Mark Sheet Certificate</option>
+                     
+                      
+                      
+                     
+                      <option>Senior Secondary Mark Sheet</option>
+                      <option>CBSE/ISC Pass Certificate</option>
+                      
+                      
+                      <option>Neet Rank Letter</option>
+                      <option>Migration Certificate</option>
+                      <option>Eligiblity Certificate Date</option>
+                      <option>First to Final MBBS Mark Sheets</option>
+                      <option>CRRI Completion Certificate</option>
+                      <option>MBBS Degree Certificate</option>
+                      <option>MBBS Registration Certificate</option>
+                      <option>MBBS Course Cum Conduct Certificate</option>
+                      <option>MBBS Attempt Certificate</option>
+                      <option>PG Diploma Mark Sheet</option>
+                      <option>PG Diploma Degree Certificate</option>
+                      <option>PG Diploma  Registration Certificate</option>
+                      <option>MDMS Mark Sheet</option>
+                      <option>MDMS Degree Certificate</option>
+                      <option>MDMS Registration Certificate</option>
+                      <option>MDMS Course Cum Conduct Certificate</option>
+                      <option>MDMS Transfer Certificate</option>
+                      <option>NEET Admit Card</option>
+                      <option>NEET Rank Card</option>
+                      <option>Four Sets Xerox Copies</option>
+                      <option>Bond Executed By the Candidate</option>
+                      
+                      <option>Bank Pass Book Xerox</option>
+                      <option>Pan Card Xerox</option>
+      
+      
+                    </select>
+                </div>  
+                 <div class="form-group">
+  <select id="select"class="selectpicker"form="for_report" name="check_slip"   data-live-search="true">                    <option hidden="" selected="">&nbsp;</option>
+                        
+                            <option>Bank Pass Book Xerox</option>
+                         <option>Aadhar Card Xerox</option>
+                         <option>Hepatites-B Certificate</option>
+                         <option>Photo</option>
+                          <option>Physical Fitness</option>
+                           <option>Nativity Certificate</option>
+
+                        <option>Community Certificate</option>
+
+                          <option>Conduct Certificate</option>
+
+                          <option>Transfer Certificate</option>
+                          <option>Neet Hall Ticket</option>
+                           <option>Neet Score Card</option>
+                            <option>SSLC Mark Sheet</option>
+                      <option>Allotment Order</option>
+                     
+                      <option>HSC First Year Mark Sheet Certificate</option>
+                      <option>HSC Second Year Mark Sheet Certificate</option>
+                     
+                      
+                      
+                     
+                      <option>Senior Secondary Mark Sheet</option>
+                      <option>CBSE/ISC Pass Certificate</option>
+                      
+                      
+                      <option>Neet Rank Letter</option>
+                      <option>Migration Certificate</option>
+                      <option>Eligiblity Certificate Date</option>
+                      <option>First to Final MBBS Mark Sheets</option>
+                      <option>CRRI Completion Certificate</option>
+                      <option>MBBS Degree Certificate</option>
+                      <option>MBBS Registration Certificate</option>
+                      <option>MBBS Course Cum Conduct Certificate</option>
+                      <option>MBBS Attempt Certificate</option>
+                      <option>PG Diploma Mark Sheet</option>
+                      <option>PG Diploma Degree Certificate</option>
+                      <option>PG Diploma  Registration Certificate</option>
+                      <option>MDMS Mark Sheet</option>
+                      <option>MDMS Degree Certificate</option>
+                      <option>MDMS Registration Certificate</option>
+                      <option>MDMS Course Cum Conduct Certificate</option>
+                      <option>MDMS Transfer Certificate</option>
+                      <option>NEET Admit Card</option>
+                      <option>NEET Rank Card</option>
+                      <option>Four Sets Xerox Copies</option>
+                      <option>Bond Executed By the Candidate</option>
+                      
+                    
+                      <option>Pan Card Xerox</option>
+      
+      
+                    </select>
+                </div>  
+                 <div class="form-group">
+  <select id="select"class="selectpicker"form="for_report" name="check_slip"   data-live-search="true">                  <option hidden="" selected="">&nbsp;</option>
+                       
+                                   <option>Choose</option>
+                          <option>Bank Pass Book Xerox</option>
+                         <option>Aadhar Card Xerox</option>
+                         <option>Hepatites-B Certificate</option>
+                         <option>Photo</option>
+                          <option>Physical Fitness</option>
+                           <option>Nativity Certificate</option>
+
+                        <option>Community Certificate</option>
+
+                          <option>Conduct Certificate</option>
+
+                          <option>Transfer Certificate</option>
+                          <option>Neet Hall Ticket</option>
+                           <option>Neet Score Card</option>
+                            <option>SSLC Mark Sheet</option>
+                      <option>Allotment Order</option>
+                     
+                      <option>HSC First Year Mark Sheet Certificate</option>
+                      <option>HSC Second Year Mark Sheet Certificate</option>
+                     
+                      
+                      
+                     
+                      <option>Senior Secondary Mark Sheet</option>
+                      <option>CBSE/ISC Pass Certificate</option>
+                      
+                      
+                      <option>Neet Rank Letter</option>
+                      <option>Migration Certificate</option>
+                      <option>Eligiblity Certificate Date</option>
+                      <option>First to Final MBBS Mark Sheets</option>
+                      <option>CRRI Completion Certificate</option>
+                      <option>MBBS Degree Certificate</option>
+                      <option>MBBS Registration Certificate</option>
+                      <option>MBBS Course Cum Conduct Certificate</option>
+                      <option>MBBS Attempt Certificate</option>
+                      <option>PG Diploma Mark Sheet</option>
+                      <option>PG Diploma Degree Certificate</option>
+                      <option>PG Diploma  Registration Certificate</option>
+                      <option>MDMS Mark Sheet</option>
+                      <option>MDMS Degree Certificate</option>
+                      <option>MDMS Registration Certificate</option>
+                      <option>MDMS Course Cum Conduct Certificate</option>
+                      <option>MDMS Transfer Certificate</option>
+                      <option>NEET Admit Card</option>
+                      <option>NEET Rank Card</option>
+                      <option>Four Sets Xerox Copies</option>
+                      <option>Bond Executed By the Candidate</option>
+                      
+                    
+                      <option>Pan Card Xerox</option>
+      
+      
+                    </select>
+                </div>
+                 </div> 
           <div class="col-md-3">
             <div class="form-group">
               <label for="exampleFormControlInput21">Certificate Status</label>
               
-                <select id="select"class="selectpicker"  data-live-search="true">
-                  <option hidden="" selected="">&nbsp;</option>
-                  <option>Not Applicable</option>
+                <select id="select"class="selectpicker"form="for_report" name="check_status"   data-live-search="true">
+                   <option hidden="" selected="">&nbsp;</option>
+    <option>Not Applicable</option>
+                  <option>Choosen</option>
+                  <option>Provided</option>
+                  <option>Due Date</option>
+                  <option>Others</option>
+                    <option>Migration in TC</option>
+                    <option>Migration in CC</option>
+                  </select>
+            </div>
+              <div class="form-group">
+              
+                <select id="select"class="selectpicker"form="for_report" name="check_status"  data-live-search="true">
+                   <option hidden="" selected="">&nbsp;</option>
+    <option>Not Applicable</option>
+                  <option>Choosen</option>
+                  <option>Provided</option>
+                  <option>Due Date</option>
+                  <option>Others</option>
+                    <option>Migration in TC</option>
+                    <option>Migration in CC</option>
+                  </select>
+            </div>
+              <div class="form-group">
+              
+  <select id="select"class="selectpicker"form="for_report" name="check_status"  data-live-search="true">                   <option hidden="" selected="">&nbsp;</option>
+    <option>Not Applicable</option>
+                  <option>Choosen</option>
+                  <option>Provided</option>
+                  <option>Due Date</option>
+                  <option>Others</option>
+                    <option>Migration in TC</option>
+                    <option>Migration in CC</option>
+                  </select>
+            </div>
+              <div class="form-group">
+              
+  <select id="select"class="selectpicker"form="for_report" name="check_status"  data-live-search="true">                  <option hidden="" selected="">&nbsp;</option>
+    <option>Not Applicable</option>
+                  <option>Choosen</option>
+                  <option>Provided</option>
+                  <option>Due Date</option>
+                  <option>Others</option>
+                    <option>Migration in TC</option>
+                    <option>Migration in CC</option>
+                  </select>
+            </div>
+              <div class="form-group">
+              
+  <select id="select"class="selectpicker"form="for_report" name="check_status"  data-live-search="true">                  <option hidden="" selected="">&nbsp;</option>
+    <option>Not Applicable</option>
+                  <option>Choosen</option>
+                  <option>Provided</option>
+                  <option>Due Date</option>
+                  <option>Others</option>
+                    <option>Migration in TC</option>
+                    <option>Migration in CC</option>
+                  </select>
+            </div>
+              <div class="form-group">
+              
+  <select id="select"class="selectpicker"form="for_report" name="check_status"  data-live-search="true">                   <option hidden="" selected="">&nbsp;</option>
+    <option>Not Applicable</option>
                   <option>Choosen</option>
                   <option>Provided</option>
                   <option>Due Date</option>
@@ -5674,11 +6456,9 @@ edit=(clicked_id)=>{
                   </select>
             </div>
             <div class="form-group">
-              <label for="exampleFormControlInput21">Certificate Status</label>
               
-                <select id="select"class="selectpicker"  data-live-search="true">
-                  <option hidden="" selected="">&nbsp;</option>
-                  <option>Not Applicable</option>
+  <select id="select"class="selectpicker"form="for_report" name="check_status"  data-live-search="true">                   <option hidden="" selected="">&nbsp;</option>
+    <option>Not Applicable</option>
                   <option>Choosen</option>
                   <option>Provided</option>
                   <option>Due Date</option>
@@ -5688,11 +6468,9 @@ edit=(clicked_id)=>{
                   </select>
             </div>
             <div class="form-group">
-              <label for="exampleFormControlInput21">Certificate Status</label>
               
-                <select id="select"class="selectpicker"  data-live-search="true">
-                  <option hidden="" selected="">&nbsp;</option>
-                  <option>Not Applicable</option>
+  <select id="select"class="selectpicker"form="for_report" name="check_status"  data-live-search="true">                   <option hidden="" selected="">&nbsp;</option>
+    <option>Not Applicable</option>
                   <option>Choosen</option>
                   <option>Provided</option>
                   <option>Due Date</option>
@@ -5701,45 +6479,248 @@ edit=(clicked_id)=>{
                     <option>Migration in CC</option>
                   </select>
             </div>
-            
+              <div class="form-group">
+              
+  <select id="select"class="selectpicker"form="for_report" name="check_status"  data-live-search="true">                   <option hidden="" selected="">&nbsp;</option>
+    <option>Not Applicable</option>
+                  <option>Choosen</option>
+                  <option>Provided</option>
+                  <option>Due Date</option>
+                  <option>Others</option>
+                    <option>Migration in TC</option>
+                    <option>Migration in CC</option>
+                  </select>
             </div>
-            <div class="col-md-3">
+              <div class="form-group">
+              
+  <select id="select"class="selectpicker"form="for_report" name="check_status"  data-live-search="true">                   <option hidden="" selected="">&nbsp;</option>
+    <option>Not Applicable</option>
+                  <option>Choosen</option>
+                  <option>Provided</option>
+                  <option>Due Date</option>
+                  <option>Others</option>
+                    <option>Migration in TC</option>
+                    <option>Migration in CC</option>
+                  </select>
+            </div>
+              <div class="form-group">
+              
+  <select id="select"class="selectpicker"form="for_report" name="check_status"  data-live-search="true">                   <option hidden="" selected="">&nbsp;</option>
+    <option>Not Applicable</option>
+                  <option>Choosen</option>
+                  <option>Provided</option>
+                  <option>Due Date</option>
+                  <option>Others</option>
+                    <option>Migration in TC</option>
+                    <option>Migration in CC</option>
+                  </select>
+            </div>
+              <div class="form-group">
+              
+  <select id="select"class="selectpicker"form="for_report" name="check_status"  data-live-search="true">                   <option hidden="" selected="">&nbsp;</option>
+    <option>Not Applicable</option>
+                  <option>Choosen</option>
+                  <option>Provided</option>
+                  <option>Due Date</option>
+                  <option>Others</option>
+                    <option>Migration in TC</option>
+                    <option>Migration in CC</option>
+                  </select>
+            </div>
+              <div class="form-group">
+              
+  <select id="select"class="selectpicker"form="for_report" name="check_status"  data-live-search="true">                   <option hidden="" selected="">&nbsp;</option>
+    <option>Not Applicable</option>
+                  <option>Choosen</option>
+                  <option>Provided</option>
+                  <option>Due Date</option>
+                  <option>Others</option>
+                    <option>Migration in TC</option>
+                    <option>Migration in CC</option>
+                  </select>
+            </div>
+              <div class="form-group">
+              
+  <select id="select"class="selectpicker"form="for_report" name="check_status"  data-live-search="true">                   <option hidden="" selected="">&nbsp;</option>
+    <option>Not Applicable</option>
+                  <option>Choosen</option>
+                  <option>Provided</option>
+                  <option>Due Date</option>
+                  <option>Others</option>
+                    <option>Migration in TC</option>
+                    <option>Migration in CC</option>
+                  </select>
+            </div>
+              <div class="form-group">
+              
+  <select id="select"class="selectpicker"form="for_report" name="check_status"  data-live-search="true">                   <option hidden="" selected="">&nbsp;</option>
+    <option>Not Applicable</option>
+                  <option>Choosen</option>
+                  <option>Provided</option>
+                  <option>Due Date</option>
+                  <option>Others</option>
+                    <option>Migration in TC</option>
+                    <option>Migration in CC</option>
+                  </select>
+            </div>
+              <div class="form-group">
+              
+  <select id="select"class="selectpicker"form="for_report" name="check_status"  data-live-search="true">                  
+                   <option hidden="" selected="">&nbsp;</option>
+    <option>Not Applicable</option>
+                  <option>Choosen</option>
+                  <option>Provided</option>
+                  <option>Due Date</option>
+                  <option>Others</option>
+                    <option>Migration in TC</option>
+                    <option>Migration in CC</option>
+                  </select>
+            </div>
+              <div class="form-group">
+              
+  <select id="select"class="selectpicker"form="for_report" name="check_status"  data-live-search="true">                  
+                   <option hidden="" selected="">&nbsp;</option>
+    <option>Not Applicable</option>
+                  <option>Choosen</option>
+                  <option>Provided</option>
+                  <option>Due Date</option>
+                  <option>Others</option>
+                    <option>Migration in TC</option>
+                    <option>Migration in CC</option>
+                  </select>
+            </div>
+            </div>
+          
+            <div class="col-md-2">
               <div class="form-group">
                 <label for="exampleFormControlInput21">Due Date</label>
-                <input type="text" class="form-control"id="checkdate" form="for_report" name="ack_date" id="exampleFormControlInput21" placeholder="">
+                <input type="text" class="form-control"id="checkdate" form="for_report" name="check_date" id="exampleFormControlInput21" placeholder="">
+              </div>
+               <div class="form-group">
+                <input type="text" class="form-control"id="checkdate1" form="for_report" name="check_date"  id="exampleFormControlInput21" placeholder="">
               </div>
               <div class="form-group">
-                <label for="exampleFormControlInput21">Due Date</label>
-                <input type="text" class="form-control"id="checkdate" form="for_report" name="ack_date" id="exampleFormControlInput21" placeholder="">
+                <input type="text" class="form-control"id="checkdate2" form="for_report" name="check_date"  id="exampleFormControlInput21" placeholder="">
               </div>
               <div class="form-group">
-                <label for="exampleFormControlInput21">Due Date</label>
-                <input type="text" class="form-control"id="checkdate" form="for_report" name="ack_date" id="exampleFormControlInput21" placeholder="">
+                <input type="text" class="form-control"id="checkdate3" form="for_report" name="check_date"  id="exampleFormControlInput21" placeholder="">
               </div>
               <div class="form-group">
-                <label for="exampleFormControlInput21">Due Date</label>
-                <input type="text" class="form-control"id="checkdate" form="for_report" name="ack_date" id="exampleFormControlInput21" placeholder="">
+                <input type="text" class="form-control"id="checkdate4" form="for_report"name="check_date"  id="exampleFormControlInput21" placeholder="">
+              </div>
+               <div class="form-group">
+                <input type="text" class="form-control"id="checkdate5" form="for_report" name="check_date"  id="exampleFormControlInput21" placeholder="">
+              </div>
+               <div class="form-group">
+                <input type="text" class="form-control"id="checkdate6" form="for_report" name="check_date"  id="exampleFormControlInput21" placeholder="">
+              </div>
+               <div class="form-group">
+                <input type="text" class="form-control"id="checkdate7" form="for_report"name="check_date"  id="exampleFormControlInput21" placeholder="">
+              </div>
+               <div class="form-group">
+                <input type="text" class="form-control"id="checkdate8" form="for_report" name="check_date"  id="exampleFormControlInput21" placeholder="">
+              </div>
+               <div class="form-group">
+                <input type="text" class="form-control"id="checkdate9" form="for_report" name="check_date"  id="exampleFormControlInput21" placeholder="">
+              </div>
+               <div class="form-group">
+                <input type="text" class="form-control"id="checkdate10" form="for_report" name="check_date"  id="exampleFormControlInput21" placeholder="">
+              </div>
+               <div class="form-group">
+                <input type="text" class="form-control"id="checkdate11" form="for_report" name="check_date" id="exampleFormControlInput21" placeholder="">
+              </div>
+               <div class="form-group">
+                <input type="text" class="form-control"id="checkdate12" form="for_report" name="check_date"  id="exampleFormControlInput21" placeholder="">
+              </div>
+               <div class="form-group">
+                <input type="text" class="form-control"id="checkdate13" form="for_report"name="check_date"  id="exampleFormControlInput21" placeholder="">
+              </div>
+               <div class="form-group">
+                <input type="text" class="form-control"id="checkdate14" form="for_report" name="check_date" id="exampleFormControlInput21" placeholder="">
+              </div>
+               <div class="form-group">
+                <input type="text" class="form-control"id="checkdate15" form="for_report"name="check_date"id="exampleFormControlInput21" placeholder="">
+              </div>
+               <div class="form-group">
+                <input type="text" class="form-control"id="checkdate16" form="for_report" name="check_date" id="exampleFormControlInput21" placeholder="">
+              </div>
+               <div class="form-group">
+                <input type="text" class="form-control"id="checkdate17" form="for_report" name="check_date"id="exampleFormControlInput21" placeholder="">
               </div>
               </div>
-              <div class="col-md-3">
+              <div class="col-md-4">
                 <div class="form-group">
-                  <label for="exampleFormControlInput21">Certificate Return Date</label>
-                  <input type="text" class="form-control"id="checkdate" form="for_report" name="" id="exampleFormControlInput21" placeholder="">
-                </div>
-                <div class="form-group">
-                  <label for="exampleFormControlInput21">Certificate Return Date</label>
-                  <input type="text" class="form-control"id="checkdate" form="for_report" name="" id="exampleFormControlInput21" placeholder="">
+                   <label for="exampleFormControlInput22">Remark</label>
+
+    <textarea class="form-control" id="exampleFormControlTextarea1"form="for_report"name="check_remark" rows="1"></textarea>
                 </div>
                 <div class="form-group">
-                  <label for="exampleFormControlInput21">Certificate Return Date</label>
-                  <input type="text" class="form-control"id="checkdate" form="for_report" name="" id="exampleFormControlInput21" placeholder="">
+                      <textarea class="form-control"form="for_report"name="check_remark" id="exampleFormControlTextarea1" rows="1"></textarea>
+
                 </div>
                 <div class="form-group">
-                  <label for="exampleFormControlInput21">Certificate Return Date</label>
-                  <input type="text" class="form-control"id="checkdate" form="for_report" name="" id="exampleFormControlInput21" placeholder="">
+                <textarea class="form-control" id="exampleFormControlTextarea1"form="for_report"name="check_remark" rows="1"></textarea>
+
+                </div>
+                <div class="form-group">
+                <textarea class="form-control" id="exampleFormControlTextarea1" form="for_report"name="check_remark"rows="1"></textarea>
+
+                </div>
+                  <div class="form-group">
+                <textarea class="form-control" id="exampleFormControlTextarea1"form="for_report"name="check_remark" rows="1"></textarea>
+
+                </div>
+                  <div class="form-group">
+                  <textarea class="form-control" id="exampleFormControlTextarea1"form="for_report"name="check_remark" rows="1"></textarea>
+
+                </div>
+                  <div class="form-group">
+                  <textarea class="form-control" id="exampleFormControlTextarea1"form="for_report"name="check_remark" rows="1"></textarea>
+
+                </div>
+                 <div class="form-group">
+                  <textarea class="form-control" id="exampleFormControlTextarea1"form="for_report"name="check_remark" rows="1"></textarea>
+
+                </div>
+                 <div class="form-group">
+                  <textarea class="form-control" id="exampleFormControlTextarea1"form="for_report"name="check_remark" rows="1"></textarea>
+
+                </div>
+                   <div class="form-group">
+                  <textarea class="form-control" id="exampleFormControlTextarea1"form="for_report"name="check_remark" rows="1"></textarea>
+
+                </div>
+                <div class="form-group">
+                  <textarea class="form-control" id="exampleFormControlTextarea1"form="for_report"name="check_remark" rows="1"></textarea>
+
+                </div>
+                  <div class="form-group">
+                  <textarea class="form-control" id="exampleFormControlTextarea1"form="for_report"name="check_remark" rows="1"></textarea>
+
+                </div>
+                 <div class="form-group">
+                  <textarea class="form-control" id="exampleFormControlTextarea1"form="for_report"name="check_remark" rows="1"></textarea>
+
+                </div>
+                <div class="form-group">
+                  <textarea class="form-control" id="exampleFormControlTextarea1"form="for_report"name="check_remark" rows="1"></textarea>
+
+                </div>
+                 <div class="form-group">
+                  <textarea class="form-control" id="exampleFormControlTextarea1"form="for_report"name="check_remark" rows="1"></textarea>
+
+                </div>
+                 <div class="form-group">
+                  <textarea class="form-control" id="exampleFormControlTextarea1"form="for_report"name="check_remark" rows="1"></textarea>
+
+                </div>
+                 <div class="form-group">
+                  <textarea class="form-control" id="exampleFormControlTextarea1"form="for_report"name="check_remark" rows="1"></textarea>
+
                 </div>
                 </div>
-          </div>
+              </div>
+          
           <div class="modal-footer">
             <button type="submit" data-dismiss="" form="for_report" class="btn btn-primary">Submit </button>
           </div>

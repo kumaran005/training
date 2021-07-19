@@ -1,8 +1,8 @@
--- MySQL dump 10.13  Distrib 8.0.23, for Win64 (x86_64)
+-- MySQL dump 10.13  Distrib 8.0.25, for Win64 (x86_64)
 --
 -- Host: localhost    Database: ems
 -- ------------------------------------------------------
--- Server version	8.0.23
+-- Server version	8.0.25
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -38,7 +38,6 @@ CREATE TABLE `audit_trail` (
 
 LOCK TABLES `audit_trail` WRITE;
 /*!40000 ALTER TABLE `audit_trail` DISABLE KEYS */;
-INSERT INTO `audit_trail` VALUES (315,'Adding_Student_MBBS','Raja765206','06/02/2021 16:16:57','CAPONM72'),(316,'Adding_Student_MBBS','msms331712','06/05/2021 18:18:13','CAPONM72'),(317,'Adding_Student_MBBS','Raja89359','06/06/2021 14:52:33','CAPONM72'),(318,'Adding_Student_MBBS','Raja622030','06/07/2021 10:12:01','CAPONM72'),(319,'Adding_Student_MBBS','stev128826','06/08/2021 14:13:06','undefined'),(320,'Adding_Student_MBBS','Raja307337','06/09/2021 14:43:17','CAPONM72'),(321,'Adding_Student_MBBS','Raja270477','06/09/2021 14:44:15','CAPONM72'),(322,'Adding_Student_MBBS','star615680','06/09/2021 21:19:07','CAPONM72');
 /*!40000 ALTER TABLE `audit_trail` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -51,4 +50,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-06-15 14:00:36
+-- Dump completed on 2021-07-17 13:38:03

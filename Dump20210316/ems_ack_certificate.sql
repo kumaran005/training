@@ -16,36 +16,27 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `cand_address_details`
+-- Table structure for table `ack_certificate`
 --
 
-DROP TABLE IF EXISTS `cand_address_details`;
+DROP TABLE IF EXISTS `ack_certificate`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `cand_address_details` (
+CREATE TABLE `ack_certificate` (
   `id` int NOT NULL AUTO_INCREMENT,
-  `cand_id` varchar(900) DEFAULT NULL,
-  `address_type` varchar(900) DEFAULT NULL,
-  `ps_address` varchar(900) DEFAULT NULL,
-  `ps_pincode` varchar(900) DEFAULT NULL,
-  `ps_state` varchar(900) DEFAULT NULL,
-  `ps_district` varchar(900) DEFAULT NULL,
-  `pm_address` varchar(900) DEFAULT NULL,
-  `pm_pincode` varchar(900) DEFAULT NULL,
-  `pm_state` varchar(900) DEFAULT NULL,
-  `pm_district` varchar(900) DEFAULT NULL,
-  `last_modified_time` varchar(900) DEFAULT NULL,
+  `certificate` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=368 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `cand_address_details`
+-- Dumping data for table `ack_certificate`
 --
 
-LOCK TABLES `cand_address_details` WRITE;
-/*!40000 ALTER TABLE `cand_address_details` DISABLE KEYS */;
-/*!40000 ALTER TABLE `cand_address_details` ENABLE KEYS */;
+LOCK TABLES `ack_certificate` WRITE;
+/*!40000 ALTER TABLE `ack_certificate` DISABLE KEYS */;
+INSERT INTO `ack_certificate` VALUES (1,' FEE RECEIPT'),(2,'10TH MARK SHEET'),(3,' 10TH PASS CERTIFICATE'),(4,'12TH MARK SHEET'),(5,'12TH PASS CERTIFICATE'),(6,'COMMUNITY CERTIFICATE'),(7,'TRANSFER CERTIFICATE'),(8,'CONDUCT CERTIFICATE'),(9,'MIGRATION CERTIFICATE'),(10,'ELIGIBILITY CERTIFICATE'),(11,'PHYSICAL WITH DISABILITY CERTIFICATE'),(12,'PHYSICALLY CHALLANGED CERTIFICATE');
+/*!40000 ALTER TABLE `ack_certificate` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -57,4 +48,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-07-17 13:38:07
+-- Dump completed on 2021-07-17 13:38:10

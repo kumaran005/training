@@ -67,10 +67,11 @@
        <section id="relmain"class="text-dark">
            <div class="row"style="font-family:normal">
                <div class="col-md-9">
-                   <p>Ref. No.</p>
+                   <p>Ref. No. <%=ref%></p>
                </div>
+
                <div class="col-md-3">
-                <p>Dated: <%=today%></p>
+                <p>Dated: <%=indiDate1%></p>
 
                </div>
                <div class="col-md-12 text-center">
@@ -80,36 +81,36 @@
                    <p><b>Sub: </b></p>
                    <p class="mt-5 "><b>Ref: </b></p>
                                  </div>
-               <%
-               if(userData.length!=0){
-               var i=1;
-               userData.forEach(function(classdata1){
-               %>
+               
+               
                <div class="col-md-10 pl-5">
                    <p>Medical Education - Tirunelveli Medical College, Tirunelveli - Candidates who joined MBBS
-                    under <b><%=classdata1.admission_quota %> </b>() Session - relieved on  <%=objDate%> Order - Issued - Reg.</p>
+                    under <b><%=userData[0].admission_quota %> </b>() Session - relieved on 
+                  
+                    <%=userData10[0].date_of_relieving %>  Order - Issued - Reg.</p>
                     <p>
+                  
                         <ol id="ol1" class="m-0 pl-3 ">
                             <li><p>SQ /AIQ Dated:</p></li>
-                            <li><p>Individual's Letter Dated: 26-Mar-2021</p></li>
+                            <li><p>Individual's Letter Dated: <%=indiDate%></p></li>
                         </ol>
                     </p>
                </div>
-               <%  i++; }) %>
-               <% } else{ %>
-               
-               <% } %>
+            
+                 
                <div class="col-md-12 mt-3">
                    <p class="text-center">********</p>
                </div>
+               
                <p style="text-indent: 1cm;
                margin-top: -25px;
                word-spacing: 3px;
                ">As per the references cited, the following students joined in Tirunelveli Medical College, Tirunelveli
-                are relieved from this institution on 26-Mar-2021 and instructed to appear before the Dean of the college
+                are relieved from this institution on <%=userData10[0].date_of_relieving %> and instructed to appear before the Dean of the college
                 noted against them.
                 </p>
-                <table class="table"id="reltable">
+                    
+                <table class="table text-center"id="reltable">
                     <thead id="" >
                       
                 <tr >
@@ -126,7 +127,7 @@
             
                 </tr>
               </thead>
-              <script>var dayt = '<%-JSON.stringify(userData10)%>'</script>
+              <!-- <script>var dayt = '<%-JSON.stringify(userData10)%>'</script> -->
              <% for(i in userData){%>
              <tbody style="border-top: 3px solid;"id="relbody">
                  <tr>
@@ -156,13 +157,26 @@
                "><b>The Individual Concernds </b></p>
                <p style="    margin-top: -8px;
                "><b>Copyto </b></p>
+                      
+              
               <ol id="ol1"class="p-0 ml-3">
                 <li><p id="relp"><b> The Cashier, Tirunelveli Medical College, Tirunelveli-11<br>
                     -is requested to issue a cheque for a sum noted against the individual concernds
                    </b></p></li>
-                   <li><p><b> The Dean, 
-                   </b></p></li>
+                   <li><p><b> The Dean,  
+                     <% if(userData10.length!=0){
+               var i=1;
+                userData10.forEach(function(classdata10){
+               %>
+                     <%=classdata10.college_name %>
+                   
+                  <%  i++; }) %>
+               <% } else{ %>
+               
+               <% } %>
+               </b></p></li>
               </ol>
+              
            </div>
            <div class="col-md-3 mt-5 ">
                <p class="text-right"><b>DEAN</b></p>

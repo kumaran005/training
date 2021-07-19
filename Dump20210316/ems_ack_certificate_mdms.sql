@@ -16,36 +16,27 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `cand_address_details`
+-- Table structure for table `ack_certificate_mdms`
 --
 
-DROP TABLE IF EXISTS `cand_address_details`;
+DROP TABLE IF EXISTS `ack_certificate_mdms`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `cand_address_details` (
+CREATE TABLE `ack_certificate_mdms` (
   `id` int NOT NULL AUTO_INCREMENT,
-  `cand_id` varchar(900) DEFAULT NULL,
-  `address_type` varchar(900) DEFAULT NULL,
-  `ps_address` varchar(900) DEFAULT NULL,
-  `ps_pincode` varchar(900) DEFAULT NULL,
-  `ps_state` varchar(900) DEFAULT NULL,
-  `ps_district` varchar(900) DEFAULT NULL,
-  `pm_address` varchar(900) DEFAULT NULL,
-  `pm_pincode` varchar(900) DEFAULT NULL,
-  `pm_state` varchar(900) DEFAULT NULL,
-  `pm_district` varchar(900) DEFAULT NULL,
-  `last_modified_time` varchar(900) DEFAULT NULL,
+  `certificate` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=368 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=26 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `cand_address_details`
+-- Dumping data for table `ack_certificate_mdms`
 --
 
-LOCK TABLES `cand_address_details` WRITE;
-/*!40000 ALTER TABLE `cand_address_details` DISABLE KEYS */;
-/*!40000 ALTER TABLE `cand_address_details` ENABLE KEYS */;
+LOCK TABLES `ack_certificate_mdms` WRITE;
+/*!40000 ALTER TABLE `ack_certificate_mdms` DISABLE KEYS */;
+INSERT INTO `ack_certificate_mdms` VALUES (1,'FEE RECEIPT'),(2,'10TH MARK SHEET'),(3,'10TH PASS CERTIFICATE'),(4,'12TH MARK SHEET'),(5,'12TH PASS CERTIFICATE'),(6,'COMMUNITY CERTIFICATE'),(7,'MBBS 1 YEAR TO FINAL  YEAR MARK SHEET'),(8,'CRRI COMPLETION CERTIFICATE'),(9,'MBBS DEGREE CERTIFICATE'),(10,'MBBS MEDICAL COUNCIL REGISTRATION CERTIFICATE'),(11,'MBBS ATTEMPT CERTIFICATE'),(12,'MBBS TRANSFER CERTIFICATE'),(13,'MBBS COURSE CUM CONDUCT CERTIFICATE'),(14,'PG DIPLOMA MARK SHEET'),(15,'PG DIPLOMA DEGREE CERTIFICATE'),(16,'PG DILPOMA MEDICAL COUNCIL REGISTRATION CERTIFICATE'),(17,'PG DIPLOMA ATTEMPT CERTIFICATE'),(18,'PG DIPLOMA COURSE CUM CONDUCT CERTIFICATE'),(19,'MD/MS MARK SHEET'),(20,'MD/MS DEGREE CERTIFICATE'),(21,'MD/MS MEDICAL COUNCIL REGISTRATION CERTIFICATE'),(22,'MD/MS ATTEMPT CERTIFICATE'),(23,'MD/MS COURSE CUM CONDUCT CERTIFICATE'),(24,'MIGRATION CERTIFICATE'),(25,'ELIGIBILITY CERTIFICATE');
+/*!40000 ALTER TABLE `ack_certificate_mdms` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -57,4 +48,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-07-17 13:38:07
+-- Dump completed on 2021-07-17 13:38:03
